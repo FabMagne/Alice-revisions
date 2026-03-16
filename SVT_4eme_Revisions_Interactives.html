@@ -7,998 +7,891 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&family=Fraunces:ital,wght@0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #F6F5F0;
-  --bg-card: #FFFFFF;
-  --bg-dark: #1B2A3D;
-  --text: #2D3748;
-  --text-light: #718096;
-  --text-white: #F7FAFC;
-  --blue: #2B6CB0;
-  --blue-light: #EBF4FF;
-  --blue-dark: #1A365D;
-  --green: #276749;
-  --green-light: #E6FFED;
-  --green-bg: #F0FFF4;
-  --orange: #C05621;
-  --orange-light: #FFFAF0;
-  --red: #C53030;
-  --red-light: #FFF5F5;
-  --purple: #6B46C1;
-  --purple-light: #FAF5FF;
-  --yellow: #D69E2E;
-  --yellow-light: #FEFCBF;
+  --bg: #F6F5F0; --bg-card: #FFFFFF; --bg-dark: #1B2A3D;
+  --text: #2D3748; --text-light: #718096; --text-white: #F7FAFC;
+  --blue: #2B6CB0; --blue-light: #EBF4FF; --blue-dark: #1A365D;
+  --green: #276749; --green-light: #E6FFED; --green-bg: #F0FFF4;
+  --orange: #C05621; --orange-light: #FFFAF0;
+  --red: #C53030; --red-light: #FFF5F5;
+  --purple: #6B46C1; --purple-light: #FAF5FF;
+  --yellow: #D69E2E; --yellow-light: #FEFCBF;
   --accent: #DD6B20;
-  --radius: 12px;
-  --radius-lg: 20px;
+  --radius: 12px; --radius-lg: 20px;
   --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
   --shadow-lg: 0 4px 20px rgba(0,0,0,0.08), 0 8px 32px rgba(0,0,0,0.04);
   --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.65;
-  min-height: 100vh;
-}
-h1, h2, h3 { font-family: 'Fraunces', serif; line-height: 1.25; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;min-height:100vh}
+h1,h2,h3{font-family:'Fraunces',serif;line-height:1.3}
 
-/* ─── HERO ─── */
-.hero {
-  background: linear-gradient(135deg, var(--bg-dark) 0%, #2C4A6E 50%, #1A365D 100%);
-  padding: 60px 24px 50px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-.hero::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(circle at 20% 80%, rgba(221,107,32,0.15) 0%, transparent 50%),
-              radial-gradient(circle at 80% 20%, rgba(43,108,176,0.2) 0%, transparent 50%);
-}
-.hero * { position: relative; z-index: 1; }
-.hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); color: var(--text-white); font-weight: 800; letter-spacing: -0.02em; }
-.hero .subtitle { color: rgba(255,255,255,0.7); font-size: 1.1rem; margin-top: 10px; }
-.hero .badge {
-  display: inline-block; margin-top: 18px; padding: 6px 18px;
-  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 100px; color: rgba(255,255,255,0.85); font-size: 0.85rem; font-weight: 500;
-  backdrop-filter: blur(4px);
-}
-.hero .progress-bar-container {
-  max-width: 400px; margin: 22px auto 0; background: rgba(255,255,255,0.1);
-  border-radius: 100px; height: 8px; overflow: hidden;
-}
-.hero .progress-bar-fill {
-  height: 100%; background: linear-gradient(90deg, var(--accent), #F6AD55);
-  border-radius: 100px; transition: width 0.6s ease; width: 0%;
-}
-.hero .progress-text { color: rgba(255,255,255,0.6); font-size: 0.8rem; margin-top: 6px; }
+.hero{background:linear-gradient(135deg,var(--bg-dark) 0%,#2C4A6E 50%,#1A365D 100%);padding:60px 24px 50px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 80%,rgba(221,107,32,.15) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(43,108,176,.2) 0%,transparent 50%)}
+.hero *{position:relative;z-index:1}
+.hero h1{font-size:clamp(2rem,5vw,3.2rem);color:var(--text-white);font-weight:800;letter-spacing:-.02em}
+.hero .subtitle{color:rgba(255,255,255,.7);font-size:1.1rem;margin-top:10px}
+.hero .badge{display:inline-block;margin-top:18px;padding:6px 18px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:100px;color:rgba(255,255,255,.85);font-size:.85rem;font-weight:500;backdrop-filter:blur(4px)}
+.hero .pbc{max-width:400px;margin:22px auto 0;background:rgba(255,255,255,.1);border-radius:100px;height:8px;overflow:hidden}
+.hero .pbf{height:100%;background:linear-gradient(90deg,var(--accent),#F6AD55);border-radius:100px;transition:width .6s ease;width:0%}
+.hero .pt{color:rgba(255,255,255,.6);font-size:.8rem;margin-top:6px}
 
-/* ─── NAV ─── */
-.theme-nav {
-  display: flex; gap: 8px; padding: 16px 24px; overflow-x: auto;
-  background: var(--bg-card); border-bottom: 1px solid rgba(0,0,0,0.06);
-  position: sticky; top: 0; z-index: 100;
-  scrollbar-width: none;
-}
-.theme-nav::-webkit-scrollbar { display: none; }
-.theme-nav button {
-  flex-shrink: 0; padding: 8px 18px; border-radius: 100px; border: 1.5px solid rgba(0,0,0,0.1);
-  background: transparent; font-family: 'DM Sans', sans-serif; font-size: 0.85rem;
-  font-weight: 600; color: var(--text-light); cursor: pointer; transition: var(--transition);
-  white-space: nowrap;
-}
-.theme-nav button:hover { border-color: var(--blue); color: var(--blue); }
-.theme-nav button.active {
-  background: var(--blue); color: white; border-color: var(--blue);
-  box-shadow: 0 2px 8px rgba(43,108,176,0.3);
-}
+.theme-nav{display:flex;gap:8px;padding:16px 24px;overflow-x:auto;background:var(--bg-card);border-bottom:1px solid rgba(0,0,0,.06);position:sticky;top:0;z-index:100;scrollbar-width:none}
+.theme-nav::-webkit-scrollbar{display:none}
+.theme-nav button{flex-shrink:0;padding:8px 18px;border-radius:100px;border:1.5px solid rgba(0,0,0,.1);background:transparent;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:600;color:var(--text-light);cursor:pointer;transition:var(--transition);white-space:nowrap}
+.theme-nav button:hover{border-color:var(--blue);color:var(--blue)}
+.theme-nav button.active{background:var(--blue);color:white;border-color:var(--blue);box-shadow:0 2px 8px rgba(43,108,176,.3)}
 
-/* ─── MAIN ─── */
-.main-container { max-width: 860px; margin: 0 auto; padding: 32px 20px 80px; }
+.main-container{max-width:880px;margin:0 auto;padding:32px 20px 80px}
 
-/* ─── CHAPTER CARD ─── */
-.chapter-card {
-  background: var(--bg-card); border-radius: var(--radius-lg); box-shadow: var(--shadow);
-  margin-bottom: 28px; overflow: hidden; border: 1px solid rgba(0,0,0,0.04);
-  animation: fadeUp 0.5s ease both;
-}
-@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+.chapter-card{background:var(--bg-card);border-radius:var(--radius-lg);box-shadow:var(--shadow);margin-bottom:28px;overflow:hidden;border:1px solid rgba(0,0,0,.04);animation:fadeUp .5s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
-.chapter-header {
-  padding: 24px 28px; cursor: pointer; display: flex; align-items: center; gap: 16px;
-  transition: var(--transition); user-select: none;
-}
-.chapter-header:hover { background: rgba(0,0,0,0.015); }
-.chapter-num {
-  width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center;
-  justify-content: center; font-family: 'Fraunces', serif; font-weight: 800; font-size: 1.1rem;
-  color: white; flex-shrink: 0;
-}
-.chapter-header-text { flex: 1; }
-.chapter-header-text h2 { font-size: 1.15rem; font-weight: 700; color: var(--text); }
-.chapter-header-text p { font-size: 0.82rem; color: var(--text-light); margin-top: 2px; }
-.chapter-score {
-  padding: 4px 12px; border-radius: 100px; font-size: 0.78rem; font-weight: 600;
-  background: var(--green-light); color: var(--green); flex-shrink: 0; display: none;
-}
-.chapter-toggle {
-  width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center;
-  justify-content: center; transition: var(--transition); flex-shrink: 0;
-  color: var(--text-light); font-size: 1.2rem;
-}
-.chapter-card.open .chapter-toggle { transform: rotate(180deg); }
+.chapter-header{padding:24px 28px;cursor:pointer;display:flex;align-items:center;gap:16px;transition:var(--transition);user-select:none}
+.chapter-header:hover{background:rgba(0,0,0,.015)}
+.chapter-num{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:800;font-size:1.1rem;color:white;flex-shrink:0}
+.chapter-header-text{flex:1}
+.chapter-header-text h2{font-size:1.15rem;font-weight:700;color:var(--text)}
+.chapter-header-text p{font-size:.82rem;color:var(--text-light);margin-top:2px}
+.chapter-score{padding:4px 12px;border-radius:100px;font-size:.78rem;font-weight:600;background:var(--green-light);color:var(--green);flex-shrink:0;display:none}
+.chapter-toggle{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;transition:var(--transition);flex-shrink:0;color:var(--text-light);font-size:1.2rem}
+.chapter-card.open .chapter-toggle{transform:rotate(180deg)}
+.chapter-body{display:none;padding:0 28px 28px}
+.chapter-card.open .chapter-body{display:block}
 
-.chapter-body { display: none; padding: 0 28px 28px; }
-.chapter-card.open .chapter-body { display: block; }
+.chapter-tabs{display:flex;gap:4px;margin-bottom:24px;background:rgba(0,0,0,.04);border-radius:10px;padding:4px}
+.chapter-tabs button{flex:1;padding:10px 6px;border:none;border-radius:8px;background:transparent;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:600;color:var(--text-light);cursor:pointer;transition:var(--transition)}
+.chapter-tabs button.active{background:var(--bg-card);color:var(--text);box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.tab-content{display:none}
+.tab-content.active{display:block;animation:fadeUp .3s ease}
 
-/* ─── TABS inside chapter ─── */
-.chapter-tabs {
-  display: flex; gap: 4px; margin-bottom: 24px; background: rgba(0,0,0,0.04);
-  border-radius: 10px; padding: 4px;
-}
-.chapter-tabs button {
-  flex: 1; padding: 10px 6px; border: none; border-radius: 8px; background: transparent;
-  font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 600;
-  color: var(--text-light); cursor: pointer; transition: var(--transition);
-}
-.chapter-tabs button.active {
-  background: var(--bg-card); color: var(--text); box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-}
+/* ─── FICHE ─── */
+.fiche-section{margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid rgba(0,0,0,.05)}
+.fiche-section:last-of-type{border-bottom:none}
+.fiche h3{font-size:1.08rem;color:var(--blue-dark);margin:0 0 10px;font-weight:700;display:flex;align-items:center;gap:8px}
+.fiche h3 .icon{font-size:1.15em}
+.fiche p{margin-bottom:12px;font-size:.94rem;color:var(--text);line-height:1.75}
+.fiche .highlight{background:var(--yellow-light);padding:2px 6px;border-radius:4px;font-weight:600}
+.fiche .example{background:var(--blue-light);border-left:3px solid var(--blue);padding:10px 14px;border-radius:0 8px 8px 0;margin:10px 0 14px;font-size:.88rem;color:var(--blue-dark)}
 
-.tab-content { display: none; }
-.tab-content.active { display: block; animation: fadeUp 0.3s ease; }
+.def-table{width:100%;border-collapse:separate;border-spacing:0;margin:18px 0;border-radius:10px;overflow:hidden;font-size:.9rem}
+.def-table th{background:var(--blue-dark);color:white;padding:11px 16px;text-align:left;font-weight:600}
+.def-table td{padding:10px 16px;border-bottom:1px solid rgba(0,0,0,.05)}
+.def-table tr:last-child td{border-bottom:none}
+.def-table td:first-child{font-weight:600;color:var(--blue);background:var(--blue-light);width:32%}
+.def-table tr:hover td{background:rgba(43,108,176,.04)}
+.def-table tr:hover td:first-child{background:rgba(43,108,176,.08)}
 
-/* ─── FICHE SECTION ─── */
-.fiche h3 {
-  font-size: 1.05rem; color: var(--blue-dark); margin: 20px 0 8px; font-weight: 700;
-  display: flex; align-items: center; gap: 8px;
-}
-.fiche h3 .icon { font-size: 1.1em; }
-.fiche p { margin-bottom: 10px; font-size: 0.92rem; color: var(--text); }
+.key-point{background:var(--green-bg);border-left:4px solid var(--green);border-radius:0 var(--radius) var(--radius) 0;padding:16px 20px;margin:20px 0;font-size:.92rem;line-height:1.7}
+.key-point strong{color:var(--green)}
 
-/* ─── SVG diagram container ─── */
-.diagram-container {
-  background: white; border: 1px solid rgba(0,0,0,0.06); border-radius: var(--radius);
-  padding: 16px; margin: 16px 0 20px; overflow: hidden;
-}
-.diagram-container svg { width: 100%; height: auto; display: block; }
-
-/* ─── DEFINITION TABLE ─── */
-.def-table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 14px 0; border-radius: 10px; overflow: hidden; font-size: 0.88rem; }
-.def-table th { background: var(--blue-dark); color: white; padding: 10px 14px; text-align: left; font-weight: 600; }
-.def-table td { padding: 9px 14px; border-bottom: 1px solid rgba(0,0,0,0.05); }
-.def-table tr:last-child td { border-bottom: none; }
-.def-table td:first-child { font-weight: 600; color: var(--blue); background: var(--blue-light); width: 35%; }
-.def-table tr:hover td { background: rgba(43,108,176,0.04); }
-.def-table tr:hover td:first-child { background: rgba(43,108,176,0.08); }
-
-/* ─── KEY POINT BOX ─── */
-.key-point {
-  background: var(--green-bg); border-left: 4px solid var(--green); border-radius: 0 var(--radius) var(--radius) 0;
-  padding: 14px 18px; margin: 16px 0; font-size: 0.9rem;
-}
-.key-point strong { color: var(--green); }
+/* ─── DIAGRAM ─── */
+.diagram-container{background:white;border:1px solid rgba(0,0,0,.06);border-radius:var(--radius);padding:20px;margin:16px 0 20px;overflow-x:auto}
+.diagram-container svg{width:100%;height:auto;display:block;min-width:500px}
 
 /* ─── EXERCISES ─── */
-.exercise-block {
-  background: var(--orange-light); border-radius: var(--radius); padding: 20px; margin: 16px 0;
-  border: 1px solid rgba(192,86,33,0.12);
-}
-.exercise-block h4 {
-  font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 700;
-  color: var(--orange); margin-bottom: 14px; display: flex; align-items: center; gap: 6px;
-}
-.question-group { margin-bottom: 16px; }
-.question-label { font-size: 0.9rem; font-weight: 500; margin-bottom: 8px; color: var(--text); }
+.exercise-block{background:var(--orange-light);border-radius:var(--radius);padding:22px;margin:18px 0;border:1px solid rgba(192,86,33,.12)}
+.exercise-block h4{font-family:'DM Sans',sans-serif;font-size:.96rem;font-weight:700;color:var(--orange);margin-bottom:16px;display:flex;align-items:center;gap:6px}
 
-/* ─── QCM ─── */
-.qcm-options { display: flex; flex-direction: column; gap: 6px; }
-.qcm-option {
-  display: flex; align-items: center; gap: 10px; padding: 10px 14px;
-  background: white; border: 2px solid rgba(0,0,0,0.08); border-radius: 10px;
-  cursor: pointer; transition: var(--transition); font-size: 0.88rem;
-}
-.qcm-option:hover { border-color: var(--blue); background: var(--blue-light); }
-.qcm-option.selected { border-color: var(--blue); background: var(--blue-light); }
-.qcm-option.correct { border-color: var(--green); background: var(--green-light); }
-.qcm-option.incorrect { border-color: var(--red); background: var(--red-light); opacity: 0.7; }
-.qcm-option .dot {
-  width: 18px; height: 18px; border-radius: 50%; border: 2px solid rgba(0,0,0,0.15);
-  flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 0.7rem;
-}
-.qcm-option.correct .dot { background: var(--green); border-color: var(--green); color: white; }
-.qcm-option.incorrect .dot { background: var(--red); border-color: var(--red); color: white; }
+.question-group{margin-bottom:18px}
+.question-label{font-size:.92rem;font-weight:500;margin-bottom:8px;color:var(--text);line-height:1.6}
+.qcm-options{display:flex;flex-direction:column;gap:7px}
+.qcm-option{display:flex;align-items:center;gap:10px;padding:11px 16px;background:white;border:2px solid rgba(0,0,0,.08);border-radius:10px;cursor:pointer;transition:var(--transition);font-size:.9rem;line-height:1.5}
+.qcm-option:hover{border-color:var(--blue);background:var(--blue-light)}
+.qcm-option.selected{border-color:var(--blue);background:var(--blue-light)}
+.qcm-option.correct{border-color:var(--green);background:var(--green-light)}
+.qcm-option.incorrect{border-color:var(--red);background:var(--red-light);opacity:.7}
+.qcm-option .dot{width:20px;height:20px;border-radius:50%;border:2px solid rgba(0,0,0,.15);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.75rem}
+.qcm-option.correct .dot{background:var(--green);border-color:var(--green);color:white}
+.qcm-option.incorrect .dot{background:var(--red);border-color:var(--red);color:white}
 
-/* ─── TRUE/FALSE ─── */
-.tf-buttons { display: flex; gap: 8px; margin-top: 6px; }
-.tf-btn {
-  padding: 8px 20px; border-radius: 8px; border: 2px solid rgba(0,0,0,0.1);
-  background: white; font-family: 'DM Sans', sans-serif; font-weight: 600;
-  font-size: 0.85rem; cursor: pointer; transition: var(--transition);
-}
-.tf-btn:hover { border-color: var(--blue); }
-.tf-btn.correct { background: var(--green-light); border-color: var(--green); color: var(--green); }
-.tf-btn.incorrect { background: var(--red-light); border-color: var(--red); color: var(--red); }
-.tf-btn:disabled { cursor: default; opacity: 0.8; }
+.tf-buttons{display:flex;gap:8px;margin-top:6px}
+.tf-btn{padding:9px 22px;border-radius:8px;border:2px solid rgba(0,0,0,.1);background:white;font-family:'DM Sans',sans-serif;font-weight:600;font-size:.88rem;cursor:pointer;transition:var(--transition)}
+.tf-btn:hover{border-color:var(--blue)}
+.tf-btn.correct{background:var(--green-light);border-color:var(--green);color:var(--green)}
+.tf-btn.incorrect{background:var(--red-light);border-color:var(--red);color:var(--red)}
+.tf-btn:disabled{cursor:default;opacity:.8}
 
-/* ─── FILL BLANKS ─── */
-.fill-blank-input {
-  display: inline-block; border: none; border-bottom: 2px dashed var(--blue);
-  background: transparent; font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
-  padding: 2px 4px; width: 140px; color: var(--blue); font-weight: 600; outline: none;
-  transition: var(--transition);
-}
-.fill-blank-input:focus { border-bottom-style: solid; }
-.fill-blank-input.correct { border-color: var(--green); color: var(--green); background: var(--green-light); }
-.fill-blank-input.incorrect { border-color: var(--red); color: var(--red); background: var(--red-light); }
+.fill-blank-input{display:inline-block;border:none;border-bottom:2px dashed var(--blue);background:transparent;font-family:'DM Sans',sans-serif;font-size:.92rem;padding:2px 4px;width:160px;color:var(--blue);font-weight:600;outline:none;transition:var(--transition)}
+.fill-blank-input:focus{border-bottom-style:solid}
+.fill-blank-input.correct{border-color:var(--green);color:var(--green);background:var(--green-light)}
+.fill-blank-input.incorrect{border-color:var(--red);color:var(--red);background:var(--red-light)}
 
-/* ─── FEEDBACK ─── */
-.feedback {
-  margin-top: 10px; padding: 10px 14px; border-radius: 8px; font-size: 0.85rem;
-  display: none; animation: fadeUp 0.3s ease;
-}
-.feedback.show { display: block; }
-.feedback.success { background: var(--green-light); color: var(--green); border: 1px solid rgba(39,103,73,0.15); }
-.feedback.error { background: var(--red-light); color: var(--red); border: 1px solid rgba(197,48,48,0.15); }
-.feedback.info { background: var(--blue-light); color: var(--blue); border: 1px solid rgba(43,108,176,0.15); }
+.feedback{margin-top:10px;padding:11px 16px;border-radius:8px;font-size:.88rem;display:none;animation:fadeUp .3s ease;line-height:1.6}
+.feedback.show{display:block}
+.feedback.success{background:var(--green-light);color:var(--green);border:1px solid rgba(39,103,73,.15)}
+.feedback.error{background:var(--red-light);color:var(--red);border:1px solid rgba(197,48,48,.15)}
+.feedback.info{background:var(--blue-light);color:var(--blue);border:1px solid rgba(43,108,176,.15)}
 
-/* ─── BUTTONS ─── */
-.btn-check {
-  margin-top: 12px; padding: 10px 24px; border-radius: 10px; border: none;
-  background: var(--blue); color: white; font-family: 'DM Sans', sans-serif;
-  font-weight: 600; font-size: 0.88rem; cursor: pointer; transition: var(--transition);
-  box-shadow: 0 2px 8px rgba(43,108,176,0.25);
-}
-.btn-check:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(43,108,176,0.35); }
-.btn-check:active { transform: translateY(0); }
-.btn-reveal {
-  margin-top: 10px; padding: 8px 18px; border-radius: 8px; border: 1.5px solid var(--green);
-  background: transparent; color: var(--green); font-family: 'DM Sans', sans-serif;
-  font-weight: 600; font-size: 0.82rem; cursor: pointer; transition: var(--transition);
-}
-.btn-reveal:hover { background: var(--green-light); }
+.btn-check{margin-top:14px;padding:11px 26px;border-radius:10px;border:none;background:var(--blue);color:white;font-family:'DM Sans',sans-serif;font-weight:600;font-size:.9rem;cursor:pointer;transition:var(--transition);box-shadow:0 2px 8px rgba(43,108,176,.25)}
+.btn-check:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(43,108,176,.35)}
 
-/* ─── CORRECTION BOX ─── */
-.correction-box {
-  background: var(--green-bg); border: 1px solid rgba(39,103,73,0.12);
-  border-radius: var(--radius); padding: 16px 18px; margin-top: 12px;
-  display: none; font-size: 0.88rem;
-}
-.correction-box.show { display: block; animation: fadeUp 0.3s ease; }
-.correction-box h5 { color: var(--green); font-weight: 700; margin-bottom: 8px; font-size: 0.9rem; }
-.correction-box p { margin-bottom: 6px; }
+.theme-1 .chapter-num{background:linear-gradient(135deg,#2B6CB0,#2C5282)}
+.theme-2 .chapter-num{background:linear-gradient(135deg,#276749,#22543D)}
+.theme-3 .chapter-num{background:linear-gradient(135deg,#9B2C2C,#C53030)}
 
-/* ─── THEME COLORS ─── */
-.theme-1 .chapter-num { background: linear-gradient(135deg, #2B6CB0, #2C5282); }
-.theme-2 .chapter-num { background: linear-gradient(135deg, #276749, #22543D); }
-.theme-3 .chapter-num { background: linear-gradient(135deg, #9B2C2C, #C53030); }
+.theme-title{display:flex;align-items:center;gap:12px;margin:36px 0 18px;padding-bottom:10px;border-bottom:2px solid rgba(0,0,0,.06)}
+.theme-title .ti{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.theme-title h2{font-size:1.15rem;font-weight:700}
+.t1bg{background:var(--blue-light)}.t2bg{background:var(--green-light)}.t3bg{background:var(--red-light)}
 
-/* ─── THEME SECTION TITLE ─── */
-.theme-title {
-  display: flex; align-items: center; gap: 12px; margin: 36px 0 18px; padding-bottom: 10px;
-  border-bottom: 2px solid rgba(0,0,0,0.06);
-}
-.theme-title .theme-icon {
-  width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center;
-  justify-content: center; font-size: 1.3rem; flex-shrink: 0;
-}
-.theme-title h2 { font-size: 1.15rem; font-weight: 700; }
-.theme-title p { font-size: 0.82rem; color: var(--text-light); }
-.theme-1-bg { background: var(--blue-light); }
-.theme-2-bg { background: var(--green-light); }
-.theme-3-bg { background: var(--red-light); }
-
-/* ─── RESPONSIVE ─── */
-@media (max-width: 640px) {
-  .hero { padding: 40px 16px 36px; }
-  .hero h1 { font-size: 1.8rem; }
-  .main-container { padding: 20px 12px 60px; }
-  .chapter-header { padding: 18px 16px; }
-  .chapter-body { padding: 0 16px 20px; }
-  .theme-nav { padding: 10px 12px; }
-  .exercise-block { padding: 14px; }
+@media(max-width:640px){
+  .hero{padding:40px 16px 36px}.hero h1{font-size:1.8rem}
+  .main-container{padding:20px 12px 60px}
+  .chapter-header{padding:18px 16px}.chapter-body{padding:0 16px 20px}
+  .theme-nav{padding:10px 12px}.exercise-block{padding:16px}
+  .diagram-container{padding:12px}
 }
 </style>
 </head>
 <body>
-
 <div class="hero">
   <h1>SVT — Classe de 4ème</h1>
   <p class="subtitle">Fiches de révision & exercices interactifs</p>
-  <div class="badge">Programme cycle 4 · Conforme 2025-2026</div>
-  <div class="progress-bar-container">
-    <div class="progress-bar-fill" id="globalProgress"></div>
-  </div>
-  <div class="progress-text" id="progressText">0 / 30 exercices complétés</div>
+  <div class="badge">Programme cycle 4 · 2025-2026</div>
+  <div class="pbc"><div class="pbf" id="globalProgress"></div></div>
+  <div class="pt" id="progressText">0 exercices complétés</div>
 </div>
-
 <nav class="theme-nav" id="themeNav">
   <button class="active" data-filter="all">Tout</button>
   <button data-filter="theme-1">🌍 Planète Terre</button>
   <button data-filter="theme-2">🌿 Vivant & Évolution</button>
   <button data-filter="theme-3">🫀 Corps & Santé</button>
 </nav>
-
-<main class="main-container" id="mainContent">
-</main>
-
+<main class="main-container" id="mainContent"></main>
 <script>
-// ============================================================
-// DATA: All chapters with content and exercises
-// ============================================================
-const chaptersData = [
-  // ─── THEME 1 ───
-  {
-    id: 1, theme: 1, title: "Les séismes",
-    themeLabel: "La planète Terre, l'environnement et l'action humaine",
-    fiche: {
-      sections: [
-        { title: "Qu'est-ce qu'un séisme ?", icon: "🔍",
-          text: "Un <b>séisme</b> (tremblement de terre) est une vibration du sol provoquée par la <b>rupture brutale de roches en profondeur</b>, le long d'une <b>faille</b>, lorsque les contraintes accumulées deviennent trop fortes." },
-        { title: "Foyer, épicentre et ondes sismiques", icon: "📍",
-          text: "Le <b>foyer</b> (hypocentre) est le point en profondeur où se produit la rupture. L'<b>épicentre</b> est le point en surface à la verticale du foyer (dégâts maximaux). Les <b>ondes sismiques</b> se propagent dans toutes les directions à partir du foyer. Plus on s'éloigne, plus l'intensité diminue." },
-        { title: "Mesurer un séisme", icon: "📊",
-          text: "Le <b>sismographe</b> enregistre les vibrations du sol. Le tracé obtenu est un <b>sismogramme</b>. La <b>magnitude</b> (échelle de Richter) mesure l'énergie libérée au foyer. L'<b>intensité</b> (échelle MSK) évalue les dégâts en surface." },
-        { title: "Répartition des séismes", icon: "🗺️",
-          text: "Les séismes se concentrent aux <b>limites des plaques tectoniques</b> : dorsales océaniques, fosses océaniques, chaînes de montagnes." }
-      ],
-      definitions: [
-        ["Foyer", "Point en profondeur où se produit la rupture"],
-        ["Épicentre", "Point en surface à la verticale du foyer"],
-        ["Faille", "Cassure le long de laquelle un déplacement se produit"],
-        ["Sismographe", "Appareil qui enregistre les vibrations du sol"],
-        ["Sismogramme", "Tracé graphique des ondes sismiques"],
-        ["Magnitude", "Énergie libérée au foyer (échelle de Richter)"],
-        ["Intensité", "Effets ressentis en surface (échelle MSK)"]
-      ],
-      keyPoint: "Un séisme résulte de la rupture de roches en profondeur (foyer). Les ondes se propagent dans toutes les directions. L'épicentre subit les dégâts maximaux. Les séismes se répartissent aux limites des plaques.",
-      diagram: 'seisme'
-    },
-    exercises: [
-      { type: "fill", title: "Vocabulaire — Texte à trous",
-        intro: "Complète les phrases avec les mots : <b>foyer, épicentre, sismographe, ondes sismiques, magnitude</b>.",
-        questions: [
-          { text: "Le {0} est le point en profondeur où se produit la rupture des roches.", answer: "foyer" },
-          { text: "Les {0} se propagent dans toutes les directions à partir du foyer.", answer: "ondes sismiques" },
-          { text: "L'{0} est situé à la surface, à la verticale du foyer.", answer: "épicentre" },
-          { text: "On enregistre les vibrations du sol à l'aide d'un {0}.", answer: "sismographe" },
-          { text: "La {0} mesure l'énergie libérée par un séisme.", answer: "magnitude" }
-        ]
-      },
-      { type: "qcm", title: "QCM — Comprendre les séismes",
-        questions: [
-          { q: "Où se situe le foyer d'un séisme ?", options: ["À la surface de la Terre", "En profondeur, au niveau de la rupture des roches", "Au sommet d'un volcan", "Dans l'atmosphère"], correct: 1 },
-          { q: "Que mesure la magnitude ?", options: ["Les dégâts en surface", "L'énergie libérée au foyer", "La profondeur du foyer", "La durée du séisme"], correct: 1 },
-          { q: "Pourquoi les dégâts sont-ils maximaux à l'épicentre ?", options: ["Car c'est le point le plus haut", "Car c'est le point le plus proche du foyer en surface", "Car c'est là qu'il y a le plus de bâtiments", "Car le sol y est plus fragile"], correct: 1 }
-        ]
-      },
-      { type: "tf", title: "Vrai ou Faux",
-        questions: [
-          { q: "Les séismes sont répartis au hasard sur le globe.", answer: false, explanation: "Faux : ils se concentrent aux limites des plaques tectoniques." },
-          { q: "Le sismogramme est l'appareil qui enregistre les séismes.", answer: false, explanation: "Faux : le sismogramme est le tracé. L'appareil est le sismographe." },
-          { q: "Plus on s'éloigne de l'épicentre, plus l'intensité diminue.", answer: true, explanation: "Vrai : les ondes perdent de l'énergie en se propageant." }
-        ]
-      }
-    ]
-  },
-  {
-    id: 2, theme: 1, title: "Le volcanisme",
-    fiche: {
-      sections: [
-        { title: "Qu'est-ce qu'une éruption ?", icon: "🌋",
-          text: "Une éruption volcanique est une <b>émission de matière</b> (lave, gaz, cendres) à la surface. Le <b>magma</b> (roches en fusion + gaz) remonte sous l'effet de la pression des gaz. En surface, dégazé, il devient de la <b>lave</b>." },
-        { title: "Deux types d'éruptions", icon: "⚡",
-          text: "<b>Effusive</b> (volcan rouge) : lave fluide, coulées, fontaines de lave. Ex : Piton de la Fournaise.<br><b>Explosive</b> (volcan gris) : lave visqueuse, explosions violentes, nuées ardentes. Ex : Montagne Pelée." },
-        { title: "Structure d'un volcan", icon: "🏔️",
-          text: "Un volcan comprend un <b>édifice</b> (cône), une <b>cheminée</b>, un <b>cratère</b> et une <b>chambre magmatique</b> en profondeur. L'édifice se construit par accumulation de matériaux au fil des éruptions." }
-      ],
-      definitions: [
-        ["Magma", "Roches en fusion + gaz, en profondeur"],
-        ["Lave", "Magma dégazé parvenu en surface"],
-        ["Chambre magmatique", "Réservoir souterrain de magma"],
-        ["Éruption effusive", "Lave fluide, coulées (danger modéré)"],
-        ["Éruption explosive", "Lave visqueuse, nuées ardentes (danger élevé)"],
-        ["Nuée ardente", "Nuage brûlant de gaz et cendres dévalant les pentes"]
-      ],
-      keyPoint: "Le magma remonte sous la pression des gaz. Volcans effusifs (lave fluide) et explosifs (lave visqueuse) présentent des dangers très différents.",
-      diagram: 'volcan'
-    },
-    exercises: [
-      { type: "qcm", title: "QCM — Le volcanisme",
-        questions: [
-          { q: "Quelle est la différence entre magma et lave ?", options: ["Il n'y a aucune différence", "Le magma est en surface, la lave en profondeur", "La lave est du magma dégazé parvenu en surface", "La lave contient plus de gaz que le magma"], correct: 2 },
-          { q: "Un volcan effusif se caractérise par :", options: ["Des explosions violentes et des nuées ardentes", "Des coulées de lave fluide et des fontaines", "L'absence totale de danger", "La formation de dômes de lave"], correct: 1 },
-          { q: "Pourquoi le magma remonte-t-il ?", options: ["À cause de la gravité", "Sous l'effet de la pression des gaz", "À cause du vent", "Par aspiration du cratère"], correct: 1 }
-        ]
-      },
-      { type: "tf", title: "Vrai ou Faux",
-        questions: [
-          { q: "Les volcans explosifs sont plus dangereux que les volcans effusifs.", answer: true, explanation: "Vrai : les explosions et nuées ardentes sont bien plus destructrices que les coulées de lave fluide." },
-          { q: "La chambre magmatique se situe au sommet du volcan.", answer: false, explanation: "Faux : elle se situe en profondeur, sous l'édifice volcanique." },
-          { q: "Le Piton de la Fournaise est un volcan explosif.", answer: false, explanation: "Faux : c'est un volcan effusif (lave fluide, coulées)." }
-        ]
-      }
-    ]
-  },
-  {
-    id: 3, theme: 1, title: "La tectonique des plaques",
-    fiche: {
-      sections: [
-        { title: "La structure de la Terre", icon: "🌐",
-          text: "La <b>lithosphère</b> (rigide) = croûte + manteau supérieur. Elle repose sur l'<b>asthénosphère</b> (ductile). La surface est découpée en une douzaine de grandes <b>plaques</b> qui se déplacent de quelques cm/an." },
-        { title: "Les mouvements des plaques", icon: "↔️",
-          text: "<b>Divergence</b> : plaques s'écartent aux dorsales → création de lithosphère, volcanisme effusif sous-marin.<br><b>Subduction</b> : plaque océanique plonge sous une autre → séismes profonds + volcans explosifs.<br><b>Collision</b> : deux plaques continentales → chaînes de montagnes (ex : Himalaya)." }
-      ],
-      definitions: [
-        ["Lithosphère", "Couche rigide découpée en plaques"],
-        ["Asthénosphère", "Couche ductile sous la lithosphère"],
-        ["Dorsale océanique", "Zone de divergence, création de lithosphère"],
-        ["Subduction", "Plongement d'une plaque sous une autre"],
-        ["Collision", "Affrontement de deux plaques continentales"],
-        ["Fosse océanique", "Dépression profonde, zone de subduction"]
-      ],
-      keyPoint: "Divergence aux dorsales, subduction aux fosses, collision → montagnes. Ces mouvements expliquent la répartition des séismes et volcans.",
-      diagram: 'tectonique'
-    },
-    exercises: [
-      { type: "qcm", title: "QCM — Tectonique",
-        questions: [
-          { q: "Que se passe-t-il au niveau d'une dorsale océanique ?", options: ["Deux plaques entrent en collision", "Une plaque plonge sous l'autre", "Deux plaques s'écartent, du magma remonte", "Les plaques ne bougent pas"], correct: 2 },
-          { q: "L'Himalaya résulte de :", options: ["La divergence de deux plaques", "La subduction d'une plaque océanique", "La collision entre la plaque indienne et la plaque eurasiatique", "L'érosion par les glaciers"], correct: 2 },
-          { q: "À quelle vitesse se déplacent les plaques ?", options: ["Quelques centimètres par an", "Quelques mètres par an", "Quelques kilomètres par an", "Elles ne bougent pas"], correct: 0 }
-        ]
-      },
-      { type: "tf", title: "Vrai ou Faux",
-        questions: [
-          { q: "La subduction est le rapprochement de deux plaques continentales.", answer: false, explanation: "Faux : la subduction est le plongement d'une plaque océanique. Le rapprochement continental = collision." },
-          { q: "Aux dorsales, les plaques s'écartent et de la lithosphère est créée.", answer: true, explanation: "Vrai : du magma remonte et forme de la nouvelle croûte océanique." },
-          { q: "Séismes et volcans sont répartis au hasard.", answer: false, explanation: "Faux : ils se concentrent aux limites des plaques." }
-        ]
-      }
-    ]
-  },
-  {
-    id: 4, theme: 1, title: "Risques géologiques et prévention",
-    fiche: {
-      sections: [
-        { title: "Risque = Aléa × Enjeu", icon: "⚠️",
-          text: "L'<b>aléa</b> est la probabilité d'un phénomène dangereux. L'<b>enjeu</b> désigne les personnes et biens exposés. Le <b>risque</b> est d'autant plus élevé que l'aléa est fort et la zone peuplée." },
-        { title: "Prévention", icon: "🛡️",
-          text: "On ne peut pas prédire un séisme, mais on peut anticiper une éruption (micro-séismes, déformations, gaz). La prévention : <b>constructions parasismiques</b>, éducation, <b>PPMS</b>, surveillance instrumentale." }
-      ],
-      definitions: [
-        ["Aléa", "Probabilité d'un phénomène dangereux"],
-        ["Enjeu", "Personnes et biens exposés"],
-        ["Risque", "Aléa × Enjeu"],
-        ["PPMS", "Plan Particulier de Mise en Sûreté"]
-      ],
-      keyPoint: "Risque = Aléa × Enjeu. On réduit le risque en diminuant la vulnérabilité : normes de construction, éducation, PPMS, surveillance.",
-      diagram: 'risque'
-    },
-    exercises: [
-      { type: "qcm", title: "QCM — Risques",
-        questions: [
-          { q: "Comment calcule-t-on le risque ?", options: ["Risque = Aléa + Enjeu", "Risque = Aléa × Enjeu", "Risque = Enjeu − Aléa", "Risque = Prévention × Aléa"], correct: 1 },
-          { q: "Peut-on prédire un séisme ?", options: ["Oui, plusieurs jours à l'avance", "Non, les séismes sont imprévisibles", "Oui, grâce aux satellites", "Oui, grâce aux animaux"], correct: 1 },
-          { q: "Que signifie PPMS ?", options: ["Plan de Protection des Milieux Sismiques", "Plan Particulier de Mise en Sûreté", "Prévention et Protection contre les Mouvements Sismiques", "Programme de Prévision des Manifestations Sismiques"], correct: 1 }
-        ]
-      }
-    ]
-  },
-  {
-    id: 5, theme: 1, title: "Météorologie et climats",
-    fiche: {
-      sections: [
-        { title: "Météo vs climat", icon: "🌤️",
-          text: "La <b>météorologie</b> = conditions à court terme (jours). Le <b>climat</b> = conditions moyennes sur <b>30 ans minimum</b>. Un événement ponctuel ne définit pas le climat." },
-        { title: "L'effet de serre", icon: "🌡️",
-          text: "Phénomène naturel : <b>CO₂ et méthane</b> retiennent la chaleur (sans lui : −18°C). Les activités humaines (énergies fossiles, déforestation) <b>amplifient</b> l'effet de serre → réchauffement climatique." }
-      ],
-      definitions: [
-        ["Météorologie", "Temps atmosphérique à court terme"],
-        ["Climat", "Conditions moyennes sur 30 ans minimum"],
-        ["Effet de serre", "Piégeage de chaleur par les gaz atmosphériques"],
-        ["GES", "Gaz à effet de serre : CO₂, méthane, etc."]
-      ],
-      keyPoint: "Le climat ≠ la météo (échelle de temps). L'effet de serre naturel est vital. Amplifié par l'Homme, il cause le réchauffement climatique.",
-      diagram: 'climat'
-    },
-    exercises: [
-      { type: "qcm", title: "QCM — Météo ou climat ?",
-        questions: [
-          { q: "« Il pleut aujourd'hui à Paris » concerne :", options: ["Le climat", "La météo", "L'effet de serre", "La géologie"], correct: 1 },
-          { q: "« Les étés sont chauds en Méditerranée » concerne :", options: ["La météo", "Le climat", "Un événement ponctuel", "La pollution"], correct: 1 },
-          { q: "L'effet de serre amplifié est dû à :", options: ["La rotation de la Terre", "L'augmentation des GES par les activités humaines", "Les tremblements de terre", "L'éloignement du Soleil"], correct: 1 }
-        ]
-      },
-      { type: "tf", title: "Vrai ou Faux",
-        questions: [
-          { q: "Sans effet de serre, la température moyenne serait de −18°C.", answer: true, explanation: "Vrai : l'effet de serre naturel maintient la Terre à +15°C en moyenne." },
-          { q: "Le climat se mesure sur quelques jours.", answer: false, explanation: "Faux : le climat se définit sur au moins 30 ans. Quelques jours = météo." },
-          { q: "La déforestation augmente le CO₂ dans l'atmosphère.", answer: true, explanation: "Vrai : les forêts absorbent le CO₂. Les détruire réduit cette absorption." }
-        ]
-      }
-    ]
-  },
-  // ─── THEME 2 ───
-  {
-    id: 6, theme: 2, title: "La nutrition des organismes",
-    fiche: {
-      sections: [
-        { title: "Autotrophes vs hétérotrophes", icon: "🌱",
-          text: "<b>Autotrophes</b> (végétaux verts) : produisent leur matière organique par <b>photosynthèse</b>.<br><b>Hétérotrophes</b> (animaux, champignons) : se nourrissent de matière organique existante." },
-        { title: "La photosynthèse", icon: "☀️",
-          text: "CO₂ + eau + lumière → <b>glucose + O₂</b>. La <b>chlorophylle</b> (pigment vert) capte la lumière. L'eau entre par les racines, le CO₂ par les stomates des feuilles." },
-        { title: "La respiration cellulaire", icon: "💨",
-          text: "Nutriments + O₂ → <b>énergie + CO₂ + H₂O</b>. Tous les êtres vivants respirent (y compris les plantes !)." }
-      ],
-      definitions: [
-        ["Autotrophe", "Fabrique sa propre matière organique"],
-        ["Hétérotrophe", "Se nourrit de matière organique existante"],
-        ["Photosynthèse", "CO₂ + H₂O + lumière → glucose + O₂"],
-        ["Chlorophylle", "Pigment vert qui capte la lumière"],
-        ["Respiration cellulaire", "Nutriments + O₂ → énergie + CO₂"]
-      ],
-      keyPoint: "Les plantes sont autotrophes (photosynthèse). Les animaux sont hétérotrophes (respiration cellulaire). Ces deux processus sont complémentaires.",
-      diagram: 'nutrition'
-    },
-    exercises: [
-      { type: "fill", title: "Texte à trous — Photosynthèse",
-        intro: "Complète avec : <b>chlorophylle, glucose, dioxygène, dioxyde de carbone, lumière</b>.",
-        questions: [
-          { text: "La plante absorbe le {0} par les stomates des feuilles.", answer: "dioxyde de carbone" },
-          { text: "La {0} capte l'énergie lumineuse.", answer: "chlorophylle" },
-          { text: "La photosynthèse nécessite de l'eau, du CO₂ et de la {0}.", answer: "lumière" },
-          { text: "Elle produit du {0} (matière organique) et du {1}.", answer: "glucose", answer2: "dioxygène" }
-        ]
-      },
-      { type: "qcm", title: "QCM — Nutrition",
-        questions: [
-          { q: "Pourquoi les plantes sont-elles autotrophes ?", options: ["Elles mangent d'autres plantes", "Elles fabriquent leur matière organique à partir de matière minérale", "Elles n'ont pas besoin de nourriture", "Elles absorbent les nutriments du sol"], correct: 1 },
-          { q: "Que rejettent les plantes lors de la photosynthèse ?", options: ["Du CO₂", "Du dioxygène (O₂)", "Du méthane", "De l'azote"], correct: 1 }
-        ]
-      }
-    ]
-  },
-  {
-    id: 7, theme: 2, title: "Reproduction sexuée et asexuée",
-    fiche: {
-      sections: [
-        { title: "Reproduction sexuée", icon: "🧬",
-          text: "Nécessite deux <b>gamètes</b> (spermatozoïde ♂ + ovule ♀). Leur fusion = <b>fécondation</b> → cellule-œuf → individu <b>génétiquement unique</b>. Fécondation externe (eau) ou interne (corps de la femelle)." },
-        { title: "Reproduction asexuée", icon: "🔄",
-          text: "Un seul parent, pas de fécondation. Descendants = <b>clones</b> (identiques au parent). Ex : bouturage, stolons du fraisier, bourgeonnement, scissiparité." },
-        { title: "Avantage de la diversité", icon: "🌈",
-          text: "La reproduction sexuée produit de la <b>diversité génétique</b> qui favorise l'<b>adaptation</b> aux changements d'environnement." }
-      ],
-      definitions: [
-        ["Gamètes", "Cellules reproductrices (spermatozoïde, ovule)"],
-        ["Fécondation", "Fusion des gamètes mâle et femelle"],
-        ["Cellule-œuf", "Première cellule du nouvel individu"],
-        ["Fécondation externe", "Dans le milieu extérieur (eau)"],
-        ["Fécondation interne", "Dans le corps de la femelle"],
-        ["Clone", "Individu génétiquement identique au parent"]
-      ],
-      keyPoint: "Sexuée = fécondation → diversité génétique (adaptation). Asexuée = clones → pas de diversité. La diversité favorise la survie des populations.",
-      diagram: 'repro'
-    },
-    exercises: [
-      { type: "qcm", title: "QCM — Reproduction",
-        questions: [
-          { q: "Le saumon pond ses œufs dans une rivière et le mâle dépose ses gamètes dessus. C'est une fécondation :", options: ["Interne", "Externe", "Asexuée", "Artificielle"], correct: 1 },
-          { q: "Le bouturage est un mode de reproduction :", options: ["Sexuée", "Asexuée", "Qui produit de la diversité", "Qui nécessite deux parents"], correct: 1 },
-          { q: "Quel mode favorise l'adaptation à un nouvel environnement ?", options: ["Asexuée (plus rapide)", "Sexuée (diversité génétique)", "Les deux sont équivalents", "Aucun des deux"], correct: 1 }
-        ]
-      },
-      { type: "tf", title: "Vrai ou Faux",
-        questions: [
-          { q: "La reproduction asexuée produit des individus tous différents.", answer: false, explanation: "Faux : elle produit des clones, génétiquement identiques au parent." },
-          { q: "La fécondation est la fusion d'un spermatozoïde et d'un ovule.", answer: true, explanation: "Vrai : cette fusion donne la cellule-œuf, première cellule du nouvel individu." },
-          { q: "Chez le chat, la fécondation est externe.", answer: false, explanation: "Faux : chez le chat (mammifère), la fécondation est interne après accouplement." }
-        ]
-      }
-    ]
-  },
-  // ─── THEME 3 ───
-  {
-    id: 8, theme: 3, title: "Le système nerveux",
-    fiche: {
-      sections: [
-        { title: "Trajet du message nerveux", icon: "⚡",
-          text: "Stimulus → <b>récepteur</b> (organe des sens) → <b>nerf sensitif</b> → <b>centre nerveux</b> (cerveau ou moelle épinière) → <b>nerf moteur</b> → <b>effecteur</b> (muscle) → réponse." },
-        { title: "Volontaire vs réflexe", icon: "🧠",
-          text: "<b>Mouvement volontaire</b> : le cerveau commande (conscient, plus lent).<br><b>Réflexe</b> : la moelle épinière commande (rapide, automatique, involontaire). Ex : retirer la main d'un objet brûlant." }
-      ],
-      definitions: [
-        ["Stimulus", "Signal capté par un organe des sens"],
-        ["Nerf sensitif", "Récepteur → centre nerveux"],
-        ["Nerf moteur", "Centre nerveux → muscle"],
-        ["Réflexe", "Réponse rapide, automatique (moelle épinière)"],
-        ["Moelle épinière", "Centre nerveux dans la colonne vertébrale"]
-      ],
-      keyPoint: "Trajet : récepteur → nerf sensitif → centre nerveux → nerf moteur → effecteur. Réflexes = moelle épinière (rapide). Volontaire = cerveau.",
-      diagram: 'nerveux'
-    },
-    exercises: [
-      { type: "qcm", title: "QCM — Système nerveux",
-        questions: [
-          { q: "Tu touches un objet brûlant et retires ta main. Le centre nerveux impliqué est :", options: ["Le cerveau", "La moelle épinière", "Le nerf sensitif", "Le muscle"], correct: 1 },
-          { q: "Quel est l'ordre correct du trajet nerveux ?", options: ["Muscle → cerveau → nerf → récepteur", "Récepteur → nerf sensitif → centre nerveux → nerf moteur → muscle", "Cerveau → nerf → muscle → récepteur", "Stimulus → muscle → cerveau → réponse"], correct: 1 },
-          { q: "Lever la main pour répondre en classe est un mouvement :", options: ["Réflexe", "Volontaire", "Automatique", "Involontaire"], correct: 1 }
-        ]
-      },
-      { type: "tf", title: "Vrai ou Faux",
-        questions: [
-          { q: "Un réflexe passe par le cerveau.", answer: false, explanation: "Faux : un réflexe passe par la moelle épinière, ce qui le rend plus rapide." },
-          { q: "Les organes des sens transforment les stimulations en messages nerveux.", answer: true, explanation: "Vrai : c'est leur rôle de récepteur." },
-          { q: "Le réflexe rotulien est un mouvement volontaire.", answer: false, explanation: "Faux : c'est un réflexe involontaire et automatique." }
-        ]
-      }
-    ]
-  },
-  {
-    id: 9, theme: 3, title: "Reproduction humaine et sexualité",
-    fiche: {
-      sections: [
-        { title: "La puberté", icon: "🔬",
-          text: "Déclenchée par des <b>hormones</b>. Garçons : testostérone (testicules). Filles : œstrogènes et progestérone (ovaires). Le corps se transforme et la reproduction devient possible." },
-        { title: "Le cycle menstruel", icon: "📅",
-          text: "≈ 28 jours. <b>Ovulation</b> vers J14 (libération d'un ovule). Si pas de fécondation → <b>règles</b> (destruction de la muqueuse utérine). Période fertile ≈ J10-J15." },
-        { title: "Fécondation → naissance", icon: "👶",
-          text: "Spermatozoïde + ovule = <b>fécondation</b> → cellule-œuf → divisions → <b>nidation</b> dans l'utérus → développement 9 mois via le <b>placenta</b>." },
-        { title: "Contraception", icon: "💊",
-          text: "Le <b>préservatif</b> est le seul moyen qui protège des grossesses ET des IST. La pilule empêche l'ovulation mais ne protège pas des IST." }
-      ],
-      definitions: [
-        ["Ovulation", "Libération d'un ovule par un ovaire"],
-        ["Règles", "Destruction de la muqueuse utérine"],
-        ["Nidation", "Implantation de l'embryon dans l'utérus"],
-        ["Placenta", "Organe d'échange mère-fœtus"],
-        ["IST", "Infection sexuellement transmissible"]
-      ],
-      keyPoint: "Cycle de 28 jours, ovulation à J14. Fécondation → nidation → 9 mois. Le préservatif protège des grossesses ET des IST.",
-      diagram: 'repro_humaine'
-    },
-    exercises: [
-      { type: "qcm", title: "QCM — Reproduction humaine",
-        questions: [
-          { q: "L'ovulation a lieu vers quel jour du cycle ?", options: ["Jour 1", "Jour 7", "Jour 14", "Jour 28"], correct: 2 },
-          { q: "Que se passe-t-il si l'ovule n'est pas fécondé ?", options: ["La grossesse commence", "La muqueuse utérine se détruit (règles)", "L'ovule reste dans la trompe", "Rien de particulier"], correct: 1 },
-          { q: "Quel est le seul moyen de protection contre les grossesses ET les IST ?", options: ["La pilule", "Le préservatif", "Le stérilet", "L'implant"], correct: 1 }
-        ]
-      },
-      { type: "tf", title: "Vrai ou Faux",
-        questions: [
-          { q: "La pilule protège des IST.", answer: false, explanation: "Faux : la pilule empêche l'ovulation mais n'offre aucune protection physique contre les infections." },
-          { q: "Le placenta permet les échanges entre la mère et le fœtus.", answer: true, explanation: "Vrai : nutriments et oxygène passent de la mère au fœtus via le placenta." },
-          { q: "Les règles marquent le début d'un nouveau cycle.", answer: true, explanation: "Vrai : le jour 1 du cycle correspond au premier jour des règles." }
-        ]
-      }
-    ]
-  },
-  {
-    id: 10, theme: 3, title: "Le monde microbien et l'immunité",
-    fiche: {
-      sections: [
-        { title: "Les micro-organismes", icon: "🦠",
-          text: "Bactéries, virus, champignons microscopiques. La plupart sont <b>inoffensifs</b> ou bénéfiques (microbiote). Certains sont <b>pathogènes</b> (provoquent des maladies)." },
-        { title: "Les 3 barrières de défense", icon: "🛡️",
-          text: "1ʳᵉ : <b>barrières naturelles</b> (peau, muqueuses, larmes, acidité de l'estomac).<br>2ᵉ : <b>immunité innée</b> (phagocytose : rapide, non spécifique).<br>3ᵉ : <b>immunité adaptative</b> (lymphocytes B → anticorps, lymphocytes T → destruction des cellules infectées)." },
-        { title: "Vaccination et antibiotiques", icon: "💉",
-          text: "Le <b>vaccin</b> = micro-organisme inactivé → lymphocytes <b>mémoire</b> → réponse plus rapide ensuite. Les <b>antibiotiques</b> ne fonctionnent que contre les bactéries (pas les virus !)." }
-      ],
-      definitions: [
-        ["Pathogène", "Micro-organisme causant une maladie"],
-        ["Phagocytose", "Destruction d'un microbe par un phagocyte"],
-        ["Anticorps", "Molécule spécifique produite par les lymphocytes B"],
-        ["Vaccin", "Stimule l'immunité sans provoquer la maladie"],
-        ["Antibiotique", "Efficace contre les bactéries (pas les virus)"],
-        ["Asepsie", "Mesures pour empêcher la contamination"]
-      ],
-      keyPoint: "3 barrières : naturelles → phagocytose (innée) → lymphocytes (adaptative). Le vaccin crée une mémoire immunitaire. Les antibiotiques ne marchent que sur les bactéries.",
-      diagram: 'immunite'
-    },
-    exercises: [
-      { type: "qcm", title: "QCM — Immunité",
-        questions: [
-          { q: "La phagocytose est :", options: ["Lente et spécifique", "Rapide et non spécifique", "Réalisée par les lymphocytes", "Efficace uniquement contre les virus"], correct: 1 },
-          { q: "Un médecin prescrit un antibiotique contre la grippe. C'est :", options: ["Adapté car la grippe est une bactérie", "Inadapté car la grippe est un virus", "Adapté car les antibiotiques tuent tout", "Inadapté car la grippe est bénigne"], correct: 1 },
-          { q: "Le vaccin protège car :", options: ["Il tue directement les microbes", "Il crée des lymphocytes mémoire pour une réponse future rapide", "Il contient des antibiotiques", "Il renforce la peau"], correct: 1 }
-        ]
-      },
-      { type: "fill", title: "Texte à trous — Les défenses",
-        intro: "Complète avec : <b>phagocytose, anticorps, lymphocytes, vaccin, bactéries</b>.",
-        questions: [
-          { text: "La {0} est la destruction d'un microbe par un phagocyte.", answer: "phagocytose" },
-          { text: "Les {0} B produisent des anticorps spécifiques.", answer: "lymphocytes" },
-          { text: "Les {0} sont des molécules qui neutralisent un microbe précis.", answer: "anticorps" },
-          { text: "Le {0} entraîne le système immunitaire sans provoquer la maladie.", answer: "vaccin" },
-          { text: "Les antibiotiques ne sont efficaces que contre les {0}.", answer: "bactéries" }
-        ]
-      }
-    ]
-  }
+// ===================== DATA =====================
+const D = [
+{id:1,theme:1,title:"Les séismes",
+fiche:{sections:[
+{title:"Qu'est-ce qu'un séisme ?",icon:"🔍",paragraphs:[
+"Un <b>séisme</b> (ou tremblement de terre) est une vibration brutale du sol. Il est provoqué par la <b>rupture de roches en profondeur</b>, le long d'une zone de fragilité appelée <b>faille</b>.",
+"Quand les roches sont soumises à des contraintes (forces de compression ou d'étirement liées aux mouvements des plaques tectoniques), elles se déforment lentement. Lorsque la limite de résistance est atteinte, elles cassent brutalement : c'est le séisme.",
+"<div class='example'>💡 Imagine un bâton que tu plies lentement entre tes mains : il se déforme, puis casse d'un coup → c'est le même principe pour les roches.</div>"
+]},
+{title:"Foyer, épicentre et ondes sismiques",icon:"📍",paragraphs:[
+"Le <b>foyer</b> (ou hypocentre) est le point exact en profondeur où la rupture se produit. C'est là que naissent les <b>ondes sismiques</b>, des vibrations qui se propagent dans toutes les directions, comme des rides à la surface de l'eau quand on jette un caillou.",
+"L'<b>épicentre</b> est le point à la surface de la Terre situé exactement à la verticale du foyer. C'est là que les dégâts sont généralement les plus importants car les ondes y arrivent avec le plus d'énergie.",
+"Plus on s'éloigne de l'épicentre, plus l'<b>intensité</b> du séisme diminue car les ondes perdent de l'énergie en se propageant à travers les roches."
+]},
+{title:"Mesurer un séisme",icon:"📊",paragraphs:[
+"Les scientifiques enregistrent les ondes sismiques à l'aide d'un appareil appelé <b>sismographe</b>. Le tracé obtenu est un <b>sismogramme</b> : plus les oscillations sont amples, plus le séisme est puissant.",
+"On distingue deux façons de mesurer un séisme. La <b>magnitude</b> (échelle de Richter) mesure l'énergie libérée au foyer — c'est une valeur unique pour un séisme donné. L'<b>intensité</b> (échelle MSK ou EMS) évalue les effets ressentis en surface — elle varie selon la distance à l'épicentre.",
+"<div class='example'>💡 Un séisme de magnitude 5 est toujours de magnitude 5, mais son intensité sera forte à l'épicentre et faible à 200 km de là.</div>"
+]},
+{title:"Répartition des séismes sur le globe",icon:"🗺️",paragraphs:[
+"Les séismes ne sont <b>pas répartis au hasard</b>. On les observe principalement aux frontières des plaques tectoniques : le long des <b>dorsales océaniques</b>, au niveau des <b>fosses océaniques</b> et dans les <b>chaînes de montagnes</b>.",
+"Cette répartition a permis aux scientifiques de découper la surface de la Terre en plaques lithosphériques (voir chapitre 3)."
+]}
+],
+definitions:[
+["Foyer","Point en profondeur où se produit la rupture des roches"],
+["Épicentre","Point en surface à la verticale du foyer (dégâts max.)"],
+["Faille","Zone de cassure le long de laquelle un déplacement se produit"],
+["Ondes sismiques","Vibrations qui se propagent depuis le foyer"],
+["Sismographe","Appareil qui enregistre les vibrations du sol"],
+["Sismogramme","Tracé graphique des ondes sismiques"],
+["Magnitude","Énergie libérée au foyer (échelle de Richter) — valeur unique"],
+["Intensité","Effets ressentis en surface (échelle MSK) — varie avec la distance"]
+],
+keyPoint:"Un séisme résulte de la rupture de roches au foyer. Les ondes sismiques se propagent dans toutes les directions. L'épicentre (surface, à la verticale du foyer) subit les dégâts maximaux. Les séismes se concentrent aux limites des plaques tectoniques.",
+diagram:'seisme'},
+exercises:[
+{type:"fill",title:"Vocabulaire — Texte à trous",intro:"Complète avec : <b>foyer, épicentre, sismographe, ondes sismiques, magnitude</b>.",
+questions:[
+{text:"Le {0} est le point en profondeur où se produit la rupture des roches.",answer:"foyer"},
+{text:"Les {0} se propagent dans toutes les directions à partir du foyer.",answer:"ondes sismiques"},
+{text:"L'{0} est situé à la surface, à la verticale du foyer.",answer:"épicentre"},
+{text:"On enregistre les vibrations du sol à l'aide d'un {0}.",answer:"sismographe"},
+{text:"La {0} mesure l'énergie libérée par un séisme.",answer:"magnitude"}
+]},
+{type:"qcm",title:"QCM — Comprendre les séismes",
+questions:[
+{q:"Où se situe le foyer d'un séisme ?",options:["À la surface de la Terre","En profondeur, au point de rupture des roches","Au sommet d'un volcan","Dans l'atmosphère"],correct:1},
+{q:"Que mesure la magnitude ?",options:["Les dégâts en surface","L'énergie libérée au foyer","La profondeur du foyer","La durée du séisme"],correct:1},
+{q:"Pourquoi les dégâts diminuent-ils quand on s'éloigne de l'épicentre ?",options:["Car les bâtiments sont plus solides","Car les ondes sismiques perdent de l'énergie","Car le sol est plus dur","Car il y a moins d'habitants"],correct:1},
+{q:"Les séismes se répartissent principalement :",options:["Au centre des continents","Aux limites des plaques tectoniques","Près des rivières","Au hasard sur le globe"],correct:1}
+]},
+{type:"tf",title:"Vrai ou Faux — Teste tes connaissances",
+questions:[
+{q:"Les séismes sont répartis au hasard sur le globe.",answer:false,explanation:"Faux : ils se concentrent aux limites des plaques tectoniques."},
+{q:"Le sismogramme est l'appareil qui enregistre les séismes.",answer:false,explanation:"Faux : le sismogramme est le tracé obtenu. L'appareil est le sismographe."},
+{q:"Plus on s'éloigne de l'épicentre, plus l'intensité diminue.",answer:true,explanation:"Vrai : les ondes perdent de l'énergie en se propageant à travers les roches."},
+{q:"La magnitude d'un séisme varie selon l'endroit où on se trouve.",answer:false,explanation:"Faux : la magnitude est unique (énergie au foyer). C'est l'intensité qui varie avec la distance."},
+{q:"Le foyer se situe toujours à la surface de la Terre.",answer:false,explanation:"Faux : le foyer est en profondeur. C'est l'épicentre qui est en surface."}
+]},
+{type:"qcm",title:"QCM — Situation concrète",
+questions:[
+{q:"Trois villes A (20 km), B (80 km) et C (200 km) de l'épicentre. Laquelle subit le plus de dégâts ?",options:["Ville C car elle est la plus grande","Ville B car elle est au milieu","Ville A car elle est la plus proche de l'épicentre","Les trois subissent les mêmes dégâts"],correct:2},
+{q:"Un sismogramme montre de grandes oscillations. Cela signifie que :",options:["Le séisme est faible","Le séisme est puissant","Le sismographe est cassé","Le foyer est très profond"],correct:1}
+]}
+]},
+
+{id:2,theme:1,title:"Le volcanisme",
+fiche:{sections:[
+{title:"Qu'est-ce qu'une éruption volcanique ?",icon:"🌋",paragraphs:[
+"Une éruption volcanique est une <b>émission de matière</b> (lave, gaz, cendres, bombes volcaniques) à la surface de la Terre. Elle est provoquée par la remontée de <b>magma</b> depuis les profondeurs.",
+"Le <b>magma</b> est un mélange de roches en fusion (à plus de 800°C) et de gaz dissous. Il se forme en profondeur par fusion partielle des roches du manteau. Lorsque le magma atteint la surface et perd ses gaz, il devient de la <b>lave</b>.",
+"<div class='example'>💡 Pense à une bouteille de soda : le gaz est dissous dans le liquide. Quand tu l'ouvres, la pression diminue et le gaz s'échappe violemment → c'est le même principe pour le magma !</div>"
+]},
+{title:"Deux types d'éruptions très différents",icon:"⚡",paragraphs:[
+"<b>Éruption effusive (volcan « rouge »)</b> : la lave est <b>fluide</b>, elle s'écoule en coulées le long des pentes. Les éruptions sont relativement calmes, avec des fontaines de lave spectaculaires. La dangerosité est modérée car on peut souvent fuir les coulées. Exemples : le Piton de la Fournaise (Réunion), le Kīlauea (Hawaï).",
+"<b>Éruption explosive (volcan « gris »)</b> : la lave est <b>visqueuse</b>, elle forme un dôme qui bloque le cratère. La pression des gaz s'accumule jusqu'à provoquer une explosion violente. Ces éruptions produisent des <b>nuées ardentes</b> (nuages brûlants de gaz, cendres et roches dévalant les pentes à plus de 500 km/h), des projections et d'énormes panaches de cendres. Exemples : la Montagne Pelée (Martinique, 1902), le Mont Saint Helens (États-Unis, 1980).",
+"<div class='example'>⚠️ En 1902, l'éruption de la Montagne Pelée a détruit la ville de Saint-Pierre en quelques minutes et causé environ 30 000 victimes → c'est l'une des catastrophes volcaniques les plus meurtrières de l'histoire.</div>"
+]},
+{title:"Structure d'un volcan",icon:"🏔️",paragraphs:[
+"Un volcan est constitué de plusieurs parties : l'<b>édifice volcanique</b> (le cône visible), une <b>cheminée</b> principale par laquelle remonte le magma, un <b>cratère</b> au sommet, et en profondeur, une <b>chambre magmatique</b> où le magma s'accumule avant l'éruption.",
+"L'édifice se construit progressivement par <b>accumulation</b> de matériaux volcaniques (coulées de lave solidifiée, cendres, bombes) au fil des éruptions successives. Un volcan « grandit » à chaque éruption."
+]},
+{title:"Pourquoi le magma remonte-t-il ?",icon:"🔬",paragraphs:[
+"Le magma remonte car les <b>gaz dissous</b> qu'il contient exercent une pression vers le haut. Plus le magma s'approche de la surface, plus la pression diminue et plus les gaz se libèrent, accélérant la remontée. C'est cette pression des gaz qui est le moteur de l'éruption."
+]}
+],
+definitions:[
+["Magma","Mélange de roches en fusion et de gaz, situé en profondeur"],
+["Lave","Magma parvenu en surface, dégazé"],
+["Chambre magmatique","Réservoir souterrain où s'accumule le magma"],
+["Cheminée","Conduit par lequel le magma remonte vers le cratère"],
+["Éruption effusive","Lave fluide, coulées (dangerosité modérée)"],
+["Éruption explosive","Lave visqueuse, nuées ardentes (dangerosité très élevée)"],
+["Nuée ardente","Nuage brûlant de gaz et cendres dévalant les pentes à grande vitesse"]
+],
+keyPoint:"Le magma (roches fondues + gaz) remonte sous la pression des gaz. Dégazé en surface, il devient la lave. Les volcans effusifs (lave fluide, coulées) et explosifs (lave visqueuse, nuées ardentes) présentent des dangers très différents.",
+diagram:'volcan'},
+exercises:[
+{type:"qcm",title:"QCM — Le volcanisme",
+questions:[
+{q:"Quelle est la différence entre magma et lave ?",options:["Aucune, c'est la même chose","Le magma est en surface, la lave en profondeur","La lave est du magma dégazé parvenu en surface","La lave est plus chaude que le magma"],correct:2},
+{q:"Un volcan effusif se caractérise par :",options:["Des explosions violentes","Des coulées de lave fluide et des fontaines","L'absence de danger","La formation d'un dôme de lave visqueuse"],correct:1},
+{q:"Pourquoi le magma remonte-t-il vers la surface ?",options:["À cause de la gravité","Sous l'effet de la pression des gaz","Parce qu'il est aspiré par le cratère","À cause du vent souterrain"],correct:1},
+{q:"Quel type de volcan est le plus dangereux ?",options:["Effusif, car la lave est très chaude","Explosif, car les nuées ardentes sont dévastatrices","Les deux sont également dangereux","Aucun, les volcans ne sont pas dangereux"],correct:1}
+]},
+{type:"tf",title:"Vrai ou Faux",
+questions:[
+{q:"Les volcans explosifs produisent des coulées de lave fluide.",answer:false,explanation:"Faux : les volcans explosifs ont une lave visqueuse. Ce sont les volcans effusifs qui produisent des coulées fluides."},
+{q:"La chambre magmatique se situe en profondeur sous le volcan.",answer:true,explanation:"Vrai : c'est le réservoir souterrain où le magma s'accumule avant l'éruption."},
+{q:"Le Piton de la Fournaise est un volcan explosif.",answer:false,explanation:"Faux : c'est un volcan effusif, caractérisé par des coulées de lave fluide."},
+{q:"Une nuée ardente peut dépasser 500 km/h.",answer:true,explanation:"Vrai : c'est un nuage brûlant de gaz et cendres extrêmement rapide et destructeur."},
+{q:"L'édifice volcanique se construit en une seule éruption.",answer:false,explanation:"Faux : il se construit progressivement par accumulation de matériaux au fil de nombreuses éruptions."}
+]},
+{type:"fill",title:"Texte à trous — Structure du volcan",intro:"Complète avec : <b>chambre magmatique, cheminée, cratère, lave, magma</b>.",
+questions:[
+{text:"Le {0} est un mélange de roches en fusion et de gaz situé en profondeur.",answer:"magma"},
+{text:"Le magma s'accumule dans la {0} avant l'éruption.",answer:"chambre magmatique"},
+{text:"Il remonte vers la surface par la {0}.",answer:"cheminée"},
+{text:"Au sommet du volcan se trouve le {0}.",answer:"cratère"},
+{text:"En surface, le magma dégazé devient de la {0}.",answer:"lave"}
+]}
+]},
+
+{id:3,theme:1,title:"La tectonique des plaques",
+fiche:{sections:[
+{title:"La structure de la Terre",icon:"🌐",paragraphs:[
+"La Terre est constituée de couches concentriques, comme un oignon. Pour comprendre la tectonique des plaques, deux couches sont essentielles :",
+"La <b>lithosphère</b> est la couche externe rigide de la Terre. Elle comprend la croûte terrestre (continentale ou océanique) et la partie supérieure du manteau. Elle est <b>découpée en une douzaine de grandes plaques</b> qui « flottent » sur la couche suivante.",
+"L'<b>asthénosphère</b> est la couche du manteau située juste en dessous de la lithosphère. Elle est plus chaude et se comporte de manière <b>ductile</b> (déformable lentement), ce qui permet aux plaques de se déplacer dessus.",
+"<div class='example'>💡 Imagine des morceaux de coquille d'œuf dur posés sur le blanc d'œuf mou : les morceaux de coquille = plaques lithosphériques, le blanc mou = asthénosphère.</div>"
+]},
+{title:"Les mouvements des plaques",icon:"↔️",paragraphs:[
+"Les plaques se déplacent de <b>quelques centimètres par an</b> (mesuré par GPS), entraînées par des mouvements de convection dans le manteau profond. Il existe trois types de mouvements :",
+"<b>Divergence</b> : deux plaques <b>s'écartent</b>. Cela se produit au niveau des <b>dorsales océaniques</b> (chaînes de montagnes sous-marines). Du magma remonte pour combler l'espace et crée de la nouvelle lithosphère océanique. On observe un volcanisme effusif sous-marin.",
+"<b>Convergence par subduction</b> : deux plaques <b>se rapprochent</b>. Quand une plaque océanique (plus dense) rencontre une plaque continentale, elle <b>plonge sous celle-ci</b>. Cela provoque des séismes profonds et un volcanisme explosif. On observe des <b>fosses océaniques</b> (dépressions très profondes).",
+"<b>Convergence par collision</b> : quand deux plaques <b>continentales</b> convergent, aucune ne plonge (même densité). Les roches sont comprimées et soulevées → formation de <b>chaînes de montagnes</b>.",
+"<div class='example'>💡 L'Himalaya (plus haute chaîne du monde) résulte de la collision entre la plaque indienne et la plaque eurasiatique, qui a commencé il y a ~50 millions d'années et se poursuit encore !</div>"
+]},
+{title:"Conséquences : la répartition des séismes et volcans",icon:"🗺️",paragraphs:[
+"La tectonique des plaques explique pourquoi les séismes et les volcans ne sont pas répartis au hasard : ils se concentrent <b>aux limites des plaques</b>. Aux dorsales → volcanisme effusif. Aux zones de subduction → séismes + volcans explosifs. Aux zones de collision → séismes + montagnes."
+]}
+],
+definitions:[
+["Lithosphère","Couche externe rigide, découpée en plaques (croûte + manteau supérieur)"],
+["Asthénosphère","Couche ductile du manteau, sous la lithosphère"],
+["Plaque tectonique","Morceau de lithosphère qui se déplace de quelques cm/an"],
+["Dorsale océanique","Chaîne de montagnes sous-marine, zone de divergence"],
+["Subduction","Plongement d'une plaque océanique sous une autre plaque"],
+["Collision","Affrontement de deux plaques continentales → montagnes"],
+["Fosse océanique","Dépression sous-marine très profonde, zone de subduction"]
+],
+keyPoint:"La lithosphère est découpée en plaques qui se déplacent. Divergence aux dorsales (écartement), subduction aux fosses (plongement), collision entre continents (montagnes). Ces mouvements expliquent la répartition mondiale des séismes et volcans.",
+diagram:'tectonique'},
+exercises:[
+{type:"qcm",title:"QCM — Tectonique des plaques",
+questions:[
+{q:"Que se passe-t-il au niveau d'une dorsale océanique ?",options:["Deux plaques entrent en collision","Une plaque plonge sous l'autre","Deux plaques s'écartent et du magma remonte","Les plaques ne bougent pas"],correct:2},
+{q:"L'Himalaya résulte de :",options:["La divergence de deux plaques","La subduction d'une plaque océanique","La collision entre la plaque indienne et la plaque eurasiatique","L'érosion par les glaciers"],correct:2},
+{q:"À quelle vitesse se déplacent les plaques ?",options:["Quelques centimètres par an","Quelques mètres par an","Quelques kilomètres par an","Elles sont immobiles"],correct:0},
+{q:"La subduction correspond à :",options:["L'écartement de deux plaques","Le plongement d'une plaque océanique sous une autre plaque","La collision de deux plaques continentales","La remontée de magma aux dorsales"],correct:1}
+]},
+{type:"tf",title:"Vrai ou Faux",
+questions:[
+{q:"La lithosphère est une couche molle et déformable.",answer:false,explanation:"Faux : la lithosphère est rigide. C'est l'asthénosphère qui est ductile."},
+{q:"Aux dorsales, les plaques s'écartent et de la lithosphère est créée.",answer:true,explanation:"Vrai : du magma remonte et forme de la nouvelle croûte océanique."},
+{q:"La subduction est le rapprochement de deux plaques continentales.",answer:false,explanation:"Faux : la subduction est le plongement d'une plaque océanique sous une autre. Le rapprochement continental = collision."},
+{q:"Séismes et volcans sont répartis au hasard sur le globe.",answer:false,explanation:"Faux : ils se concentrent aux limites des plaques tectoniques."},
+{q:"L'Himalaya continue de s'élever aujourd'hui.",answer:true,explanation:"Vrai : la plaque indienne continue de pousser contre la plaque eurasiatique."}
+]},
+{type:"fill",title:"Texte à trous — Les mouvements",intro:"Complète avec : <b>divergence, subduction, collision, dorsale, fosse océanique</b>.",
+questions:[
+{text:"L'écartement de deux plaques s'appelle la {0}.",answer:"divergence"},
+{text:"Elle se produit au niveau des {0} océaniques.",answer:"dorsale"},
+{text:"Le plongement d'une plaque sous une autre est la {0}.",answer:"subduction"},
+{text:"On observe alors une {0} (dépression profonde).",answer:"fosse océanique"},
+{text:"L'affrontement de deux plaques continentales est la {0}.",answer:"collision"}
+]}
+]},
+
+{id:4,theme:1,title:"Risques géologiques et prévention",
+fiche:{sections:[
+{title:"Risque = Aléa × Enjeu",icon:"⚠️",paragraphs:[
+"En géologie, le <b>risque</b> résulte de la combinaison de deux facteurs :",
+"L'<b>aléa</b> est la probabilité qu'un phénomène naturel dangereux se produise dans une zone donnée (par exemple un séisme de magnitude 7 ou une éruption volcanique). On ne peut pas le supprimer.",
+"L'<b>enjeu</b> (ou vulnérabilité) représente les personnes, les biens et les activités exposés au danger. Plus une zone est peuplée et ses bâtiments fragiles, plus l'enjeu est élevé.",
+"<div class='example'>💡 Deux régions avec le même aléa sismique : si l'une est un désert inhabité et l'autre une ville dense avec des immeubles anciens, le risque est bien plus élevé dans la ville !</div>"
+]},
+{title:"Prévenir les risques",icon:"🛡️",paragraphs:[
+"On ne peut pas empêcher un séisme ou une éruption. La prévention vise donc à <b>réduire la vulnérabilité</b> pour limiter les conséquences humaines et matérielles.",
+"Pour les <b>séismes</b> (imprévisibles) : constructions aux normes <b>parasismiques</b>, éducation des populations aux bons réflexes, plans d'évacuation, exercices de simulation.",
+"Pour les <b>volcans</b> (partiellement prévisibles) : surveillance permanente des volcans actifs (micro-séismes, déformations du sol, émissions de gaz). Ces signes précurseurs permettent d'anticiper une éruption et d'évacuer les populations à temps.",
+"Le <b>PPMS</b> (Plan Particulier de Mise en Sûreté) est un dispositif dans les établissements scolaires qui définit les conduites à tenir et les zones de mise en sûreté en cas de catastrophe."
+]}
+],
+definitions:[
+["Aléa","Probabilité d'un phénomène naturel dangereux"],
+["Enjeu","Personnes, biens et activités exposés au danger"],
+["Risque","Aléa × Enjeu : combinaison du danger et de la vulnérabilité"],
+["Prévention","Mesures pour réduire les conséquences d'une catastrophe"],
+["Parasismique","Conçu pour résister aux secousses sismiques"],
+["PPMS","Plan Particulier de Mise en Sûreté (établissements scolaires)"]
+],
+keyPoint:"Risque = Aléa × Enjeu. On ne peut pas supprimer l'aléa (séisme, éruption), mais on peut réduire la vulnérabilité : normes parasismiques, éducation, PPMS, surveillance des volcans.",
+diagram:'risque'},
+exercises:[
+{type:"qcm",title:"QCM — Les risques géologiques",
+questions:[
+{q:"Comment se calcule le risque ?",options:["Risque = Aléa + Enjeu","Risque = Aléa × Enjeu","Risque = Enjeu − Aléa","Risque = Prévention × Aléa"],correct:1},
+{q:"Peut-on prédire un séisme ?",options:["Oui, plusieurs jours avant","Non, les séismes sont imprévisibles","Oui, grâce aux satellites","Oui, grâce aux animaux"],correct:1},
+{q:"Pourquoi peut-on mieux anticiper une éruption qu'un séisme ?",options:["Les volcans sont plus petits","Des signes précurseurs sont détectables (micro-séismes, gaz, déformations)","Les volcans sont toujours surveillés par satellite","Les éruptions sont moins dangereuses"],correct:1},
+{q:"Que signifie PPMS ?",options:["Plan de Protection des Milieux Sismiques","Plan Particulier de Mise en Sûreté","Prévention et Protection Municipale contre les Séismes","Programme de Prévision des Manifestations Sismiques"],correct:1}
+]},
+{type:"tf",title:"Vrai ou Faux",
+questions:[
+{q:"Construire des bâtiments parasismiques permet de supprimer l'aléa sismique.",answer:false,explanation:"Faux : cela réduit la vulnérabilité (enjeu), pas l'aléa. On ne peut pas empêcher un séisme."},
+{q:"La surveillance des volcans actifs permet d'anticiper certaines éruptions.",answer:true,explanation:"Vrai : les micro-séismes, déformations du sol et émissions de gaz sont des signes précurseurs détectables."},
+{q:"Le risque est nul dans une zone inhabitée, même avec un fort aléa sismique.",answer:true,explanation:"Vrai : si l'enjeu est nul (personne ni bien exposé), le risque est nul même si l'aléa est fort."}
+]}
+]},
+
+{id:5,theme:1,title:"Météorologie et climats",
+fiche:{sections:[
+{title:"Météo ≠ Climat",icon:"🌤️",paragraphs:[
+"La <b>météorologie</b> étudie les conditions atmosphériques à <b>court terme</b> (quelques heures à quelques jours) : « il pleut aujourd'hui », « il fera 35°C demain ».",
+"Le <b>climat</b> décrit les conditions atmosphériques <b>moyennes</b> d'une région sur une <b>longue période</b> (au moins 30 ans) : « les étés sont chauds et secs en Méditerranée ».",
+"<div class='example'>⚠️ Attention à ne pas confondre : une vague de froid en janvier ne signifie pas que le réchauffement climatique n'existe pas. Un événement météo ponctuel ne définit pas le climat !</div>"
+]},
+{title:"Les zones climatiques",icon:"🌍",paragraphs:[
+"La Terre reçoit l'énergie solaire de manière <b>inégale</b> selon la latitude : les rayons frappent plus verticalement à l'équateur (plus d'énergie par m²) et plus obliquement aux pôles. Cela crée trois grandes zones : <b>zone chaude</b> (tropicale), <b>zones tempérées</b>, et <b>zones froides</b> (polaires)."
+]},
+{title:"L'effet de serre : naturel et amplifié",icon:"🌡️",paragraphs:[
+"L'<b>effet de serre</b> est un phénomène <b>naturel et vital</b>. Certains gaz de l'atmosphère (CO₂, méthane, vapeur d'eau) retiennent une partie de la chaleur émise par la surface terrestre. Sans cet effet, la température moyenne serait de −18°C au lieu de +15°C !",
+"Le problème actuel : les activités humaines (<b>combustion d'énergies fossiles</b> : pétrole, gaz, charbon ; <b>déforestation</b> ; élevage intensif) augmentent massivement la concentration de ces gaz à effet de serre (GES). Résultat : l'effet de serre est <b>amplifié</b>, ce qui provoque un <b>réchauffement climatique</b> anormal et rapide.",
+"<div class='example'>💡 La température moyenne mondiale a déjà augmenté d'environ 1,1°C depuis l'ère préindustrielle. Cela semble peu, mais les conséquences sont énormes : fonte des glaces, montée des eaux, événements extrêmes plus fréquents.</div>"
+]}
+],
+definitions:[
+["Météorologie","Étude du temps atmosphérique à court terme (heures/jours)"],
+["Climat","Conditions atmosphériques moyennes sur 30 ans minimum"],
+["Effet de serre","Piégeage naturel de la chaleur par certains gaz atmosphériques"],
+["GES","Gaz à effet de serre : CO₂, méthane, protoxyde d'azote, vapeur d'eau"],
+["Réchauffement climatique","Hausse anormale des températures due à l'amplification de l'effet de serre"]
+],
+keyPoint:"Le climat (30 ans) ≠ la météo (quelques jours). L'effet de serre naturel est vital (+15°C au lieu de −18°C). Amplifié par les activités humaines (GES), il provoque le réchauffement climatique.",
+diagram:'climat'},
+exercises:[
+{type:"qcm",title:"QCM — Météo, climat et effet de serre",
+questions:[
+{q:"« Il pleut aujourd'hui à Paris » concerne :",options:["Le climat","La météo","L'effet de serre","La géologie"],correct:1},
+{q:"« Les étés sont chauds et secs en Méditerranée » concerne :",options:["La météo","Le climat","Un événement ponctuel","La pollution"],correct:1},
+{q:"Sans effet de serre, la température moyenne de la Terre serait de :",options:["+15°C","0°C","−18°C","+30°C"],correct:2},
+{q:"L'effet de serre amplifié est dû à :",options:["La rotation de la Terre","L'augmentation des GES par les activités humaines","Les tremblements de terre","L'éloignement du Soleil"],correct:1}
+]},
+{type:"tf",title:"Vrai ou Faux",
+questions:[
+{q:"Le climat se mesure sur quelques jours.",answer:false,explanation:"Faux : le climat se définit sur au moins 30 ans. Quelques jours = météo."},
+{q:"L'effet de serre est un phénomène entièrement négatif.",answer:false,explanation:"Faux : l'effet de serre naturel est vital (il maintient la Terre à +15°C). C'est son amplification par l'Homme qui pose problème."},
+{q:"La déforestation augmente le CO₂ dans l'atmosphère.",answer:true,explanation:"Vrai : les forêts absorbent le CO₂. Les détruire réduit cette absorption et libère le carbone stocké."},
+{q:"Une vague de froid en hiver prouve que le réchauffement climatique n'existe pas.",answer:false,explanation:"Faux : un événement météo ponctuel ne définit pas le climat, qui s'observe sur 30 ans minimum."}
+]},
+{type:"fill",title:"Texte à trous — L'effet de serre",intro:"Complète avec : <b>gaz à effet de serre, chaleur, −18°C, amplifié, fossiles</b>.",
+questions:[
+{text:"L'effet de serre est le piégeage de la {0} par certains gaz de l'atmosphère.",answer:"chaleur"},
+{text:"Les principaux {0} sont le CO₂ et le méthane.",answer:"gaz à effet de serre"},
+{text:"Sans effet de serre, la température moyenne serait de {0}.",answer:"-18°C"},
+{text:"La combustion d'énergies {0} augmente le CO₂ atmosphérique.",answer:"fossiles"},
+{text:"L'effet de serre {0} par l'Homme provoque le réchauffement climatique.",answer:"amplifié"}
+]}
+]},
+
+{id:6,theme:2,title:"La nutrition des organismes",
+fiche:{sections:[
+{title:"Deux grandes stratégies de nutrition",icon:"🌱",paragraphs:[
+"Tous les êtres vivants ont besoin de matière organique pour grandir, se réparer et fonctionner. Mais ils ne l'obtiennent pas tous de la même façon :",
+"Les <b>autotrophes</b> (végétaux verts, algues, certaines bactéries) <b>fabriquent leur propre matière organique</b> à partir de matière minérale (eau, sels minéraux, CO₂) et d'énergie lumineuse, grâce à la <b>photosynthèse</b>.",
+"Les <b>hétérotrophes</b> (animaux, champignons, la plupart des bactéries) ne peuvent pas fabriquer leur matière organique. Ils doivent se <b>nourrir de matière organique existante</b> (en mangeant d'autres êtres vivants ou leurs restes)."
+]},
+{title:"La photosynthèse en détail",icon:"☀️",paragraphs:[
+"C'est LA réaction fondamentale de la vie sur Terre. Elle se déroule dans les <b>feuilles</b>, grâce à la <b>chlorophylle</b> (le pigment vert qui donne leur couleur aux plantes).",
+"L'équation simplifiée : <b>CO₂ + eau + lumière → glucose (matière organique) + O₂ (dioxygène)</b>",
+"Concrètement : les racines absorbent l'<b>eau</b> et les <b>sels minéraux</b> du sol (qui montent vers les feuilles via la <b>sève brute</b>). Les feuilles absorbent le <b>CO₂</b> de l'air par de minuscules pores appelés <b>stomates</b>. La chlorophylle capte l'énergie de la <b>lumière</b>. Le tout permet de fabriquer du glucose et de rejeter du dioxygène (O₂).",
+"<div class='example'>💡 C'est grâce à la photosynthèse des plantes que nous avons de l'oxygène pour respirer ! Les plantes sont les poumons de la planète.</div>"
+]},
+{title:"La respiration cellulaire",icon:"💨",paragraphs:[
+"Tous les êtres vivants (y compris les plantes !) réalisent la <b>respiration cellulaire</b> pour produire l'énergie nécessaire à leur fonctionnement :",
+"<b>Nutriments (glucose) + O₂ → énergie + CO₂ + H₂O</b>",
+"C'est la réaction inverse de la photosynthèse ! Les plantes font les deux : photosynthèse le jour (quand il y a de la lumière) et respiration en permanence (jour et nuit)."
+]},
+{title:"La circulation de la sève",icon:"🌳",paragraphs:[
+"Chez les plantes, deux types de sève circulent. La <b>sève brute</b> (eau + sels minéraux) monte des racines vers les feuilles. La <b>sève élaborée</b> (eau + matière organique produite par photosynthèse) est distribuée dans toute la plante pour nourrir les organes qui ne font pas de photosynthèse (racines, fleurs, fruits)."
+]}
+],
+definitions:[
+["Autotrophe","Organisme qui fabrique sa propre matière organique à partir de matière minérale"],
+["Hétérotrophe","Organisme qui se nourrit de matière organique existante"],
+["Photosynthèse","CO₂ + H₂O + lumière → glucose + O₂ (dans les feuilles)"],
+["Chlorophylle","Pigment vert des feuilles qui capte l'énergie lumineuse"],
+["Stomates","Petits pores sur les feuilles qui permettent les échanges de gaz"],
+["Respiration cellulaire","Glucose + O₂ → énergie + CO₂ + H₂O (dans toutes les cellules)"],
+["Sève brute","Eau + sels minéraux (racines → feuilles)"],
+["Sève élaborée","Eau + matière organique (feuilles → toute la plante)"]
+],
+keyPoint:"Les végétaux sont autotrophes : photosynthèse (CO₂ + eau + lumière → glucose + O₂). Les animaux sont hétérotrophes : respiration cellulaire (glucose + O₂ → énergie + CO₂). Les plantes font les deux !",
+diagram:'nutrition'},
+exercises:[
+{type:"fill",title:"Texte à trous — La photosynthèse",intro:"Complète avec : <b>chlorophylle, glucose, dioxygène, dioxyde de carbone, lumière, stomates</b>.",
+questions:[
+{text:"La plante absorbe le {0} par les stomates des feuilles.",answer:"dioxyde de carbone"},
+{text:"La {0} est le pigment vert qui capte l'énergie du soleil.",answer:"chlorophylle"},
+{text:"La photosynthèse nécessite de l'eau, du CO₂ et de la {0}.",answer:"lumière"},
+{text:"Elle produit du {0} (matière organique).",answer:"glucose"},
+{text:"Elle rejette aussi du {0} dans l'atmosphère.",answer:"dioxygène"},
+{text:"Le CO₂ entre dans la feuille par les {0}.",answer:"stomates"}
+]},
+{type:"qcm",title:"QCM — Nutrition des organismes",
+questions:[
+{q:"Pourquoi les plantes sont-elles autotrophes ?",options:["Elles mangent d'autres plantes","Elles fabriquent leur matière organique à partir de matière minérale","Elles n'ont pas besoin d'énergie","Elles absorbent des nutriments du sol"],correct:1},
+{q:"Que rejettent les plantes lors de la photosynthèse ?",options:["Du CO₂","Du dioxygène (O₂)","Du méthane","De l'azote"],correct:1},
+{q:"Les plantes respirent-elles ?",options:["Non, elles font uniquement la photosynthèse","Oui, mais seulement la nuit","Oui, en permanence (jour et nuit)","Oui, mais seulement le jour"],correct:2},
+{q:"La sève brute transporte :",options:["La matière organique vers les racines","L'eau et les sels minéraux des racines vers les feuilles","Le CO₂ vers les racines","L'énergie lumineuse"],correct:1}
+]},
+{type:"tf",title:"Vrai ou Faux",
+questions:[
+{q:"La photosynthèse a lieu dans les racines.",answer:false,explanation:"Faux : elle a lieu dans les feuilles, qui contiennent la chlorophylle et reçoivent la lumière."},
+{q:"La respiration cellulaire produit de l'énergie.",answer:true,explanation:"Vrai : glucose + O₂ → énergie + CO₂ + H₂O."},
+{q:"Les animaux sont autotrophes.",answer:false,explanation:"Faux : les animaux sont hétérotrophes. Ils se nourrissent de matière organique existante."},
+{q:"La photosynthèse et la respiration sont des réactions inverses.",answer:true,explanation:"Vrai : la photosynthèse produit du glucose + O₂ à partir de CO₂ + H₂O, et la respiration fait l'inverse."}
+]}
+]},
+
+{id:7,theme:2,title:"Reproduction sexuée et asexuée",
+fiche:{sections:[
+{title:"La reproduction sexuée",icon:"🧬",paragraphs:[
+"La reproduction sexuée nécessite la rencontre de deux <b>cellules reproductrices</b> appelées <b>gamètes</b> : un gamète mâle (<b>spermatozoïde</b>) et un gamète femelle (<b>ovule</b>).",
+"La fusion de ces deux gamètes s'appelle la <b>fécondation</b>. Elle donne naissance à une <b>cellule-œuf</b>, la toute première cellule du nouvel individu, qui se divisera ensuite de nombreuses fois pour former l'organisme complet.",
+"L'individu issu de la reproduction sexuée est <b>génétiquement unique</b> : il combine les caractères de ses deux parents, ce qui crée de la <b>diversité génétique</b>."
+]},
+{title:"Fécondation interne ou externe ?",icon:"🔬",paragraphs:[
+"<b>Fécondation externe</b> : les gamètes sont libérés dans le milieu extérieur (généralement l'eau) où ils se rencontrent. Les parents produisent un très grand nombre de gamètes pour compenser les pertes. Exemples : poissons, grenouilles, oursins.",
+"<b>Fécondation interne</b> : la rencontre des gamètes se fait <b>dans le corps de la femelle</b>, après un accouplement. Moins de gamètes sont nécessaires car la rencontre est plus sûre. Exemples : mammifères, oiseaux, insectes.",
+"<div class='example'>💡 Un saumon femelle pond des milliers d'œufs dans la rivière (fécondation externe). Une chatte ne donne naissance qu'à quelques chatons (fécondation interne). La stratégie est différente mais l'objectif est le même : assurer la survie de l'espèce.</div>"
+]},
+{title:"La reproduction asexuée",icon:"🔄",paragraphs:[
+"La reproduction asexuée ne fait intervenir qu'<b>un seul parent</b>, sans fécondation. Les descendants sont génétiquement <b>identiques au parent</b> : ce sont des <b>clones</b>.",
+"Exemples : le <b>bouturage</b> (couper un morceau de plante qui repousse), les <b>stolons</b> du fraisier (tiges rampantes qui donnent de nouvelles plantes), le <b>bourgeonnement</b> de l'hydre, la <b>scissiparité</b> des bactéries (division en deux)."
+]},
+{title:"Pourquoi la diversité est-elle importante ?",icon:"🌈",paragraphs:[
+"La reproduction sexuée produit de la <b>diversité génétique</b>. Dans un environnement qui change (nouveau prédateur, maladie, climat), certains individus différents seront mieux adaptés et survivront. La diversité est une <b>assurance-vie pour les populations</b>.",
+"La reproduction asexuée est plus rapide (pas besoin de trouver un partenaire) mais ne produit pas de diversité : si l'environnement change défavorablement, tous les clones sont affectés de la même manière."
+]}
+],
+definitions:[
+["Gamètes","Cellules reproductrices (spermatozoïde ♂ et ovule ♀)"],
+["Fécondation","Fusion d'un gamète mâle et d'un gamète femelle → cellule-œuf"],
+["Cellule-œuf","Première cellule du nouvel individu, résultat de la fécondation"],
+["Fécondation externe","Rencontre des gamètes dans le milieu extérieur (eau)"],
+["Fécondation interne","Rencontre des gamètes dans le corps de la femelle"],
+["Clone","Individu génétiquement identique à son parent"],
+["Diversité génétique","Variété des caractères génétiques au sein d'une population"]
+],
+keyPoint:"Reproduction sexuée (fécondation = fusion des gamètes) → individus tous différents → diversité génétique → meilleure adaptation. Reproduction asexuée (un seul parent) → clones identiques → rapide mais pas de diversité.",
+diagram:'repro'},
+exercises:[
+{type:"qcm",title:"QCM — Modes de reproduction",
+questions:[
+{q:"Le saumon pond ses œufs dans la rivière et le mâle dépose ses gamètes dessus. C'est :",options:["Une fécondation interne","Une fécondation externe","Une reproduction asexuée","Du bouturage"],correct:1},
+{q:"Le bouturage est un mode de reproduction :",options:["Sexuée avec fécondation interne","Sexuée avec fécondation externe","Asexuée","Qui produit de la diversité génétique"],correct:2},
+{q:"La reproduction sexuée favorise l'adaptation car :",options:["Elle est plus rapide","Elle produit des clones résistants","Elle crée de la diversité génétique","Elle ne nécessite qu'un seul parent"],correct:2},
+{q:"Les descendants issus de reproduction asexuée sont :",options:["Tous différents des parents","Génétiquement identiques au parent (clones)","Plus résistants que les parents","Plus grands que les parents"],correct:1}
+]},
+{type:"tf",title:"Vrai ou Faux",
+questions:[
+{q:"La reproduction asexuée produit des individus tous différents.",answer:false,explanation:"Faux : elle produit des clones, génétiquement identiques au parent."},
+{q:"La fécondation est la fusion d'un spermatozoïde et d'un ovule.",answer:true,explanation:"Vrai : cette fusion donne la cellule-œuf, première cellule du nouvel individu."},
+{q:"Chez le chat, la fécondation est externe.",answer:false,explanation:"Faux : chez le chat (mammifère), la fécondation est interne, après accouplement."},
+{q:"La diversité génétique est un avantage pour la survie d'une population.",answer:true,explanation:"Vrai : elle augmente les chances qu'au moins certains individus soient adaptés si l'environnement change."},
+{q:"Le fraisier se reproduit uniquement de manière sexuée.",answer:false,explanation:"Faux : le fraisier peut aussi se reproduire de manière asexuée grâce à ses stolons (tiges rampantes)."}
+]}
+]},
+
+{id:8,theme:3,title:"Le système nerveux et la commande du mouvement",
+fiche:{sections:[
+{title:"Les organes des sens : capter l'information",icon:"👁️",paragraphs:[
+"Nos <b>organes des sens</b> (yeux, oreilles, nez, langue, peau) jouent le rôle de <b>récepteurs</b>. Ils captent les <b>stimulations</b> de l'environnement (lumière, sons, odeurs, goûts, toucher, chaleur, douleur) et les transforment en <b>messages nerveux</b> (signaux électriques)."
+]},
+{title:"Le trajet du message nerveux",icon:"⚡",paragraphs:[
+"Le message nerveux suit un trajet précis en 5 étapes :",
+"<b>1.</b> Un <b>stimulus</b> (ex : objet brûlant) est capté par un <b>récepteur</b> (ex : capteurs de la peau).<br><b>2.</b> Le message nerveux sensitif est transmis au centre nerveux par un <b>nerf sensitif</b>.<br><b>3.</b> Le <b>centre nerveux</b> (cerveau ou moelle épinière) analyse le message et élabore une réponse.<br><b>4.</b> La commande motrice est transmise au muscle par un <b>nerf moteur</b>.<br><b>5.</b> Le <b>muscle</b> (effecteur) se contracte → mouvement (réponse).",
+"<div class='example'>💡 Résumé : Récepteur → nerf sensitif → centre nerveux → nerf moteur → effecteur (muscle) → réponse</div>"
+]},
+{title:"Mouvement volontaire vs réflexe",icon:"🧠",paragraphs:[
+"<b>Mouvement volontaire</b> : le message est traité par le <b>cerveau</b>. La réponse est consciente, réfléchie, mais plus lente. Exemple : lever la main pour répondre en classe, écrire une phrase.",
+"<b>Réflexe</b> : le message est traité par la <b>moelle épinière</b> (dans la colonne vertébrale), sans passer par le cerveau. La réponse est <b>rapide, automatique et involontaire</b>. C'est un mécanisme de protection. Exemple : retirer sa main d'un objet brûlant, cligner des yeux.",
+"<div class='example'>💡 Pourquoi le réflexe est-il plus rapide ? Parce que le trajet est plus court ! La moelle épinière est beaucoup plus proche de la main que le cerveau. Le cerveau est informé après coup.</div>"
+]},
+{title:"Le cerveau : un organe fragile",icon:"⚠️",paragraphs:[
+"Le cerveau est composé de zones spécialisées (vision, audition, motricité, langage). La consommation de certaines substances (<b>alcool, drogues, médicaments détournés</b>) perturbe le fonctionnement du système nerveux : ralentissement des réflexes, troubles de la perception, perte de contrôle."
+]}
+],
+definitions:[
+["Stimulus","Signal de l'environnement capté par un organe des sens"],
+["Récepteur","Organe des sens qui capte le stimulus"],
+["Nerf sensitif","Transmet le message du récepteur vers le centre nerveux"],
+["Centre nerveux","Cerveau (volontaire) ou moelle épinière (réflexe)"],
+["Nerf moteur","Transmet la commande du centre nerveux vers le muscle"],
+["Effecteur","Muscle qui exécute la réponse (mouvement)"],
+["Réflexe","Réponse rapide, automatique et involontaire (via la moelle épinière)"]
+],
+keyPoint:"Trajet nerveux : récepteur → nerf sensitif → centre nerveux → nerf moteur → muscle. Mouvement volontaire = cerveau (conscient, plus lent). Réflexe = moelle épinière (automatique, rapide, protecteur).",
+diagram:'nerveux'},
+exercises:[
+{type:"qcm",title:"QCM — Le système nerveux",
+questions:[
+{q:"Tu touches un objet brûlant et retires ta main. Le centre nerveux impliqué est :",options:["Le cerveau","La moelle épinière","Le nerf sensitif","Le muscle du bras"],correct:1},
+{q:"Quel est l'ordre correct du trajet nerveux ?",options:["Muscle → cerveau → nerf → récepteur","Récepteur → nerf sensitif → centre nerveux → nerf moteur → muscle","Cerveau → nerf → muscle → récepteur","Stimulus → muscle → cerveau"],correct:1},
+{q:"Lever la main pour répondre en classe est un mouvement :",options:["Réflexe","Volontaire","Automatique","Involontaire"],correct:1},
+{q:"Pourquoi un réflexe est-il plus rapide qu'un mouvement volontaire ?",options:["Car le muscle est plus fort","Car le trajet passe par la moelle épinière, plus proche","Car le stimulus est plus intense","Car on n'a pas besoin de nerfs"],correct:1}
+]},
+{type:"tf",title:"Vrai ou Faux",
+questions:[
+{q:"Un réflexe passe par le cerveau.",answer:false,explanation:"Faux : un réflexe passe par la moelle épinière, ce qui le rend plus rapide."},
+{q:"Les organes des sens sont des récepteurs qui transforment les stimulations en messages nerveux.",answer:true,explanation:"Vrai : c'est leur rôle fondamental."},
+{q:"Le réflexe rotulien est un mouvement volontaire.",answer:false,explanation:"Faux : c'est un réflexe involontaire et automatique."},
+{q:"L'alcool perturbe le fonctionnement du système nerveux.",answer:true,explanation:"Vrai : il ralentit les réflexes et altère le jugement."},
+{q:"Écrire une phrase est un mouvement réflexe.",answer:false,explanation:"Faux : c'est un mouvement volontaire, commandé par le cerveau."}
+]},
+{type:"fill",title:"Texte à trous — Le trajet nerveux",intro:"Complète avec : <b>récepteur, nerf sensitif, centre nerveux, nerf moteur, effecteur</b>.",
+questions:[
+{text:"Le stimulus est capté par un {0} (organe des sens).",answer:"récepteur"},
+{text:"Le message est transmis au centre nerveux par un {0}.",answer:"nerf sensitif"},
+{text:"Le {0} analyse le message et élabore une réponse.",answer:"centre nerveux"},
+{text:"La commande est transmise au muscle par un {0}.",answer:"nerf moteur"},
+{text:"Le muscle ({0}) se contracte et produit le mouvement.",answer:"effecteur"}
+]}
+]},
+
+{id:9,theme:3,title:"Reproduction humaine et sexualité",
+fiche:{sections:[
+{title:"La puberté : le corps se transforme",icon:"🔬",paragraphs:[
+"La <b>puberté</b> est la période de transformation du corps qui marque le passage de l'enfance à l'adolescence. Elle est déclenchée par des <b>hormones</b> produites par le cerveau (hypophyse), qui activent les organes reproducteurs.",
+"Chez les garçons : production de <b>testostérone</b> par les testicules → développement des caractères sexuels secondaires (pilosité, mue de la voix, développement musculaire) + début de la production de spermatozoïdes.",
+"Chez les filles : production d'<b>œstrogènes et de progestérone</b> par les ovaires → développement des caractères sexuels secondaires (poitrine, pilosité, élargissement des hanches) + début des cycles menstruels."
+]},
+{title:"Le cycle menstruel",icon:"📅",paragraphs:[
+"Le cycle menstruel dure environ <b>28 jours</b> et se déroule en plusieurs phases :",
+"<b>Jour 1 à 5</b> : les <b>règles</b> (menstruations) — la muqueuse utérine, qui s'était épaissie pour accueillir un éventuel embryon, se détruit car il n'y a pas eu de fécondation.",
+"<b>Jour 6 à 13</b> : la muqueuse utérine se <b>reconstruit</b> progressivement (elle s'épaissit et se vascularise).",
+"<b>Jour 14 (environ)</b> : l'<b>ovulation</b> — un ovaire libère un ovule dans la trompe. C'est le moment de fertilité maximale.",
+"<b>Jour 15 à 28</b> : si l'ovule n'est pas fécondé, la muqueuse se maintient quelques jours puis se détruira → retour au jour 1 (nouvelles règles).",
+"<div class='example'>💡 La période de fertilité dure environ 5 jours autour de l'ovulation, car les spermatozoïdes peuvent survivre 3-5 jours dans les voies génitales féminines, et l'ovule vit environ 24 heures.</div>"
+]},
+{title:"De la fécondation à la naissance",icon:"👶",paragraphs:[
+"Lors d'un rapport sexuel, les spermatozoïdes sont déposés dans le vagin et remontent vers les trompes. Si un spermatozoïde rencontre un ovule, c'est la <b>fécondation</b> → formation d'une <b>cellule-œuf</b>.",
+"La cellule-œuf se divise en se déplaçant vers l'utérus. Environ 7 jours après la fécondation, elle s'implante dans la muqueuse utérine : c'est la <b>nidation</b>.",
+"L'<b>embryon</b> (puis le <b>fœtus</b> à partir de 3 mois) se développe pendant <b>9 mois</b> dans l'utérus, nourri et oxygéné via le <b>placenta</b> (organe d'échange entre la mère et le fœtus, relié par le cordon ombilical)."
+]},
+{title:"La contraception et la protection",icon:"💊",paragraphs:[
+"La <b>contraception</b> permet d'éviter une grossesse non désirée. Méthodes hormonales (pilule, implant : empêchent l'ovulation), mécaniques (préservatif, stérilet), chimiques (spermicides).",
+"<b>⚠️ Le préservatif est le SEUL moyen qui protège à la fois des grossesses ET des infections sexuellement transmissibles (IST).</b> La pilule empêche l'ovulation mais n'offre aucune barrière physique contre les agents infectieux."
+]}
+],
+definitions:[
+["Puberté","Période de transformation liée aux hormones sexuelles"],
+["Ovulation","Libération d'un ovule par un ovaire (≈ J14 du cycle)"],
+["Règles","Destruction de la muqueuse utérine (jour 1 d'un nouveau cycle)"],
+["Fécondation","Fusion d'un spermatozoïde et d'un ovule → cellule-œuf"],
+["Nidation","Implantation de l'embryon dans la muqueuse utérine (≈ J7 après fécondation)"],
+["Placenta","Organe d'échange entre la mère et le fœtus"],
+["IST","Infection sexuellement transmissible (VIH, chlamydia, HPV…)"],
+["Contraception","Moyens d'éviter une grossesse non désirée"]
+],
+keyPoint:"La puberté rend la reproduction possible. Cycle de 28 jours : ovulation à J14, règles à J1. Fécondation → nidation → 9 mois de développement via le placenta. Le préservatif = seul moyen de protection contre les grossesses ET les IST.",
+diagram:'repro_humaine'},
+exercises:[
+{type:"qcm",title:"QCM — Reproduction humaine",
+questions:[
+{q:"L'ovulation a lieu vers quel jour du cycle ?",options:["Jour 1","Jour 7","Jour 14","Jour 28"],correct:2},
+{q:"Que se passe-t-il si l'ovule n'est pas fécondé ?",options:["La grossesse commence","La muqueuse utérine se détruit (règles)","L'ovule reste dans la trompe indéfiniment","Un nouveau cycle ne peut pas commencer"],correct:1},
+{q:"Quel est le seul moyen de protection contre les grossesses ET les IST ?",options:["La pilule","Le préservatif","Le stérilet","L'implant"],correct:1},
+{q:"La nidation est :",options:["La libération de l'ovule","L'implantation de l'embryon dans la muqueuse utérine","La fécondation","La naissance du bébé"],correct:1},
+{q:"Le placenta sert à :",options:["Protéger le bébé des chocs","Permettre les échanges (nutriments, O₂) entre la mère et le fœtus","Déclencher l'accouchement","Produire les spermatozoïdes"],correct:1}
+]},
+{type:"tf",title:"Vrai ou Faux",
+questions:[
+{q:"La pilule protège des IST.",answer:false,explanation:"Faux : la pilule empêche l'ovulation mais n'offre aucune protection physique contre les infections."},
+{q:"Le placenta permet les échanges entre la mère et le fœtus.",answer:true,explanation:"Vrai : nutriments et oxygène passent de la mère au fœtus, et les déchets font le chemin inverse."},
+{q:"Les règles marquent le début d'un nouveau cycle.",answer:true,explanation:"Vrai : le jour 1 du cycle = premier jour des règles."},
+{q:"La fécondation a lieu dans l'utérus.",answer:false,explanation:"Faux : la fécondation a lieu dans les trompes. C'est la nidation qui se produit dans l'utérus."},
+{q:"La période de fertilité dure tout le cycle.",answer:false,explanation:"Faux : elle dure environ 5 jours autour de l'ovulation (J10-J15 environ)."}
+]},
+{type:"fill",title:"Texte à trous — Le cycle et la grossesse",intro:"Complète avec : <b>ovulation, règles, fécondation, nidation, placenta</b>.",
+questions:[
+{text:"La destruction de la muqueuse utérine provoque les {0}.",answer:"règles"},
+{text:"Vers le 14ᵉ jour du cycle, un ovaire libère un ovule : c'est l'{0}.",answer:"ovulation"},
+{text:"La fusion d'un spermatozoïde et d'un ovule s'appelle la {0}.",answer:"fécondation"},
+{text:"L'embryon s'implante dans l'utérus lors de la {0}.",answer:"nidation"},
+{text:"Le {0} permet les échanges entre la mère et le fœtus pendant 9 mois.",answer:"placenta"}
+]}
+]},
+
+{id:10,theme:3,title:"Le monde microbien et l'immunité",
+fiche:{sections:[
+{title:"Les micro-organismes : amis ou ennemis ?",icon:"🦠",paragraphs:[
+"Les <b>micro-organismes</b> (ou microbes) sont des êtres vivants invisibles à l'œil nu. Ils comprennent les <b>bactéries</b>, les <b>virus</b>, les <b>champignons microscopiques</b> et certains parasites.",
+"La grande majorité sont <b>inoffensifs</b>, voire <b>bénéfiques</b> ! Notre intestin abrite des milliards de bactéries (le <b>microbiote intestinal</b>) qui nous aident à digérer et nous protègent contre les microbes dangereux.",
+"Certains micro-organismes sont cependant <b>pathogènes</b> : ils provoquent des maladies (grippe, angine, gastro-entérite, COVID, etc.)."
+]},
+{title:"Contamination et infection",icon:"🔬",paragraphs:[
+"La <b>contamination</b> est la pénétration d'un micro-organisme pathogène dans l'organisme. Elle se fait par une plaie, les muqueuses (yeux, nez, bouche), l'air inspiré, l'alimentation ou lors de rapports sexuels.",
+"L'<b>infection</b> se produit quand le micro-organisme se multiplie dans l'organisme et provoque des symptômes (fièvre, douleur, fatigue…)."
+]},
+{title:"Les 3 barrières de défense de l'organisme",icon:"🛡️",paragraphs:[
+"<b>1ʳᵉ barrière : les défenses naturelles</b> (empêcher l'entrée). La peau (barrière mécanique), les muqueuses, les larmes, la salive, l'acidité de l'estomac bloquent la plupart des microbes. Si une brèche apparaît (plaie, blessure), les microbes peuvent entrer.",
+"<b>2ᵉ barrière : l'immunité innée</b> (réponse rapide, non spécifique). Les <b>phagocytes</b> détectent et détruisent les microbes par <b>phagocytose</b> : ils les englobent et les « digèrent ». C'est la même réaction quel que soit le microbe. Elle s'accompagne d'une <b>réaction inflammatoire</b> : rougeur, gonflement, chaleur, douleur.",
+"<b>3ᵉ barrière : l'immunité adaptative</b> (réponse lente mais spécifique). Si la phagocytose ne suffit pas, les <b>lymphocytes</b> interviennent. Les <b>lymphocytes B</b> produisent des <b>anticorps</b> qui se fixent spécifiquement sur le microbe pour le neutraliser. Les <b>lymphocytes T</b> détruisent directement les cellules infectées.",
+"<div class='example'>💡 Les anticorps fonctionnent comme une clé dans une serrure : chaque anticorps ne reconnaît qu'un seul microbe spécifique. C'est pour cela qu'on parle d'immunité « spécifique ».</div>"
+]},
+{title:"La vaccination",icon:"💉",paragraphs:[
+"Le <b>vaccin</b> contient un micro-organisme <b>inactivé ou atténué</b> (il ne peut plus rendre malade). Il est reconnu par le système immunitaire qui produit des anticorps et surtout des <b>lymphocytes mémoire</b>.",
+"En cas de contact ultérieur avec le vrai microbe, la réponse immunitaire sera <b>beaucoup plus rapide et plus efficace</b>, empêchant la maladie de se développer. C'est le principe de la mémoire immunitaire."
+]},
+{title:"Antibiotiques : attention aux erreurs !",icon:"💊",paragraphs:[
+"Les <b>antibiotiques</b> sont des médicaments efficaces <b>uniquement contre les bactéries</b>. Ils sont totalement <b>inefficaces contre les virus</b> (grippe, rhume, COVID…).",
+"L'<b>asepsie</b> (se laver les mains, stériliser les instruments) vise à empêcher la contamination. L'<b>antisepsie</b> (désinfecter une plaie) vise à détruire les microbes déjà présents.",
+"<div class='example'>⚠️ « Les antibiotiques, c'est pas automatique ! » — Les utiliser à tort (contre un virus) favorise l'apparition de bactéries résistantes, un problème majeur de santé publique.</div>"
+]}
+],
+definitions:[
+["Micro-organisme","Être vivant invisible à l'œil nu (bactérie, virus, champignon…)"],
+["Pathogène","Micro-organisme qui provoque une maladie"],
+["Contamination","Pénétration d'un micro-organisme dans l'organisme"],
+["Infection","Multiplication du micro-organisme → maladie"],
+["Phagocytose","Destruction d'un microbe par un phagocyte (immunité innée)"],
+["Anticorps","Molécule produite par les lymphocytes B, spécifique d'un microbe"],
+["Lymphocytes","Cellules immunitaires spécifiques (B → anticorps, T → destruction)"],
+["Vaccin","Micro-organisme inactivé qui entraîne le système immunitaire → mémoire"],
+["Antibiotique","Médicament efficace contre les bactéries (PAS contre les virus !)"],
+["Asepsie","Mesures pour empêcher la contamination (lavage des mains, stérilisation)"]
+],
+keyPoint:"3 barrières de défense : naturelles (peau, muqueuses) → phagocytose (innée, rapide, non spécifique) → lymphocytes et anticorps (adaptative, lente, spécifique). Le vaccin crée une mémoire immunitaire. Les antibiotiques ne fonctionnent QUE contre les bactéries.",
+diagram:'immunite'},
+exercises:[
+{type:"qcm",title:"QCM — L'immunité",
+questions:[
+{q:"La phagocytose est :",options:["Lente et spécifique","Rapide et non spécifique","Réalisée par les lymphocytes","Efficace uniquement contre les virus"],correct:1},
+{q:"Un médecin prescrit un antibiotique contre la grippe. C'est :",options:["Adapté car la grippe est dangereuse","Inadapté car la grippe est causée par un virus","Adapté car les antibiotiques tuent tout","Inadapté car la grippe est bénigne"],correct:1},
+{q:"Le vaccin protège car :",options:["Il tue directement les microbes dans le sang","Il crée des lymphocytes mémoire pour une réponse future rapide","Il contient des antibiotiques","Il renforce la peau"],correct:1},
+{q:"Les anticorps sont produits par :",options:["Les phagocytes","Les lymphocytes B","Les lymphocytes T","Les globules rouges"],correct:1},
+{q:"La première barrière de défense de l'organisme est :",options:["Les antibiotiques","Les anticorps","La peau et les muqueuses","Les lymphocytes"],correct:2}
+]},
+{type:"tf",title:"Vrai ou Faux",
+questions:[
+{q:"La plupart des micro-organismes sont dangereux pour l'Homme.",answer:false,explanation:"Faux : la grande majorité sont inoffensifs, voire bénéfiques (microbiote intestinal)."},
+{q:"Les antibiotiques sont efficaces contre les virus.",answer:false,explanation:"Faux : les antibiotiques ne fonctionnent que contre les bactéries. Ils sont inefficaces contre les virus."},
+{q:"Un vaccin peut rendre malade.",answer:false,explanation:"Faux : le vaccin contient un micro-organisme inactivé ou atténué. Il est reconnu par l'immunité mais ne peut pas provoquer la maladie."},
+{q:"La réaction inflammatoire (rougeur, gonflement) est un signe que le corps se défend.",answer:true,explanation:"Vrai : c'est le signe que les phagocytes affluent pour combattre les microbes."},
+{q:"Se laver les mains est un geste d'asepsie.",answer:true,explanation:"Vrai : l'asepsie vise à empêcher la contamination."}
+]},
+{type:"fill",title:"Texte à trous — Les défenses immunitaires",intro:"Complète avec : <b>phagocytose, anticorps, lymphocytes, vaccin, bactéries, mémoire</b>.",
+questions:[
+{text:"La {0} est la destruction d'un microbe par un phagocyte (réponse rapide).",answer:"phagocytose"},
+{text:"Les {0} B produisent des anticorps spécifiques d'un microbe.",answer:"lymphocytes"},
+{text:"Les {0} se fixent sur un microbe précis pour le neutraliser.",answer:"anticorps"},
+{text:"Le {0} entraîne le système immunitaire sans provoquer la maladie.",answer:"vaccin"},
+{text:"Il crée des lymphocytes {0} pour une réponse future plus rapide.",answer:"mémoire"},
+{text:"Les antibiotiques ne sont efficaces que contre les {0}.",answer:"bactéries"}
+]}
+]}
 ];
 
-// ============================================================
-// SVG DIAGRAMS (inline)
-// ============================================================
-const diagrams = {};
-// These will be loaded from the SVG files that were created earlier
-// For the HTML version, I'll inline simplified but effective SVGs
+// ===================== DIAGRAMS =====================
+const DG={};
+DG.seisme=`<svg viewBox="0 0 700 400" font-family="'DM Sans',Arial,sans-serif"><defs><linearGradient id="grd" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8D6E63"/><stop offset="100%" stop-color="#5D4037"/></linearGradient></defs><rect x="0" y="0" width="700" height="140" fill="#E3F2FD" rx="4"/><line x1="0" y1="142" x2="700" y2="142" stroke="#5D4037" stroke-width="3"/><text x="680" y="136" text-anchor="end" font-size="13" fill="#5D4037" font-weight="600">Surface du sol</text><rect x="0" y="142" width="700" height="258" fill="url(#grd)"/><rect x="0" y="260" width="700" height="140" fill="#4E342E" opacity=".5"/><line x1="250" y1="105" x2="410" y2="390" stroke="#EF5350" stroke-width="3" stroke-dasharray="8,4"/><text x="430" y="320" font-size="14" fill="#FFCDD2" font-weight="bold">Faille</text><polygon points="350,280 356,262 374,262 360,248 366,230 350,242 334,230 340,248 326,262 344,262" fill="#FFD600" stroke="#E65100" stroke-width="1.5"/><text x="350" y="312" text-anchor="middle" font-size="15" fill="#FFD600" font-weight="bold">FOYER</text><text x="350" y="330" text-anchor="middle" font-size="12" fill="#FFE0B2">(rupture des roches en profondeur)</text><circle cx="350" cy="275" r="42" fill="none" stroke="#FFE0B2" stroke-width="1.5" opacity=".6"/><circle cx="350" cy="275" r="75" fill="none" stroke="#FFE0B2" stroke-width="1.2" opacity=".4"/><circle cx="350" cy="275" r="110" fill="none" stroke="#FFE0B2" stroke-width="1" opacity=".3"/><text x="480" y="222" font-size="13" fill="#FFE0B2" font-style="italic">Ondes sismiques</text><line x1="350" y1="258" x2="350" y2="155" stroke="#FFD600" stroke-width="2" stroke-dasharray="5,3"/><polygon points="350,150 344,162 356,162" fill="#FFD600"/><circle cx="350" cy="142" r="9" fill="#E53935" stroke="white" stroke-width="2.5"/><circle cx="350" cy="142" r="16" fill="none" stroke="#E53935" stroke-width="1.5" opacity=".5"/><text x="350" y="122" text-anchor="middle" font-size="15" fill="#E53935" font-weight="bold">ÉPICENTRE</text><text x="350" y="106" text-anchor="middle" font-size="12" fill="#E53935">(dégâts maximaux en surface)</text><rect x="310" y="68" width="30" height="72" fill="#78909C" stroke="#546E7A" rx="2"/><rect x="315" y="74" width="8" height="9" fill="#B3E5FC" rx="1"/><rect x="327" y="74" width="8" height="9" fill="#B3E5FC" rx="1"/><rect x="315" y="88" width="8" height="9" fill="#B3E5FC" rx="1"/><rect x="327" y="88" width="8" height="9" fill="#B3E5FC" rx="1"/><rect x="520" y="20" width="168" height="100" fill="white" stroke="#2B6CB0" stroke-width="1.5" rx="8"/><text x="604" y="42" text-anchor="middle" font-size="14" fill="#2B6CB0" font-weight="bold">Sismogramme</text><polyline points="530,82 548,82 554,64 560,95 566,58 572,88 578,70 584,84 590,76 596,80 614,82 640,82 670,82" stroke="#E53935" stroke-width="2.5" fill="none"/><text x="604" y="110" text-anchor="middle" font-size="11" fill="#718096">temps →</text></svg>`;
+DG.volcan=`<svg viewBox="0 0 700 420" font-family="'DM Sans',Arial,sans-serif"><defs><linearGradient id="lv" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FF6F00"/><stop offset="100%" stop-color="#BF360C"/></linearGradient><radialGradient id="ch" cx=".5" cy=".5" r=".5"><stop offset="0%" stop-color="#FFAB00"/><stop offset="100%" stop-color="#FF6F00"/></radialGradient></defs><rect x="0" y="0" width="700" height="175" fill="#E3F2FD" rx="4"/><ellipse cx="350" cy="45" rx="65" ry="28" fill="#BDBDBD" opacity=".4"/><ellipse cx="335" cy="30" rx="48" ry="22" fill="#9E9E9E" opacity=".3"/><text x="350" y="82" text-anchor="middle" font-size="13" fill="#546E7A" font-style="italic">Panache de gaz et cendres</text><polygon points="350,92 185,265 515,265" fill="#795548" stroke="#5D4037" stroke-width="2"/><ellipse cx="350" cy="96" rx="30" ry="8" fill="#BF360C"/><circle cx="328" cy="74" r="4.5" fill="#FF6F00"/><circle cx="345" cy="62" r="3.5" fill="#FFAB00"/><circle cx="368" cy="68" r="4.5" fill="#FF8F00"/><circle cx="358" cy="56" r="3" fill="#FFD600"/><rect x="342" y="108" width="16" height="160" fill="url(#lv)" opacity=".8" rx="3"/><rect x="0" y="265" width="700" height="155" fill="#5D4037"/><ellipse cx="350" cy="358" rx="108" ry="44" fill="url(#ch)" stroke="#BF360C" stroke-width="2"/><text x="350" y="356" text-anchor="middle" font-size="14" fill="white" font-weight="bold">Chambre magmatique</text><text x="350" y="374" text-anchor="middle" font-size="11" fill="#FFF8E1">(magma = roches fondues + gaz)</text><path d="M378,96 Q420,148 482,195 Q512,215 530,262 Q535,272 518,270 Q498,250 466,225 Q428,185 392,138 Q374,116 368,100" fill="url(#lv)" opacity=".85"/><text x="518" y="240" font-size="14" fill="#FFAB00" font-weight="bold">Coulée de lave</text><text x="448" y="62" font-size="14" fill="#2B6CB0" font-weight="bold">Cratère</text><line x1="385" y1="96" x2="438" y2="65" stroke="#2B6CB0" stroke-width="1"/><text x="280" y="195" font-size="13" fill="white" font-weight="bold">Cheminée</text><line x1="308" y1="190" x2="338" y2="180" stroke="white" stroke-width="1"/><rect x="12" y="282" width="165" height="90" fill="white" stroke="#276749" stroke-width="2" rx="8"/><text x="94" y="302" text-anchor="middle" font-size="12" font-weight="bold" fill="#276749">🔴 Effusif</text><text x="94" y="320" text-anchor="middle" font-size="11" fill="#333">Lave fluide, coulées</text><text x="94" y="338" text-anchor="middle" font-size="11" fill="#333">Danger modéré</text><text x="94" y="360" text-anchor="middle" font-size="10" fill="#718096" font-style="italic">Piton de la Fournaise</text><rect x="523" y="282" width="165" height="90" fill="white" stroke="#C53030" stroke-width="2" rx="8"/><text x="605" y="302" text-anchor="middle" font-size="12" font-weight="bold" fill="#C53030">⚫ Explosif</text><text x="605" y="320" text-anchor="middle" font-size="11" fill="#333">Nuées ardentes</text><text x="605" y="338" text-anchor="middle" font-size="11" fill="#333">Danger très élevé</text><text x="605" y="360" text-anchor="middle" font-size="10" fill="#718096" font-style="italic">Montagne Pelée</text></svg>`;
+DG.tectonique=`<svg viewBox="0 0 700 440" font-family="'DM Sans',Arial,sans-serif"><rect x="10" y="8" width="330" height="195" fill="#E8F5E9" stroke="#276749" stroke-width="2" rx="10"/><text x="175" y="32" text-anchor="middle" font-size="15" font-weight="bold" fill="#276749">DIVERGENCE (dorsale)</text><rect x="25" y="48" width="300" height="65" fill="#90CAF9" opacity=".4" rx="4"/><text x="175" y="72" text-anchor="middle" font-size="12" fill="#2B6CB0">Océan</text><rect x="25" y="118" width="130" height="30" fill="#A1887F" stroke="#795548" stroke-width="1.5" rx="3"/><text x="90" y="138" text-anchor="middle" font-size="11" fill="white" font-weight="600">Plaque A</text><rect x="185" y="118" width="130" height="30" fill="#A1887F" stroke="#795548" stroke-width="1.5" rx="3"/><text x="250" y="138" text-anchor="middle" font-size="11" fill="white" font-weight="600">Plaque B</text><text x="82" y="112" text-anchor="middle" font-size="20" fill="#276749">←</text><text x="260" y="112" text-anchor="middle" font-size="20" fill="#276749">→</text><polygon points="155,78 175,52 195,78" fill="#BF360C"/><line x1="175" y1="148" x2="175" y2="100" stroke="#FF6F00" stroke-width="2" stroke-dasharray="4,3"/><text x="175" y="178" text-anchor="middle" font-size="12" fill="#276749" font-weight="600">Plaques s'écartent</text><text x="175" y="195" text-anchor="middle" font-size="11" fill="#276749">→ nouvelle lithosphère</text><rect x="360" y="8" width="330" height="195" fill="#FFF3E0" stroke="#C05621" stroke-width="2" rx="10"/><text x="525" y="32" text-anchor="middle" font-size="15" font-weight="bold" fill="#C05621">SUBDUCTION</text><rect x="375" y="48" width="148" height="58" fill="#90CAF9" opacity=".4" rx="4"/><text x="449" y="72" text-anchor="middle" font-size="12" fill="#2B6CB0">Océan</text><rect x="523" y="48" width="155" height="28" fill="#A5D6A7" stroke="#276749" stroke-width="1.5" rx="3"/><text x="600" y="68" text-anchor="middle" font-size="11" fill="#276749" font-weight="600">Plaque continentale</text><rect x="375" y="80" width="148" height="22" fill="#90A4AE" stroke="#546E7A" stroke-width="1.5" rx="2"/><text x="449" y="96" text-anchor="middle" font-size="10" fill="white" font-weight="600">Plaque océanique</text><path d="M523,80 Q545,110 565,165 Q572,185 578,200" stroke="#546E7A" stroke-width="12" fill="none" opacity=".4" stroke-linecap="round"/><text x="540" y="140" font-size="12" fill="#C05621" font-weight="bold">Fosse</text><polygon points="608,48 593,24 623,24" fill="#795548"/><ellipse cx="608" cy="18" rx="8" ry="3" fill="#BF360C"/><text x="525" y="178" text-anchor="middle" font-size="12" fill="#C05621" font-weight="600">Plaque océanique plonge</text><text x="525" y="195" text-anchor="middle" font-size="11" fill="#C05621">→ séismes + volcans explosifs</text><rect x="10" y="220" width="680" height="205" fill="#F3E5F5" stroke="#6B46C1" stroke-width="2" rx="10"/><text x="350" y="245" text-anchor="middle" font-size="15" font-weight="bold" fill="#6B46C1">COLLISION (montagnes)</text><rect x="35" y="300" width="260" height="38" fill="#A5D6A7" stroke="#276749" stroke-width="1.5" rx="3"/><text x="165" y="325" text-anchor="middle" font-size="12" fill="#276749" font-weight="600">Plaque indienne</text><rect x="405" y="300" width="260" height="38" fill="#C8E6C9" stroke="#276749" stroke-width="1.5" rx="3"/><text x="535" y="325" text-anchor="middle" font-size="12" fill="#276749" font-weight="600">Plaque eurasiatique</text><text x="258" y="292" text-anchor="middle" font-size="22" fill="#6B46C1">→</text><text x="442" y="292" text-anchor="middle" font-size="22" fill="#6B46C1">←</text><polygon points="310,300 332,268 350,252 368,264 390,300" fill="#8D6E63" stroke="#5D4037" stroke-width="1.5"/><polygon points="340,300 350,258 360,300" fill="#BCAAA4"/><text x="350" y="262" text-anchor="middle" font-size="12" fill="white" font-weight="bold" dy="-5">Himalaya</text><text x="350" y="360" text-anchor="middle" font-size="12" fill="#6B46C1" font-weight="600">Compression → soulèvement des roches</text><rect x="80" y="388" width="540" height="28" fill="white" stroke="#6B46C1" stroke-width="1" rx="6"/><text x="350" y="408" text-anchor="middle" font-size="12" fill="#333">🔑 Divergence → dorsales · Subduction → fosses + volcans · Collision → montagnes</text></svg>`;
+DG.risque=`<svg viewBox="0 0 700 300" font-family="'DM Sans',Arial,sans-serif"><rect x="25" y="15" width="195" height="115" fill="#FFF3E0" stroke="#C05621" stroke-width="2" rx="12"/><text x="122" y="42" text-anchor="middle" font-size="16" font-weight="bold" fill="#C05621">ALÉA</text><text x="122" y="64" text-anchor="middle" font-size="12" fill="#333">Probabilité du</text><text x="122" y="80" text-anchor="middle" font-size="12" fill="#333">phénomène dangereux</text><text x="122" y="110" text-anchor="middle" font-size="11" fill="#718096" font-style="italic">Ex : séisme magnitude 6</text><text x="264" y="82" text-anchor="middle" font-size="32" font-weight="bold" fill="#2B6CB0">×</text><rect x="305" y="15" width="195" height="115" fill="#FAF5FF" stroke="#6B46C1" stroke-width="2" rx="12"/><text x="402" y="42" text-anchor="middle" font-size="16" font-weight="bold" fill="#6B46C1">ENJEU</text><text x="402" y="64" text-anchor="middle" font-size="12" fill="#333">Personnes et biens</text><text x="402" y="80" text-anchor="middle" font-size="12" fill="#333">exposés</text><text x="402" y="110" text-anchor="middle" font-size="11" fill="#718096" font-style="italic">Ex : ville très peuplée</text><text x="545" y="82" text-anchor="middle" font-size="32" font-weight="bold" fill="#2B6CB0">=</text><rect x="585" y="28" width="100" height="88" fill="#FFF5F5" stroke="#C53030" stroke-width="3" rx="12"/><text x="635" y="68" text-anchor="middle" font-size="16" font-weight="bold" fill="#C53030">RISQUE</text><text x="635" y="92" text-anchor="middle" font-size="20">⚠️</text><line x1="350" y1="140" x2="350" y2="168" stroke="#276749" stroke-width="2.5"/><polygon points="350,175 344,166 356,166" fill="#276749"/><rect x="55" y="180" width="590" height="105" fill="#E6FFED" stroke="#276749" stroke-width="2" rx="12"/><text x="350" y="206" text-anchor="middle" font-size="15" font-weight="bold" fill="#276749">PRÉVENTION = Réduire le risque</text><text x="140" y="238" text-anchor="middle" font-size="12" fill="#333">🏗️ Constructions</text><text x="140" y="256" text-anchor="middle" font-size="12" fill="#333">parasismiques</text><text x="300" y="238" text-anchor="middle" font-size="12" fill="#333">📚 Éducation</text><text x="300" y="256" text-anchor="middle" font-size="12" fill="#333">des populations</text><text x="450" y="238" text-anchor="middle" font-size="12" fill="#333">📋 PPMS</text><text x="450" y="256" text-anchor="middle" font-size="12" fill="#333">Plans d'évacuation</text><text x="580" y="238" text-anchor="middle" font-size="12" fill="#333">📡 Surveillance</text><text x="580" y="256" text-anchor="middle" font-size="12" fill="#333">instrumentale</text></svg>`;
+DG.climat=`<svg viewBox="0 0 700 380" font-family="'DM Sans',Arial,sans-serif"><rect x="0" y="0" width="700" height="58" fill="#1A237E" rx="4"/><text x="350" y="36" text-anchor="middle" font-size="14" fill="#90CAF9" font-weight="600">ESPACE</text><rect x="0" y="58" width="700" height="140" fill="#E3F2FD"/><text x="350" y="82" text-anchor="middle" font-size="14" fill="#2B6CB0" font-weight="bold">ATMOSPHÈRE</text><circle cx="160" cy="115" r="12" fill="#FFE0B2" stroke="#E65100" stroke-width="1.5"/><text x="160" y="120" text-anchor="middle" font-size="9" fill="#E65100" font-weight="bold">CO₂</text><circle cx="350" cy="135" r="12" fill="#FFE0B2" stroke="#E65100" stroke-width="1.5"/><text x="350" y="140" text-anchor="middle" font-size="9" fill="#E65100" font-weight="bold">CH₄</text><circle cx="540" cy="120" r="12" fill="#FFE0B2" stroke="#E65100" stroke-width="1.5"/><text x="540" y="125" text-anchor="middle" font-size="9" fill="#E65100" font-weight="bold">CO₂</text><rect x="0" y="198" width="700" height="182" fill="#A5D6A7"/><rect x="0" y="198" width="700" height="3" fill="#276749"/><text x="350" y="225" text-anchor="middle" font-size="14" fill="#276749" font-weight="bold">SURFACE TERRESTRE</text><circle cx="95" cy="30" r="24" fill="#FFD600" stroke="#FFAB00" stroke-width="2"/><text x="95" y="36" text-anchor="middle" font-size="12" fill="#E65100" font-weight="bold">☀️</text><line x1="122" y1="38" x2="240" y2="200" stroke="#FFD600" stroke-width="3.5"/><polygon points="240,200 232,190 242,187" fill="#FFD600"/><text x="150" y="120" font-size="13" fill="#E65100" font-weight="bold">① Soleil</text><line x1="350" y1="200" x2="350" y2="105" stroke="#C53030" stroke-width="2.5" stroke-dasharray="6,3"/><polygon points="350,105 345,115 355,115" fill="#C53030"/><text x="420" y="170" font-size="13" fill="#C53030" font-weight="bold">② Infrarouge ↑</text><line x1="350" y1="132" x2="275" y2="200" stroke="#E65100" stroke-width="2.5"/><polygon points="275,200 280,190 287,195" fill="#E65100"/><line x1="350" y1="132" x2="455" y2="200" stroke="#E65100" stroke-width="2.5"/><polygon points="455,200 448,195 450,188" fill="#E65100"/><text x="545" y="112" font-size="13" fill="#E65100" font-weight="bold">③ GES piègent ↓</text><rect x="35" y="248" width="285" height="95" fill="white" stroke="#276749" stroke-width="2" rx="10"/><text x="177" y="272" text-anchor="middle" font-size="14" font-weight="bold" fill="#276749">Effet de serre NATUREL</text><text x="177" y="294" text-anchor="middle" font-size="12" fill="#333">Moyenne : +15°C (sans : −18°C)</text><text x="177" y="328" text-anchor="middle" font-size="12" fill="#276749" font-weight="600">→ Indispensable à la vie ✓</text><rect x="380" y="248" width="285" height="95" fill="white" stroke="#C53030" stroke-width="2" rx="10"/><text x="522" y="272" text-anchor="middle" font-size="14" font-weight="bold" fill="#C53030">Effet de serre AMPLIFIÉ</text><text x="522" y="294" text-anchor="middle" font-size="12" fill="#333">+ CO₂ (fossiles) + CH₄ (élevage)</text><text x="522" y="328" text-anchor="middle" font-size="12" fill="#C53030" font-weight="600">→ Réchauffement climatique ⚠️</text></svg>`;
+DG.nutrition=`<svg viewBox="0 0 700 360" font-family="'DM Sans',Arial,sans-serif"><rect x="10" y="5" width="335" height="350" fill="#E8F5E9" stroke="#276749" stroke-width="2" rx="10"/><text x="177" y="32" text-anchor="middle" font-size="15" font-weight="bold" fill="#276749">🌿 AUTOTROPHE (plante)</text><circle cx="58" cy="85" r="22" fill="#FFD600" stroke="#FFAB00" stroke-width="2"/><text x="58" y="90" text-anchor="middle" font-size="10" fill="#E65100" font-weight="bold">Lumière</text><line x1="80" y1="90" x2="115" y2="120" stroke="#FFD600" stroke-width="2"/><ellipse cx="177" cy="138" rx="58" ry="30" fill="#66BB6A" stroke="#276749" stroke-width="2"/><text x="177" y="133" text-anchor="middle" font-size="11" fill="white" font-weight="bold">Chlorophylle</text><text x="177" y="148" text-anchor="middle" font-size="10" fill="white" font-weight="bold">PHOTOSYNTHÈSE</text><rect x="248" y="82" width="56" height="24" fill="white" stroke="#2B6CB0" stroke-width="1.5" rx="5"/><text x="276" y="99" text-anchor="middle" font-size="11" fill="#2B6CB0" font-weight="bold">CO₂</text><line x1="248" y1="96" x2="228" y2="120" stroke="#2B6CB0" stroke-width="1.5"/><rect x="248" y="148" width="56" height="24" fill="#E8F5E9" stroke="#276749" stroke-width="1.5" rx="5"/><text x="276" y="165" text-anchor="middle" font-size="11" fill="#276749" font-weight="bold">O₂ ↑</text><line x1="248" y1="156" x2="230" y2="148" stroke="#276749" stroke-width="1.5"/><line x1="177" y1="168" x2="177" y2="225" stroke="#795548" stroke-width="3.5"/><line x1="177" y1="225" x2="148" y2="252" stroke="#795548" stroke-width="2.5"/><line x1="177" y1="225" x2="206" y2="248" stroke="#795548" stroke-width="2.5"/><text x="228" y="242" font-size="12" fill="#795548" font-weight="bold">Racines (H₂O)</text><rect x="80" y="275" width="195" height="30" fill="white" stroke="#276749" stroke-width="2" rx="6"/><text x="177" y="295" text-anchor="middle" font-size="12" fill="#276749" font-weight="bold">→ Glucose (matière org.) + O₂</text><rect x="35" y="318" width="290" height="24" fill="white" stroke="#276749" stroke-width="1" rx="4"/><text x="180" y="335" text-anchor="middle" font-size="11" fill="#276749">CO₂ + H₂O + lumière → glucose + O₂</text><rect x="360" y="5" width="330" height="350" fill="#FFF3E0" stroke="#C05621" stroke-width="2" rx="10"/><text x="525" y="32" text-anchor="middle" font-size="15" font-weight="bold" fill="#C05621">🐾 HÉTÉROTROPHE (animal)</text><ellipse cx="525" cy="125" rx="58" ry="34" fill="#FFCC80" stroke="#C05621" stroke-width="2"/><text x="525" y="122" text-anchor="middle" font-size="11" fill="#C05621" font-weight="bold">RESPIRATION</text><text x="525" y="136" text-anchor="middle" font-size="10" fill="#C05621" font-weight="bold">CELLULAIRE</text><rect x="385" y="68" width="72" height="28" fill="white" stroke="#C05621" stroke-width="1.5" rx="5"/><text x="421" y="87" text-anchor="middle" font-size="11" fill="#C05621" font-weight="bold">Aliments</text><line x1="457" y1="85" x2="478" y2="108" stroke="#C05621" stroke-width="1.5"/><rect x="615" y="72" width="48" height="24" fill="white" stroke="#2B6CB0" stroke-width="1.5" rx="5"/><text x="639" y="89" text-anchor="middle" font-size="11" fill="#2B6CB0" font-weight="bold">O₂</text><line x1="615" y1="86" x2="585" y2="108" stroke="#2B6CB0" stroke-width="1.5"/><rect x="615" y="140" width="56" height="24" fill="#FFF3E0" stroke="#C05621" stroke-width="1.5" rx="5"/><text x="643" y="157" text-anchor="middle" font-size="11" fill="#C05621" font-weight="bold">CO₂ ↑</text><line x1="615" y1="148" x2="585" y2="142" stroke="#C05621" stroke-width="1.5"/><rect x="438" y="178" width="175" height="38" fill="white" stroke="#C53030" stroke-width="2" rx="6"/><text x="525" y="196" text-anchor="middle" font-size="13" fill="#C53030" font-weight="bold">⚡ ÉNERGIE</text><text x="525" y="210" text-anchor="middle" font-size="10" fill="#718096">(mouvement, chaleur, croissance)</text><line x1="525" y1="159" x2="525" y2="178" stroke="#C53030" stroke-width="1.5"/><rect x="395" y="318" width="260" height="24" fill="white" stroke="#C05621" stroke-width="1" rx="4"/><text x="525" y="335" text-anchor="middle" font-size="11" fill="#C05621">Nutriments + O₂ → CO₂ + H₂O + énergie</text></svg>`;
+DG.repro=`<svg viewBox="0 0 700 310" font-family="'DM Sans',Arial,sans-serif"><rect x="10" y="5" width="335" height="300" fill="#E8F5E9" stroke="#276749" stroke-width="2" rx="10"/><text x="177" y="32" text-anchor="middle" font-size="15" font-weight="bold" fill="#276749">Reproduction SEXUÉE</text><circle cx="100" cy="85" r="24" fill="#EBF4FF" stroke="#2B6CB0" stroke-width="2"/><text x="100" y="82" text-anchor="middle" font-size="10" fill="#2B6CB0" font-weight="bold">Gamète</text><text x="100" y="95" text-anchor="middle" font-size="10" fill="#2B6CB0" font-weight="bold">mâle ♂</text><circle cx="255" cy="85" r="28" fill="#FCE4EC" stroke="#C2185B" stroke-width="2"/><text x="255" y="82" text-anchor="middle" font-size="10" fill="#C2185B" font-weight="bold">Gamète</text><text x="255" y="95" text-anchor="middle" font-size="10" fill="#C2185B" font-weight="bold">femelle ♀</text><line x1="120" y1="98" x2="155" y2="148" stroke="#276749" stroke-width="2"/><line x1="235" y1="102" x2="200" y2="148" stroke="#276749" stroke-width="2"/><rect x="130" y="148" width="100" height="28" fill="white" stroke="#276749" stroke-width="2" rx="14"/><text x="180" y="167" text-anchor="middle" font-size="12" fill="#276749" font-weight="bold">FÉCONDATION</text><line x1="180" y1="176" x2="180" y2="202" stroke="#276749" stroke-width="2"/><polygon points="180,208 174,200 186,200" fill="#276749"/><circle cx="180" cy="228" r="20" fill="#C8E6C9" stroke="#276749" stroke-width="2"/><text x="180" y="225" text-anchor="middle" font-size="9" fill="#276749" font-weight="bold">Cellule-</text><text x="180" y="236" text-anchor="middle" font-size="9" fill="#276749" font-weight="bold">œuf</text><text x="180" y="268" text-anchor="middle" font-size="13" fill="#276749" font-weight="bold">→ Individus DIFFÉRENTS</text><text x="180" y="286" text-anchor="middle" font-size="11" fill="#718096">Diversité génétique = adaptation</text><rect x="360" y="5" width="330" height="300" fill="#FFF3E0" stroke="#C05621" stroke-width="2" rx="10"/><text x="525" y="32" text-anchor="middle" font-size="15" font-weight="bold" fill="#C05621">Reproduction ASEXUÉE</text><circle cx="525" cy="88" r="30" fill="#FFE0B2" stroke="#C05621" stroke-width="2"/><text x="525" y="85" text-anchor="middle" font-size="11" fill="#C05621" font-weight="bold">Parent</text><text x="525" y="98" text-anchor="middle" font-size="11" fill="#C05621" font-weight="bold">unique</text><line x1="508" y1="118" x2="458" y2="162" stroke="#C05621" stroke-width="2"/><line x1="525" y1="118" x2="525" y2="162" stroke="#C05621" stroke-width="2"/><line x1="542" y1="118" x2="592" y2="162" stroke="#C05621" stroke-width="2"/><circle cx="458" cy="182" r="18" fill="#FFE0B2" stroke="#C05621" stroke-width="1.5"/><text x="458" y="186" text-anchor="middle" font-size="10" fill="#C05621">Clone</text><circle cx="525" cy="182" r="18" fill="#FFE0B2" stroke="#C05621" stroke-width="1.5"/><text x="525" y="186" text-anchor="middle" font-size="10" fill="#C05621">Clone</text><circle cx="592" cy="182" r="18" fill="#FFE0B2" stroke="#C05621" stroke-width="1.5"/><text x="592" y="186" text-anchor="middle" font-size="10" fill="#C05621">Clone</text><text x="525" y="228" text-anchor="middle" font-size="13" fill="#C05621" font-weight="bold">→ Individus IDENTIQUES</text><text x="525" y="248" text-anchor="middle" font-size="11" fill="#718096">Pas de diversité génétique</text><text x="525" y="280" text-anchor="middle" font-size="12" fill="#333">Ex : bouturage, stolons, scissiparité</text></svg>`;
+DG.nerveux=`<svg viewBox="0 0 700 310" font-family="'DM Sans',Arial,sans-serif"><rect x="8" y="5" width="684" height="125" fill="#E8EAF6" stroke="#5C6BC0" stroke-width="1.5" rx="10"/><rect x="22" y="22" width="88" height="68" fill="white" stroke="#C05621" stroke-width="2" rx="8"/><text x="66" y="42" text-anchor="middle" font-size="10" fill="#C05621" font-weight="bold">STIMULUS</text><text x="66" y="62" text-anchor="middle" font-size="18">🔥</text><text x="66" y="80" text-anchor="middle" font-size="9" fill="#718096">(chaleur)</text><line x1="110" y1="55" x2="130" y2="55" stroke="#5C6BC0" stroke-width="2.5"/><polygon points="136,55 128,49 128,61" fill="#5C6BC0"/><rect x="140" y="22" width="88" height="68" fill="white" stroke="#6B46C1" stroke-width="2" rx="8"/><text x="184" y="42" text-anchor="middle" font-size="10" fill="#6B46C1" font-weight="bold">RÉCEPTEUR</text><text x="184" y="62" text-anchor="middle" font-size="18">✋</text><text x="184" y="80" text-anchor="middle" font-size="9" fill="#718096">(peau)</text><line x1="228" y1="55" x2="250" y2="55" stroke="#5C6BC0" stroke-width="2.5"/><polygon points="256,55 248,49 248,61" fill="#5C6BC0"/><text x="242" y="42" text-anchor="middle" font-size="8" fill="#5C6BC0" font-style="italic">n. sensitif</text><rect x="260" y="15" width="140" height="82" fill="white" stroke="#2B6CB0" stroke-width="2.5" rx="10"/><text x="330" y="36" text-anchor="middle" font-size="10" fill="#2B6CB0" font-weight="bold">CENTRE NERVEUX</text><text x="330" y="58" text-anchor="middle" font-size="20">🧠</text><text x="330" y="78" text-anchor="middle" font-size="9" fill="#718096">(cerveau ou moelle)</text><text x="330" y="90" text-anchor="middle" font-size="8" fill="#718096">Analyse + commande</text><line x1="400" y1="55" x2="422" y2="55" stroke="#5C6BC0" stroke-width="2.5"/><polygon points="428,55 420,49 420,61" fill="#5C6BC0"/><text x="415" y="42" text-anchor="middle" font-size="8" fill="#5C6BC0" font-style="italic">n. moteur</text><rect x="432" y="22" width="88" height="68" fill="white" stroke="#276749" stroke-width="2" rx="8"/><text x="476" y="42" text-anchor="middle" font-size="10" fill="#276749" font-weight="bold">EFFECTEUR</text><text x="476" y="62" text-anchor="middle" font-size="18">💪</text><text x="476" y="80" text-anchor="middle" font-size="9" fill="#718096">(muscle)</text><line x1="520" y1="55" x2="542" y2="55" stroke="#5C6BC0" stroke-width="2.5"/><polygon points="548,55 540,49 540,61" fill="#5C6BC0"/><rect x="552" y="22" width="88" height="68" fill="white" stroke="#C53030" stroke-width="2" rx="8"/><text x="596" y="42" text-anchor="middle" font-size="10" fill="#C53030" font-weight="bold">RÉPONSE</text><text x="596" y="62" text-anchor="middle" font-size="16">🏃</text><text x="596" y="80" text-anchor="middle" font-size="9" fill="#718096">(mouvement)</text><text x="350" y="118" text-anchor="middle" font-size="12" fill="#5C6BC0" font-weight="bold">Trajet complet du message nerveux</text><rect x="8" y="150" width="335" height="150" fill="#E8F5E9" stroke="#276749" stroke-width="2" rx="10"/><text x="175" y="178" text-anchor="middle" font-size="14" font-weight="bold" fill="#276749">Mouvement VOLONTAIRE</text><text x="175" y="202" text-anchor="middle" font-size="12" fill="#333">Centre = CERVEAU</text><text x="175" y="224" text-anchor="middle" font-size="11" fill="#718096">Conscient, réfléchi, plus lent</text><text x="175" y="280" text-anchor="middle" font-size="11" fill="#276749" font-style="italic">Ex : lever la main en classe</text><rect x="357" y="150" width="335" height="150" fill="#FFF3E0" stroke="#C05621" stroke-width="2" rx="10"/><text x="524" y="178" text-anchor="middle" font-size="14" font-weight="bold" fill="#C05621">Mouvement RÉFLEXE</text><text x="524" y="202" text-anchor="middle" font-size="12" fill="#333">Centre = MOELLE ÉPINIÈRE</text><text x="524" y="224" text-anchor="middle" font-size="11" fill="#718096">Automatique, rapide, involontaire</text><text x="524" y="280" text-anchor="middle" font-size="11" fill="#C05621" font-style="italic">Ex : retirer la main d'un objet brûlant</text></svg>`;
+DG.repro_humaine=`<svg viewBox="0 0 700 360" font-family="'DM Sans',Arial,sans-serif"><rect x="10" y="5" width="680" height="128" fill="#FCE4EC" stroke="#C2185B" stroke-width="1.5" rx="10"/><text x="350" y="30" text-anchor="middle" font-size="14" font-weight="bold" fill="#C2185B">Cycle menstruel (≈ 28 jours)</text><rect x="50" y="52" width="600" height="10" fill="#F8BBD0" rx="5"/><rect x="50" y="52" width="107" height="10" fill="#E53935" rx="5"/><text x="103" y="82" text-anchor="middle" font-size="12" fill="#E53935" font-weight="bold">Règles (J1-J5)</text><circle cx="350" cy="57" r="14" fill="#FFD600" stroke="#F9A825" stroke-width="2"/><text x="350" y="62" text-anchor="middle" font-size="10" fill="#E65100" font-weight="bold">J14</text><text x="350" y="98" text-anchor="middle" font-size="13" fill="#F9A825" font-weight="bold">OVULATION</text><rect x="275" y="46" width="150" height="4" fill="#66BB6A" rx="2"/><text x="350" y="118" text-anchor="middle" font-size="11" fill="#276749">Période de fertilité (≈ J10-J15)</text><text x="548" y="82" text-anchor="middle" font-size="12" fill="#C2185B" font-weight="bold">Muqueuse s'épaissit</text><text x="50" y="46" font-size="10" fill="#718096">J1</text><text x="640" y="46" font-size="10" fill="#718096">J28</text><rect x="10" y="145" width="680" height="205" fill="#EBF4FF" stroke="#2B6CB0" stroke-width="1.5" rx="10"/><text x="350" y="170" text-anchor="middle" font-size="14" font-weight="bold" fill="#2B6CB0">De la fécondation à la nidation</text><circle cx="85" cy="240" r="17" fill="#EBF4FF" stroke="#2B6CB0" stroke-width="1.5"/><text x="85" y="237" text-anchor="middle" font-size="8" fill="#2B6CB0" font-weight="bold">Spermato-</text><text x="85" y="247" text-anchor="middle" font-size="8" fill="#2B6CB0" font-weight="bold">zoïde ♂</text><text x="140" y="245" text-anchor="middle" font-size="22" fill="#2B6CB0">+</text><circle cx="200" cy="240" r="20" fill="#FCE4EC" stroke="#C2185B" stroke-width="1.5"/><text x="200" y="244" text-anchor="middle" font-size="10" fill="#C2185B" font-weight="bold">Ovule ♀</text><line x1="225" y1="240" x2="262" y2="240" stroke="#276749" stroke-width="2.5"/><polygon points="268,240 260,234 260,246" fill="#276749"/><text x="248" y="228" text-anchor="middle" font-size="9" fill="#276749" font-style="italic">fécondation</text><circle cx="302" cy="240" r="18" fill="#C8E6C9" stroke="#276749" stroke-width="2"/><text x="302" y="237" text-anchor="middle" font-size="8" fill="#276749" font-weight="bold">Cellule-</text><text x="302" y="247" text-anchor="middle" font-size="8" fill="#276749" font-weight="bold">œuf</text><line x1="320" y1="240" x2="358" y2="240" stroke="#276749" stroke-width="2.5"/><polygon points="364,240 356,234 356,246" fill="#276749"/><text x="342" y="228" text-anchor="middle" font-size="9" fill="#276749" font-style="italic">divisions</text><circle cx="400" cy="240" r="20" fill="#A5D6A7" stroke="#276749" stroke-width="2"/><circle cx="392" cy="234" r="6" fill="#81C784"/><circle cx="408" cy="236" r="6" fill="#81C784"/><circle cx="395" cy="248" r="6" fill="#81C784"/><text x="400" y="272" text-anchor="middle" font-size="10" fill="#276749" font-weight="bold">Embryon</text><line x1="420" y1="240" x2="458" y2="240" stroke="#276749" stroke-width="2.5"/><polygon points="464,240 456,234 456,246" fill="#276749"/><text x="442" y="228" text-anchor="middle" font-size="9" fill="#276749" font-style="italic">nidation</text><ellipse cx="548" cy="240" rx="70" ry="42" fill="#FFCDD2" stroke="#C2185B" stroke-width="2"/><text x="548" y="237" text-anchor="middle" font-size="12" fill="#C2185B" font-weight="bold">Utérus</text><text x="548" y="252" text-anchor="middle" font-size="9" fill="#C2185B">(muqueuse utérine)</text><text x="350" y="302" text-anchor="middle" font-size="13" fill="#2B6CB0" font-weight="bold">→ Développement 9 mois via le placenta</text><rect x="100" y="322" width="500" height="26" fill="white" stroke="#2B6CB0" stroke-width="1.5" rx="6"/><text x="350" y="340" text-anchor="middle" font-size="12" fill="#333">🔑 Le préservatif protège des grossesses ET des IST</text></svg>`;
+DG.immunite=`<svg viewBox="0 0 700 400" font-family="'DM Sans',Arial,sans-serif"><rect x="10" y="5" width="680" height="68" fill="#E8F5E9" stroke="#276749" stroke-width="2" rx="10"/><text x="350" y="30" text-anchor="middle" font-size="14" font-weight="bold" fill="#276749">🛡️ BARRIÈRE 1 — Défenses naturelles (empêcher l'entrée)</text><text x="125" y="56" text-anchor="middle" font-size="12" fill="#333">Peau</text><text x="270" y="56" text-anchor="middle" font-size="12" fill="#333">Muqueuses</text><text x="430" y="56" text-anchor="middle" font-size="12" fill="#333">Larmes, salive</text><text x="585" y="56" text-anchor="middle" font-size="12" fill="#333">Acidité estomac</text><text x="350" y="92" text-anchor="middle" font-size="12" fill="#C53030" font-weight="bold">⚠️ Si brèche (plaie) → les microbes entrent</text><line x1="350" y1="100" x2="350" y2="112" stroke="#C53030" stroke-width="2.5"/><polygon points="350,118 344,110 356,110" fill="#C53030"/><rect x="10" y="122" width="680" height="95" fill="#FFF3E0" stroke="#C05621" stroke-width="2" rx="10"/><text x="350" y="148" text-anchor="middle" font-size="14" font-weight="bold" fill="#C05621">⚔️ BARRIÈRE 2 — Immunité INNÉE (rapide, non spécifique)</text><circle cx="195" cy="185" r="24" fill="#FFCC80" stroke="#C05621" stroke-width="2"/><text x="195" y="182" text-anchor="middle" font-size="9" fill="#C05621" font-weight="bold">Phago-</text><text x="195" y="193" text-anchor="middle" font-size="9" fill="#C05621" font-weight="bold">cyte</text><circle cx="168" cy="178" r="8" fill="#EF5350" stroke="#C53030" stroke-width="1"/><text x="168" y="182" text-anchor="middle" font-size="6" fill="white" font-weight="bold">🦠</text><text x="420" y="178" text-anchor="middle" font-size="12" fill="#333">Le phagocyte « mange » les microbes</text><text x="420" y="198" text-anchor="middle" font-size="13" fill="#333" font-weight="600">= PHAGOCYTOSE</text><text x="350" y="232" text-anchor="middle" font-size="12" fill="#C53030" font-weight="bold">Si insuffisant ↓</text><line x1="350" y1="238" x2="350" y2="252" stroke="#C53030" stroke-width="2.5"/><polygon points="350,258 344,250 356,250" fill="#C53030"/><rect x="10" y="262" width="680" height="130" fill="#E8EAF6" stroke="#5C6BC0" stroke-width="2" rx="10"/><text x="350" y="288" text-anchor="middle" font-size="14" font-weight="bold" fill="#5C6BC0">🎯 BARRIÈRE 3 — Immunité ADAPTATIVE (lente, spécifique)</text><rect x="28" y="302" width="195" height="65" fill="white" stroke="#2B6CB0" stroke-width="1.5" rx="8"/><text x="125" y="322" text-anchor="middle" font-size="12" font-weight="bold" fill="#2B6CB0">Lymphocytes B</text><text x="125" y="340" text-anchor="middle" font-size="11" fill="#333">→ Produisent des ANTICORPS</text><text x="125" y="358" text-anchor="middle" font-size="10" fill="#718096">qui neutralisent le microbe</text><rect x="252" y="302" width="195" height="65" fill="white" stroke="#6B46C1" stroke-width="1.5" rx="8"/><text x="349" y="322" text-anchor="middle" font-size="12" font-weight="bold" fill="#6B46C1">Lymphocytes T</text><text x="349" y="340" text-anchor="middle" font-size="11" fill="#333">→ DÉTRUISENT les cellules</text><text x="349" y="358" text-anchor="middle" font-size="10" fill="#718096">infectées directement</text><rect x="476" y="302" width="200" height="65" fill="#E8F5E9" stroke="#276749" stroke-width="2" rx="8"/><text x="576" y="322" text-anchor="middle" font-size="12" font-weight="bold" fill="#276749">💉 VACCINATION</text><text x="576" y="340" text-anchor="middle" font-size="11" fill="#333">→ Lymphocytes MÉMOIRE</text><text x="576" y="358" text-anchor="middle" font-size="10" fill="#276749">Réponse + rapide ensuite</text></svg>`;
 
-diagrams.seisme = `<svg viewBox="0 0 700 380" font-family="'DM Sans',Arial,sans-serif"><defs><linearGradient id="grd" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8D6E63"/><stop offset="100%" stop-color="#5D4037"/></linearGradient></defs><rect x="0" y="0" width="700" height="130" fill="#E3F2FD" rx="4"/><text x="690" y="125" text-anchor="end" font-size="11" fill="#5D4037" font-weight="bold">Surface du sol</text><line x1="0" y1="132" x2="700" y2="132" stroke="#5D4037" stroke-width="3"/><rect x="0" y="132" width="700" height="248" fill="url(#grd)"/><rect x="0" y="250" width="700" height="130" fill="#4E342E" opacity=".5"/><line x1="250" y1="100" x2="400" y2="370" stroke="#EF5350" stroke-width="3" stroke-dasharray="8,4"/><text x="420" y="310" font-size="12" fill="#FFCDD2" font-weight="bold">Faille</text><polygon points="350,270 355,255 370,255 358,243 363,228 350,238 337,228 342,243 330,255 345,255" fill="#FFD600" stroke="#E65100" stroke-width="1.5"/><text x="350" y="300" text-anchor="middle" font-size="13" fill="#FFD600" font-weight="bold">FOYER</text><text x="350" y="315" text-anchor="middle" font-size="10" fill="#FFE0B2">(rupture des roches)</text><circle cx="350" cy="265" r="40" fill="none" stroke="#FFE0B2" stroke-width="1.5" opacity=".6"/><circle cx="350" cy="265" r="70" fill="none" stroke="#FFE0B2" stroke-width="1.2" opacity=".4"/><circle cx="350" cy="265" r="100" fill="none" stroke="#FFE0B2" stroke-width="1" opacity=".3"/><text x="470" y="215" font-size="11" fill="#FFE0B2" font-style="italic">Ondes sismiques</text><line x1="350" y1="248" x2="350" y2="142" stroke="#FFD600" stroke-width="2" stroke-dasharray="5,3"/><polygon points="350,138 345,148 355,148" fill="#FFD600"/><circle cx="350" cy="132" r="8" fill="#E53935" stroke="white" stroke-width="2"/><circle cx="350" cy="132" r="14" fill="none" stroke="#E53935" stroke-width="1.5" opacity=".5"/><text x="350" y="115" text-anchor="middle" font-size="13" fill="#E53935" font-weight="bold">ÉPICENTRE</text><text x="350" y="100" text-anchor="middle" font-size="10" fill="#E53935">(dégâts maximaux)</text><rect x="315" y="62" width="25" height="68" fill="#78909C" stroke="#546E7A" rx="2"/><rect x="319" y="68" width="7" height="8" fill="#B3E5FC" rx="1"/><rect x="329" y="68" width="7" height="8" fill="#B3E5FC" rx="1"/><rect x="319" y="80" width="7" height="8" fill="#B3E5FC" rx="1"/><rect x="329" y="80" width="7" height="8" fill="#B3E5FC" rx="1"/><rect x="530" y="20" width="155" height="85" fill="white" stroke="#2B6CB0" stroke-width="1.5" rx="6"/><text x="607" y="38" text-anchor="middle" font-size="11" fill="#2B6CB0" font-weight="bold">Sismogramme</text><polyline points="540,72 555,72 560,57 565,82 570,52 575,77 580,62 585,74 590,67 595,70 610,72 640,72 675,72" stroke="#E53935" stroke-width="2" fill="none"/><text x="607" y="95" text-anchor="middle" font-size="9" fill="#718096">temps →</text></svg>`;
+// ===================== STATE =====================
+const st={done:new Set(),total:0};
+D.forEach(c=>{st.total+=c.exercises.length});
 
-diagrams.volcan = `<svg viewBox="0 0 700 400" font-family="'DM Sans',Arial,sans-serif"><defs><linearGradient id="lv" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FF6F00"/><stop offset="100%" stop-color="#BF360C"/></linearGradient><radialGradient id="ch" cx=".5" cy=".5" r=".5"><stop offset="0%" stop-color="#FFAB00"/><stop offset="100%" stop-color="#FF6F00"/></radialGradient></defs><rect x="0" y="0" width="700" height="165" fill="#E3F2FD" rx="4"/><ellipse cx="350" cy="40" rx="60" ry="25" fill="#BDBDBD" opacity=".4"/><ellipse cx="340" cy="28" rx="45" ry="20" fill="#9E9E9E" opacity=".3"/><text x="350" y="72" text-anchor="middle" font-size="10" fill="#718096" font-style="italic">Panache de gaz et cendres</text><polygon points="350,82 190,250 510,250" fill="#795548" stroke="#5D4037" stroke-width="2"/><ellipse cx="350" cy="86" rx="28" ry="7" fill="#BF360C"/><circle cx="330" cy="68" r="4" fill="#FF6F00"/><circle cx="345" cy="58" r="3" fill="#FFAB00"/><circle cx="365" cy="62" r="4" fill="#FF8F00"/><circle cx="355" cy="52" r="3" fill="#FFD600"/><rect x="343" y="100" width="14" height="155" fill="url(#lv)" opacity=".8" rx="3"/><rect x="0" y="250" width="700" height="150" fill="#5D4037"/><ellipse cx="350" cy="340" rx="100" ry="40" fill="url(#ch)" stroke="#BF360C" stroke-width="2"/><text x="350" y="344" text-anchor="middle" font-size="12" fill="white" font-weight="bold">Chambre magmatique</text><text x="350" y="358" text-anchor="middle" font-size="9" fill="#FFF8E1">(magma = roches fondues + gaz)</text><path d="M375,88 Q415,140 475,180 Q505,200 525,248 Q530,255 515,255 Q495,235 465,210 Q425,170 385,130 Q370,110 365,92" fill="url(#lv)" opacity=".85"/><text x="505" y="225" font-size="11" fill="#FFAB00" font-weight="bold">Coulée de lave</text><text x="440" y="58" font-size="12" fill="#2B6CB0" font-weight="bold">Cratère</text><line x1="380" y1="86" x2="430" y2="60" stroke="#2B6CB0" stroke-width="1"/><text x="285" y="190" font-size="10" fill="white" font-weight="bold">Cheminée</text><rect x="10" y="268" width="148" height="80" fill="white" stroke="#276749" stroke-width="2" rx="6"/><text x="84" y="286" text-anchor="middle" font-size="10" font-weight="bold" fill="#276749">🔴 Volcan effusif</text><text x="84" y="302" text-anchor="middle" font-size="9" fill="#333">Lave fluide, coulées</text><text x="84" y="316" text-anchor="middle" font-size="9" fill="#333">Danger modéré</text><text x="84" y="338" text-anchor="middle" font-size="9" fill="#718096" font-style="italic">Piton de la Fournaise</text><rect x="542" y="268" width="148" height="80" fill="white" stroke="#C53030" stroke-width="2" rx="6"/><text x="616" y="286" text-anchor="middle" font-size="10" font-weight="bold" fill="#C53030">⚫ Volcan explosif</text><text x="616" y="302" text-anchor="middle" font-size="9" fill="#333">Explosions, nuées</text><text x="616" y="316" text-anchor="middle" font-size="9" fill="#333">Danger très élevé</text><text x="616" y="338" text-anchor="middle" font-size="9" fill="#718096" font-style="italic">Montagne Pelée</text></svg>`;
+// ===================== RENDER =====================
+const TL={1:{l:"Thème 1 — La planète Terre, l'environnement et l'action humaine",i:"🌍",c:"theme-1"},2:{l:"Thème 2 — Le vivant et son évolution",i:"🌿",c:"theme-2"},3:{l:"Thème 3 — Corps humain et santé",i:"🫀",c:"theme-3"}};
 
-diagrams.tectonique = `<svg viewBox="0 0 700 420" font-family="'DM Sans',Arial,sans-serif"><rect x="10" y="8" width="330" height="185" fill="#E8F5E9" stroke="#276749" stroke-width="2" rx="8"/><text x="175" y="30" text-anchor="middle" font-size="13" font-weight="bold" fill="#276749">DIVERGENCE (dorsale)</text><rect x="25" y="45" width="300" height="65" fill="#90CAF9" opacity=".4" rx="4"/><text x="175" y="65" text-anchor="middle" font-size="10" fill="#2B6CB0">Océan</text><rect x="25" y="115" width="130" height="28" fill="#A1887F" stroke="#795548" stroke-width="1.5" rx="3"/><rect x="185" y="115" width="130" height="28" fill="#A1887F" stroke="#795548" stroke-width="1.5" rx="3"/><text x="85" y="110" text-anchor="middle" font-size="18" fill="#276749">←</text><text x="255" y="110" text-anchor="middle" font-size="18" fill="#276749">→</text><polygon points="155,75 175,50 195,75" fill="#BF360C"/><line x1="175" y1="143" x2="175" y2="100" stroke="#FF6F00" stroke-width="2" stroke-dasharray="4,3"/><text x="175" y="170" text-anchor="middle" font-size="10" fill="#276749">Plaques s'écartent → nouvelle lithosphère</text><rect x="360" y="8" width="330" height="185" fill="#FFF3E0" stroke="#C05621" stroke-width="2" rx="8"/><text x="525" y="30" text-anchor="middle" font-size="13" font-weight="bold" fill="#C05621">CONVERGENCE (subduction)</text><rect x="375" y="45" width="145" height="55" fill="#90CAF9" opacity=".4" rx="4"/><rect x="520" y="45" width="155" height="25" fill="#A5D6A7" stroke="#276749" stroke-width="1.5" rx="3"/><text x="597" y="62" text-anchor="middle" font-size="9" fill="#276749">Plaque continentale</text><rect x="375" y="75" width="145" height="20" fill="#90A4AE" stroke="#546E7A" stroke-width="1.5" rx="2"/><text x="447" y="89" text-anchor="middle" font-size="8" fill="white">Plaque océanique</text><path d="M520,75 Q540,100 560,150 Q565,170 570,185" stroke="#546E7A" stroke-width="10" fill="none" opacity=".4" stroke-linecap="round"/><text x="530" y="125" font-size="9" fill="#C05621" font-weight="bold">Fosse</text><polygon points="605,45 590,22 620,22" fill="#795548"/><text x="525" y="175" text-anchor="middle" font-size="10" fill="#C05621">Plaque plonge → séismes + volcans</text><rect x="10" y="210" width="680" height="195" fill="#F3E5F5" stroke="#6B46C1" stroke-width="2" rx="8"/><text x="350" y="232" text-anchor="middle" font-size="13" font-weight="bold" fill="#6B46C1">COLLISION (formation de montagnes)</text><rect x="35" y="290" width="260" height="35" fill="#A5D6A7" stroke="#276749" stroke-width="1.5" rx="3"/><text x="165" y="312" text-anchor="middle" font-size="10" fill="#276749">Plaque indienne</text><rect x="405" y="290" width="260" height="35" fill="#C8E6C9" stroke="#276749" stroke-width="1.5" rx="3"/><text x="535" y="312" text-anchor="middle" font-size="10" fill="#276749">Plaque eurasiatique</text><text x="260" y="280" text-anchor="middle" font-size="20" fill="#6B46C1">→</text><text x="440" y="280" text-anchor="middle" font-size="20" fill="#6B46C1">←</text><polygon points="310,290 330,260 350,245 370,255 390,290" fill="#8D6E63" stroke="#5D4037" stroke-width="1.5"/><polygon points="340,290 350,250 360,290" fill="#BCAAA4"/><text x="350" y="248" text-anchor="middle" font-size="9" fill="white" font-weight="bold" dy="-3">Himalaya</text><rect x="100" y="360" width="500" height="35" fill="white" stroke="#6B46C1" stroke-width="1" rx="6"/><text x="350" y="382" text-anchor="middle" font-size="10" fill="#333">🔑 Divergence → dorsales • Subduction → fosses, volcans • Collision → montagnes</text></svg>`;
-
-diagrams.risque = `<svg viewBox="0 0 700 280" font-family="'DM Sans',Arial,sans-serif"><rect x="30" y="15" width="185" height="105" fill="#FFF3E0" stroke="#C05621" stroke-width="2" rx="10"/><text x="122" y="40" text-anchor="middle" font-size="14" font-weight="bold" fill="#C05621">ALÉA</text><text x="122" y="60" text-anchor="middle" font-size="10" fill="#333">Probabilité du</text><text x="122" y="74" text-anchor="middle" font-size="10" fill="#333">phénomène dangereux</text><text x="122" y="100" text-anchor="middle" font-size="9" fill="#718096" font-style="italic">Ex : séisme magnitude 6</text><text x="260" y="75" text-anchor="middle" font-size="28" font-weight="bold" fill="#2B6CB0">×</text><rect x="300" y="15" width="185" height="105" fill="#FAF5FF" stroke="#6B46C1" stroke-width="2" rx="10"/><text x="392" y="40" text-anchor="middle" font-size="14" font-weight="bold" fill="#6B46C1">ENJEU</text><text x="392" y="60" text-anchor="middle" font-size="10" fill="#333">Personnes et biens</text><text x="392" y="74" text-anchor="middle" font-size="10" fill="#333">exposés</text><text x="392" y="100" text-anchor="middle" font-size="9" fill="#718096" font-style="italic">Ex : ville très peuplée</text><text x="530" y="75" text-anchor="middle" font-size="28" font-weight="bold" fill="#2B6CB0">=</text><rect x="570" y="25" width="110" height="85" fill="#FFF5F5" stroke="#C53030" stroke-width="3" rx="10"/><text x="625" y="65" text-anchor="middle" font-size="14" font-weight="bold" fill="#C53030">RISQUE</text><text x="625" y="85" text-anchor="middle" font-size="16">⚠️</text><line x1="350" y1="130" x2="350" y2="155" stroke="#276749" stroke-width="2"/><polygon points="350,160 345,153 355,153" fill="#276749"/><rect x="60" y="165" width="580" height="100" fill="#E6FFED" stroke="#276749" stroke-width="2" rx="10"/><text x="350" y="190" text-anchor="middle" font-size="13" font-weight="bold" fill="#276749">PRÉVENTION = Réduire le risque</text><text x="135" y="218" text-anchor="middle" font-size="10" fill="#333">🏗️ Constructions</text><text x="135" y="233" text-anchor="middle" font-size="10" fill="#333">parasismiques</text><text x="290" y="218" text-anchor="middle" font-size="10" fill="#333">📚 Éducation</text><text x="290" y="233" text-anchor="middle" font-size="10" fill="#333">populations</text><text x="440" y="218" text-anchor="middle" font-size="10" fill="#333">📋 PPMS</text><text x="440" y="233" text-anchor="middle" font-size="10" fill="#333">Plans d'évacuation</text><text x="570" y="218" text-anchor="middle" font-size="10" fill="#333">📡 Surveillance</text><text x="570" y="233" text-anchor="middle" font-size="10" fill="#333">instrumentale</text></svg>`;
-
-diagrams.climat = `<svg viewBox="0 0 700 360" font-family="'DM Sans',Arial,sans-serif"><rect x="0" y="0" width="700" height="55" fill="#1A237E" rx="4"/><text x="350" y="33" text-anchor="middle" font-size="12" fill="#90CAF9">ESPACE</text><rect x="0" y="55" width="700" height="135" fill="#E3F2FD"/><text x="350" y="78" text-anchor="middle" font-size="12" fill="#2B6CB0" font-weight="bold">ATMOSPHÈRE</text><circle cx="150" cy="108" r="10" fill="#FFE0B2" stroke="#E65100" stroke-width="1.5" opacity=".7"/><text x="150" y="112" text-anchor="middle" font-size="7" fill="#E65100" font-weight="bold">CO₂</text><circle cx="350" cy="128" r="10" fill="#FFE0B2" stroke="#E65100" stroke-width="1.5" opacity=".7"/><text x="350" y="132" text-anchor="middle" font-size="7" fill="#E65100" font-weight="bold">CH₄</text><circle cx="550" cy="113" r="10" fill="#FFE0B2" stroke="#E65100" stroke-width="1.5" opacity=".7"/><text x="550" y="117" text-anchor="middle" font-size="7" fill="#E65100" font-weight="bold">CO₂</text><rect x="0" y="190" width="700" height="170" fill="#A5D6A7"/><rect x="0" y="190" width="700" height="3" fill="#276749"/><text x="350" y="215" text-anchor="middle" font-size="11" fill="#276749" font-weight="bold">SURFACE TERRESTRE</text><circle cx="90" cy="28" r="22" fill="#FFD600" stroke="#FFAB00" stroke-width="2"/><text x="90" y="33" text-anchor="middle" font-size="9" fill="#E65100" font-weight="bold">☀️</text><line x1="115" y1="35" x2="230" y2="195" stroke="#FFD600" stroke-width="3"/><polygon points="230,195 223,187 231,183" fill="#FFD600"/><text x="145" y="110" font-size="10" fill="#E65100" font-weight="bold">① Soleil</text><line x1="350" y1="195" x2="350" y2="100" stroke="#C53030" stroke-width="2.5" stroke-dasharray="6,3"/><polygon points="350,100 345,110 355,110" fill="#C53030"/><text x="410" y="165" font-size="10" fill="#C53030" font-weight="bold">② Infrarouge ↑</text><line x1="350" y1="125" x2="280" y2="195" stroke="#E65100" stroke-width="2.5"/><polygon points="280,195 283,185 290,189" fill="#E65100"/><line x1="350" y1="125" x2="450" y2="195" stroke="#E65100" stroke-width="2.5"/><polygon points="450,195 443,189 447,183" fill="#E65100"/><text x="530" y="108" font-size="10" fill="#E65100" font-weight="bold">③ GES piègent ↓</text><rect x="40" y="240" width="270" height="85" fill="white" stroke="#276749" stroke-width="2" rx="8"/><text x="175" y="262" text-anchor="middle" font-size="11" font-weight="bold" fill="#276749">Effet de serre NATUREL</text><text x="175" y="280" text-anchor="middle" font-size="10" fill="#333">Moyenne : +15°C (sans : −18°C)</text><text x="175" y="310" text-anchor="middle" font-size="10" fill="#276749">→ Indispensable à la vie</text><rect x="390" y="240" width="270" height="85" fill="white" stroke="#C53030" stroke-width="2" rx="8"/><text x="525" y="262" text-anchor="middle" font-size="11" font-weight="bold" fill="#C53030">Effet de serre AMPLIFIÉ</text><text x="525" y="280" text-anchor="middle" font-size="10" fill="#333">+ CO₂ (fossiles) + CH₄ (élevage)</text><text x="525" y="310" text-anchor="middle" font-size="10" fill="#C53030">→ Réchauffement climatique</text></svg>`;
-
-diagrams.nutrition = `<svg viewBox="0 0 700 340" font-family="'DM Sans',Arial,sans-serif"><rect x="10" y="5" width="330" height="330" fill="#E8F5E9" stroke="#276749" stroke-width="2" rx="10"/><text x="175" y="30" text-anchor="middle" font-size="13" font-weight="bold" fill="#276749">🌿 AUTOTROPHE</text><circle cx="55" cy="80" r="20" fill="#FFD600" stroke="#FFAB00" stroke-width="2"/><text x="55" y="85" text-anchor="middle" font-size="8" fill="#E65100" font-weight="bold">Lumière</text><line x1="75" y1="85" x2="110" y2="115" stroke="#FFD600" stroke-width="2"/><ellipse cx="175" cy="130" rx="55" ry="28" fill="#66BB6A" stroke="#276749" stroke-width="2"/><text x="175" y="126" text-anchor="middle" font-size="9" fill="white" font-weight="bold">Chlorophylle</text><text x="175" y="139" text-anchor="middle" font-size="9" fill="white" font-weight="bold">PHOTOSYNTHÈSE</text><rect x="245" y="75" width="50" height="22" fill="white" stroke="#2B6CB0" stroke-width="1" rx="4"/><text x="270" y="90" text-anchor="middle" font-size="9" fill="#2B6CB0" font-weight="bold">CO₂</text><line x1="245" y1="88" x2="225" y2="115" stroke="#2B6CB0" stroke-width="1.5"/><rect x="245" y="140" width="50" height="22" fill="#E8F5E9" stroke="#276749" stroke-width="1.5" rx="4"/><text x="270" y="155" text-anchor="middle" font-size="9" fill="#276749" font-weight="bold">O₂ ↑</text><line x1="245" y1="148" x2="228" y2="140" stroke="#276749" stroke-width="1.5"/><line x1="175" y1="158" x2="175" y2="210" stroke="#795548" stroke-width="3"/><line x1="175" y1="210" x2="150" y2="235" stroke="#795548" stroke-width="2"/><line x1="175" y1="210" x2="200" y2="230" stroke="#795548" stroke-width="2"/><text x="218" y="225" font-size="9" fill="#795548" font-weight="bold">Racines (H₂O)</text><rect x="85" y="258" width="180" height="28" fill="white" stroke="#276749" stroke-width="1.5" rx="4"/><text x="175" y="277" text-anchor="middle" font-size="10" fill="#276749" font-weight="bold">→ Glucose + O₂</text><rect x="35" y="300" width="280" height="22" fill="white" stroke="#276749" stroke-width="1" rx="3"/><text x="175" y="315" text-anchor="middle" font-size="9" fill="#276749">CO₂ + H₂O + lumière → glucose + O₂</text><rect x="360" y="5" width="330" height="330" fill="#FFF3E0" stroke="#C05621" stroke-width="2" rx="10"/><text x="525" y="30" text-anchor="middle" font-size="13" font-weight="bold" fill="#C05621">🐾 HÉTÉROTROPHE</text><ellipse cx="525" cy="120" rx="55" ry="32" fill="#FFCC80" stroke="#C05621" stroke-width="2"/><text x="525" y="118" text-anchor="middle" font-size="9" fill="#C05621" font-weight="bold">RESPIRATION</text><text x="525" y="131" text-anchor="middle" font-size="9" fill="#C05621" font-weight="bold">CELLULAIRE</text><rect x="385" y="65" width="65" height="25" fill="white" stroke="#C05621" stroke-width="1.5" rx="4"/><text x="417" y="82" text-anchor="middle" font-size="9" fill="#C05621" font-weight="bold">Aliments</text><line x1="450" y1="82" x2="478" y2="105" stroke="#C05621" stroke-width="1.5"/><rect x="610" y="68" width="45" height="22" fill="white" stroke="#2B6CB0" stroke-width="1" rx="4"/><text x="632" y="83" text-anchor="middle" font-size="9" fill="#2B6CB0" font-weight="bold">O₂</text><line x1="610" y1="82" x2="580" y2="105" stroke="#2B6CB0" stroke-width="1.5"/><rect x="610" y="132" width="50" height="22" fill="#FFF3E0" stroke="#C05621" stroke-width="1.5" rx="4"/><text x="635" y="147" text-anchor="middle" font-size="9" fill="#C05621" font-weight="bold">CO₂ ↑</text><line x1="610" y1="140" x2="582" y2="135" stroke="#C05621" stroke-width="1.5"/><rect x="445" y="172" width="160" height="32" fill="white" stroke="#C53030" stroke-width="1.5" rx="4"/><text x="525" y="186" text-anchor="middle" font-size="10" fill="#C53030" font-weight="bold">⚡ ÉNERGIE</text><text x="525" y="198" text-anchor="middle" font-size="8" fill="#718096">(mouvement, chaleur)</text><line x1="525" y1="152" x2="525" y2="172" stroke="#C53030" stroke-width="1.5"/><rect x="385" y="300" width="280" height="22" fill="white" stroke="#C05621" stroke-width="1" rx="3"/><text x="525" y="315" text-anchor="middle" font-size="9" fill="#C05621">Nutriments + O₂ → CO₂ + H₂O + énergie</text></svg>`;
-
-diagrams.repro = `<svg viewBox="0 0 700 290" font-family="'DM Sans',Arial,sans-serif"><rect x="10" y="5" width="330" height="280" fill="#E8F5E9" stroke="#276749" stroke-width="2" rx="10"/><text x="175" y="28" text-anchor="middle" font-size="13" font-weight="bold" fill="#276749">Reproduction SEXUÉE</text><circle cx="100" cy="80" r="22" fill="#EBF4FF" stroke="#2B6CB0" stroke-width="2"/><text x="100" y="78" text-anchor="middle" font-size="8" fill="#2B6CB0" font-weight="bold">Gamète</text><text x="100" y="88" text-anchor="middle" font-size="8" fill="#2B6CB0" font-weight="bold">mâle ♂</text><circle cx="250" cy="80" r="26" fill="#FCE4EC" stroke="#C2185B" stroke-width="2"/><text x="250" y="78" text-anchor="middle" font-size="8" fill="#C2185B" font-weight="bold">Gamète</text><text x="250" y="88" text-anchor="middle" font-size="8" fill="#C2185B" font-weight="bold">femelle ♀</text><line x1="118" y1="90" x2="152" y2="145" stroke="#276749" stroke-width="2"/><line x1="232" y1="95" x2="198" y2="145" stroke="#276749" stroke-width="2"/><rect x="128" y="145" width="95" height="26" fill="white" stroke="#276749" stroke-width="2" rx="13"/><text x="175" y="163" text-anchor="middle" font-size="10" fill="#276749" font-weight="bold">FÉCONDATION</text><line x1="175" y1="171" x2="175" y2="195" stroke="#276749" stroke-width="2"/><polygon points="175,200 170,193 180,193" fill="#276749"/><circle cx="175" cy="218" r="18" fill="#C8E6C9" stroke="#276749" stroke-width="2"/><text x="175" y="215" text-anchor="middle" font-size="7" fill="#276749" font-weight="bold">Cellule-</text><text x="175" y="225" text-anchor="middle" font-size="7" fill="#276749" font-weight="bold">œuf</text><text x="175" y="255" text-anchor="middle" font-size="10" fill="#276749" font-weight="bold">→ Individus DIFFÉRENTS</text><text x="175" y="270" text-anchor="middle" font-size="9" fill="#718096">Diversité génétique = adaptation</text><rect x="360" y="5" width="330" height="280" fill="#FFF3E0" stroke="#C05621" stroke-width="2" rx="10"/><text x="525" y="28" text-anchor="middle" font-size="13" font-weight="bold" fill="#C05621">Reproduction ASEXUÉE</text><circle cx="525" cy="80" r="28" fill="#FFE0B2" stroke="#C05621" stroke-width="2"/><text x="525" y="77" text-anchor="middle" font-size="9" fill="#C05621" font-weight="bold">Parent</text><text x="525" y="90" text-anchor="middle" font-size="9" fill="#C05621" font-weight="bold">unique</text><line x1="510" y1="108" x2="460" y2="155" stroke="#C05621" stroke-width="2"/><line x1="525" y1="108" x2="525" y2="155" stroke="#C05621" stroke-width="2"/><line x1="540" y1="108" x2="590" y2="155" stroke="#C05621" stroke-width="2"/><circle cx="460" cy="172" r="16" fill="#FFE0B2" stroke="#C05621" stroke-width="1.5"/><text x="460" y="176" text-anchor="middle" font-size="8" fill="#C05621">Clone</text><circle cx="525" cy="172" r="16" fill="#FFE0B2" stroke="#C05621" stroke-width="1.5"/><text x="525" y="176" text-anchor="middle" font-size="8" fill="#C05621">Clone</text><circle cx="590" cy="172" r="16" fill="#FFE0B2" stroke="#C05621" stroke-width="1.5"/><text x="590" y="176" text-anchor="middle" font-size="8" fill="#C05621">Clone</text><text x="525" y="215" text-anchor="middle" font-size="10" fill="#C05621" font-weight="bold">→ Individus IDENTIQUES</text><text x="525" y="230" text-anchor="middle" font-size="9" fill="#718096">Pas de diversité</text><text x="525" y="258" text-anchor="middle" font-size="9" fill="#333">Ex : bouturage, stolons, scissiparité</text></svg>`;
-
-diagrams.nerveux = `<svg viewBox="0 0 700 290" font-family="'DM Sans',Arial,sans-serif"><rect x="10" y="5" width="680" height="115" fill="#E8EAF6" stroke="#5C6BC0" stroke-width="1.5" rx="8"/><rect x="25" y="20" width="82" height="62" fill="white" stroke="#C05621" stroke-width="2" rx="8"/><text x="66" y="38" text-anchor="middle" font-size="8" fill="#C05621" font-weight="bold">STIMULUS</text><text x="66" y="56" text-anchor="middle" font-size="16">🔥</text><text x="66" y="74" text-anchor="middle" font-size="7" fill="#718096">(chaleur)</text><line x1="107" y1="50" x2="125" y2="50" stroke="#5C6BC0" stroke-width="2"/><polygon points="130,50 123,45 123,55" fill="#5C6BC0"/><rect x="135" y="20" width="82" height="62" fill="white" stroke="#6B46C1" stroke-width="2" rx="8"/><text x="176" y="38" text-anchor="middle" font-size="8" fill="#6B46C1" font-weight="bold">RÉCEPTEUR</text><text x="176" y="56" text-anchor="middle" font-size="16">✋</text><text x="176" y="74" text-anchor="middle" font-size="7" fill="#718096">(peau)</text><line x1="217" y1="50" x2="245" y2="50" stroke="#5C6BC0" stroke-width="2"/><polygon points="250,50 243,45 243,55" fill="#5C6BC0"/><text x="233" y="40" text-anchor="middle" font-size="6" fill="#5C6BC0" font-style="italic">n. sensitif</text><rect x="255" y="15" width="130" height="72" fill="white" stroke="#2B6CB0" stroke-width="2.5" rx="10"/><text x="320" y="33" text-anchor="middle" font-size="8" fill="#2B6CB0" font-weight="bold">CENTRE NERVEUX</text><text x="320" y="53" text-anchor="middle" font-size="16">🧠</text><text x="320" y="72" text-anchor="middle" font-size="7" fill="#718096">(cerveau ou moelle)</text><line x1="385" y1="50" x2="413" y2="50" stroke="#5C6BC0" stroke-width="2"/><polygon points="418,50 411,45 411,55" fill="#5C6BC0"/><text x="400" y="40" text-anchor="middle" font-size="6" fill="#5C6BC0" font-style="italic">n. moteur</text><rect x="423" y="20" width="82" height="62" fill="white" stroke="#276749" stroke-width="2" rx="8"/><text x="464" y="38" text-anchor="middle" font-size="8" fill="#276749" font-weight="bold">EFFECTEUR</text><text x="464" y="56" text-anchor="middle" font-size="16">💪</text><text x="464" y="74" text-anchor="middle" font-size="7" fill="#718096">(muscle)</text><line x1="505" y1="50" x2="525" y2="50" stroke="#5C6BC0" stroke-width="2"/><polygon points="530,50 523,45 523,55" fill="#5C6BC0"/><rect x="535" y="20" width="82" height="62" fill="white" stroke="#C53030" stroke-width="2" rx="8"/><text x="576" y="38" text-anchor="middle" font-size="8" fill="#C53030" font-weight="bold">RÉPONSE</text><text x="576" y="56" text-anchor="middle" font-size="14">🏃</text><text x="576" y="74" text-anchor="middle" font-size="7" fill="#718096">(mouvement)</text><text x="350" y="108" text-anchor="middle" font-size="9" fill="#5C6BC0" font-weight="bold">Trajet du message nerveux</text><rect x="10" y="140" width="330" height="140" fill="#E8F5E9" stroke="#276749" stroke-width="2" rx="8"/><text x="175" y="165" text-anchor="middle" font-size="12" font-weight="bold" fill="#276749">Mouvement VOLONTAIRE</text><text x="175" y="187" text-anchor="middle" font-size="10" fill="#333">Centre = CERVEAU</text><text x="175" y="207" text-anchor="middle" font-size="9" fill="#718096">Conscient, réfléchi, plus lent</text><text x="175" y="260" text-anchor="middle" font-size="9" fill="#276749" font-style="italic">Ex : lever la main en classe</text><rect x="360" y="140" width="330" height="140" fill="#FFF3E0" stroke="#C05621" stroke-width="2" rx="8"/><text x="525" y="165" text-anchor="middle" font-size="12" font-weight="bold" fill="#C05621">Mouvement RÉFLEXE</text><text x="525" y="187" text-anchor="middle" font-size="10" fill="#333">Centre = MOELLE ÉPINIÈRE</text><text x="525" y="207" text-anchor="middle" font-size="9" fill="#718096">Automatique, rapide, involontaire</text><text x="525" y="260" text-anchor="middle" font-size="9" fill="#C05621" font-style="italic">Ex : retirer la main d'un objet brûlant</text></svg>`;
-
-diagrams.repro_humaine = `<svg viewBox="0 0 700 340" font-family="'DM Sans',Arial,sans-serif"><rect x="10" y="5" width="680" height="115" fill="#FCE4EC" stroke="#C2185B" stroke-width="1.5" rx="8"/><text x="350" y="28" text-anchor="middle" font-size="12" font-weight="bold" fill="#C2185B">Cycle menstruel (≈ 28 jours)</text><rect x="50" y="50" width="600" height="8" fill="#F8BBD0" rx="4"/><rect x="50" y="50" width="107" height="8" fill="#E53935" rx="4"/><text x="103" y="78" text-anchor="middle" font-size="9" fill="#E53935" font-weight="bold">Règles (J1-J5)</text><circle cx="350" cy="54" r="12" fill="#FFD600" stroke="#F9A825" stroke-width="2"/><text x="350" y="58" text-anchor="middle" font-size="8" fill="#E65100" font-weight="bold">J14</text><text x="350" y="90" text-anchor="middle" font-size="10" fill="#F9A825" font-weight="bold">OVULATION</text><rect x="278" y="44" width="145" height="3" fill="#66BB6A" rx="2"/><text x="350" y="108" text-anchor="middle" font-size="8" fill="#276749">Période de fertilité (≈ J10-J15)</text><text x="540" y="78" text-anchor="middle" font-size="9" fill="#C2185B" font-weight="bold">Muqueuse s'épaissit</text><text x="50" y="44" font-size="8" fill="#718096">J1</text><text x="640" y="44" font-size="8" fill="#718096">J28</text><rect x="10" y="130" width="680" height="200" fill="#EBF4FF" stroke="#2B6CB0" stroke-width="1.5" rx="8"/><text x="350" y="153" text-anchor="middle" font-size="12" font-weight="bold" fill="#2B6CB0">De la fécondation à la nidation</text><circle cx="95" cy="215" r="15" fill="#EBF4FF" stroke="#2B6CB0" stroke-width="1.5"/><text x="95" y="213" text-anchor="middle" font-size="6" fill="#2B6CB0" font-weight="bold">Spermato-</text><text x="95" y="221" text-anchor="middle" font-size="6" fill="#2B6CB0" font-weight="bold">zoïde ♂</text><text x="148" y="220" text-anchor="middle" font-size="20" fill="#2B6CB0">+</text><circle cx="205" cy="215" r="18" fill="#FCE4EC" stroke="#C2185B" stroke-width="1.5"/><text x="205" y="219" text-anchor="middle" font-size="8" fill="#C2185B" font-weight="bold">Ovule ♀</text><line x1="228" y1="215" x2="260" y2="215" stroke="#276749" stroke-width="2"/><polygon points="265,215 258,210 258,220" fill="#276749"/><text x="248" y="205" text-anchor="middle" font-size="7" fill="#276749" font-style="italic">fécondation</text><circle cx="298" cy="215" r="16" fill="#C8E6C9" stroke="#276749" stroke-width="2"/><text x="298" y="213" text-anchor="middle" font-size="6" fill="#276749" font-weight="bold">Cellule-</text><text x="298" y="221" text-anchor="middle" font-size="6" fill="#276749" font-weight="bold">œuf</text><line x1="314" y1="215" x2="348" y2="215" stroke="#276749" stroke-width="2"/><polygon points="353,215 346,210 346,220" fill="#276749"/><text x="333" y="205" text-anchor="middle" font-size="7" fill="#276749" font-style="italic">divisions</text><circle cx="388" cy="215" r="18" fill="#A5D6A7" stroke="#276749" stroke-width="2"/><circle cx="381" cy="210" r="5" fill="#81C784"/><circle cx="395" cy="212" r="5" fill="#81C784"/><circle cx="383" cy="222" r="5" fill="#81C784"/><text x="388" y="245" text-anchor="middle" font-size="8" fill="#276749" font-weight="bold">Embryon</text><line x1="406" y1="215" x2="440" y2="215" stroke="#276749" stroke-width="2"/><polygon points="445,215 438,210 438,220" fill="#276749"/><text x="425" y="205" text-anchor="middle" font-size="7" fill="#276749" font-style="italic">nidation</text><ellipse cx="530" cy="215" rx="65" ry="38" fill="#FFCDD2" stroke="#C2185B" stroke-width="2"/><text x="530" y="212" text-anchor="middle" font-size="9" fill="#C2185B" font-weight="bold">Utérus</text><text x="530" y="225" text-anchor="middle" font-size="7" fill="#C2185B">(muqueuse utérine)</text><text x="350" y="278" text-anchor="middle" font-size="10" fill="#2B6CB0" font-weight="bold">→ Développement pendant 9 mois (via le placenta)</text><rect x="100" y="298" width="500" height="24" fill="white" stroke="#2B6CB0" stroke-width="1" rx="5"/><text x="350" y="315" text-anchor="middle" font-size="9" fill="#333">🔑 Le préservatif protège des grossesses ET des IST</text></svg>`;
-
-diagrams.immunite = `<svg viewBox="0 0 700 380" font-family="'DM Sans',Arial,sans-serif"><rect x="10" y="5" width="680" height="62" fill="#E8F5E9" stroke="#276749" stroke-width="2" rx="8"/><text x="350" y="28" text-anchor="middle" font-size="12" font-weight="bold" fill="#276749">🛡️ BARRIÈRE 1 : Défenses naturelles</text><text x="130" y="52" text-anchor="middle" font-size="9" fill="#333">Peau</text><text x="270" y="52" text-anchor="middle" font-size="9" fill="#333">Muqueuses</text><text x="420" y="52" text-anchor="middle" font-size="9" fill="#333">Larmes, salive</text><text x="570" y="52" text-anchor="middle" font-size="9" fill="#333">Acidité estomac</text><text x="350" y="85" text-anchor="middle" font-size="10" fill="#C53030" font-weight="bold">⚠️ Si brèche → contamination</text><line x1="350" y1="92" x2="350" y2="105" stroke="#C53030" stroke-width="2"/><polygon points="350,110 345,103 355,103" fill="#C53030"/><rect x="10" y="115" width="680" height="88" fill="#FFF3E0" stroke="#C05621" stroke-width="2" rx="8"/><text x="350" y="138" text-anchor="middle" font-size="12" font-weight="bold" fill="#C05621">⚔️ BARRIÈRE 2 : Immunité INNÉE (rapide, non spécifique)</text><circle cx="200" cy="175" r="22" fill="#FFCC80" stroke="#C05621" stroke-width="2"/><text x="200" y="173" text-anchor="middle" font-size="7" fill="#C05621" font-weight="bold">Phago-</text><text x="200" y="182" text-anchor="middle" font-size="7" fill="#C05621" font-weight="bold">cyte</text><circle cx="175" cy="170" r="7" fill="#EF5350" stroke="#C53030" stroke-width="1"/><text x="175" y="173" text-anchor="middle" font-size="5" fill="white">🦠</text><text x="400" y="170" text-anchor="middle" font-size="10" fill="#333">Le phagocyte « mange » les microbes</text><text x="400" y="187" text-anchor="middle" font-size="10" fill="#333">= PHAGOCYTOSE</text><text x="350" y="214" text-anchor="middle" font-size="9" fill="#C53030" font-weight="bold">Si insuffisant ↓</text><line x1="350" y1="220" x2="350" y2="233" stroke="#C53030" stroke-width="2"/><polygon points="350,238 345,231 355,231" fill="#C53030"/><rect x="10" y="242" width="680" height="130" fill="#E8EAF6" stroke="#5C6BC0" stroke-width="2" rx="8"/><text x="350" y="265" text-anchor="middle" font-size="12" font-weight="bold" fill="#5C6BC0">🎯 BARRIÈRE 3 : Immunité ADAPTATIVE (lente, spécifique)</text><rect x="30" y="278" width="185" height="60" fill="white" stroke="#2B6CB0" stroke-width="1.5" rx="6"/><text x="122" y="296" text-anchor="middle" font-size="10" font-weight="bold" fill="#2B6CB0">Lymphocytes B</text><text x="122" y="312" text-anchor="middle" font-size="9" fill="#333">→ Produisent des ANTICORPS</text><text x="122" y="328" text-anchor="middle" font-size="8" fill="#718096">qui neutralisent le microbe</text><rect x="250" y="278" width="185" height="60" fill="white" stroke="#6B46C1" stroke-width="1.5" rx="6"/><text x="342" y="296" text-anchor="middle" font-size="10" font-weight="bold" fill="#6B46C1">Lymphocytes T</text><text x="342" y="312" text-anchor="middle" font-size="9" fill="#333">→ DÉTRUISENT les cellules</text><text x="342" y="328" text-anchor="middle" font-size="8" fill="#718096">infectées directement</text><rect x="470" y="278" width="205" height="60" fill="#E8F5E9" stroke="#276749" stroke-width="2" rx="6"/><text x="572" y="296" text-anchor="middle" font-size="10" font-weight="bold" fill="#276749">💉 VACCINATION</text><text x="572" y="312" text-anchor="middle" font-size="9" fill="#333">→ Lymphocytes MÉMOIRE</text><text x="572" y="328" text-anchor="middle" font-size="8" fill="#276749">Réponse + rapide ensuite</text></svg>`;
-
-// ============================================================
-// APP STATE
-// ============================================================
-const state = {
-  completedExercises: new Set(),
-  totalExercises: 0,
-  filter: 'all'
-};
-
-// Count total exercises
-chaptersData.forEach(ch => { state.totalExercises += ch.exercises.length; });
-
-// ============================================================
-// RENDER
-// ============================================================
-const themeLabels = {
-  1: { label: "Thème 1 — La planète Terre, l'environnement et l'action humaine", icon: "🌍", class: "theme-1" },
-  2: { label: "Thème 2 — Le vivant et son évolution", icon: "🌿", class: "theme-2" },
-  3: { label: "Thème 3 — Corps humain et santé", icon: "🫀", class: "theme-3" }
-};
-
-function renderApp() {
-  const main = document.getElementById('mainContent');
-  let html = '';
-  let lastTheme = 0;
-
-  chaptersData.forEach((ch, ci) => {
-    if (ch.theme !== lastTheme) {
-      const t = themeLabels[ch.theme];
-      html += `<div class="theme-title"><div class="theme-icon ${t.class}-bg">${t.icon}</div><div><h2>${t.label}</h2></div></div>`;
-      lastTheme = ch.theme;
-    }
-
-    const themeClass = `theme-${ch.theme}`;
-    html += `<div class="chapter-card ${themeClass}" data-theme="${ch.theme}" data-chapter="${ch.id}" style="animation-delay:${ci * 0.05}s">
-      <div class="chapter-header" onclick="toggleChapter(this)">
-        <div class="chapter-num">${ch.id}</div>
-        <div class="chapter-header-text">
-          <h2>${ch.title}</h2>
-          <p>${ch.fiche.sections.length} sections · ${ch.exercises.length} exercices</p>
-        </div>
-        <span class="chapter-score" id="score-${ch.id}"></span>
+function renderApp(){
+  const m=document.getElementById('mainContent');
+  let h='',lt=0;
+  D.forEach((c,ci)=>{
+    if(c.theme!==lt){const t=TL[c.theme];h+=`<div class="theme-title" data-th="${c.theme}"><div class="ti ${c.theme===1?'t1bg':c.theme===2?'t2bg':'t3bg'}">${t.i}</div><div><h2>${t.l}</h2></div></div>`;lt=c.theme;}
+    h+=`<div class="chapter-card theme-${c.theme}" data-theme="${c.theme}" data-chapter="${c.id}" style="animation-delay:${ci*.05}s">
+      <div class="chapter-header" onclick="toggleCh(this)">
+        <div class="chapter-num">${c.id}</div>
+        <div class="chapter-header-text"><h2>${c.title}</h2><p>${c.fiche.sections.length} sections · ${c.fiche.definitions.length} définitions · ${c.exercises.length} exercices</p></div>
+        <span class="chapter-score" id="sc-${c.id}"></span>
         <div class="chapter-toggle">▼</div>
       </div>
       <div class="chapter-body">
         <div class="chapter-tabs">
-          <button class="active" onclick="switchTab(this, 'fiche-${ch.id}')">📖 Fiche</button>
-          <button onclick="switchTab(this, 'schema-${ch.id}')">📊 Schéma</button>
-          <button onclick="switchTab(this, 'exos-${ch.id}')">✏️ Exercices</button>
+          <button class="active" onclick="swTab(this,'f-${c.id}')">📖 Fiche</button>
+          <button onclick="swTab(this,'d-${c.id}')">📊 Schéma</button>
+          <button onclick="swTab(this,'e-${c.id}')">✏️ Exercices</button>
         </div>
-        <div class="tab-content active" id="fiche-${ch.id}">
-          ${renderFiche(ch.fiche)}
-        </div>
-        <div class="tab-content" id="schema-${ch.id}">
-          <div class="diagram-container">${diagrams[ch.fiche.diagram]}</div>
-        </div>
-        <div class="tab-content" id="exos-${ch.id}">
-          ${ch.exercises.map((ex, ei) => renderExercise(ex, ch.id, ei)).join('')}
-        </div>
-      </div>
-    </div>`;
+        <div class="tab-content active" id="f-${c.id}">${renderFiche(c.fiche)}</div>
+        <div class="tab-content" id="d-${c.id}"><div class="diagram-container">${DG[c.fiche.diagram]}</div></div>
+        <div class="tab-content" id="e-${c.id}">${c.exercises.map((ex,ei)=>renderEx(ex,c.id,ei)).join('')}</div>
+      </div></div>`;
   });
-
-  main.innerHTML = html;
+  m.innerHTML=h;
 }
 
-function renderFiche(fiche) {
-  let html = '';
-  fiche.sections.forEach(s => {
-    html += `<h3><span class="icon">${s.icon}</span> ${s.title}</h3><p>${s.text}</p>`;
+function renderFiche(f){
+  let h='';
+  f.sections.forEach(s=>{
+    h+=`<div class="fiche-section fiche"><h3><span class="icon">${s.icon}</span> ${s.title}</h3>`;
+    s.paragraphs.forEach(p=>{h+=`<p>${p}</p>`;});
+    h+=`</div>`;
   });
-  html += `<table class="def-table"><tr><th>Terme</th><th>Définition</th></tr>`;
-  fiche.definitions.forEach(([t, d]) => { html += `<tr><td>${t}</td><td>${d}</td></tr>`; });
-  html += `</table>`;
-  html += `<div class="key-point"><strong>💡 À retenir :</strong> ${fiche.keyPoint}</div>`;
-  return html;
+  h+=`<table class="def-table"><tr><th>Terme</th><th>Définition</th></tr>`;
+  f.definitions.forEach(([t,d])=>{h+=`<tr><td>${t}</td><td>${d}</td></tr>`;});
+  h+=`</table><div class="key-point"><strong>💡 À retenir :</strong> ${f.keyPoint}</div>`;
+  return h;
 }
 
-function renderExercise(ex, chId, exIdx) {
-  const eid = `ex-${chId}-${exIdx}`;
-  let html = `<div class="exercise-block" id="${eid}"><h4>✏️ ${ex.title}</h4>`;
+function renderEx(ex,cid,eidx){
+  const eid=`x-${cid}-${eidx}`;
+  let h=`<div class="exercise-block" id="${eid}"><h4>✏️ ${ex.title}</h4>`;
+  if(ex.intro)h+=`<p style="font-size:.9rem;margin-bottom:14px">${ex.intro}</p>`;
 
-  if (ex.intro) html += `<p style="font-size:0.88rem;margin-bottom:12px">${ex.intro}</p>`;
-
-  if (ex.type === 'qcm') {
-    ex.questions.forEach((q, qi) => {
-      html += `<div class="question-group"><div class="question-label">${qi + 1}. ${q.q}</div><div class="qcm-options" id="${eid}-q${qi}">`;
-      q.options.forEach((opt, oi) => {
-        html += `<div class="qcm-option" onclick="selectQCM('${eid}-q${qi}', ${oi}, ${q.correct}, '${chId}', '${exIdx}')" data-idx="${oi}"><span class="dot"></span><span>${opt}</span></div>`;
+  if(ex.type==='qcm'){
+    ex.questions.forEach((q,qi)=>{
+      h+=`<div class="question-group"><div class="question-label">${qi+1}. ${q.q}</div><div class="qcm-options" id="${eid}-${qi}">`;
+      q.options.forEach((o,oi)=>{
+        h+=`<div class="qcm-option" onclick="doQCM('${eid}-${qi}',${oi},${q.correct},'${cid}','${eidx}')" data-i="${oi}"><span class="dot"></span><span>${o}</span></div>`;
       });
-      html += `</div><div class="feedback" id="${eid}-q${qi}-fb"></div></div>`;
+      h+=`</div><div class="feedback" id="${eid}-${qi}-fb"></div></div>`;
     });
   }
-
-  if (ex.type === 'tf') {
-    ex.questions.forEach((q, qi) => {
-      html += `<div class="question-group"><div class="question-label">${qi + 1}. ${q.q}</div><div class="tf-buttons" id="${eid}-q${qi}">
-        <button class="tf-btn" onclick="selectTF('${eid}-q${qi}', true, ${q.answer}, '${q.explanation.replace(/'/g, "\\'")}', '${chId}', '${exIdx}')">Vrai</button>
-        <button class="tf-btn" onclick="selectTF('${eid}-q${qi}', false, ${q.answer}, '${q.explanation.replace(/'/g, "\\'")}', '${chId}', '${exIdx}')">Faux</button>
-      </div><div class="feedback" id="${eid}-q${qi}-fb"></div></div>`;
+  if(ex.type==='tf'){
+    ex.questions.forEach((q,qi)=>{
+      h+=`<div class="question-group"><div class="question-label">${qi+1}. ${q.q}</div><div class="tf-buttons" id="${eid}-${qi}">
+        <button class="tf-btn" onclick="doTF('${eid}-${qi}',true,${q.answer},\`${q.explanation.replace(/`/g,"'")}\`,'${cid}','${eidx}')">Vrai</button>
+        <button class="tf-btn" onclick="doTF('${eid}-${qi}',false,${q.answer},\`${q.explanation.replace(/`/g,"'")}\`,'${cid}','${eidx}')">Faux</button>
+      </div><div class="feedback" id="${eid}-${qi}-fb"></div></div>`;
     });
   }
-
-  if (ex.type === 'fill') {
-    ex.questions.forEach((q, qi) => {
-      const parts = q.text.split('{0}');
-      html += `<div class="question-group"><div class="question-label">${qi + 1}. ${parts[0]}<input type="text" class="fill-blank-input" id="${eid}-q${qi}" data-answer="${q.answer}" placeholder="..." autocomplete="off">${parts[1] || ''}</div></div>`;
+  if(ex.type==='fill'){
+    ex.questions.forEach((q,qi)=>{
+      const p=q.text.split('{0}');
+      h+=`<div class="question-group"><div class="question-label">${qi+1}. ${p[0]}<input type="text" class="fill-blank-input" id="${eid}-${qi}" data-answer="${q.answer}" placeholder="..." autocomplete="off">${p[1]||''}</div></div>`;
     });
-    html += `<button class="btn-check" onclick="checkFill('${eid}', ${ex.questions.length}, '${chId}', '${exIdx}')">Vérifier mes réponses</button>`;
-    html += `<div class="feedback" id="${eid}-fb"></div>`;
+    h+=`<button class="btn-check" onclick="doFill('${eid}',${ex.questions.length},'${cid}','${eidx}')">Vérifier mes réponses</button><div class="feedback" id="${eid}-fb"></div>`;
   }
-
-  html += `</div>`;
-  return html;
+  h+=`</div>`;return h;
 }
 
-// ============================================================
-// INTERACTIONS
-// ============================================================
-function toggleChapter(el) {
-  el.closest('.chapter-card').classList.toggle('open');
+// ===================== INTERACTIONS =====================
+function toggleCh(el){el.closest('.chapter-card').classList.toggle('open')}
+function swTab(btn,tid){
+  const b=btn.closest('.chapter-body');
+  b.querySelectorAll('.chapter-tabs button').forEach(b=>b.classList.remove('active'));
+  b.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');document.getElementById(tid).classList.add('active');
 }
-
-function switchTab(btn, tabId) {
-  const tabs = btn.closest('.chapter-body');
-  tabs.querySelectorAll('.chapter-tabs button').forEach(b => b.classList.remove('active'));
-  tabs.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById(tabId).classList.add('active');
-}
-
-function selectQCM(qid, selected, correct, chId, exIdx) {
-  const container = document.getElementById(qid);
-  if (container.dataset.answered) return;
-  container.dataset.answered = 'true';
-
-  container.querySelectorAll('.qcm-option').forEach((opt, i) => {
-    if (i === correct) { opt.classList.add('correct'); opt.querySelector('.dot').textContent = '✓'; }
-    else if (i === selected && selected !== correct) { opt.classList.add('incorrect'); opt.querySelector('.dot').textContent = '✗'; }
+function doQCM(qid,sel,cor,cid,eidx){
+  const c=document.getElementById(qid);if(c.dataset.done)return;c.dataset.done='1';
+  c.querySelectorAll('.qcm-option').forEach((o,i)=>{
+    if(i===cor){o.classList.add('correct');o.querySelector('.dot').textContent='✓';}
+    else if(i===sel&&sel!==cor){o.classList.add('incorrect');o.querySelector('.dot').textContent='✗';}
   });
-
-  const fb = document.getElementById(qid + '-fb');
-  if (selected === correct) {
-    fb.className = 'feedback show success';
-    fb.textContent = '✅ Bonne réponse !';
-  } else {
-    fb.className = 'feedback show error';
-    fb.textContent = '❌ Mauvaise réponse. La bonne réponse est surlignée en vert.';
+  const fb=document.getElementById(qid+'-fb');
+  fb.className=`feedback show ${sel===cor?'success':'error'}`;
+  fb.textContent=sel===cor?'✅ Bonne réponse !':'❌ Mauvaise réponse. La bonne réponse est surlignée en vert.';
+  markP(cid,eidx);
+}
+function doTF(qid,sel,cor,expl,cid,eidx){
+  const c=document.getElementById(qid);if(c.dataset.done)return;c.dataset.done='1';
+  c.querySelectorAll('.tf-btn').forEach(b=>{b.disabled=true;const v=b.textContent==='Vrai';if(v===cor)b.classList.add('correct');else if(v===sel&&sel!==cor)b.classList.add('incorrect');});
+  const fb=document.getElementById(qid+'-fb');
+  fb.className=`feedback show ${sel===cor?'success':'error'}`;
+  fb.textContent=(sel===cor?'✅ ':'❌ ')+expl;
+  markP(cid,eidx);
+}
+function doFill(eid,cnt,cid,eidx){
+  let ok=true;
+  for(let i=0;i<cnt;i++){
+    const inp=document.getElementById(`${eid}-${i}`);
+    const a=inp.dataset.answer.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim();
+    const v=inp.value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim();
+    if(v===a){inp.classList.remove('incorrect');inp.classList.add('correct');}
+    else{inp.classList.remove('correct');inp.classList.add('incorrect');ok=false;inp.value=inp.dataset.answer;}
+    inp.readOnly=true;
   }
-  markExerciseProgress(chId, exIdx);
+  const fb=document.getElementById(`${eid}-fb`);
+  fb.className=`feedback show ${ok?'success':'info'}`;
+  fb.textContent=ok?'✅ Tout est correct, bravo !':'📝 Les bonnes réponses ont été complétées. Relis-les bien !';
+  markP(cid,eidx);
 }
-
-function selectTF(qid, selected, correct, explanation, chId, exIdx) {
-  const container = document.getElementById(qid);
-  if (container.dataset.answered) return;
-  container.dataset.answered = 'true';
-
-  container.querySelectorAll('.tf-btn').forEach(btn => {
-    btn.disabled = true;
-    const isTrue = btn.textContent === 'Vrai';
-    if (isTrue === correct) btn.classList.add('correct');
-    else if (isTrue === selected && selected !== correct) btn.classList.add('incorrect');
-  });
-
-  const fb = document.getElementById(qid + '-fb');
-  fb.className = `feedback show ${selected === correct ? 'success' : 'error'}`;
-  fb.textContent = (selected === correct ? '✅ ' : '❌ ') + explanation;
-  markExerciseProgress(chId, exIdx);
+function markP(cid,eidx){
+  const k=`${cid}-${eidx}`;
+  if(!st.done.has(k)){st.done.add(k);updP();}
 }
-
-function checkFill(eid, count, chId, exIdx) {
-  let allCorrect = true;
-  for (let i = 0; i < count; i++) {
-    const input = document.getElementById(`${eid}-q${i}`);
-    const answer = input.dataset.answer.toLowerCase().trim();
-    const value = input.value.toLowerCase().trim();
-    if (value === answer) {
-      input.classList.remove('incorrect');
-      input.classList.add('correct');
-    } else {
-      input.classList.remove('correct');
-      input.classList.add('incorrect');
-      allCorrect = false;
-      input.value = input.dataset.answer;
-    }
-    input.readOnly = true;
-  }
-  const fb = document.getElementById(`${eid}-fb`);
-  fb.className = `feedback show ${allCorrect ? 'success' : 'info'}`;
-  fb.textContent = allCorrect ? '✅ Tout est correct !' : '📝 Les bonnes réponses ont été remplies. Relis-les attentivement.';
-  markExerciseProgress(chId, exIdx);
-}
-
-function markExerciseProgress(chId, exIdx) {
-  const key = `${chId}-${exIdx}`;
-  if (!state.completedExercises.has(key)) {
-    state.completedExercises.add(key);
-    updateProgress();
-  }
-}
-
-function updateProgress() {
-  const done = state.completedExercises.size;
-  const total = state.totalExercises;
-  const pct = Math.round((done / total) * 100);
-  document.getElementById('globalProgress').style.width = pct + '%';
-  document.getElementById('progressText').textContent = `${done} / ${total} exercices complétés`;
-
-  // Per-chapter scores
-  chaptersData.forEach(ch => {
-    let chDone = 0;
-    ch.exercises.forEach((_, ei) => { if (state.completedExercises.has(`${ch.id}-${ei}`)) chDone++; });
-    const scoreEl = document.getElementById(`score-${ch.id}`);
-    if (chDone > 0) {
-      scoreEl.style.display = 'block';
-      scoreEl.textContent = `${chDone}/${ch.exercises.length}`;
-    }
+function updP(){
+  const d=st.done.size,t=st.total,pct=Math.round(d/t*100);
+  document.getElementById('globalProgress').style.width=pct+'%';
+  document.getElementById('progressText').textContent=`${d} / ${t} exercices complétés`;
+  D.forEach(c=>{
+    let cd=0;c.exercises.forEach((_,ei)=>{if(st.done.has(`${c.id}-${ei}`))cd++;});
+    const s=document.getElementById(`sc-${c.id}`);
+    if(cd>0){s.style.display='block';s.textContent=`${cd}/${c.exercises.length}`;}
   });
 }
 
-// ============================================================
-// FILTER
-// ============================================================
-document.getElementById('themeNav').addEventListener('click', (e) => {
-  if (e.target.tagName !== 'BUTTON') return;
-  document.querySelectorAll('.theme-nav button').forEach(b => b.classList.remove('active'));
+// ===================== FILTER =====================
+document.getElementById('themeNav').addEventListener('click',e=>{
+  if(e.target.tagName!=='BUTTON')return;
+  document.querySelectorAll('.theme-nav button').forEach(b=>b.classList.remove('active'));
   e.target.classList.add('active');
-  const filter = e.target.dataset.filter;
-
-  document.querySelectorAll('.chapter-card').forEach(card => {
-    if (filter === 'all' || card.dataset.theme == filter.split('-')[1]) {
-      card.style.display = '';
-    } else {
-      card.style.display = 'none';
-    }
-  });
-  document.querySelectorAll('.theme-title').forEach(tt => {
-    if (filter === 'all') { tt.style.display = ''; return; }
-    const themeNum = filter.split('-')[1];
-    const nextCard = tt.nextElementSibling;
-    tt.style.display = (nextCard && nextCard.dataset && nextCard.dataset.theme == themeNum) ? '' : 'none';
+  const f=e.target.dataset.filter;
+  document.querySelectorAll('.chapter-card').forEach(c=>{c.style.display=(f==='all'||c.dataset.theme==f.split('-')[1])?'':'none';});
+  document.querySelectorAll('.theme-title').forEach(t=>{
+    if(f==='all'){t.style.display='';return;}
+    t.style.display=t.dataset.th==f.split('-')[1]?'':'none';
   });
 });
 
-// ============================================================
-// INIT
-// ============================================================
 renderApp();
 </script>
 </body>
