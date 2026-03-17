@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Histoire 4ème — Fiches de révision</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;600;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --t1: #c0392b; --t1-light: #fdecea; --t1-mid: #e74c3c;
+  --t2: #2471a3; --t2-light: #eaf2f8; --t2-mid: #3498db;
+  --t3: #1e8449; --t3-light: #e8f6ef; --t3-mid: #27ae60;
+  --t4: #7d3c98; --t4-light: #f3eaf8; --t4-mid: #9b59b6;
+  --bg: #faf8f5; --card: #ffffff; --txt: #2c2c2c; --txt2: #555;
+  --radius: 12px; --shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+
+body {
+  font-family: 'Source Sans 3', system-ui, sans-serif;
+  background: var(--bg); color: var(--txt);
+  line-height: 1.65; min-height: 100vh;
+}
+
+/* ── HEADER ── */
+.header {
+  background: linear-gradient(135deg, #2c3e50 0%, #4a0e0e 50%, #1a1a2e 100%);
+  color: #fff; text-align: center; padding: 2.5rem 1.5rem 2rem;
+}
+.header h1 {
+  font-family: 'Playfair Display', serif; font-size: 2.2rem;
+  font-weight: 800; letter-spacing: -0.5px; margin-bottom: 0.3rem;
+}
+.header p { opacity: 0.85; font-size: 1.05rem; }
+
+/* ── PROGRESS ── */
+.progress-wrap { padding: 1rem 1.5rem; background: var(--card); border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+.progress-track { height: 10px; background: #e8e8e8; border-radius: 5px; overflow: hidden; }
+.progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--t1), var(--t2), var(--t3), var(--t4)); border-radius: 5px; transition: width 0.5s; }
+.progress-label { text-align: center; font-size: 0.85rem; color: var(--txt2); margin-top: 0.4rem; font-weight: 600; }
+
+/* ── MAIN ── */
+.main { max-width: 960px; margin: 0 auto; padding: 1.2rem; }
+
+/* ── THEMES ── */
+.theme-block { margin-bottom: 1rem; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); background: var(--card); }
+.theme-header {
+  display: flex; align-items: center; gap: 0.8rem;
+  padding: 1rem 1.2rem; cursor: pointer; user-select: none;
+  transition: background 0.2s;
+}
+.theme-header:hover { filter: brightness(0.97); }
+.theme-icon { font-size: 1.5rem; }
+.theme-title { flex: 1; font-weight: 700; font-size: 1.1rem; font-family: 'Playfair Display', serif; }
+.theme-chevron { font-size: 0.8rem; transition: transform 0.3s; color: #888; }
+.theme-chevron.open { transform: rotate(180deg); }
+.theme-body { display: none; padding: 0.3rem 0.8rem 0.8rem; }
+.theme-body.open { display: block; animation: slideDown 0.3s ease; }
+
+.t1-head { background: var(--t1-light); border-left: 5px solid var(--t1); }
+.t2-head { background: var(--t2-light); border-left: 5px solid var(--t2); }
+.t3-head { background: var(--t3-light); border-left: 5px solid var(--t3); }
+.t4-head { background: var(--t4-light); border-left: 5px solid var(--t4); }
+
+/* ── CHAPTERS ── */
+.chapter { margin: 0.4rem 0; border: 1px solid #e8e8e8; border-radius: 8px; overflow: hidden; }
+.chapter-header {
+  display: flex; align-items: center; gap: 0.6rem;
+  padding: 0.7rem 1rem; cursor: pointer; background: #fafafa;
+}
+.chapter-header:hover { background: #f3f3f3; }
+.chapter-num {
+  width: 28px; height: 28px; border-radius: 50%; display: flex;
+  align-items: center; justify-content: center; font-weight: 700;
+  font-size: 0.8rem; color: #fff; flex-shrink: 0;
+}
+.t1-num { background: var(--t1); } .t2-num { background: var(--t2); }
+.t3-num { background: var(--t3); } .t4-num { background: var(--t4); }
+.chapter-name { flex: 1; font-weight: 600; font-size: 0.95rem; }
+.chapter-chevron { font-size: 0.7rem; color: #aaa; transition: transform 0.3s; }
+.chapter-chevron.open { transform: rotate(180deg); }
+.chapter-body { display: none; padding: 0; }
+.chapter-body.open { display: block; animation: slideDown 0.25s ease; }
+
+/* ── TABS ── */
+.tab-row { display: flex; border-bottom: 2px solid #eee; }
+.tab-btn {
+  flex: 1; padding: 0.65rem; text-align: center; cursor: pointer;
+  font-weight: 600; font-size: 0.9rem; border: none; background: #f8f8f8;
+  transition: all 0.2s; color: #777;
+}
+.tab-btn:hover { background: #f0f0f0; }
+.active-t1 { color: var(--t1)!important; border-bottom: 3px solid var(--t1)!important; background: #fff!important; }
+.active-t2 { color: var(--t2)!important; border-bottom: 3px solid var(--t2)!important; background: #fff!important; }
+.active-t3 { color: var(--t3)!important; border-bottom: 3px solid var(--t3)!important; background: #fff!important; }
+.active-t4 { color: var(--t4)!important; border-bottom: 3px solid var(--t4)!important; background: #fff!important; }
+
+.tab-content { display: none; padding: 1.2rem; }
+.tab-content.active { display: block; animation: fadeIn 0.3s; }
+
+/* ── COURSE CONTENT ── */
+.course h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; margin: 1rem 0 0.5rem; }
+.course h3:first-child { margin-top: 0; }
+.course p { margin-bottom: 0.7rem; text-align: justify; }
+.course strong { color: var(--txt); }
+
+.def {
+  border-left: 4px solid; padding: 0.7rem 1rem; border-radius: 0 8px 8px 0;
+  margin: 0.8rem 0; font-size: 0.93rem;
+}
+.def-t1 { border-color: var(--t1); background: var(--t1-light); }
+.def-t2 { border-color: var(--t2); background: var(--t2-light); }
+.def-t3 { border-color: var(--t3); background: var(--t3-light); }
+.def-t4 { border-color: var(--t4); background: var(--t4-light); }
+
+.dates-box {
+  background: #fff9e6; border: 1px solid #f0d060; border-radius: 8px;
+  padding: 0.8rem 1rem; margin: 0.8rem 0;
+}
+.dates-box strong { color: #b8860b; }
+
+.astuce {
+  background: #e8f8f0; border-radius: 8px; padding: 0.7rem 1rem;
+  margin: 0.8rem 0; font-size: 0.9rem;
+}
+.astuce::before { content: '💡 '; }
+
+/* ── SVG ── */
+.svg-wrap { overflow-x: auto; margin: 1rem 0; }
+.svg-wrap svg { width: 100%; height: auto; display: block; }
+
+/* ── EXERCISES ── */
+.exo-block { margin-bottom: 1.5rem; }
+.exo-block p { font-weight: 600; margin-bottom: 0.5rem; }
+.exo-options label {
+  display: block; padding: 0.5rem 0.8rem; margin: 0.25rem 0;
+  border: 1px solid #ddd; border-radius: 6px; cursor: pointer;
+  transition: all 0.2s; font-size: 0.93rem;
+}
+.exo-options label:hover { background: #f5f5f5; }
+.exo-options input { margin-right: 0.5rem; }
+
+.feedback {
+  margin-top: 0.4rem; padding: 0.5rem 0.8rem; border-radius: 6px;
+  font-size: 0.9rem; display: none;
+}
+.feedback.correct { display: block; background: #e8f8f0; color: #1e8449; border: 1px solid #a3d9b1; }
+.feedback.incorrect { display: block; background: #fdecea; color: #c0392b; border: 1px solid #f5b7b1; }
+
+.fill-row { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin: 0.3rem 0; }
+.fill-input {
+  width: 160px; padding: 0.4rem 0.6rem; border: 2px solid #ddd;
+  border-radius: 6px; font-size: 0.9rem; font-family: inherit;
+}
+.fill-input.correct-border { border-color: #27ae60!important; background: #e8f8f0; }
+.fill-input.incorrect-border { border-color: #e74c3c!important; background: #fdecea; }
+.fill-btn {
+  padding: 0.35rem 0.7rem; border: none; border-radius: 6px;
+  background: #555; color: #fff; cursor: pointer; font-size: 0.85rem;
+}
+.fill-btn:hover { background: #333; }
+
+/* ── ANIMATIONS ── */
+@keyframes slideDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .header h1 { font-size: 1.5rem; }
+  .main { padding: 0.8rem; }
+  .theme-header { padding: 0.8rem 1rem; }
+  .theme-title { font-size: 1rem; }
+  .tab-btn { font-size: 0.82rem; padding: 0.5rem 0.3rem; }
+  .svg-wrap svg { min-width: 500px; }
+  .fill-input { width: 120px; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📜 Histoire 4ème — Fiches de révision</h1>
+  <p>XVIIIe et XIXe siècles : des Lumières à la IIIe République</p>
+</div>
+
+<div class="progress-wrap">
+  <div class="progress-track"><div class="progress-fill" id="pBar"></div></div>
+  <div class="progress-label" id="pLabel">0 / 48 exercices complétés</div>
+</div>
+
+<div class="main">
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  THÈME 1 : LE XVIIIe SIÈCLE                           -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="theme-block">
+  <div class="theme-header t1-head" onclick="toggleTheme(this)">
+    <span class="theme-icon">⚜️</span>
+    <span class="theme-title">Thème 1 — Le XVIIIe siècle : Expansions, Lumières et révolutions</span>
+    <span class="theme-chevron">▼</span>
+  </div>
+  <div class="theme-body">
+
+    <!-- ═══ Ch1.1 ═══ -->
+    <div class="chapter">
+      <div class="chapter-header" onclick="toggleChapter(this)">
+        <span class="chapter-num t1-num">1</span>
+        <span class="chapter-name">Bourgeoisies marchandes, négoces internationaux et traites négrières</span>
+        <span class="chapter-chevron">▼</span>
+      </div>
+      <div class="chapter-body">
+        <div class="tab-row">
+          <button class="tab-btn active-t1" onclick="showTab(this,'t1c1-cours','t1')">📖 Fiche de cours</button>
+          <button class="tab-btn" onclick="showTab(this,'t1c1-exos','t1')">📝 Exercices</button>
+        </div>
+
+        <div class="tab-content active course" id="t1c1-cours">
+          <h3>🌍 L'essor du commerce atlantique au XVIIIe siècle</h3>
+          <p>Au XVIIIe siècle, l'Europe domine le commerce mondial. Les grandes puissances européennes — <strong>France, Angleterre, Pays-Bas, Portugal, Espagne</strong> — possèdent des <strong>empires coloniaux</strong> en Amérique, en Afrique et en Asie. Le commerce maritime explose, notamment sur l'<strong>océan Atlantique</strong>.</p>
+
+          <div class="def def-t1"><strong>Commerce triangulaire :</strong> circuit commercial entre l'Europe, l'Afrique et l'Amérique. Les navires européens échangent des marchandises contre des esclaves en Afrique, transportent ces esclaves en Amérique pour travailler dans les plantations, puis rapportent en Europe les produits coloniaux (sucre, café, coton, tabac).</div>
+
+          <p>Les grands ports de la façade atlantique — <strong>Nantes, Bordeaux, La Rochelle, Liverpool, Amsterdam</strong> — s'enrichissent considérablement grâce à ce commerce. Une nouvelle classe sociale émerge : la <strong>bourgeoisie marchande</strong>, composée de négociants, armateurs et banquiers.</p>
+
+          <h3>⛓️ La traite négrière et l'esclavage</h3>
+          <p>La <strong>traite atlantique</strong> (ou traite transatlantique) est le commerce d'êtres humains réduits en esclavage. Entre le XVIe et le XIXe siècle, environ <strong>12 millions d'Africains</strong> sont déportés vers les Amériques. Le XVIIIe siècle est la période la plus intense de ce trafic.</p>
+
+          <div class="def def-t1"><strong>Économie de plantation :</strong> système agricole colonial fondé sur la culture de produits tropicaux (sucre, café, coton, tabac) par une main-d'œuvre esclave, dans de grandes exploitations appelées plantations.</div>
+
+          <p>Les conditions de vie des esclaves sont terribles : travail forcé du lever au coucher du soleil, punitions corporelles, séparation des familles. Le <strong>Code noir</strong> (1685) réglemente l'esclavage dans les colonies françaises — il définit l'esclave comme un « bien meuble » (un objet).</p>
+
+          <div class="dates-box">
+            <strong>📅 Dates clés :</strong><br>
+            • 1685 — Code noir de Louis XIV<br>
+            • XVIIIe s. — Apogée de la traite atlantique<br>
+            • 1794 — 1re abolition de l'esclavage (Convention)<br>
+            • 1802 — Rétablissement par Napoléon<br>
+            • 1848 — Abolition définitive (décret Schœlcher)
+          </div>
+
+          <!-- SVG : Commerce triangulaire -->
+          <h3>🗺️ Le commerce triangulaire</h3>
+          <div class="svg-wrap">
+            <svg viewBox="0 0 700 400" xmlns="http://www.w3.org/2000/svg">
+              <!-- Fond -->
+              <rect width="700" height="400" fill="#fdf6ee" rx="12"/>
+              <!-- Continents stylisés -->
+              <ellipse cx="350" cy="80" rx="90" ry="40" fill="#e8d5b7" stroke="#b8860b" stroke-width="1.5"/>
+              <text x="350" y="85" text-anchor="middle" font-size="15" font-weight="700" fill="#6d4c00">EUROPE</text>
+              <ellipse cx="130" cy="280" rx="85" ry="40" fill="#c8e6c9" stroke="#2e7d32" stroke-width="1.5"/>
+              <text x="130" y="285" text-anchor="middle" font-size="15" font-weight="700" fill="#1b5e20">AFRIQUE</text>
+              <ellipse cx="580" cy="280" rx="85" ry="40" fill="#bbdefb" stroke="#1565c0" stroke-width="1.5"/>
+              <text x="580" y="285" text-anchor="middle" font-size="15" font-weight="700" fill="#0d47a1">AMÉRIQUE</text>
+              <!-- Flèches -->
+              <!-- Europe → Afrique -->
+              <path d="M280 110 Q140 180 145 238" fill="none" stroke="#c0392b" stroke-width="3" marker-end="url(#arrowR)"/>
+              <text x="155" y="175" font-size="12" fill="#c0392b" font-weight="600" transform="rotate(-40,155,175)">Armes, textiles,</text>
+              <text x="155" y="190" font-size="12" fill="#c0392b" font-weight="600" transform="rotate(-40,155,190)">alcool, pacotille</text>
+              <!-- Afrique → Amérique -->
+              <path d="M215 290 Q350 360 495 290" fill="none" stroke="#2c3e50" stroke-width="3" marker-end="url(#arrowB)"/>
+              <text x="350" y="350" text-anchor="middle" font-size="12" fill="#2c3e50" font-weight="600">Esclaves (« passage du milieu »)</text>
+              <!-- Amérique → Europe -->
+              <path d="M560 240 Q500 150 420 105" fill="none" stroke="#1e8449" stroke-width="3" marker-end="url(#arrowG)"/>
+              <text x="530" y="165" font-size="12" fill="#1e8449" font-weight="600" transform="rotate(40,530,165)">Sucre, café, coton,</text>
+              <text x="530" y="180" font-size="12" fill="#1e8449" font-weight="600" transform="rotate(40,530,180)">tabac, indigo</text>
+              <!-- Markers -->
+              <defs>
+                <marker id="arrowR" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#c0392b"/></marker>
+                <marker id="arrowB" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2c3e50"/></marker>
+                <marker id="arrowG" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#1e8449"/></marker>
+              </defs>
+              <!-- Légende -->
+              <rect x="240" y="370" width="220" height="24" rx="4" fill="#fff" stroke="#ccc"/>
+              <text x="350" y="387" text-anchor="middle" font-size="11" fill="#555">Le commerce triangulaire au XVIIIe siècle</text>
+            </svg>
+          </div>
+
+          <div class="astuce">Retiens le schéma du triangle : Europe envoie des <em>marchandises</em> → Afrique envoie des <em>esclaves</em> → Amérique envoie des <em>produits tropicaux</em> → retour en Europe.</div>
+        </div>
+
+        <div class="tab-content exos" id="t1c1-exos">
+          <div class="exo-block" id="q1">
+            <p>1. Qu'est-ce que le « commerce triangulaire » ?</p>
+            <div class="exo-options">
+              <label><input type="radio" name="q1" onclick="checkMCQ(this,'q1',false)"> Un échange entre trois villes françaises</label>
+              <label><input type="radio" name="q1" onclick="checkMCQ(this,'q1',true)"> Un circuit commercial entre Europe, Afrique et Amérique</label>
+              <label><input type="radio" name="q1" onclick="checkMCQ(this,'q1',false)"> Un accord entre trois pays européens</label>
+            </div>
+            <div class="feedback" id="fb_q1"></div>
+          </div>
+
+          <div class="exo-block" id="q2">
+            <p>2. Vrai ou faux : Le Code noir considère les esclaves comme des êtres libres.</p>
+            <div class="exo-options">
+              <label><input type="radio" name="q2" onclick="checkMCQ(this,'q2',false)"> Vrai</label>
+              <label><input type="radio" name="q2" onclick="checkMCQ(this,'q2',true)"> Faux</label>
+            </div>
+            <div class="feedback" id="fb_q2"></div>
+          </div>
+
+          <div class="exo-block" id="q3">
+            <p>3. Quel produit N'EST PAS transporté d'Amérique vers l'Europe dans le commerce triangulaire ?</p>
+            <div class="exo-options">
+              <label><input type="radio" name="q3" onclick="checkMCQ(this,'q3',false)"> Le sucre</label>
+              <label><input type="radio" name="q3" onclick="checkMCQ(this,'q3',false)"> Le café</label>
+              <label><input type="radio" name="q3" onclick="checkMCQ(this,'q3',true)"> Les armes</label>
+              <label><input type="radio" name="q3" onclick="checkMCQ(this,'q3',false)"> Le coton</label>
+            </div>
+            <div class="feedback" id="fb_q3"></div>
+          </div>
+
+          <div class="exo-block" id="q4">
+            <p>4. Complète : L'abolition définitive de l'esclavage en France date de <span class="fill-row"><input class="fill-input" id="fill_q4" placeholder="année"> <button class="fill-btn" onclick="checkFill('q4','1848','L\'abolition définitive date de 1848, par le décret de Victor Schœlcher.')">Vérifier</button></span></p>
+            <div class="feedback" id="fb_q4"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ Ch1.2 ═══ -->
+    <div class="chapter">
+      <div class="chapter-header" onclick="toggleChapter(this)">
+        <span class="chapter-num t1-num">2</span>
+        <span class="chapter-name">L'Europe des Lumières</span>
+        <span class="chapter-chevron">▼</span>
+      </div>
+      <div class="chapter-body">
+        <div class="tab-row">
+          <button class="tab-btn active-t1" onclick="showTab(this,'t1c2-cours','t1')">📖 Fiche de cours</button>
+          <button class="tab-btn" onclick="showTab(this,'t1c2-exos','t1')">📝 Exercices</button>
+        </div>
+
+        <div class="tab-content active course" id="t1c2-cours">
+          <h3>💡 Le mouvement des Lumières</h3>
+          <p>Au XVIIIe siècle, des penseurs, écrivains et scientifiques européens développent de nouvelles idées fondées sur la <strong>raison</strong>, la <strong>science</strong> et le <strong>progrès</strong>. On appelle ce mouvement intellectuel les <strong>Lumières</strong> (car ces penseurs veulent « éclairer » les esprits contre l'obscurantisme et l'ignorance).</p>
+
+          <div class="def def-t1"><strong>Les Lumières :</strong> mouvement intellectuel européen du XVIIIe siècle qui prône l'usage de la raison, la tolérance, la liberté et le progrès pour combattre l'ignorance, les superstitions et les injustices.</div>
+
+          <h3>📚 Les grands philosophes</h3>
+          <p>🔹 <strong>Voltaire</strong> (1694-1778) : défend la <strong>tolérance religieuse</strong> et la <strong>liberté d'expression</strong>. Il critique l'Église et le fanatisme.</p>
+          <p>🔹 <strong>Montesquieu</strong> (1689-1755) : dans <em>De l'esprit des lois</em>, il théorise la <strong>séparation des pouvoirs</strong> (législatif, exécutif, judiciaire) pour éviter la tyrannie.</p>
+          <p>🔹 <strong>Rousseau</strong> (1712-1778) : dans <em>Du contrat social</em>, il défend l'idée de <strong>souveraineté du peuple</strong>. Le pouvoir politique doit venir du peuple, pas d'un roi.</p>
+          <p>🔹 <strong>Diderot et d'Alembert</strong> : dirigent l'<strong>Encyclopédie</strong> (1751-1772), une œuvre monumentale de 28 volumes qui rassemble toutes les connaissances de l'époque.</p>
+
+          <h3>👑 Le despotisme éclairé</h3>
+          <p>Certains souverains s'inspirent des idées des Lumières pour moderniser leur royaume, tout en conservant un pouvoir absolu. On les appelle des <strong>despotes éclairés</strong>.</p>
+          <p>Exemples : <strong>Frédéric II de Prusse</strong>, <strong>Catherine II de Russie</strong>, <strong>Joseph II d'Autriche</strong>.</p>
+
+          <div class="def def-t1"><strong>Despotisme éclairé :</strong> forme de gouvernement où un monarque absolu s'inspire des idées des Lumières pour moderniser son pays (éducation, justice, tolérance) sans renoncer à son pouvoir.</div>
+
+          <h3>🗣️ La contestation de l'absolutisme</h3>
+          <p>Les idées des Lumières se diffusent dans les <strong>salons</strong> (réunions chez de riches particuliers), les <strong>cafés</strong>, les <strong>journaux</strong> et par les <strong>livres</strong>. Elles remettent en cause :</p>
+          <p>🔹 La <strong>monarchie absolue</strong> (le roi n'a pas tous les droits)<br>
+          🔹 Les <strong>privilèges</strong> de la noblesse et du clergé<br>
+          🔹 L'<strong>intolérance religieuse</strong><br>
+          🔹 L'<strong>esclavage</strong></p>
+
+          <div class="astuce">Retiens les 3 grands philosophes avec un mot-clé chacun : <strong>Voltaire = tolérance</strong>, <strong>Montesquieu = séparation des pouvoirs</strong>, <strong>Rousseau = souveraineté du peuple</strong>.</div>
+        </div>
+
+        <div class="tab-content exos" id="t1c2-exos">
+          <div class="exo-block" id="q5">
+            <p>5. Quel philosophe des Lumières a théorisé la séparation des pouvoirs ?</p>
+            <div class="exo-options">
+              <label><input type="radio" name="q5" onclick="checkMCQ(this,'q5',false)"> Voltaire</label>
+              <label><input type="radio" name="q5" onclick="checkMCQ(this,'q5',true)"> Montesquieu</label>
+              <label><input type="radio" name="q5" onclick="checkMCQ(this,'q5',false)"> Rousseau</label>
+              <label><input type="radio" name="q5" onclick="checkMCQ(this,'q5',false)"> Diderot</label>
+            </div>
+            <div class="feedback" id="fb_q5"></div>
+          </div>
+
+          <div class="exo-block" id="q6">
+            <p>6. Complète : L'Encyclopédie a été dirigée par Diderot et <span class="fill-row"><input class="fill-input" id="fill_q6" placeholder="nom"> <button class="fill-btn" onclick="checkFill('q6','d\'alembert','L\'Encyclopédie (1751-1772) a été dirigée par Diderot et d\'Alembert.')">Vérifier</button></span></p>
+            <div class="feedback" id="fb_q6"></div>
+          </div>
+
+          <div class="exo-block" id="q7">
+            <p>7. Vrai ou faux : Un despote éclairé est un roi qui abandonne tout son pouvoir au peuple.</p>
+            <div class="exo-options">
+              <label><input type="radio" name="q7" onclick="checkMCQ(this,'q7',false)"> Vrai</label>
+              <label><input type="radio" name="q7" onclick="checkMCQ(this,'q7',true)"> Faux</label>
+            </div>
+            <div class="feedback" id="fb_q7"></div>
+          </div>
+
+          <div class="exo-block" id="q8">
+            <p>8. Quel philosophe défend la souveraineté du peuple dans « Du contrat social » ?</p>
+            <div class="exo-options">
+              <label><input type="radio" name="q8" onclick="checkMCQ(this,'q8',false)"> Voltaire</label>
+              <label><input type="radio" name="q8" onclick="checkMCQ(this,'q8',false)"> Montesquieu</label>
+              <label><input type="radio" name="q8" onclick="checkMCQ(this,'q8',true)"> Rousseau</label>
+            </div>
+            <div class="feedback" id="fb_q8"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ Ch1.3 ═══ -->
+    <div class="chapter">
+      <div class="chapter-header" onclick="toggleChapter(this)">
+        <span class="chapter-num t1-num">3</span>
+        <span class="chapter-name">La Révolution française (1789-1799)</span>
+        <span class="chapter-chevron">▼</span>
+      </div>
+      <div class="chapter-body">
+        <div class="tab-row">
+          <button class="tab-btn active-t1" onclick="showTab(this,'t1c3-cours','t1')">📖 Fiche de cours</button>
+          <button class="tab-btn" onclick="showTab(this,'t1c3-exos','t1')">📝 Exercices</button>
+        </div>
+
+        <div class="tab-content active course" id="t1c3-cours">
+          <h3>🏛️ Les causes de la Révolution</h3>
+          <p>En 1789, la France traverse une <strong>triple crise</strong> :</p>
+          <p>🔹 <strong>Crise financière</strong> : l'État est lourdement endetté (guerres, dépenses de la Cour).<br>
+          🔹 <strong>Crise sociale</strong> : le peuple (tiers état) supporte seul les impôts, tandis que la noblesse et le clergé ont des privilèges.<br>
+          🔹 <strong>Crise économique</strong> : mauvaises récoltes en 1788, prix du pain très élevé, chômage.</p>
+
+          <p>Le roi <strong>Louis XVI</strong> convoque les <strong>États généraux</strong> le 5 mai 1789 à Versailles pour tenter de résoudre la crise financière.</p>
+
+          <div class="def def-t1"><strong>États généraux :</strong> assemblée exceptionnelle réunissant des représentants des trois ordres (clergé, noblesse, tiers état), convoquée par le roi pour résoudre une crise grave.</div>
+
+          <h3>⚡ Les événements de 1789</h3>
+          <p>🔹 <strong>17 juin 1789</strong> : les députés du tiers état se proclament <strong>Assemblée nationale</strong>.<br>
+          🔹 <strong>20 juin 1789</strong> : <strong>Serment du Jeu de paume</strong> — ils jurent de ne pas se séparer avant d'avoir donné une Constitution à la France.<br>
+          🔹 <strong>14 juillet 1789</strong> : <strong>Prise de la Bastille</strong> — le peuple de Paris s'empare de cette prison-forteresse, symbole de l'absolutisme.<br>
+          🔹 <strong>Été 1789</strong> : la <strong>Grande Peur</strong> se répand dans les campagnes.<br>
+          🔹 <strong>4 août 1789</strong> : l'Assemblée vote l'<strong>abolition des privilèges</strong>. C'est la fin de la société d'ordres.<br>
+          🔹 <strong>26 août 1789</strong> : adoption de la <strong>Déclaration des droits de l'homme et du citoyen</strong> (DDHC). Elle proclame la liberté, l'égalité et la souveraineté nationale.</p>
+
+          <h3>👑 De la monarchie constitutionnelle à la République</h3>
+          <p>En <strong>septembre 1791</strong>, une <strong>Constitution</strong> est adoptée. La France devient une <strong>monarchie constitutionnelle</strong> : le roi conserve le pouvoir exécutif, mais partage le pouvoir avec une Assemblée élue.</p>
+          <p>Mais Louis XVI tente de fuir la France le <strong>20-21 juin 1791</strong> : il est arrêté à <strong>Varennes</strong>. Cette trahison provoque la colère du peuple.</p>
+          <p>En <strong>avril 1792</strong>, la France déclare la guerre à l'Autriche. Le <strong>10 août 1792</strong>, le peuple envahit les Tuileries et renverse le roi. Le <strong>22 septembre 1792</strong>, la <strong>République</strong> est proclamée.</p>
+
+          <h3>🩸 La Terreur (1793-1794)</h3>
+          <p>Louis XVI est jugé et <strong>guillotiné le 21 janvier 1793</strong>. La France est menacée (guerres extérieures, révolte en Vendée). <strong>Robespierre</strong> et le <strong>Comité de salut public</strong> instaurent la <strong>Terreur</strong> : des milliers de « suspects » sont exécutés.</p>
+          <p>Le <strong>28 juillet 1794</strong> (9 thermidor), Robespierre est renversé et guillotiné. La Terreur prend fin. Le <strong>Directoire</strong> lui succède (1795-1799).</p>
+
+          <!-- SVG : Frise chronologique de la Révolution -->
+          <h3>📅 Frise chronologique de la Révolution française</h3>
+          <div class="svg-wrap">
+            <svg viewBox="0 0 750 300" xmlns="http://www.w3.org/2000/svg">
+              <rect width="750" height="300" fill="#fdf6ee" rx="12"/>
+              <!-- Axe principal -->
+              <line x1="40" y1="140" x2="710" y2="140" stroke="#8b4513" stroke-width="3"/>
+              <!-- Périodes colorées -->
+              <rect x="40" y="130" width="180" height="20" fill="#f5cba7" rx="3" opacity="0.6"/>
+              <text x="130" y="125" text-anchor="middle" font-size="10" fill="#8b4513" font-weight="700">Monarchie absolue</text>
+              <rect x="220" y="130" width="200" height="20" fill="#aed6f1" rx="3" opacity="0.6"/>
+              <text x="320" y="125" text-anchor="middle" font-size="10" fill="#1a5276" font-weight="700">Monarchie constitutionnelle</text>
+              <rect x="420" y="130" width="140" height="20" fill="#f1948a" rx="3" opacity="0.6"/>
+              <text x="490" y="125" text-anchor="middle" font-size="10" fill="#922b21" font-weight="700">Convention / Terreur</text>
+              <rect x="560" y="130" width="150" height="20" fill="#d5f5e3" rx="3" opacity="0.6"/>
+              <text x="635" y="125" text-anchor="middle" font-size="10" fill="#1e8449" font-weight="700">Directoire</text>
+              <!-- Events - dessus -->
+              <line x1="80" y1="70" x2="80" y2="130" stroke="#c0392b" stroke-width="1.5"/>
+              <circle cx="80" cy="140" r="5" fill="#c0392b"/>
+              <text x="80" y="60" text-anchor="middle" font-size="9" fill="#c0392b" font-weight="700">5 mai 1789</text>
+              <text x="80" y="48" text-anchor="middle" font-size="8" fill="#555">États gén.</text>
+
+              <line x1="160" y1="70" x2="160" y2="130" stroke="#c0392b" stroke-width="1.5"/>
+              <circle cx="160" cy="140" r="5" fill="#c0392b"/>
+              <text x="160" y="60" text-anchor="middle" font-size="9" fill="#c0392b" font-weight="700">14 juil. 1789</text>
+              <text x="160" y="48" text-anchor="middle" font-size="8" fill="#555">Prise Bastille</text>
+
+              <line x1="220" y1="70" x2="220" y2="130" stroke="#2471a3" stroke-width="1.5"/>
+              <circle cx="220" cy="140" r="5" fill="#2471a3"/>
+              <text x="220" y="60" text-anchor="middle" font-size="9" fill="#2471a3" font-weight="700">26 août 1789</text>
+              <text x="220" y="48" text-anchor="middle" font-size="8" fill="#555">DDHC</text>
+
+              <!-- Events - dessous -->
+              <line x1="300" y1="150" x2="300" y2="200" stroke="#7d3c98" stroke-width="1.5"/>
+              <circle cx="300" cy="140" r="5" fill="#7d3c98"/>
+              <text x="300" y="215" text-anchor="middle" font-size="9" fill="#7d3c98" font-weight="700">Juin 1791</text>
+              <text x="300" y="228" text-anchor="middle" font-size="8" fill="#555">Fuite Varennes</text>
+
+              <line x1="420" y1="150" x2="420" y2="200" stroke="#c0392b" stroke-width="1.5"/>
+              <circle cx="420" cy="140" r="5" fill="#c0392b"/>
+              <text x="420" y="215" text-anchor="middle" font-size="9" fill="#c0392b" font-weight="700">22 sept. 1792</text>
+              <text x="420" y="228" text-anchor="middle" font-size="8" fill="#555">Ire République</text>
+
+              <line x1="470" y1="70" x2="470" y2="130" stroke="#922b21" stroke-width="1.5"/>
+              <circle cx="470" cy="140" r="5" fill="#922b21"/>
+              <text x="470" y="60" text-anchor="middle" font-size="9" fill="#922b21" font-weight="700">21 janv. 1793</text>
+              <text x="470" y="48" text-anchor="middle" font-size="8" fill="#555">Mort Louis XVI</text>
+
+              <line x1="560" y1="150" x2="560" y2="200" stroke="#1e8449" stroke-width="1.5"/>
+              <circle cx="560" cy="140" r="5" fill="#1e8449"/>
+              <text x="560" y="215" text-anchor="middle" font-size="9" fill="#1e8449" font-weight="700">Juil. 1794</text>
+              <text x="560" y="228" text-anchor="middle" font-size="8" fill="#555">Chute Robespierre</text>
+
+              <line x1="660" y1="70" x2="660" y2="130" stroke="#2c3e50" stroke-width="1.5"/>
+              <circle cx="660" cy="140" r="5" fill="#2c3e50"/>
+              <text x="660" y="60" text-anchor="middle" font-size="9" fill="#2c3e50" font-weight="700">Nov. 1799</text>
+              <text x="660" y="48" text-anchor="middle" font-size="8" fill="#555">Coup d'État Bonaparte</text>
+
+              <text x="375" y="285" text-anchor="middle" font-size="12" fill="#8b4513" font-weight="700">Frise chronologique de la Révolution française (1789-1799)</text>
+            </svg>
+          </div>
+
+          <div class="dates-box">
+            <strong>📅 Dates essentielles à retenir :</strong><br>
+            • 14 juillet 1789 — Prise de la Bastille<br>
+            • 26 août 1789 — DDHC<br>
+            • Septembre 1791 — Constitution (monarchie constitutionnelle)<br>
+            • 22 septembre 1792 — Proclamation de la République<br>
+            • 21 janvier 1793 — Exécution de Louis XVI
+          </div>
+        </div>
+
+        <div class="tab-content exos" id="t1c3-exos">
+          <div class="exo-block" id="q9">
+            <p>9. Que se passe-t-il le 14 juillet 1789 ?</p>
+            <div class="exo-options">
+              <label><input type="radio" name="q9" onclick="checkMCQ(this,'q9',false)"> Le serment du Jeu de paume</label>
+              <label><input type="radio" name="q9" onclick="checkMCQ(this,'q9',true)"> La prise de la Bastille</label>
+              <label><input type="radio" name="q9" onclick="checkMCQ(this,'q9',false)"> L'abolition des privilèges</label>
+              <label><input type="radio" name="q9" onclick="checkMCQ(this,'q9',false)"> L'exécution de Louis XVI</label>
+            </div>
+            <div class="feedback" id="fb_q9"></div>
+          </div>
+
+          <div class="exo-block" id="q10">
+            <p>10. Que proclame la DDHC du 26 août 1789 ?</p>
+            <div class="exo-options">
+              <label><input type="radio" name="q10" onclick="checkMCQ(this,'q10',false)"> La République</label>
+              <label><input type="radio" name="q10" onclick="checkMCQ(this,'q10',true)"> La liberté, l'égalité et la souveraineté nationale</label>
+              <label><input type="radio" name="q10" onclick="checkMCQ(this,'q10',false)"> La fin de la monarchie</label>
+            </div>
+            <div class="feedback" id="fb_q10"></div>
+          </div>
+
+          <div class="exo-block" id="q11">
+            <p>11. Complète : Louis XVI est arrêté lors de sa fuite à <span class="fill-row"><input class="fill-input" id="fill_q11" placeholder="ville"> <button class="fill-btn" onclick="checkFill('q11','varennes','Louis XVI est arrêté à Varennes le 20-21 juin 1791.')">Vérifier</button></span></p>
+            <div class="feedback" id="fb_q11"></div>
+          </div>
+
+          <div class="exo-block" id="q12">
+            <p>12. Qui instaure la Terreur en 1793-1794 ?</p>
+            <div class="exo-options">
+              <label><input type="radio" name="q12" onclick="checkMCQ(this,'q12',false)"> Napoléon Bonaparte</label>
+              <label><input type="radio" name="q12" onclick="checkMCQ(this,'q12',false)"> La Fayette</label>
+              <label><input type="radio" name="q12" onclick="checkMCQ(this,'q12',true)"> Robespierre et le Comité de salut public</label>
+            </div>
+            <div class="feedback" id="fb_q12"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ Ch1.4 ═══ -->
+    <div class="chapter">
+      <div class="chapter-header" onclick="toggleChapter(this)">
+        <span class="chapter-num t1-num">4</span>
+        <span class="chapter-name">Napoléon, du Consulat à l'Empire (1799-1815)</span>
+        <span class="chapter-chevron">▼</span>
+      </div>
+      <div class="chapter-body">
+        <div class="tab-row">
+          <button class="tab-btn active-t1" onclick="showTab(this,'t1c4-cours','t1')">📖 Fiche de cours</button>
+          <button class="tab-btn" onclick="showTab(this,'t1c4-exos','t1')">📝 Exercices</button>
+        </div>
+
+        <div class="tab-content active course" id="t1c4-cours">
+          <h3>⚔️ Du coup d'État au Consulat</h3>
+          <p>Le <strong>9 novembre 1799</strong> (18 brumaire), le général <strong>Napoléon Bonaparte</strong> renverse le Directoire par un coup d'État. Il instaure le <strong>Consulat</strong> et devient <strong>Premier Consul</strong>.</p>
+          <p>Bonaparte concentre rapidement les pouvoirs entre ses mains. Le <strong>2 décembre 1804</strong>, il se fait couronner <strong>Empereur des Français</strong> sous le nom de <strong>Napoléon Ier</strong>.</p>
+
+          <h3>📋 Les grandes réformes</h3>
+          <p>Napoléon modernise profondément la France :</p>
+          <p>🔹 Le <strong>Code civil</strong> (1804) : unifie le droit en France. Il garantit l'égalité devant la loi, le droit de propriété et la laïcité de l'État.<br>
+          🔹 La création des <strong>lycées</strong> (1802) pour former les futures élites.<br>
+          🔹 La <strong>Banque de France</strong> (1800) et le <strong>franc germinal</strong> pour stabiliser l'économie.<br>
+          🔹 Les <strong>préfets</strong> (1800) : un représentant de l'État dans chaque département.<br>
+          🔹 La <strong>Légion d'honneur</strong> (1802) pour récompenser les mérites.</p>
+
+          <div class="def def-t1"><strong>Code civil :</strong> ensemble des lois qui organisent la vie des citoyens (famille, propriété, contrats). Adopté en 1804, il est encore le socle du droit français aujourd'hui.</div>
+
+          <h3>🗡️ Les guerres napoléoniennes et la chute</h3>
+          <p>Napoléon conquiert une grande partie de l'Europe entre 1805 et 1812. Mais la <strong>campagne de Russie</strong> (1812) est un désastre. Il abdique une première fois en <strong>avril 1814</strong>, revient pendant les <strong>Cent-Jours</strong> (mars-juin 1815), puis est définitivement vaincu à <strong>Waterloo</strong> (18 juin 1815).</p>
+
+          <div class="dates-box">
+            <strong>📅 Dates clés :</strong><br>
+            • 1799 — Coup d'État de Bonaparte (18 brumaire)<br>
+            • 1804 — Sacre de Napoléon Ier / Code civil<br>
+            • 1812 — Campagne de Russie<br>
+            • 1815 — Défaite de Waterloo, fin de l'Empire
+          </div>
+
+          <div class="astuce">Napoléon = « exportateur » de la Révolution : il diffuse dans toute l'Europe les idées de 1789 (égalité devant la loi, abolition des privilèges), mais aussi l'autoritarisme et la guerre.</div>
+        </div>
+
+        <div class="tab-content exos" id="t1c4-exos">
+          <div class="exo-block" id="q13">
+            <p>13. En quelle année Napoléon est-il sacré Empereur ?</p>
+            <div class="exo-options">
+              <label><input type="radio" name="q13" onclick="checkMCQ(this,'q13',false)"> 1799</label>
+              <label><input type="radio" name="q13" onclick="checkMCQ(this,'q13',true)"> 1804</label>
+              <label><input type="radio" name="q13" onclick="checkMCQ(this,'q13',false)"> 1812</label>
+              <label><input type="radio" name="q13" onclick="checkMCQ(this,'q13',false)"> 1815</label>
+            </div>
+            <div class="feedback" id="fb_q13"></div>
+          </div>
+
+          <div class="exo-block" id="q14">
+            <p>14. Qu'est-ce que le Code civil ?</p>
+            <div class="exo-options">
+              <label><input type="radio" name="q14" onclick="checkMCQ(this,'q14',false)"> Un code militaire pour les armées</label>
+              <label><input type="radio" name="q14" onclick="checkMCQ(this,'q14',true)"> Un ensemble de lois organisant la vie des citoyens</label>
+              <label><input type="radio" name="q14" onclick="checkMCQ(this,'q14',false)"> Un traité de paix avec l'Angleterre</label>
+            </div>
+            <div class="feedback" id="fb_q14"></div>
+          </div>
+
+          <div class="exo-block" id="q15">
+            <p>15. Complète : La défaite finale de Napoléon a lieu à <span class="fill-row"><input class="fill-input" id="fill_q15" placeholder="lieu"> <button class="fill-btn" onclick="checkFill('q15','waterloo','Napoléon est définitivement vaincu à Waterloo le 18 juin 1815.')">Vérifier</button></span></p>
+            <div class="feedback" id="fb_q15"></div>
+          </div>
+
+          <div class="exo-block" id="q16">
+            <p>16. Vrai ou faux : Les préfets sont créés par Napoléon pour représenter l'État dans chaque département.</p>
+            <div class="exo-options">
+              <label><input type="radio" name="q16" onclick="checkMCQ(this,'q16',true)"> Vrai</label>
+              <label><input type="radio" name="q16" onclick="checkMCQ(this,'q16',false)"> Faux</label>
+            </div>
+            <div class="feedback" id="fb_q16"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  THÈME 2 : L'EUROPE ET LE MONDE AU XIXe SIÈCLE        -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="theme-block">
+  <div class="theme-header t2-head" onclick="toggleTheme(this)">
+    <span class="theme-icon">🏭</span>
+    <span class="theme-title">Thème 2 — L'Europe et le monde au XIXe siècle</span>
+    <span class="theme-chevron">▼</span>
+  </div>
+  <div class="theme-body">
+
+    <!-- ═══ Ch2.1 ═══ -->
+    <div class="chapter">
+      <div class="chapter-header" onclick="toggleChapter(this)">
+        <span class="chapter-num t2-num">1</span>
+        <span class="chapter-name">L'Europe de la « révolution industrielle »</span>
+        <span class="chapter-chevron">▼</span>
+      </div>
+      <div class="chapter-body">
+        <div class="tab-row">
+          <button class="tab-btn active-t2" onclick="showTab(this,'t2c1-cours','t2')">📖 Fiche de cours</button>
+          <button class="tab-btn" onclick="showTab(this,'t2c1-exos','t2')">📝 Exercices</button>
+        </div>
+
+        <div class="tab-content active course" id="t2c1-cours">
+          <h3>⚙️ Les innovations techniques</h3>
+          <p>À partir de la fin du XVIIIe siècle, le <strong>Royaume-Uni</strong> connaît une vague d'innovations qui va transformer toute l'Europe.</p>
+          <p>🔹 <strong>1re révolution industrielle</strong> (1760-1880) : fondée sur le <strong>charbon</strong> et la <strong>machine à vapeur</strong> (James Watt, 1769). Industries textile et sidérurgique.<br>
+          🔹 <strong>2e révolution industrielle</strong> (à partir de 1880) : fondée sur l'<strong>électricité</strong>, le <strong>pétrole</strong> et le <strong>moteur à explosion</strong>. Chimie, automobile, téléphone.</p>
+
+          <div class="def def-t2"><strong>Industrialisation :</strong> processus de développement de l'industrie dans un pays, caractérisé par la mécanisation du travail, l'apparition des usines et la croissance de la production.</div>
+
+          <h3>🚂 La révolution des transports</h3>
+          <p>La <strong>locomotive à vapeur</strong> et les <strong>navires à vapeur</strong> (steamers) révolutionnent les déplacements. Le réseau ferré s'étend rapidement en Europe. Le <strong>canal de Suez</strong> (1869) facilite le commerce avec l'Asie. Les <strong>expositions universelles</strong> (ex : Paris 1889, Tour Eiffel) diffusent les innovations.</p>
+
+          <h3>👷 Les transformations sociales</h3>
+          <p>L'industrialisation crée deux nouvelles classes sociales :</p>
+          <p>🔹 La <strong>bourgeoisie industrielle</strong> : patrons d'usines, banquiers, entrepreneurs qui s'enrichissent.<br>
+          🔹 Le <strong>prolétariat ouvrier</strong> : travailleurs des usines aux conditions de vie très dures (bas salaires, longues journées de 12-16h, travail des enfants, logements insalubres).</p>
+          <p>L'<strong>exode rural</strong> est massif : les paysans quittent les campagnes pour trouver du travail en ville. Les villes grossissent énormément.</p>
+
+          <div class="def def-t2"><strong>Exode rural :</strong> départ massif et définitif des habitants des campagnes vers les villes.</div>
+
+          <h3>💭 Nouvelles idéologies</h3>
+          <p>🔹 <strong>Libéralisme économique</strong> (Adam Smith) : l'État ne doit pas intervenir dans l'économie, la libre entreprise enrichit la société.<br>
+          🔹 <strong>Socialisme</strong> (Karl Marx, Engels) : dénonce l'exploitation des ouvriers, veut supprimer les inégalités. Publient le <em>Manifeste du Parti communiste</em> en 1848.<br>
+          🔹 <strong>Catholicisme social</strong> (encyclique <em>Rerum Novarum</em>, 1891) : l'Église demande plus de justice sociale, mais rejette la révolution.</p>
+
+          <!-- SVG : Frise 2 révolutions industrielles -->
+          <h3>📅 Les deux révolutions industrielles</h3>
+          <div class="svg-wrap">
+            <svg viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg">
+              <rect width="700" height="220" fill="#eaf2f8" rx="12"/>
+              <line x1="50" y1="100" x2="650" y2="100" stroke="#2471a3" stroke-width="3"/>
+              <!-- 1re RI -->
+              <rect x="80" y="88" width="250" height="24" fill="#aed6f1" rx="4" stroke="#2471a3" stroke-width="1"/>
+              <text x="205" y="105" text-anchor="middle" font-size="12" fill="#1a5276" font-weight="700">1re révolution industrielle</text>
+              <text x="205" y="78" text-anchor="middle" font-size="10" fill="#555">Charbon + Machine à vapeur</text>
+              <text x="80" y="135" font-size="10" fill="#2471a3" font-weight="600">≈ 1760</text>
+              <!-- 2e RI -->
+              <rect x="370" y="88" width="240" height="24" fill="#f9e79f" rx="4" stroke="#b8860b" stroke-width="1"/>
+              <text x="490" y="105" text-anchor="middle" font-size="12" fill="#7d6608" font-weight="700">2e révolution industrielle</text>
+              <text x="490" y="78" text-anchor="middle" font-size="10" fill="#555">Électricité + Pétrole + Moteur</text>
+              <text x="370" y="135" font-size="10" fill="#b8860b" font-weight="600">≈ 1880</text>
+              <!-- Innovations -->
+              <text x="120" y="160" font-size="9" fill="#555">🔧 Machine à vapeur (Watt)</text>
+              <text x="120" y="175" font-size="9" fill="#555">🧵 Machines à filer/tisser</text>
+              <text x="120" y="190" font-size="9" fill="#555">🚂 Locomotive à vapeur</text>
+              <text x="400" y="160" font-size="9" fill="#555">💡 Électricité</text>
+              <text x="400" y="175" font-size="9" fill="#555">🚗 Automobile</text>
+              <text x="400" y="190" font-size="9" fill="#555">🧪 Chimie, téléphone</text>
+            </svg>
+          </div>
+
+          <div class="astuce">Pour retenir les 2 RI : la 1re = « charbon et vapeur » (on pense à une locomotive noire), la 2e = « électricité et pétrole » (on pense à une ampoule et une voiture).</div>
+        </div>
+
+        <div class="tab-content exos" id="t2c1-exos">
+          <div class="exo-block" id="q17">
+            <p>17. Dans quel pays la révolution industrielle commence-t-elle ?</p>
+            <div class="exo-options">
+              <label><input type="radio" name="q17" onclick="checkMCQ(this,'q17',false)"> La France</label>
+              <label><input type="radio" name="q17" onclick="checkMCQ(this,'q17',true)"> Le Royaume-Uni</label>
+              <label><input type="radio" name="q17" onclick="checkMCQ(this,'q17',false)"> L'Allemagne</label>
+              <label><input type="radio" name="q17" onclick="checkMCQ(this,'q17',false)"> Les États-Unis</label>
+            </div>
+            <div class="feedback" id="fb_q17"></div>
+          </div>
+
+          <div class="exo-block" id="q18">
+            <p>18. Qu'est-ce que l'exode rural ?</p>
+            <div class="exo-options">
+              <label><input type="radio" name="q18" onclick="checkMCQ(this,'q18',false)"> La fuite des habitants des villes</label>
+              <label><input type="radio" name="q18" onclick="checkMCQ(this,'q18',true)"> Le départ massif des paysans vers les villes</label>
+              <label><input type="radio" name="q18" onclick="checkMCQ(this,'q18',false)"> La migration vers d'autres pays</label>
+            </div>
+            <div class="feedback" id="fb_q18"></div>
+          </div>
+
+          <div class="exo-block" id="q19">
+            <p>19. Complète : Le <em>Manifeste du Parti communiste</em> est écrit en 1848 par Marx et <span class="fill-row"><input class="fill-input" id="fill_q19" placeholder="nom"> <button class="fill-btn" onclick="checkFill('q19','engels','Karl Marx et Friedrich Engels publient le Manifeste du Parti communiste en 1848.')">Vérifier</button></span></p>
+            <div class="feedback" id="fb_q19"></div>
+          </div>
+
+          <div class="exo-block" id="q20">
+            <p>20. Vrai ou faux : La 2e révolution industrielle est fondée sur le charbon et la machine à vapeur.</p>
+            <div class="exo-options">
+              <label><input type="radio" name="q20" onclick="checkMCQ(this,'q20',false)"> Vrai</label>
+              <label><input type="radio" name="q20" onclick="checkMCQ(this,'q20',true)"> Faux</label>
+            </div>
+            <div class="feedback" id="fb_q20"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ Ch2.2 ═══ -->
+    <div class="chapter">
+      <div class="chapter-header" onclick="toggleChapter(this)">
+        <span class="chapter-num t2-num">2</span>
+        <span class="chapter-name">1848 : le Printemps des peuples et l'émigration européenne</span>
+        <span class="chapter-chevron">▼</span>
+      </div>
+      <div class="chapter-body">
+        <div class="tab-row">
+          <button class="tab-btn active-t2" onclick="showTab(this,'t2c2-cours','t2')">📖 Fiche de cours</button>
+          <button class="tab-btn" onclick="showTab(this,'t2c2-exos','t2')">📝 Exercices</button>
+        </div>
+
+        <div class="tab-content active course" id="t2c2-cours">
+          <h3>🌸 Le Printemps des peuples (1848)</h3>
+          <p>En <strong>février 1848</strong>, une révolution éclate à Paris. Le roi <strong>Louis-Philippe</strong> est renversé. La <strong>IIe République</strong> est proclamée. Elle adopte des mesures importantes :</p>
+          <p>🔹 <strong>Suffrage universel masculin</strong> : tous les hommes de plus de 21 ans peuvent voter.<br>
+          🔹 <strong>Abolition de l'esclavage</strong> dans les colonies (décret Schœlcher, 27 avril 1848).<br>
+          🔹 Création des <strong>Ateliers nationaux</strong> pour les chômeurs.</p>
+
+          <p>La révolution se propage dans toute l'Europe : en <strong>Italie</strong>, en <strong>Autriche-Hongrie</strong>, en <strong>Allemagne</strong>. Les peuples réclament la <strong>liberté</strong> et le droit des <strong>nations</strong> à disposer d'elles-mêmes. Mais la plupart de ces révolutions sont écrasées.</p>
+
+          <div class="def def-t2"><strong>Printemps des peuples :</strong> vague de révolutions qui secoue l'Europe en 1848. Les peuples réclament des libertés politiques et le droit à l'autodétermination nationale.</div>
+
+          <h3>🚢 L'émigration européenne au XIXe siècle</h3>
+          <p>Environ <strong>60 millions d'Européens</strong> émigrent au XIXe siècle, poussés par la pauvreté, les famines (comme la Grande Famine irlandaise de 1845-1852) et le manque de travail.</p>
+          <p>Les destinations principales sont les <strong>États-Unis</strong> (1er pays d'accueil), le <strong>Canada</strong>, l'<strong>Argentine</strong>, le <strong>Brésil</strong> et l'<strong>Australie</strong>.</p>
+
+          <div class="astuce">L'Irlande est l'exemple type : la famine de la pomme de terre pousse des millions d'Irlandais à s'exiler aux États-Unis. Ellis Island (New York) est le symbole de cette immigration.</div>
+        </div>
+
+        <div class="tab-content exos" id="t2c2-exos">
+          <div class="exo-block" id="q21">
+            <p>21. Que se passe-t-il en France en février 1848 ?</p>
+            <div class="exo-options">
+              <label><input type="radio" name="q21" onclick="checkMCQ(this,'q21',false)"> Napoléon prend le pouvoir</label>
+              <label><input type="radio" name="q21" onclick="checkMCQ(this,'q21',true)"> Une révolution renverse Louis-Philippe et proclame la IIe République</label>
+              <label><input type="radio" name="q21" onclick="checkMCQ(this,'q21',false)"> La France déclare la guerre à l'Angleterre</label>
+            </div>
+            <div class="feedback" id="fb_q21"></div>
+          </div>
+
+          <div class="exo-block" id="q22">
+            <p>22. Qui est l'auteur du décret d'abolition de l'esclavage en 1848 ?</p>
+            <div class="exo-options">
+              <label><input type="radio" name="q22" onclick="checkMCQ(this,'q22',false)"> Victor Hugo</label>
+              <label><input type="radio" name="q22" onclick="checkMCQ(this,'q22',true)"> Victor Schœlcher</label>
+              <label><input type="radio" name="q22" onclick="checkMCQ(this,'q22',false)"> Louis-Philippe</label>
+            </div>
+            <div class="feedback" id="fb_q22"></div>
+          </div>
+
+          <div class="exo-block" id="q23">
+            <p>23. Vrai ou faux : Les révolutions du Printemps des peuples ont toutes réussi durablement.</p>
+            <div class="exo-options">
+              <label><input type="radio" name="q23" onclick="checkMCQ(this,'q23',false)"> Vrai</label>
+              <label><input type="radio" name="q23" onclick="checkMCQ(this,'q23',true)"> Faux</label>
+            </div>
+            <div class="feedback" id="fb_q23"></div>
+          </div>
+
+          <div class="exo-block" id="q24">
+            <p>24. Complète : Environ <span class="fill-row"><input class="fill-input" id="fill_q24" placeholder="nombre" style="width:80px"> <button class="fill-btn" onclick="checkFill('q24','60','Environ 60 millions d\'Européens émigrent au XIXe siècle.')">Vérifier</button></span> millions d'Européens émigrent au XIXe siècle.</p>
+            <div class="feedback" id="fb_q24"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ Ch2.3 ═══ -->
+    <div class="chapter">
+      <div class="chapter-header" onclick="toggleChapter(this)">
+        <span class="chapter-num t2-num">3</span>
+        <span class="chapter-name">Conquêtes et sociétés coloniales</span>
+        <span class="chapter-chevron">▼</span>
+      </div>
+      <div class="chapter-body">
+        <div class="tab-row">
+          <button class="tab-btn active-t2" onclick="showTab(this,'t2c3-cours','t2')">📖 Fiche de cours</button>
+          <button class="tab-btn" onclick="showTab(this,'t2c3-exos','t2')">📝 Exercices</button>
+        </div>
+
+        <div class="tab-content active course" id="t2c3-cours">
+          <h3>🌍 La colonisation européenne</h3>
+          <p>Dans la 2e moitié du XIXe siècle, les puissances européennes se lancent dans la conquête de vastes territoires en <strong>Afrique</strong> et en <strong>Asie</strong>. C'est l'ère de l'<strong>impérialisme colonial</strong>.</p>
+
+          <div class="def def-t2"><strong>Colonisation :</strong> processus par lequel un État conquiert un territoire étranger, l'administre et exploite ses ressources, en soumettant les populations locales.</div>
+
+          <p>Les motivations sont multiples :</p>
+          <p>🔹 <strong>Économiques</strong> : accéder aux matières premières et à de nouveaux marchés.<br>
+          🔹 <strong>Politiques</strong> : affirmer la puissance de la nation (rivalité entre la France et le Royaume-Uni).<br>
+          🔹 <strong>Idéologiques</strong> : la prétendue « mission civilisatrice » des Européens (racisme, sentiment de supériorité).</p>
+
+          <p>En 1885, la <strong>conférence de Berlin</strong> organise le partage de l'Afrique entre les puissances européennes. Les deux plus grands empires coloniaux sont ceux du <strong>Royaume-Uni</strong> et de la <strong>France</strong>.</p>
+
+          <h3>🏘️ Les sociétés coloniales</h3>
+          <p>Dans les colonies, la société est <strong>inégalitaire</strong> :</p>
+          <p>🔹 Les <strong>colons</strong> (Européens) dirigent et possèdent les terres et les entreprises.<br>
+          🔹 Les <strong>colonisés</strong> (populations locales) sont soumis au <strong>Code de l'indigénat</strong> : pas les mêmes droits, travail forcé, restrictions de déplacement.<br>
+          🔹 Des résistances existent : <strong>révoltes</strong> contre la domination coloniale.</p>
+
+          <div class="def def-t2"><strong>Code de l'indigénat :</strong> ensemble de lois discriminatoires appliquées aux populations colonisées, leur refusant les droits reconnus aux citoyens français.</div>
+
+          <div class="astuce">La colonisation est justifiée par les Européens au nom de la « civilisation », mais dans les faits, c'est un système de domination et d'exploitation.</div>
+        </div>
+
+        <div class="tab-content exos" id="t2c3-exos">
+          <div class="exo-block" id="q25">
+            <p>25. En quelle année la conférence de Berlin organise-t-elle le partage de l'Afrique ?</p>
+            <div class="exo-options">
+              <label><input type="radio" name="q25" onclick="checkMCQ(this,'q25',false)"> 1848</label>
+              <label><input type="radio" name="q25" onclick="checkMCQ(this,'q25',false)"> 1870</label>
+              <label><input type="radio" name="q25" onclick="checkMCQ(this,'q25',true)"> 1885</label>
+              <label><input type="radio" name="q25" onclick="checkMCQ(this,'q25',false)"> 1900</label>
+            </div>
+            <div class="feedback" id="fb_q25"></div>
+          </div>
+
+          <div class="exo-block" id="q26">
+            <p>26. Quels sont les deux plus grands empires coloniaux au XIXe siècle ?</p>
+            <div class="exo-options">
+              <label><input type="radio" name="q26" onclick="checkMCQ(this,'q26',true)"> Royaume-Uni et France</label>
+              <label><input type="radio" name="q26" onclick="checkMCQ(this,'q26',false)"> Allemagne et Espagne</label>
+              <label><input type="radio" name="q26" onclick="checkMCQ(this,'q26',false)"> Portugal et Pays-Bas</label>
+            </div>
+            <div class="feedback" id="fb_q26"></div>
+          </div>
+
+          <div class="exo-block" id="q27">
+            <p>27. Vrai ou faux : Les populations colonisées avaient exactement les mêmes droits que les colons européens.</p>
+            <div class="exo-options">
+              <label><input type="radio" name="q27" onclick="checkMCQ(this,'q27',false)"> Vrai</label>
+              <label><input type="radio" name="q27" onclick="checkMCQ(this,'q27',true)"> Faux</label>
+            </div>
+            <div class="feedback" id="fb_q27"></div>
+          </div>
+
+          <div class="exo-block" id="q28">
+            <p>28. Quelle motivation n'est PAS une raison de la colonisation ?</p>
+            <div class="exo-options">
+              <label><input type="radio" name="q28" onclick="checkMCQ(this,'q28',false)"> Accéder aux matières premières</label>
+              <label><input type="radio" name="q28" onclick="checkMCQ(this,'q28',false)"> Affirmer la puissance de la nation</label>
+              <label><input type="radio" name="q28" onclick="checkMCQ(this,'q28',true)"> Donner le droit de vote aux colonisés</label>
+            </div>
+            <div class="feedback" id="fb_q28"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  THÈME 3 : SOCIÉTÉ, CULTURE ET POLITIQUE XIXe          -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="theme-block">
+  <div class="theme-header t3-head" onclick="toggleTheme(this)">
+    <span class="theme-icon">🗳️</span>
+    <span class="theme-title">Thème 3 — Société, culture et politique dans la France du XIXe siècle</span>
+    <span class="theme-chevron">▼</span>
+  </div>
+  <div class="theme-body">
+
+    <!-- ═══ Ch3.1 ═══ -->
+    <div class="chapter">
+      <div class="chapter-header" onclick="toggleChapter(this)">
+        <span class="chapter-num t3-num">1</span>
+        <span class="chapter-name">Voter en France de 1815 à 1870 : une difficile conquête</span>
+        <span class="chapter-chevron">▼</span>
+      </div>
+      <div class="chapter-body">
+        <div class="tab-row">
+          <button class="tab-btn active-t3" onclick="showTab(this,'t3c1-cours','t3')">📖 Fiche de cours</button>
+          <button class="tab-btn" onclick="showTab(this,'t3c1-exos','t3')">📝 Exercices</button>
+        </div>
+
+        <div class="tab-content active course" id="t3c1-cours">
+          <h3>🗳️ L'élargissement progressif du droit de vote</h3>
+          <p>Après la chute de Napoléon en 1815, la France connaît une série de régimes politiques. Le droit de vote évolue lentement :</p>
+
+          <p>🔹 <strong>Restauration (1815-1830)</strong> : retour des rois Bourbon (Louis XVIII, Charles X). <strong>Suffrage censitaire</strong> très restreint : seuls les hommes les plus riches (payant un impôt élevé, le « cens ») peuvent voter. Environ <strong>90 000 électeurs</strong> sur 30 millions d'habitants.</p>
+
+          <p>🔹 <strong>Monarchie de Juillet (1830-1848)</strong> : <strong>Louis-Philippe</strong> arrive au pouvoir après la révolution de Juillet 1830. Le cens est abaissé, mais le vote reste réservé aux riches : environ <strong>240 000 électeurs</strong>.</p>
+
+          <p>🔹 <strong>IIe République (1848)</strong> : la révolution de février 1848 instaure le <strong>suffrage universel masculin</strong>. Tous les hommes de plus de 21 ans peuvent voter : <strong>9 millions d'électeurs</strong> d'un coup !</p>
+
+          <p>🔹 <strong>Second Empire (1852-1870)</strong> : <strong>Napoléon III</strong> maintient le suffrage universel masculin, mais contrôle les élections (candidatures officielles, pression sur les électeurs).</p>
+
+          <div class="def def-t3"><strong>Suffrage censitaire :</strong> droit de vote réservé aux citoyens qui paient un impôt minimum (le cens). Seuls les plus riches votent.</div>
+          <div class="def def-t3"><strong>Suffrage universel masculin :</strong> droit de vote accordé à tous les hommes adultes, sans condition de fortune. Instauré en France en 1848.</div>
+
+          <!-- SVG frise des régimes politiques -->
+          <h3>📅 Les régimes politiques en France (1815-1870)</h3>
+          <div class="svg-wrap">
+            <svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg">
+              <rect width="700" height="200" fill="#e8f6ef" rx="12"/>
+              <line x1="40" y1="100" x2="660" y2="100" stroke="#1e8449" stroke-width="3"/>
+              <!-- Périodes -->
+              <rect x="40" y="88" width="150" height="24" fill="#f5cba7" rx="4" stroke="#e67e22"/>
+              <text x="115" y="105" text-anchor="middle" font-size="11" fill="#7d4e00" font-weight="700">Restauration</text>
+              <text x="115" y="78" text-anchor="middle" font-size="9" fill="#555">Suffrage censitaire</text>
+              <text x="40" y="135" font-size="9" fill="#e67e22" font-weight="600">1815</text>
+
+              <rect x="190" y="88" width="170" height="24" fill="#aed6f1" rx="4" stroke="#2471a3"/>
+              <text x="275" y="105" text-anchor="middle" font-size="11" fill="#1a5276" font-weight="700">Monarchie de Juillet</text>
+              <text x="275" y="78" text-anchor="middle" font-size="9" fill="#555">Cens abaissé</text>
+              <text x="190" y="135" font-size="9" fill="#2471a3" font-weight="600">1830</text>
+
+              <rect x="360" y="88" width="90" height="24" fill="#d5f5e3" rx="4" stroke="#1e8449"/>
+              <text x="405" y="105" text-anchor="middle" font-size="11" fill="#1e8449" font-weight="700">IIe Rép.</text>
+              <text x="405" y="78" text-anchor="middle" font-size="9" fill="#555">Suf. universel ♂</text>
+              <text x="360" y="135" font-size="9" fill="#1e8449" font-weight="600">1848</text>
+
+              <rect x="450" y="88" width="210" height="24" fill="#e8daef" rx="4" stroke="#7d3c98"/>
+              <text x="555" y="105" text-anchor="middle" font-size="11" fill="#7d3c98" font-weight="700">Second Empire</text>
+              <text x="555" y="78" text-anchor="middle" font-size="9" fill="#555">Suf. universel contrôlé</text>
+              <text x="660" y="135" font-size="9" fill="#7d3c98" font-weight="600">1870</text>
+
+              <text x="350" y="180" text-anchor="middle" font-size="11" fill="#1e8449" font-weight="700">La conquête progressive du droit de vote en France</text>
+            </svg>
+          </div>
+
+          <div class="astuce">Retiens cette progression : 90 000 → 240 000 → 9 000 000 électeurs. Le grand bond, c'est 1848 avec le suffrage universel masculin. Mais attention : les femmes ne voteront qu'en 1944 !</div>
+        </div>
+
+        <div class="tab-content exos" id="t3c1-exos">
+          <div class="exo-block" id="q29">
+            <p>29. Qu'est-ce que le suffrage censitaire ?</p>
+            <div class="exo-options">
+              <label><input type="radio" name="q29" onclick="checkMCQ(this,'q29',true)"> Un vote réservé aux citoyens qui paient un impôt minimum</label>
+              <label><input type="radio" name="q29" onclick="checkMCQ(this,'q29',false)"> Un vote où tout le monde peut participer</label>
+              <label><input type="radio" name="q29" onclick="checkMCQ(this,'q29',false)"> Un vote secret organisé par les communes</label>
+            </div>
+            <div class="feedback" id="fb_q29"></div>
+          </div>
+
+          <div class="exo-block" id="q30">
+            <p>30. En quelle année le suffrage universel masculin est-il instauré en France ?</p>
+            <div class="exo-options">
+              <label><input type="radio" name="q30" onclick="checkMCQ(this,'q30',false)"> 1815</label>
+              <label><input type="radio" name="q30" onclick="checkMCQ(this,'q30',false)"> 1830</label>
+              <label><input type="radio" name="q30" onclick="checkMCQ(this,'q30',true)"> 1848</label>
+              <label><input type="radio" name="q30" onclick="checkMCQ(this,'q30',false)"> 1870</label>
+            </div>
+            <div class="feedback" id="fb_q30"></div>
+          </div>
+
+          <div class="exo-block" id="q31">
+            <p>31. Complète : Le roi renversé en 1830 s'appelle <span class="fill-row"><input class="fill-input" id="fill_q31" placeholder="nom"> <button class="fill-btn" onclick="checkFill('q31','charles x','Charles X est renversé par la révolution de Juillet 1830, remplacé par Louis-Philippe.')">Vérifier</button></span></p>
+            <div class="feedback" id="fb_q31"></div>
+          </div>
+
+          <div class="exo-block" id="q32">
+            <p>32. Vrai ou faux : Sous le Second Empire, Napoléon III supprime le droit de vote.</p>
+            <div class="exo-options">
+              <label><input type="radio" name="q32" onclick="checkMCQ(this,'q32',false)"> Vrai</label>
+              <label><input type="radio" name="q32" onclick="checkMCQ(this,'q32',true)"> Faux</label>
+            </div>
+            <div class="feedback" id="fb_q32"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ Ch3.2 ═══ -->
+    <div class="chapter">
+      <div class="chapter-header" onclick="toggleChapter(this)">
+        <span class="chapter-num t3-num">2</span>
+        <span class="chapter-name">La IIIe République</span>
+        <span class="chapter-chevron">▼</span>
+      </div>
+      <div class="chapter-body">
+        <div class="tab-row">
+          <button class="tab-btn active-t3" onclick="showTab(this,'t3c2-cours','t3')">📖 Fiche de cours</button>
+          <button class="tab-btn" onclick="showTab(this,'t3c2-exos','t3')">📝 Exercices</button>
+        </div>
+
+        <div class="tab-content active course" id="t3c2-cours">
+          <h3>🇫🇷 La naissance de la IIIe République</h3>
+          <p>En <strong>septembre 1870</strong>, Napoléon III est vaincu par la Prusse à <strong>Sedan</strong>. La République est proclamée le <strong>4 septembre 1870</strong>. Mais il faut du temps pour qu'elle s'installe : les lois constitutionnelles ne sont votées qu'en <strong>1875</strong>.</p>
+
+          <h3>🏫 Les grandes lois républicaines</h3>
+          <p>La IIIe République met en place des lois qui construisent une <strong>culture républicaine</strong> :</p>
+          <p>🔹 <strong>1881-1882 — Lois Jules Ferry</strong> : école primaire <strong>gratuite, laïque et obligatoire</strong> (6-13 ans). L'école devient le lieu principal de diffusion des valeurs républicaines.<br>
+          🔹 <strong>1881 — Liberté de la presse</strong> : les journaux peuvent s'exprimer librement.<br>
+          🔹 <strong>1884 — Liberté syndicale</strong> : les ouvriers peuvent créer des syndicats.<br>
+          🔹 <strong>1901 — Liberté d'association</strong>.<br>
+          🔹 <strong>1905 — Loi de séparation des Églises et de l'État</strong> : la France devient un État <strong>laïque</strong>.</p>
+
+          <div class="def def-t3"><strong>Laïcité :</strong> principe de séparation entre l'État et les religions. L'État ne favorise aucune religion et garantit la liberté de conscience de chacun.</div>
+
+          <h3>⚡ Les crises de la République</h3>
+          <p>La République est contestée :</p>
+          <p>🔹 L'<strong>affaire Dreyfus</strong> (1894-1906) : un officier juif, le capitaine Dreyfus, est injustement accusé de trahison. L'affaire divise la France entre « dreyfusards » (défenseurs de la justice, comme Émile Zola avec son article « J'accuse ») et « antidreyfusards » (nationalistes, antisémites).</p>
+          <p>🔹 Des <strong>mouvements royalistes</strong> et <strong>nationalistes</strong> contestent la République.</p>
+
+          <div class="def def-t3"><strong>Affaire Dreyfus :</strong> scandale politico-militaire (1894-1906) au cours duquel un officier juif est injustement condamné. L'affaire met en lumière l'antisémitisme et divise profondément la société française.</div>
+
+          <div class="astuce">Les 3 piliers de la IIIe République : l'<strong>école</strong> (Jules Ferry), les <strong>libertés</strong> (presse, syndicats, associations) et la <strong>laïcité</strong> (1905). Ce sont les fondations de la République française actuelle !</div>
+        </div>
+
+        <div class="tab-content exos" id="t3c2-exos">
+          <div class="exo-block" id="q33">
+            <p>33. Qui est à l'origine des lois rendant l'école gratuite, laïque et obligatoire ?</p>
+            <div class="exo-options">
+              <label><input type="radio" name="q33" onclick="checkMCQ(this,'q33',false)"> Napoléon III</label>
+              <label><input type="radio" name="q33" onclick="checkMCQ(this,'q33',true)"> Jules Ferry</label>
+              <label><input type="radio" name="q33" onclick="checkMCQ(this,'q33',false)"> Émile Zola</label>
+              <label><input type="radio" name="q33" onclick="checkMCQ(this,'q33',false)"> Robespierre</label>
+            </div>
+            <div class="feedback" id="fb_q33"></div>
+          </div>
+
+          <div class="exo-block" id="q34">
+            <p>34. Que sépare la loi de 1905 ?</p>
+            <div class="exo-options">
+              <label><input type="radio" name="q34" onclick="checkMCQ(this,'q34',true)"> Les Églises et l'État</label>
+              <label><input type="radio" name="q34" onclick="checkMCQ(this,'q34',false)"> La noblesse et le peuple</label>
+              <label><input type="radio" name="q34" onclick="checkMCQ(this,'q34',false)"> L'Assemblée et le Sénat</label>
+            </div>
+            <div class="feedback" id="fb_q34"></div>
+          </div>
+
+          <div class="exo-block" id="q35">
+            <p>35. Complète : L'écrivain qui publie « J'accuse » pour défendre Dreyfus est <span class="fill-row"><input class="fill-input" id="fill_q35" placeholder="nom"> <button class="fill-btn" onclick="checkFill('q35','zola','Émile Zola publie \'J\'accuse\' en 1898 pour défendre Dreyfus.')">Vérifier</button></span></p>
+            <div class="feedback" id="fb_q35"></div>
+          </div>
+
+          <div class="exo-block" id="q36">
+            <p>36. Vrai ou faux : Les lois Jules Ferry rendent l'école obligatoire pour les garçons uniquement.</p>
+            <div class="exo-options">
+              <label><input type="radio" name="q36" onclick="checkMCQ(this,'q36',false)"> Vrai</label>
+              <label><input type="radio" name="q36" onclick="checkMCQ(this,'q36',true)"> Faux</label>
+            </div>
+            <div class="feedback" id="fb_q36"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ Ch3.3 ═══ -->
+    <div class="chapter">
+      <div class="chapter-header" onclick="toggleChapter(this)">
+        <span class="chapter-num t3-num">3</span>
+        <span class="chapter-name">La condition féminine au XIXe siècle</span>
+        <span class="chapter-chevron">▼</span>
+      </div>
+      <div class="chapter-body">
+        <div class="tab-row">
+          <button class="tab-btn active-t3" onclick="showTab(this,'t3c3-cours','t3')">📖 Fiche de cours</button>
+          <button class="tab-btn" onclick="showTab(this,'t3c3-exos','t3')">📝 Exercices</button>
+        </div>
+
+        <div class="tab-content active course" id="t3c3-cours">
+          <h3>👩 La place des femmes dans la société</h3>
+          <p>Au XIXe siècle, les femmes sont <strong>exclues de la vie politique</strong>. Le suffrage universel de 1848 est uniquement <strong>masculin</strong>. Le <strong>Code civil de 1804</strong> place la femme sous l'autorité de son mari : elle ne peut pas travailler, gérer ses biens ou éduquer ses enfants sans son accord.</p>
+
+          <h3>👷‍♀️ Les femmes au travail</h3>
+          <p>Les situations varient selon les classes sociales :</p>
+          <p>🔹 <strong>Femmes ouvrières</strong> : travaillent dans les usines textiles, les mines, les ateliers. Salaires très bas (souvent la moitié de celui des hommes), conditions dures.<br>
+          🔹 <strong>Femmes de la bourgeoisie</strong> : restent au foyer, s'occupent de la maison et de l'éducation des enfants. Ne travaillent pas.<br>
+          🔹 <strong>Femmes paysannes</strong> : travaillent aux champs aux côtés des hommes.</p>
+
+          <h3>✊ Les débuts du féminisme</h3>
+          <p>Des femmes commencent à revendiquer l'égalité :</p>
+          <p>🔹 <strong>Olympe de Gouges</strong> (1791) avait déjà rédigé la <em>Déclaration des droits de la femme et de la citoyenne</em> pendant la Révolution (guillotinée en 1793).<br>
+          🔹 <strong>George Sand</strong> : écrivaine célèbre qui défend l'émancipation des femmes.<br>
+          🔹 <strong>Hubertine Auclert</strong> : militante pour le droit de vote des femmes à la fin du XIXe siècle.</p>
+
+          <p>Cependant, les avancées restent très limitées. Les femmes n'obtiendront le droit de vote en France qu'en <strong>1944</strong>.</p>
+
+          <div class="dates-box">
+            <strong>📅 Quelques repères :</strong><br>
+            • 1804 — Code civil : femme soumise à l'autorité du mari<br>
+            • 1850 — Loi Falloux : écoles de filles dans chaque commune<br>
+            • 1881-82 — Lois Ferry : école obligatoire pour filles ET garçons<br>
+            • 1907 — Les femmes mariées peuvent disposer de leur salaire<br>
+            • 1944 — Droit de vote des femmes
+          </div>
+
+          <div class="astuce">La Révolution française a proclamé « les droits de l'homme »... mais pas de la femme ! Le XIXe siècle est un siècle de luttes lentes pour l'égalité.</div>
+        </div>
+
+        <div class="tab-content exos" id="t3c3-exos">
+          <div class="exo-block" id="q37">
+            <p>37. Que prévoit le Code civil de 1804 pour les femmes ?</p>
+            <div class="exo-options">
+              <label><input type="radio" name="q37" onclick="checkMCQ(this,'q37',false)"> L'égalité totale entre hommes et femmes</label>
+              <label><input type="radio" name="q37" onclick="checkMCQ(this,'q37',true)"> La soumission de la femme à l'autorité de son mari</label>
+              <label><input type="radio" name="q37" onclick="checkMCQ(this,'q37',false)"> Le droit de vote pour les femmes</label>
+            </div>
+            <div class="feedback" id="fb_q37"></div>
+          </div>
+
+          <div class="exo-block" id="q38">
+            <p>38. Qui a rédigé la « Déclaration des droits de la femme et de la citoyenne » en 1791 ?</p>
+            <div class="exo-options">
+              <label><input type="radio" name="q38" onclick="checkMCQ(this,'q38',true)"> Olympe de Gouges</label>
+              <label><input type="radio" name="q38" onclick="checkMCQ(this,'q38',false)"> George Sand</label>
+              <label><input type="radio" name="q38" onclick="checkMCQ(this,'q38',false)"> Hubertine Auclert</label>
+            </div>
+            <div class="feedback" id="fb_q38"></div>
+          </div>
+
+          <div class="exo-block" id="q39">
+            <p>39. Vrai ou faux : Les femmes obtiennent le droit de vote en France en 1848.</p>
+            <div class="exo-options">
+              <label><input type="radio" name="q39" onclick="checkMCQ(this,'q39',false)"> Vrai</label>
+              <label><input type="radio" name="q39" onclick="checkMCQ(this,'q39',true)"> Faux</label>
+            </div>
+            <div class="feedback" id="fb_q39"></div>
+          </div>
+
+          <div class="exo-block" id="q40">
+            <p>40. Complète : Les femmes françaises obtiennent le droit de vote en <span class="fill-row"><input class="fill-input" id="fill_q40" placeholder="année"> <button class="fill-btn" onclick="checkFill('q40','1944','Les femmes obtiennent le droit de vote en France en 1944.')">Vérifier</button></span></p>
+            <div class="feedback" id="fb_q40"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  BONUS : GRANDES DATES RÉCAPITULATIVES                 -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="theme-block">
+  <div class="theme-header t4-head" onclick="toggleTheme(this)">
+    <span class="theme-icon">🏆</span>
+    <span class="theme-title">Quiz final — Toutes les grandes dates</span>
+    <span class="theme-chevron">▼</span>
+  </div>
+  <div class="theme-body">
+    <div class="chapter">
+      <div class="chapter-header" onclick="toggleChapter(this)">
+        <span class="chapter-num t4-num">★</span>
+        <span class="chapter-name">Relie chaque date à son événement</span>
+        <span class="chapter-chevron">▼</span>
+      </div>
+      <div class="chapter-body">
+        <div class="tab-row">
+          <button class="tab-btn active-t4" onclick="showTab(this,'bonus-exos','t4')">📝 Exercices récapitulatifs</button>
+        </div>
+
+        <div class="tab-content active exos" id="bonus-exos">
+          <div class="exo-block" id="q41">
+            <p>41. Que se passe-t-il le 26 août 1789 ?</p>
+            <div class="exo-options">
+              <label><input type="radio" name="q41" onclick="checkMCQ(this,'q41',false)"> Prise de la Bastille</label>
+              <label><input type="radio" name="q41" onclick="checkMCQ(this,'q41',true)"> Déclaration des droits de l'homme et du citoyen</label>
+              <label><input type="radio" name="q41" onclick="checkMCQ(this,'q41',false)"> Abolition des privilèges</label>
+              <label><input type="radio" name="q41" onclick="checkMCQ(this,'q41',false)"> Sacre de Napoléon</label>
+            </div>
+            <div class="feedback" id="fb_q41"></div>
+          </div>
+
+          <div class="exo-block" id="q42">
+            <p>42. Complète : La loi de séparation des Églises et de l'État date de <span class="fill-row"><input class="fill-input" id="fill_q42" placeholder="année"> <button class="fill-btn" onclick="checkFill('q42','1905','La loi de séparation des Églises et de l\'État est votée en 1905.')">Vérifier</button></span></p>
+            <div class="feedback" id="fb_q42"></div>
+          </div>
+
+          <div class="exo-block" id="q43">
+            <p>43. Quel événement marque la fin du Second Empire ?</p>
+            <div class="exo-options">
+              <label><input type="radio" name="q43" onclick="checkMCQ(this,'q43',true)"> La défaite de Sedan face à la Prusse (1870)</label>
+              <label><input type="radio" name="q43" onclick="checkMCQ(this,'q43',false)"> La bataille de Waterloo (1815)</label>
+              <label><input type="radio" name="q43" onclick="checkMCQ(this,'q43',false)"> L'affaire Dreyfus (1894)</label>
+            </div>
+            <div class="feedback" id="fb_q43"></div>
+          </div>
+
+          <div class="exo-block" id="q44">
+            <p>44. En quelle année l'esclavage est-il définitivement aboli en France ?</p>
+            <div class="exo-options">
+              <label><input type="radio" name="q44" onclick="checkMCQ(this,'q44',false)"> 1794</label>
+              <label><input type="radio" name="q44" onclick="checkMCQ(this,'q44',false)"> 1815</label>
+              <label><input type="radio" name="q44" onclick="checkMCQ(this,'q44',true)"> 1848</label>
+              <label><input type="radio" name="q44" onclick="checkMCQ(this,'q44',false)"> 1870</label>
+            </div>
+            <div class="feedback" id="fb_q44"></div>
+          </div>
+
+          <div class="exo-block" id="q45">
+            <p>45. Complète : Le philosophe des Lumières qui défend la tolérance religieuse est <span class="fill-row"><input class="fill-input" id="fill_q45" placeholder="nom"> <button class="fill-btn" onclick="checkFill('q45','voltaire','Voltaire (1694-1778) est le grand défenseur de la tolérance religieuse et de la liberté d\'expression.')">Vérifier</button></span></p>
+            <div class="feedback" id="fb_q45"></div>
+          </div>
+
+          <div class="exo-block" id="q46">
+            <p>46. Quelle est la source d'énergie principale de la 1re révolution industrielle ?</p>
+            <div class="exo-options">
+              <label><input type="radio" name="q46" onclick="checkMCQ(this,'q46',true)"> Le charbon</label>
+              <label><input type="radio" name="q46" onclick="checkMCQ(this,'q46',false)"> Le pétrole</label>
+              <label><input type="radio" name="q46" onclick="checkMCQ(this,'q46',false)"> L'électricité</label>
+              <label><input type="radio" name="q46" onclick="checkMCQ(this,'q46',false)"> Le bois</label>
+            </div>
+            <div class="feedback" id="fb_q46"></div>
+          </div>
+
+          <div class="exo-block" id="q47">
+            <p>47. Vrai ou faux : Jules Ferry a rendu l'école obligatoire en 1881-1882.</p>
+            <div class="exo-options">
+              <label><input type="radio" name="q47" onclick="checkMCQ(this,'q47',true)"> Vrai</label>
+              <label><input type="radio" name="q47" onclick="checkMCQ(this,'q47',false)"> Faux</label>
+            </div>
+            <div class="feedback" id="fb_q47"></div>
+          </div>
+
+          <div class="exo-block" id="q48">
+            <p>48. Complète : La conférence qui organise le partage de l'Afrique se tient à <span class="fill-row"><input class="fill-input" id="fill_q48" placeholder="ville"> <button class="fill-btn" onclick="checkFill('q48','berlin','La conférence de Berlin (1885) organise le partage de l\'Afrique entre les puissances européennes.')">Vérifier</button></span></p>
+            <div class="feedback" id="fb_q48"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- .main -->
+
+<div style="text-align:center; padding:2rem 1rem; color:#999; font-size:0.85rem;">
+  📜 Histoire 4ème — Programme complet · XVIIIe-XIXe siècles<br>
+  Fiches conformes au programme officiel de l'Éducation nationale (cycle 4)
+</div>
+
+<script>
+// ── EXPLANATIONS ──
+const explanations = {
+  q1: {t:'Le commerce triangulaire relie Europe → Afrique → Amérique dans un circuit d\'échange de marchandises, d\'esclaves et de produits coloniaux.', f:'Ce n\'est pas un échange entre villes françaises ni un accord politique.'},
+  q2: {t:'', f:'Faux ! Le Code noir de 1685 considère les esclaves comme des « biens meubles » (des objets), pas comme des êtres libres.'},
+  q3: {t:'Les armes sont transportées d\'Europe VERS l\'Afrique, pas d\'Amérique vers l\'Europe.', f:'Ce produit fait bien partie des marchandises transportées d\'Amérique vers l\'Europe.'},
+  q5: {t:'Montesquieu théorise la séparation des pouvoirs dans « De l\'esprit des lois » (1748).', f:'Ce n\'est pas le bon philosophe. Voltaire = tolérance, Rousseau = souveraineté du peuple, Diderot = Encyclopédie.'},
+  q7: {t:'', f:'Faux ! Un despote éclairé s\'inspire des Lumières mais GARDE son pouvoir absolu. Il modernise sans partager le pouvoir.'},
+  q8: {t:'Rousseau défend la souveraineté du peuple dans « Du contrat social » (1762).', f:'Ce n\'est pas le bon philosophe.'},
+  q9: {t:'Le 14 juillet 1789, le peuple de Paris prend la Bastille, prison-forteresse symbole de l\'absolutisme royal.', f:'Cette date ne correspond pas à cet événement.'},
+  q10:{t:'La DDHC proclame la liberté, l\'égalité et la souveraineté nationale. C\'est le texte fondateur des droits en France.', f:'La DDHC ne proclame pas directement la République ni la fin de la monarchie.'},
+  q12:{t:'Robespierre et le Comité de salut public instaurent la Terreur pour « sauver la République » (1793-1794).', f:'Ce n\'est pas la bonne personne.'},
+  q13:{t:'Napoléon se fait couronner Empereur le 2 décembre 1804 à Notre-Dame de Paris.', f:'1799 = coup d\'État, 1812 = campagne de Russie, 1815 = Waterloo.'},
+  q14:{t:'Le Code civil (1804) organise la vie des citoyens : famille, propriété, contrats. Il est encore en vigueur aujourd\'hui.', f:'Le Code civil n\'est ni un code militaire ni un traité de paix.'},
+  q16:{t:'Vrai ! Les préfets, créés en 1800, représentent l\'État dans chaque département. Ce système existe encore aujourd\'hui.', f:''},
+  q17:{t:'La révolution industrielle commence au Royaume-Uni à la fin du XVIIIe siècle, avec la machine à vapeur.', f:'Ce pays s\'industrialise plus tard.'},
+  q18:{t:'L\'exode rural = départ massif des paysans vers les villes, attirés par le travail en usine.', f:'Ce n\'est pas la bonne définition.'},
+  q20:{t:'', f:'Faux ! La 2e RI est fondée sur l\'électricité, le pétrole et le moteur à explosion (à partir de 1880). Le charbon et la vapeur, c\'est la 1re RI.'},
+  q21:{t:'En février 1848, une révolution renverse Louis-Philippe et la IIe République est proclamée avec le suffrage universel masculin.', f:'Ce n\'est pas le bon événement.'},
+  q22:{t:'Victor Schœlcher est l\'auteur du décret du 27 avril 1848 abolissant définitivement l\'esclavage dans les colonies françaises.', f:'Ce n\'est pas la bonne personne.'},
+  q23:{t:'', f:'Faux ! La plupart des révolutions du Printemps des peuples sont écrasées. Seule la France conserve sa République (temporairement).'},
+  q25:{t:'La conférence de Berlin de 1885 organise le partage de l\'Afrique entre les puissances européennes.', f:'Ce n\'est pas la bonne date.'},
+  q26:{t:'Le Royaume-Uni et la France possèdent les deux plus grands empires coloniaux du XIXe siècle.', f:'Ces pays ont des empires coloniaux plus modestes.'},
+  q27:{t:'', f:'Faux ! Le Code de l\'indigénat crée une inégalité de droits entre colons européens et populations colonisées.'},
+  q28:{t:'Donner le droit de vote aux colonisés n\'est certainement pas une motivation de la colonisation — c\'est tout le contraire !', f:'C\'est bien une des raisons réelles de la colonisation.'},
+  q29:{t:'Le suffrage censitaire réserve le vote aux citoyens payant un montant minimum d\'impôt (le cens).', f:'Ce n\'est pas la bonne définition.'},
+  q30:{t:'Le suffrage universel masculin est instauré en 1848 avec la IIe République.', f:'Ce n\'est pas la bonne date.'},
+  q32:{t:'', f:'Faux ! Napoléon III maintient le suffrage universel masculin, mais il contrôle fortement les élections (candidatures officielles, pression).'},
+  q33:{t:'Jules Ferry fait voter les lois de 1881-1882 rendant l\'école primaire gratuite, laïque et obligatoire.', f:'Ce n\'est pas la bonne personne.'},
+  q34:{t:'La loi de 1905 sépare les Églises et l\'État : la France devient un État laïque.', f:'La loi de 1905 concerne la laïcité.'},
+  q36:{t:'', f:'Faux ! Les lois Ferry rendent l\'école obligatoire pour TOUS les enfants, filles ET garçons.'},
+  q37:{t:'Le Code civil de 1804 place la femme sous l\'autorité de son mari. Elle ne peut ni travailler ni gérer ses biens sans son accord.', f:'Le Code civil est très défavorable aux femmes.'},
+  q38:{t:'Olympe de Gouges rédige la « Déclaration des droits de la femme et de la citoyenne » en 1791, pendant la Révolution.', f:'Ce n\'est pas la bonne personne.'},
+  q39:{t:'', f:'Faux ! En 1848, c\'est le suffrage universel MASCULIN. Les femmes n\'obtiennent le droit de vote qu\'en 1944.'},
+  q41:{t:'Le 26 août 1789, l\'Assemblée adopte la Déclaration des droits de l\'homme et du citoyen. La Bastille = 14 juillet, abolition des privilèges = 4 août.', f:'Ce n\'est pas le bon événement pour cette date.'},
+  q43:{t:'La défaite de Sedan face à la Prusse (2 sept. 1870) provoque la chute de Napoléon III et la proclamation de la IIIe République.', f:'Ce n\'est pas le bon événement.'},
+  q44:{t:'L\'esclavage est définitivement aboli en 1848 par le décret Schœlcher, sous la IIe République.', f:'1794 = 1re abolition (annulée en 1802). 1848 = abolition définitive.'},
+  q46:{t:'Le charbon est LA source d\'énergie de la 1re révolution industrielle (avec la machine à vapeur).', f:'Cette source d\'énergie correspond plutôt à la 2e révolution industrielle.'},
+  q47:{t:'Vrai ! Les lois Jules Ferry (1881-1882) rendent l\'école primaire gratuite, laïque et obligatoire.', f:''},
+};
+
+// ── STATE ──
+const completed = {};
+const TOTAL = 48;
+
+// ── TOGGLE FUNCTIONS ──
+function toggleTheme(el) {
+  const body = el.nextElementSibling;
+  const chev = el.querySelector('.theme-chevron');
+  body.classList.toggle('open');
+  chev.classList.toggle('open');
+}
+function toggleChapter(el) {
+  const body = el.nextElementSibling;
+  const chev = el.querySelector('.chapter-chevron');
+  body.classList.toggle('open');
+  chev.classList.toggle('open');
+}
+
+function showTab(btn, id, theme) {
+  const parent = btn.closest('.chapter-body');
+  parent.querySelectorAll('.tab-btn').forEach(b => { b.className = 'tab-btn'; });
+  btn.classList.add('active-' + theme);
+  parent.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+// ── CHECK MCQ ──
+function checkMCQ(input, qid, correct) {
+  if (completed[qid]) return;
+  const fb = document.getElementById('fb_' + qid);
+  const exp = explanations[qid];
+  if (correct) {
+    fb.className = 'feedback correct';
+    fb.textContent = '✅ Bonne réponse ! ' + (exp ? exp.t : '');
+  } else {
+    fb.className = 'feedback incorrect';
+    fb.textContent = '❌ Incorrect. ' + (exp ? (exp.f || exp.t) : '');
+  }
+  // Disable all radios
+  document.querySelectorAll('input[name="'+qid+'"]').forEach(r => r.disabled = true);
+  // Highlight
+  input.parentElement.style.background = correct ? '#e8f8f0' : '#fdecea';
+  completed[qid] = true;
+  updateProgress();
+}
+
+// ── CHECK FILL ──
+function checkFill(qid, answer, explain) {
+  if (completed[qid]) return;
+  const input = document.getElementById('fill_' + qid);
+  const fb = document.getElementById('fb_' + qid);
+  const val = input.value.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  const ans = answer.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  if (val === ans) {
+    fb.className = 'feedback correct';
+    fb.textContent = '✅ Bonne réponse ! ' + explain;
+    input.classList.add('correct-border');
+  } else {
+    fb.className = 'feedback incorrect';
+    fb.textContent = '❌ Incorrect. ' + explain;
+    input.classList.add('incorrect-border');
+  }
+  input.disabled = true;
+  completed[qid] = true;
+  updateProgress();
+}
+
+// ── PROGRESS ──
+function updateProgress() {
+  const done = Object.keys(completed).length;
+  const pct = Math.round(done / TOTAL * 100);
+  document.getElementById('pBar').style.width = pct + '%';
+  document.getElementById('pLabel').textContent = done + ' / ' + TOTAL + ' exercices complétés (' + pct + '%)';
+}
+</script>
+
+</body>
+</html>
