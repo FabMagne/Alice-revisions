@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Physique-Chimie 4ème — Fiches de Révision</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fira+Code:wght@400;500&display=swap');
+
+:root {
+  --bg: #f4f1eb;
+  --card: #ffffff;
+  --primary: #2d6a4f;
+  --primary-light: #40916c;
+  --accent: #e76f51;
+  --accent-light: #f4a261;
+  --blue: #264653;
+  --blue-light: #2a9d8f;
+  --purple: #7b2cbf;
+  --purple-light: #c77dff;
+  --text: #1b1b1b;
+  --text-light: #555;
+  --border: #ddd;
+  --success: #2d6a4f;
+  --error: #c1121f;
+  --warning: #e9c46a;
+  --shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* ─── HEADER ─── */
+.hero {
+  background: linear-gradient(135deg, var(--blue) 0%, var(--primary) 50%, var(--blue-light) 100%);
+  color: #fff;
+  padding: 2.5rem 1.5rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 70%, rgba(255,255,255,0.06) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(255,255,255,0.04) 0%, transparent 40%);
+  pointer-events: none;
+}
+.hero h1 { font-size: 2rem; font-weight: 800; position: relative; }
+.hero p { font-size: 1rem; opacity: 0.9; margin-top: .4rem; position: relative; }
+
+/* ─── NAV ─── */
+.nav-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  padding: 1rem 1.5rem;
+  background: var(--card);
+  border-bottom: 2px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  justify-content: center;
+}
+.nav-btn {
+  padding: .5rem 1rem;
+  border: 2px solid var(--border);
+  border-radius: 2rem;
+  background: transparent;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: .82rem;
+  cursor: pointer;
+  transition: all .2s;
+  color: var(--text);
+}
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+.nav-btn.active {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+/* ─── PROGRESS ─── */
+.progress-wrap {
+  padding: .8rem 1.5rem;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+}
+.progress-bar {
+  height: 10px;
+  background: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+  max-width: 600px;
+  margin: .4rem auto 0;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--blue-light));
+  border-radius: 5px;
+  transition: width .5s ease;
+  width: 0%;
+}
+.progress-text { font-size: .85rem; font-weight: 700; color: var(--primary); }
+
+/* ─── CONTENT ─── */
+.container { max-width: 900px; margin: 0 auto; padding: 1.5rem; }
+
+.section { display: none; }
+.section.active { display: block; }
+
+/* ─── CARDS ─── */
+.card {
+  background: var(--card);
+  border-radius: 1rem;
+  padding: 1.8rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow);
+  border-left: 5px solid var(--primary);
+}
+.card.accent { border-left-color: var(--accent); }
+.card.blue { border-left-color: var(--blue); }
+.card.purple { border-left-color: var(--purple); }
+
+.card h2 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: var(--blue);
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 1.2rem 0 .5rem;
+  color: var(--primary);
+}
+
+/* ─── FORMULAS ─── */
+.formula-box {
+  background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
+  border: 2px solid var(--primary-light);
+  border-radius: .8rem;
+  padding: 1rem 1.2rem;
+  margin: 1rem 0;
+  text-align: center;
+  font-family: 'Fira Code', monospace;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.def-box {
+  background: #fff3e0;
+  border-left: 4px solid var(--accent);
+  border-radius: 0 .6rem .6rem 0;
+  padding: .8rem 1rem;
+  margin: .8rem 0;
+  font-size: .95rem;
+}
+
+.astuce-box {
+  background: #e8eaf6;
+  border-left: 4px solid var(--purple);
+  border-radius: 0 .6rem .6rem 0;
+  padding: .8rem 1rem;
+  margin: .8rem 0;
+  font-size: .95rem;
+}
+.astuce-box::before { content: '💡 '; }
+
+/* ─── SVG SCHEMAS ─── */
+.schema-wrap {
+  background: #fafafa;
+  border: 1px solid #e0e0e0;
+  border-radius: .8rem;
+  padding: 1rem;
+  margin: 1rem 0;
+  text-align: center;
+  overflow-x: auto;
+}
+.schema-wrap svg { max-width: 100%; height: auto; }
+.schema-caption {
+  font-size: .82rem;
+  color: var(--text-light);
+  font-style: italic;
+  margin-top: .5rem;
+}
+
+/* ─── EXERCICES ─── */
+.exo-block {
+  background: var(--card);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 1.2rem;
+  box-shadow: var(--shadow);
+  border: 2px solid #e0e0e0;
+}
+.exo-block h3 {
+  color: var(--accent);
+  font-size: 1.05rem;
+  margin-bottom: .8rem;
+}
+
+/* QCM */
+.qcm-options { display: flex; flex-direction: column; gap: .5rem; margin: .8rem 0; }
+.qcm-option {
+  padding: .7rem 1rem;
+  border: 2px solid var(--border);
+  border-radius: .6rem;
+  cursor: pointer;
+  transition: all .2s;
+  font-size: .95rem;
+  background: #fff;
+}
+.qcm-option:hover { border-color: var(--primary-light); background: #f0faf4; }
+.qcm-option.selected { border-color: var(--blue); background: #e3f2fd; font-weight: 600; }
+.qcm-option.correct { border-color: var(--success); background: #e8f5e9; }
+.qcm-option.wrong { border-color: var(--error); background: #ffebee; }
+.qcm-option.reveal-correct { border-color: var(--success); background: #c8e6c9; font-weight: 700; }
+
+/* Boutons */
+.btn {
+  padding: .6rem 1.4rem;
+  border: none;
+  border-radius: .6rem;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: .9rem;
+  cursor: pointer;
+  transition: all .2s;
+}
+.btn-primary { background: var(--primary); color: #fff; }
+.btn-primary:hover { background: var(--primary-light); }
+.btn-accent { background: var(--accent); color: #fff; }
+.btn-accent:hover { background: #d35400; }
+
+.correction {
+  display: none;
+  background: #f1f8e9;
+  border-left: 4px solid var(--success);
+  border-radius: 0 .6rem .6rem 0;
+  padding: 1rem;
+  margin-top: .8rem;
+  font-size: .93rem;
+}
+.correction.visible { display: block; }
+
+/* Texte à trous */
+.trou-input {
+  display: inline-block;
+  border: none;
+  border-bottom: 2px dashed var(--primary);
+  background: transparent;
+  font-family: inherit;
+  font-size: .95rem;
+  font-weight: 600;
+  width: 120px;
+  text-align: center;
+  padding: .1rem .3rem;
+  color: var(--primary);
+  outline: none;
+}
+.trou-input:focus { border-bottom-color: var(--accent); }
+.trou-input.correct-input { border-bottom-color: var(--success); color: var(--success); background: #e8f5e9; }
+.trou-input.wrong-input { border-bottom-color: var(--error); color: var(--error); background: #ffebee; }
+
+/* VF */
+.vf-row {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  padding: .5rem 0;
+  border-bottom: 1px solid #eee;
+}
+.vf-row:last-child { border-bottom: none; }
+.vf-btns { display: flex; gap: .3rem; flex-shrink: 0; }
+.vf-btn {
+  padding: .3rem .8rem;
+  border: 2px solid var(--border);
+  border-radius: .4rem;
+  background: #fff;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: .85rem;
+  transition: all .2s;
+}
+.vf-btn:hover { border-color: var(--primary); }
+.vf-btn.selected-v { background: #e8f5e9; border-color: var(--success); color: var(--success); }
+.vf-btn.selected-f { background: #ffebee; border-color: var(--error); color: var(--error); }
+.vf-btn.answer-correct { background: #c8e6c9; border-color: var(--success); }
+.vf-btn.answer-wrong { background: #ffcdd2; border-color: var(--error); }
+
+.score-display {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 800;
+  padding: 1rem;
+  border-radius: .8rem;
+  margin-top: 1rem;
+}
+.score-good { background: #e8f5e9; color: var(--success); }
+.score-mid { background: #fff3e0; color: #e65100; }
+.score-bad { background: #ffebee; color: var(--error); }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .hero h1 { font-size: 1.5rem; }
+  .card { padding: 1.2rem; }
+  .nav-btn { font-size: .75rem; padding: .4rem .7rem; }
+  .container { padding: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>🔬 Physique-Chimie 4<sup>ème</sup></h1>
+  <p>Fiches de révision complètes • Schémas • Exercices interactifs</p>
+</div>
+
+<div class="nav-bar" id="navBar">
+  <button class="nav-btn active" onclick="showSection('accueil')">🏠 Accueil</button>
+  <button class="nav-btn" onclick="showSection('matiere')">⚗️ Matière</button>
+  <button class="nav-btn" onclick="showSection('electricite')">⚡ Électricité</button>
+  <button class="nav-btn" onclick="showSection('mouvements')">🚀 Mouvements</button>
+  <button class="nav-btn" onclick="showSection('signaux')">💡 Signaux</button>
+  <button class="nav-btn" onclick="showSection('exos')">📝 Exercices</button>
+  <button class="nav-btn" onclick="showSection('bilan')">🏆 Bilan final</button>
+</div>
+
+<div class="progress-wrap">
+  <span class="progress-text" id="progressText">Progression : 0 / 0</span>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+</div>
+
+<div class="container">
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- ACCUEIL -->
+<!-- ══════════════════════════════════════════════════ -->
+<div class="section active" id="sec-accueil">
+  <div class="card">
+    <h2>👋 Bienvenue dans tes fiches de révision !</h2>
+    <p>Ce fichier couvre <strong>tout le programme de physique-chimie de 4<sup>ème</sup></strong>, organisé en 4 grands thèmes :</p>
+    <p style="margin-top:.8rem;">
+      <strong>⚗️ Organisation et transformations de la matière</strong> — molécules, atomes, transformations chimiques, combustions<br>
+      <strong>⚡ L'énergie et ses conversions</strong> — circuits, tension, intensité, loi d'Ohm<br>
+      <strong>🚀 Mouvements et interactions</strong> — vitesse, trajectoire, forces<br>
+      <strong>💡 Des signaux pour observer et communiquer</strong> — lumière, son, propagation
+    </p>
+    <p style="margin-top:1rem;">Chaque thème contient une <strong>fiche de cours avec des schémas</strong>, puis des <strong>exercices interactifs</strong> (QCM, Vrai/Faux, textes à trous) avec corrections détaillées.</p>
+    <div class="astuce-box">Commence par lire la fiche de cours d'un thème, puis teste-toi avec les exercices. Ta progression se met à jour automatiquement !</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- THÈME 1 : MATIÈRE -->
+<!-- ══════════════════════════════════════════════════ -->
+<div class="section" id="sec-matiere">
+  <div class="card">
+    <h2>⚗️ Chapitre 1 — Les atomes et les molécules</h2>
+
+    <h3>1. Qu'est-ce qu'un atome ?</h3>
+    <p>Un <strong>atome</strong> est la plus petite particule de matière. Il est <strong>invisible à l'œil nu</strong> (taille ~ 0,1 nanomètre). Chaque atome a un <strong>nom</strong>, un <strong>symbole</strong> (1 ou 2 lettres, la première en majuscule) et un <strong>numéro atomique</strong> dans le tableau périodique.</p>
+
+    <div class="schema-wrap">
+      <svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg">
+        <!-- Atomes principaux -->
+        <circle cx="90" cy="90" r="40" fill="#333" stroke="#222" stroke-width="2"/>
+        <text x="90" y="85" text-anchor="middle" fill="#fff" font-size="22" font-weight="bold" font-family="Fira Code">C</text>
+        <text x="90" y="108" text-anchor="middle" fill="#ccc" font-size="12" font-family="Nunito">Carbone</text>
+        <text x="90" y="150" text-anchor="middle" fill="#555" font-size="13" font-family="Nunito" font-weight="600">Z = 6</text>
+
+        <circle cx="230" cy="90" r="40" fill="#e74c3c" stroke="#c0392b" stroke-width="2"/>
+        <text x="230" y="85" text-anchor="middle" fill="#fff" font-size="22" font-weight="bold" font-family="Fira Code">O</text>
+        <text x="230" y="108" text-anchor="middle" fill="#fdd" font-size="12" font-family="Nunito">Oxygène</text>
+        <text x="230" y="150" text-anchor="middle" fill="#555" font-size="13" font-family="Nunito" font-weight="600">Z = 8</text>
+
+        <circle cx="370" cy="90" r="40" fill="#3498db" stroke="#2980b9" stroke-width="2"/>
+        <text x="370" y="85" text-anchor="middle" fill="#fff" font-size="22" font-weight="bold" font-family="Fira Code">H</text>
+        <text x="370" y="108" text-anchor="middle" fill="#def" font-size="12" font-family="Nunito">Hydrogène</text>
+        <text x="370" y="150" text-anchor="middle" fill="#555" font-size="13" font-family="Nunito" font-weight="600">Z = 1</text>
+
+        <circle cx="510" cy="90" r="40" fill="#2ecc71" stroke="#27ae60" stroke-width="2"/>
+        <text x="510" y="85" text-anchor="middle" fill="#fff" font-size="22" font-weight="bold" font-family="Fira Code">N</text>
+        <text x="510" y="108" text-anchor="middle" fill="#dfe" font-size="12" font-family="Nunito">Azote</text>
+        <text x="510" y="150" text-anchor="middle" fill="#555" font-size="13" font-family="Nunito" font-weight="600">Z = 7</text>
+
+        <circle cx="640" cy="90" r="40" fill="#f39c12" stroke="#e67e22" stroke-width="2"/>
+        <text x="640" y="85" text-anchor="middle" fill="#fff" font-size="22" font-weight="bold" font-family="Fira Code">Fe</text>
+        <text x="640" y="108" text-anchor="middle" fill="#fec" font-size="12" font-family="Nunito">Fer</text>
+        <text x="640" y="150" text-anchor="middle" fill="#555" font-size="13" font-family="Nunito" font-weight="600">Z = 26</text>
+      </svg>
+      <div class="schema-caption">Les atomes les plus courants du programme de 4<sup>ème</sup> — chaque sphère de couleur est un modèle</div>
+    </div>
+
+    <h3>2. Qu'est-ce qu'une molécule ?</h3>
+    <p>Une <strong>molécule</strong> est un assemblage d'atomes liés entre eux. On l'écrit avec une <strong>formule chimique</strong> : les symboles des atomes suivis d'un chiffre en indice qui indique combien il y en a (on n'écrit pas le chiffre 1).</p>
+
+    <div class="schema-wrap">
+      <svg viewBox="0 0 700 280" xmlns="http://www.w3.org/2000/svg">
+        <!-- Molécule d'eau H2O -->
+        <text x="120" y="25" text-anchor="middle" fill="#264653" font-size="16" font-weight="800" font-family="Nunito">Eau : H₂O</text>
+        <circle cx="70" cy="100" r="22" fill="#3498db" stroke="#2980b9" stroke-width="2"/>
+        <text x="70" y="106" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold" font-family="Fira Code">H</text>
+        <circle cx="120" cy="70" r="30" fill="#e74c3c" stroke="#c0392b" stroke-width="2"/>
+        <text x="120" y="76" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold" font-family="Fira Code">O</text>
+        <circle cx="170" cy="100" r="22" fill="#3498db" stroke="#2980b9" stroke-width="2"/>
+        <text x="170" y="106" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold" font-family="Fira Code">H</text>
+        <line x1="92" y1="92" x2="105" y2="82" stroke="#555" stroke-width="3"/>
+        <line x1="148" y1="92" x2="135" y2="82" stroke="#555" stroke-width="3"/>
+        <text x="120" y="155" text-anchor="middle" fill="#555" font-size="13" font-family="Nunito">2 atomes H + 1 atome O</text>
+
+        <!-- CO2 -->
+        <text x="350" y="25" text-anchor="middle" fill="#264653" font-size="16" font-weight="800" font-family="Nunito">Dioxyde de carbone : CO₂</text>
+        <circle cx="290" cy="85" r="28" fill="#e74c3c" stroke="#c0392b" stroke-width="2"/>
+        <text x="290" y="91" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold" font-family="Fira Code">O</text>
+        <circle cx="350" cy="85" r="25" fill="#333" stroke="#222" stroke-width="2"/>
+        <text x="350" y="91" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold" font-family="Fira Code">C</text>
+        <circle cx="410" cy="85" r="28" fill="#e74c3c" stroke="#c0392b" stroke-width="2"/>
+        <text x="410" y="91" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold" font-family="Fira Code">O</text>
+        <line x1="318" y1="85" x2="325" y2="85" stroke="#555" stroke-width="3"/>
+        <line x1="375" y1="85" x2="382" y2="85" stroke="#555" stroke-width="3"/>
+        <text x="350" y="155" text-anchor="middle" fill="#555" font-size="13" font-family="Nunito">1 atome C + 2 atomes O</text>
+
+        <!-- O2 -->
+        <text x="570" y="25" text-anchor="middle" fill="#264653" font-size="16" font-weight="800" font-family="Nunito">Dioxygène : O₂</text>
+        <circle cx="540" cy="85" r="28" fill="#e74c3c" stroke="#c0392b" stroke-width="2"/>
+        <text x="540" y="91" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold" font-family="Fira Code">O</text>
+        <circle cx="600" cy="85" r="28" fill="#e74c3c" stroke="#c0392b" stroke-width="2"/>
+        <text x="600" y="91" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold" font-family="Fira Code">O</text>
+        <line x1="568" y1="85" x2="572" y2="85" stroke="#555" stroke-width="3"/>
+        <text x="570" y="155" text-anchor="middle" fill="#555" font-size="13" font-family="Nunito">2 atomes O</text>
+
+        <!-- Méthane CH4 -->
+        <text x="120" y="195" text-anchor="middle" fill="#264653" font-size="16" font-weight="800" font-family="Nunito">Méthane : CH₄</text>
+        <circle cx="120" cy="240" r="24" fill="#333" stroke="#222" stroke-width="2"/>
+        <text x="120" y="246" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold" font-family="Fira Code">C</text>
+        <circle cx="70" cy="215" r="16" fill="#3498db" stroke="#2980b9" stroke-width="1.5"/>
+        <text x="70" y="220" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold" font-family="Fira Code">H</text>
+        <circle cx="170" cy="215" r="16" fill="#3498db" stroke="#2980b9" stroke-width="1.5"/>
+        <text x="170" y="220" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold" font-family="Fira Code">H</text>
+        <circle cx="90" cy="270" r="16" fill="#3498db" stroke="#2980b9" stroke-width="1.5"/>
+        <text x="90" y="275" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold" font-family="Fira Code">H</text>
+        <circle cx="155" cy="270" r="16" fill="#3498db" stroke="#2980b9" stroke-width="1.5"/>
+        <text x="155" y="275" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold" font-family="Fira Code">H</text>
+        <line x1="96" y1="228" x2="86" y2="222" stroke="#555" stroke-width="2"/>
+        <line x1="144" y1="228" x2="154" y2="222" stroke="#555" stroke-width="2"/>
+        <line x1="108" y1="260" x2="102" y2="262" stroke="#555" stroke-width="2"/>
+        <line x1="136" y1="260" x2="142" y2="262" stroke="#555" stroke-width="2"/>
+      </svg>
+      <div class="schema-caption">Modèles moléculaires des molécules à connaître absolument</div>
+    </div>
+
+    <div class="def-box">
+      <strong>Formule chimique :</strong> elle indique la nature et le nombre de chaque atome dans la molécule. Ex : H₂O = 2 atomes d'hydrogène + 1 atome d'oxygène.
+    </div>
+
+    <h3>3. Les tests d'identification</h3>
+    <p>On peut identifier certaines molécules grâce à des tests spécifiques :</p>
+
+    <div class="schema-wrap">
+      <svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg">
+        <!-- Test eau -->
+        <rect x="10" y="10" width="160" height="180" rx="12" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+        <text x="90" y="38" text-anchor="middle" fill="#1565c0" font-size="13" font-weight="800" font-family="Nunito">Test de l'EAU</text>
+        <text x="90" y="60" text-anchor="middle" fill="#333" font-size="11" font-family="Nunito">Sulfate de cuivre</text>
+        <text x="90" y="76" text-anchor="middle" fill="#333" font-size="11" font-family="Nunito">anhydre</text>
+        <rect x="55" y="90" width="30" height="20" rx="4" fill="#f5f5f5" stroke="#aaa"/>
+        <text x="70" y="104" text-anchor="middle" fill="#999" font-size="10" font-family="Nunito">blanc</text>
+        <text x="100" y="104" fill="#555" font-size="16">→</text>
+        <rect x="115" y="90" width="30" height="20" rx="4" fill="#1565c0" stroke="#0d47a1"/>
+        <text x="130" y="104" text-anchor="middle" fill="#fff" font-size="10" font-family="Nunito">bleu</text>
+        <text x="90" y="140" text-anchor="middle" fill="#1565c0" font-size="11" font-weight="700" font-family="Nunito">S'il bleuit :</text>
+        <text x="90" y="158" text-anchor="middle" fill="#1565c0" font-size="12" font-weight="800" font-family="Nunito">eau présente ✓</text>
+
+        <!-- Test CO2 -->
+        <rect x="185" y="10" width="160" height="180" rx="12" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2"/>
+        <text x="265" y="38" text-anchor="middle" fill="#6a1b9a" font-size="13" font-weight="800" font-family="Nunito">Test du CO₂</text>
+        <text x="265" y="60" text-anchor="middle" fill="#333" font-size="11" font-family="Nunito">Eau de chaux</text>
+        <rect x="225" y="80" width="80" height="30" rx="8" fill="transparent" stroke="#aaa" stroke-width="1.5"/>
+        <text x="265" y="100" text-anchor="middle" fill="#aaa" font-size="11" font-family="Nunito">limpide</text>
+        <text x="265" y="124" fill="#555" font-size="14">↓ + CO₂</text>
+        <rect x="225" y="136" width="80" height="30" rx="8" fill="#f5f5f5" stroke="#9e9e9e" stroke-width="1.5"/>
+        <text x="265" y="156" text-anchor="middle" fill="#666" font-size="11" font-weight="700" font-family="Nunito">se trouble</text>
+        <text x="265" y="182" text-anchor="middle" fill="#6a1b9a" font-size="12" font-weight="800" font-family="Nunito">CO₂ présent ✓</text>
+
+        <!-- Test O2 -->
+        <rect x="360" y="10" width="160" height="180" rx="12" fill="#fff3e0" stroke="#e65100" stroke-width="2"/>
+        <text x="440" y="38" text-anchor="middle" fill="#e65100" font-size="13" font-weight="800" font-family="Nunito">Test du O₂</text>
+        <text x="440" y="60" text-anchor="middle" fill="#333" font-size="11" font-family="Nunito">Bûchette incandescente</text>
+        <line x1="420" y1="85" x2="460" y2="85" stroke="#8d6e63" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="460" cy="85" r="5" fill="#ff6f00"/>
+        <text x="440" y="115" text-anchor="middle" fill="#555" font-size="12" font-family="Nunito">↓ dans le gaz</text>
+        <line x1="420" y1="135" x2="460" y2="135" stroke="#8d6e63" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="460" cy="135" r="8" fill="#ff6f00"/>
+        <circle cx="460" cy="135" r="12" fill="none" stroke="#ffab00" stroke-width="2"/>
+        <text x="440" y="160" text-anchor="middle" fill="#e65100" font-size="11" font-weight="700" font-family="Nunito">Se rallume !</text>
+        <text x="440" y="182" text-anchor="middle" fill="#e65100" font-size="12" font-weight="800" font-family="Nunito">O₂ présent ✓</text>
+
+        <!-- Test H2 -->
+        <rect x="535" y="10" width="160" height="180" rx="12" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
+        <text x="615" y="38" text-anchor="middle" fill="#2e7d32" font-size="13" font-weight="800" font-family="Nunito">Test du H₂</text>
+        <text x="615" y="60" text-anchor="middle" fill="#333" font-size="11" font-family="Nunito">Allumette enflammée</text>
+        <line x1="595" y1="85" x2="635" y2="85" stroke="#8d6e63" stroke-width="3" stroke-linecap="round"/>
+        <polygon points="635,75 645,85 635,95" fill="#ff6f00"/>
+        <text x="615" y="120" text-anchor="middle" fill="#555" font-size="12" font-family="Nunito">↓ dans le gaz</text>
+        <text x="615" y="148" text-anchor="middle" fill="#2e7d32" font-size="22" font-weight="800" font-family="Nunito">POP !</text>
+        <text x="615" y="170" text-anchor="middle" fill="#2e7d32" font-size="11" font-weight="700" font-family="Nunito">Détonation</text>
+        <text x="615" y="188" text-anchor="middle" fill="#2e7d32" font-size="12" font-weight="800" font-family="Nunito">H₂ présent ✓</text>
+      </svg>
+      <div class="schema-caption">Les 4 tests d'identification à connaître par cœur</div>
+    </div>
+  </div>
+
+  <div class="card accent">
+    <h2>🔥 Chapitre 2 — Les transformations chimiques</h2>
+
+    <h3>1. Transformation physique vs chimique</h3>
+    <div class="def-box">
+      <strong>Transformation physique :</strong> les molécules ne changent pas, seule leur disposition change (ex : la glace fond → c'est toujours H₂O).<br>
+      <strong>Transformation chimique :</strong> les molécules des réactifs disparaissent et de nouvelles molécules (les produits) se forment. Les atomes se réarrangent.
+    </div>
+
+    <h3>2. La combustion du carbone</h3>
+    <p>Quand on brûle du charbon (carbone C) dans le dioxygène (O₂), on obtient du dioxyde de carbone (CO₂).</p>
+
+    <div class="schema-wrap">
+      <svg viewBox="0 0 700 170" xmlns="http://www.w3.org/2000/svg">
+        <!-- Réactifs -->
+        <text x="30" y="25" fill="#c0392b" font-size="14" font-weight="800" font-family="Nunito">RÉACTIFS</text>
+        <circle cx="60" cy="70" r="24" fill="#333" stroke="#222" stroke-width="2"/>
+        <text x="60" y="76" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold" font-family="Fira Code">C</text>
+        <text x="120" y="76" fill="#555" font-size="22" font-weight="800">+</text>
+        <circle cx="175" cy="70" r="22" fill="#e74c3c" stroke="#c0392b" stroke-width="2"/>
+        <text x="175" y="76" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold" font-family="Fira Code">O</text>
+        <circle cx="220" cy="70" r="22" fill="#e74c3c" stroke="#c0392b" stroke-width="2"/>
+        <text x="220" y="76" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold" font-family="Fira Code">O</text>
+        <line x1="197" y1="70" x2="198" y2="70" stroke="#555" stroke-width="3"/>
+
+        <!-- Flèche -->
+        <line x1="270" y1="70" x2="370" y2="70" stroke="#2d6a4f" stroke-width="3" marker-end="url(#arrowGreen)"/>
+        <defs>
+          <marker id="arrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#2d6a4f"/>
+          </marker>
+        </defs>
+        <text x="320" y="58" text-anchor="middle" fill="#2d6a4f" font-size="11" font-weight="700" font-family="Nunito">donne</text>
+
+        <!-- Produits -->
+        <text x="420" y="25" fill="#2d6a4f" font-size="14" font-weight="800" font-family="Nunito">PRODUIT</text>
+        <circle cx="455" cy="70" r="22" fill="#e74c3c" stroke="#c0392b" stroke-width="2"/>
+        <text x="455" y="76" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold" font-family="Fira Code">O</text>
+        <circle cx="500" cy="70" r="24" fill="#333" stroke="#222" stroke-width="2"/>
+        <text x="500" y="76" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold" font-family="Fira Code">C</text>
+        <circle cx="545" cy="70" r="22" fill="#e74c3c" stroke="#c0392b" stroke-width="2"/>
+        <text x="545" y="76" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold" font-family="Fira Code">O</text>
+        <line x1="477" y1="70" x2="478" y2="70" stroke="#555" stroke-width="3"/>
+        <line x1="524" y1="70" x2="523" y2="70" stroke="#555" stroke-width="3"/>
+
+        <!-- Equation -->
+        <rect x="50" y="120" width="600" height="40" rx="10" fill="#e8f5e9" stroke="#2d6a4f" stroke-width="2"/>
+        <text x="350" y="146" text-anchor="middle" fill="#2d6a4f" font-size="18" font-weight="800" font-family="Fira Code">C  +  O₂  →  CO₂</text>
+      </svg>
+      <div class="schema-caption">Combustion du carbone — les atomes se réarrangent mais sont conservés !</div>
+    </div>
+
+    <h3>3. La combustion du méthane</h3>
+    <div class="formula-box">CH₄  +  2 O₂  →  CO₂  +  2 H₂O</div>
+    <p>Le méthane (CH₄ = gaz de ville) brûle dans le dioxygène et produit du dioxyde de carbone <strong>et</strong> de l'eau. Le « 2 » devant O₂ et H₂O s'appelle un <strong>coefficient stœchiométrique</strong> : il sert à équilibrer l'équation.</p>
+
+    <h3>4. La conservation de la masse</h3>
+    <div class="def-box">
+      <strong>Loi de Lavoisier :</strong> « Rien ne se perd, rien ne se crée, tout se transforme. »<br>
+      Lors d'une transformation chimique, la <strong>masse totale des réactifs = la masse totale des produits</strong>. C'est parce que les atomes sont conservés : ils se réarrangent, mais aucun ne disparaît ni n'apparaît.
+    </div>
+
+    <div class="astuce-box">Pour équilibrer une équation, compte les atomes de chaque côté de la flèche. Ils doivent être en nombre égal ! Commence toujours par l'atome le plus rare, et finis par l'oxygène.</div>
+  </div>
+
+  <!-- EXERCICES MATIÈRE -->
+  <div class="exo-block">
+    <h3>📝 QCM — Atomes et molécules</h3>
+
+    <div class="qcm-item" data-correct="1">
+      <p><strong>1.</strong> Quelle est la formule chimique de l'eau ?</p>
+      <div class="qcm-options">
+        <div class="qcm-option" onclick="selectQCM(this)">a) OH₂</div>
+        <div class="qcm-option" onclick="selectQCM(this)">b) H₂O</div>
+        <div class="qcm-option" onclick="selectQCM(this)">c) HO₂</div>
+        <div class="qcm-option" onclick="selectQCM(this)">d) 2HO</div>
+      </div>
+    </div>
+
+    <div class="qcm-item" data-correct="2">
+      <p><strong>2.</strong> Combien d'atomes contient une molécule de méthane CH₄ ?</p>
+      <div class="qcm-options">
+        <div class="qcm-option" onclick="selectQCM(this)">a) 2 atomes</div>
+        <div class="qcm-option" onclick="selectQCM(this)">b) 4 atomes</div>
+        <div class="qcm-option" onclick="selectQCM(this)">c) 5 atomes</div>
+        <div class="qcm-option" onclick="selectQCM(this)">d) 8 atomes</div>
+      </div>
+    </div>
+
+    <div class="qcm-item" data-correct="0">
+      <p><strong>3.</strong> Comment teste-t-on la présence de CO₂ ?</p>
+      <div class="qcm-options">
+        <div class="qcm-option" onclick="selectQCM(this)">a) Avec de l'eau de chaux (elle se trouble)</div>
+        <div class="qcm-option" onclick="selectQCM(this)">b) Avec du sulfate de cuivre anhydre</div>
+        <div class="qcm-option" onclick="selectQCM(this)">c) Avec une bûchette incandescente</div>
+        <div class="qcm-option" onclick="selectQCM(this)">d) Avec une allumette (détonation)</div>
+      </div>
+    </div>
+
+    <div class="qcm-item" data-correct="1">
+      <p><strong>4.</strong> Lors d'une transformation chimique :</p>
+      <div class="qcm-options">
+        <div class="qcm-option" onclick="selectQCM(this)">a) Des atomes disparaissent</div>
+        <div class="qcm-option" onclick="selectQCM(this)">b) Les atomes se réarrangent pour former de nouvelles molécules</div>
+        <div class="qcm-option" onclick="selectQCM(this)">c) La masse totale change</div>
+        <div class="qcm-option" onclick="selectQCM(this)">d) Les molécules restent identiques</div>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" onclick="checkQCM(this)">Vérifier mes réponses</button>
+    <div class="correction" id="corr-matiere-qcm">
+      <strong>Corrections :</strong><br>
+      <strong>1. b)</strong> H₂O — le H est en premier (ordre alphabétique) avec le chiffre 2 en indice (= 2 atomes d'hydrogène).<br>
+      <strong>2. c)</strong> 5 atomes — 1 carbone (C) + 4 hydrogènes (H₄) = 5 au total. Attention, le 4 indique le nombre d'atomes d'hydrogène, pas le nombre total !<br>
+      <strong>3. a)</strong> L'eau de chaux se trouble en présence de CO₂. Le sulfate de cuivre teste l'eau, la bûchette teste O₂ et la détonation teste H₂.<br>
+      <strong>4. b)</strong> Les atomes ne disparaissent jamais ! Ils se réarrangent. C'est pour ça que la masse est conservée (loi de Lavoisier).
+    </div>
+  </div>
+
+  <div class="exo-block">
+    <h3>📝 Vrai ou Faux — Transformations chimiques</h3>
+    <div class="vf-exercise">
+      <div class="vf-row" data-answer="F">
+        <span>1. La fonte de la glace est une transformation chimique.</span>
+        <div class="vf-btns">
+          <button class="vf-btn" onclick="selectVF(this, 'V')">Vrai</button>
+          <button class="vf-btn" onclick="selectVF(this, 'F')">Faux</button>
+        </div>
+      </div>
+      <div class="vf-row" data-answer="V">
+        <span>2. Dans une combustion, le dioxygène est un réactif.</span>
+        <div class="vf-btns">
+          <button class="vf-btn" onclick="selectVF(this, 'V')">Vrai</button>
+          <button class="vf-btn" onclick="selectVF(this, 'F')">Faux</button>
+        </div>
+      </div>
+      <div class="vf-row" data-answer="V">
+        <span>3. La masse se conserve lors d'une transformation chimique.</span>
+        <div class="vf-btns">
+          <button class="vf-btn" onclick="selectVF(this, 'V')">Vrai</button>
+          <button class="vf-btn" onclick="selectVF(this, 'F')">Faux</button>
+        </div>
+      </div>
+      <div class="vf-row" data-answer="F">
+        <span>4. Le symbole de l'azote est « Az ».</span>
+        <div class="vf-btns">
+          <button class="vf-btn" onclick="selectVF(this, 'V')">Vrai</button>
+          <button class="vf-btn" onclick="selectVF(this, 'F')">Faux</button>
+        </div>
+      </div>
+      <div class="vf-row" data-answer="V">
+        <span>5. La combustion du méthane produit du CO₂ et de l'eau.</span>
+        <div class="vf-btns">
+          <button class="vf-btn" onclick="selectVF(this, 'V')">Vrai</button>
+          <button class="vf-btn" onclick="selectVF(this, 'F')">Faux</button>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-primary" onclick="checkVF(this)" style="margin-top:.8rem;">Vérifier</button>
+    <div class="correction">
+      <strong>1. FAUX</strong> — La fonte est une transformation physique : les molécules d'eau restent les mêmes (H₂O), seul leur arrangement change.<br>
+      <strong>2. VRAI</strong> — Le combustible brûle <em>dans</em> le dioxygène O₂, qui est donc bien un réactif (il est consommé).<br>
+      <strong>3. VRAI</strong> — C'est la loi de Lavoisier : masse des réactifs = masse des produits.<br>
+      <strong>4. FAUX</strong> — Le symbole de l'azote est N (du latin « Nitrogenium »). Attention aux pièges !<br>
+      <strong>5. VRAI</strong> — CH₄ + 2O₂ → CO₂ + 2H₂O.
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- THÈME 2 : ÉLECTRICITÉ -->
+<!-- ══════════════════════════════════════════════════ -->
+<div class="section" id="sec-electricite">
+  <div class="card blue">
+    <h2>⚡ Chapitre 3 — Tension, intensité et lois des circuits</h2>
+
+    <h3>1. Tension et intensité : les deux grandeurs électriques</h3>
+    <div class="def-box">
+      <strong>L'intensité (I)</strong> mesure le débit du courant qui passe. Unité : <strong>l'ampère (A)</strong>. Appareil : <strong>ampèremètre</strong>, branché <strong>en série</strong>.<br>
+      <strong>La tension (U)</strong> mesure la « poussée » qui fait circuler le courant. Unité : <strong>le volt (V)</strong>. Appareil : <strong>voltmètre</strong>, branché <strong>en dérivation</strong>.
+    </div>
+
+    <div class="astuce-box">Pense à l'eau dans un tuyau : l'intensité = le débit d'eau (combien il en passe), la tension = la pression (ce qui pousse l'eau). Plus la pression est forte, plus l'eau circule vite !</div>
+
+    <div class="schema-wrap">
+      <svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg">
+        <!-- Circuit en série -->
+        <text x="175" y="25" text-anchor="middle" fill="#264653" font-size="16" font-weight="800" font-family="Nunito">Circuit en SÉRIE</text>
+        <!-- Fils -->
+        <line x1="50" y1="80" x2="300" y2="80" stroke="#333" stroke-width="3"/>
+        <line x1="300" y1="80" x2="300" y2="240" stroke="#333" stroke-width="3"/>
+        <line x1="300" y1="240" x2="50" y2="240" stroke="#333" stroke-width="3"/>
+        <line x1="50" y1="240" x2="50" y2="80" stroke="#333" stroke-width="3"/>
+        <!-- Pile -->
+        <line x1="35" y1="140" x2="35" y2="180" stroke="#333" stroke-width="4"/>
+        <line x1="65" y1="150" x2="65" y2="170" stroke="#333" stroke-width="4"/>
+        <text x="25" y="168" fill="#c0392b" font-size="12" font-weight="700">−</text>
+        <text x="70" y="165" fill="#c0392b" font-size="12" font-weight="700">+</text>
+        <!-- L1 -->
+        <circle cx="175" cy="80" r="18" fill="none" stroke="#e67e22" stroke-width="2.5"/>
+        <line x1="163" y1="68" x2="187" y2="92" stroke="#e67e22" stroke-width="2"/>
+        <line x1="187" y1="68" x2="163" y2="92" stroke="#e67e22" stroke-width="2"/>
+        <text x="175" y="62" text-anchor="middle" fill="#e67e22" font-size="12" font-weight="700" font-family="Nunito">L₁</text>
+        <!-- L2 -->
+        <circle cx="175" cy="240" r="18" fill="none" stroke="#e67e22" stroke-width="2.5"/>
+        <line x1="163" y1="228" x2="187" y2="252" stroke="#e67e22" stroke-width="2"/>
+        <line x1="187" y1="228" x2="163" y2="252" stroke="#e67e22" stroke-width="2"/>
+        <text x="175" y="272" text-anchor="middle" fill="#e67e22" font-size="12" font-weight="700" font-family="Nunito">L₂</text>
+        <!-- Flèches courant -->
+        <polygon points="240,77 250,80 240,83" fill="#2196f3"/>
+        <text x="244" y="72" fill="#2196f3" font-size="11" font-weight="700" font-family="Nunito">I</text>
+        <!-- Règle -->
+        <text x="175" y="166" text-anchor="middle" fill="#1565c0" font-size="12" font-weight="700" font-family="Nunito">Une seule boucle</text>
+        <text x="175" y="182" text-anchor="middle" fill="#1565c0" font-size="11" font-family="Nunito">I identique partout</text>
+        <text x="175" y="198" text-anchor="middle" fill="#1565c0" font-size="11" font-family="Nunito">U_g = U₁ + U₂</text>
+
+        <!-- Circuit en dérivation -->
+        <text x="530" y="25" text-anchor="middle" fill="#264653" font-size="16" font-weight="800" font-family="Nunito">Circuit en DÉRIVATION</text>
+        <line x1="400" y1="80" x2="660" y2="80" stroke="#333" stroke-width="3"/>
+        <line x1="660" y1="80" x2="660" y2="240" stroke="#333" stroke-width="3"/>
+        <line x1="660" y1="240" x2="400" y2="240" stroke="#333" stroke-width="3"/>
+        <line x1="400" y1="240" x2="400" y2="80" stroke="#333" stroke-width="3"/>
+        <!-- Branche dérivée -->
+        <line x1="530" y1="80" x2="530" y2="240" stroke="#333" stroke-width="3"/>
+        <!-- Pile -->
+        <line x1="385" y1="140" x2="385" y2="180" stroke="#333" stroke-width="4"/>
+        <line x1="415" y1="150" x2="415" y2="170" stroke="#333" stroke-width="4"/>
+        <text x="375" y="168" fill="#c0392b" font-size="12" font-weight="700">−</text>
+        <text x="420" y="165" fill="#c0392b" font-size="12" font-weight="700">+</text>
+        <!-- L1 -->
+        <circle cx="465" cy="160" r="18" fill="none" stroke="#e67e22" stroke-width="2.5"/>
+        <line x1="453" y1="148" x2="477" y2="172" stroke="#e67e22" stroke-width="2"/>
+        <line x1="477" y1="148" x2="453" y2="172" stroke="#e67e22" stroke-width="2"/>
+        <text x="465" y="190" text-anchor="middle" fill="#e67e22" font-size="12" font-weight="700" font-family="Nunito">L₁</text>
+        <!-- L2 -->
+        <circle cx="595" cy="160" r="18" fill="none" stroke="#27ae60" stroke-width="2.5"/>
+        <line x1="583" y1="148" x2="607" y2="172" stroke="#27ae60" stroke-width="2"/>
+        <line x1="607" y1="148" x2="583" y2="172" stroke="#27ae60" stroke-width="2"/>
+        <text x="595" y="190" text-anchor="middle" fill="#27ae60" font-size="12" font-weight="700" font-family="Nunito">L₂</text>
+        <!-- Noeuds -->
+        <circle cx="530" cy="80" r="5" fill="#c0392b"/>
+        <circle cx="530" cy="240" r="5" fill="#c0392b"/>
+        <text x="540" y="76" fill="#c0392b" font-size="11" font-weight="700">A</text>
+        <text x="540" y="254" fill="#c0392b" font-size="11" font-weight="700">B</text>
+        <!-- Règle -->
+        <text x="530" y="125" text-anchor="middle" fill="#1565c0" font-size="11" font-weight="700" font-family="Nunito">Plusieurs boucles</text>
+        <text x="530" y="140" text-anchor="middle" fill="#1565c0" font-size="11" font-family="Nunito">U_g = U₁ = U₂</text>
+        <text x="530" y="220" text-anchor="middle" fill="#1565c0" font-size="11" font-family="Nunito">I = I₁ + I₂</text>
+      </svg>
+      <div class="schema-caption">Comparaison des circuits série et dérivation — les lois fondamentales</div>
+    </div>
+
+    <h3>2. Résumé des 4 lois</h3>
+    <div class="formula-box" style="text-align:left; font-size:1rem;">
+      <strong>Circuit en série :</strong><br>
+      • Intensité : I est la <strong>même partout</strong> → loi d'unicité<br>
+      • Tension : U<sub>G</sub> = U<sub>1</sub> + U<sub>2</sub> + ... → loi d'additivité<br><br>
+      <strong>Circuit en dérivation :</strong><br>
+      • Tension : U<sub>G</sub> = U<sub>1</sub> = U<sub>2</sub> = ... → loi d'unicité<br>
+      • Intensité : I = I<sub>1</sub> + I<sub>2</sub> + ... → loi d'additivité (loi des nœuds)
+    </div>
+  </div>
+
+  <div class="card purple">
+    <h2>⚡ Chapitre 4 — La loi d'Ohm</h2>
+
+    <h3>1. La résistance électrique</h3>
+    <p>Un <strong>conducteur ohmique</strong> (ou résistance) est un dipôle qui résiste au passage du courant. Sa résistance R se mesure en <strong>ohms (Ω)</strong> avec un <strong>ohmmètre</strong>.</p>
+
+    <div class="schema-wrap">
+      <svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg">
+        <!-- Circuit loi d'Ohm -->
+        <line x1="80" y1="50" x2="300" y2="50" stroke="#333" stroke-width="3"/>
+        <line x1="300" y1="50" x2="300" y2="170" stroke="#333" stroke-width="3"/>
+        <line x1="300" y1="170" x2="80" y2="170" stroke="#333" stroke-width="3"/>
+        <line x1="80" y1="170" x2="80" y2="50" stroke="#333" stroke-width="3"/>
+        <!-- Pile -->
+        <line x1="65" y1="90" x2="65" y2="130" stroke="#333" stroke-width="4"/>
+        <line x1="95" y1="100" x2="95" y2="120" stroke="#333" stroke-width="4"/>
+        <text x="55" y="118" fill="#c0392b" font-size="11" font-weight="700">−</text>
+        <text x="100" y="115" fill="#c0392b" font-size="11" font-weight="700">+</text>
+        <!-- Résistance -->
+        <rect x="155" y="38" width="70" height="24" rx="4" fill="none" stroke="#7b2cbf" stroke-width="2.5"/>
+        <text x="190" y="55" text-anchor="middle" fill="#7b2cbf" font-size="13" font-weight="700" font-family="Nunito">R</text>
+        <!-- Voltmètre en dérivation -->
+        <circle cx="190" cy="110" r="20" fill="none" stroke="#e74c3c" stroke-width="2"/>
+        <text x="190" y="116" text-anchor="middle" fill="#e74c3c" font-size="14" font-weight="700" font-family="Fira Code">V</text>
+        <line x1="155" y1="50" x2="155" y2="90" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="4"/>
+        <line x1="155" y1="90" x2="170" y2="100" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="4"/>
+        <line x1="225" y1="50" x2="225" y2="90" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="4"/>
+        <line x1="225" y1="90" x2="210" y2="100" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="4"/>
+        <!-- Ampèremètre en série -->
+        <circle cx="190" cy="170" r="16" fill="none" stroke="#2196f3" stroke-width="2"/>
+        <text x="190" y="175" text-anchor="middle" fill="#2196f3" font-size="12" font-weight="700" font-family="Fira Code">A</text>
+        <!-- Annotations -->
+        <text x="140" y="135" fill="#e74c3c" font-size="11" font-weight="600" font-family="Nunito">en dérivation</text>
+        <text x="225" y="185" fill="#2196f3" font-size="11" font-weight="600" font-family="Nunito">en série</text>
+
+        <!-- Formule -->
+        <rect x="380" y="30" width="280" height="140" rx="14" fill="#f3e5f5" stroke="#7b2cbf" stroke-width="2"/>
+        <text x="520" y="60" text-anchor="middle" fill="#4a148c" font-size="16" font-weight="800" font-family="Nunito">LOI D'OHM</text>
+        <text x="520" y="100" text-anchor="middle" fill="#7b2cbf" font-size="28" font-weight="800" font-family="Fira Code">U = R × I</text>
+        <text x="520" y="130" text-anchor="middle" fill="#555" font-size="12" font-family="Nunito">U en volts (V) • R en ohms (Ω) • I en ampères (A)</text>
+        <text x="520" y="155" text-anchor="middle" fill="#888" font-size="11" font-family="Nunito">Aussi : R = U/I et I = U/R</text>
+      </svg>
+      <div class="schema-caption">Montage pour vérifier la loi d'Ohm et formule à retenir</div>
+    </div>
+
+    <h3>2. La caractéristique d'un dipôle ohmique</h3>
+    <p>Si on trace la courbe U en fonction de I pour un conducteur ohmique, on obtient une <strong>droite passant par l'origine</strong>. La pente de cette droite correspond à la valeur de R.</p>
+
+    <div class="schema-wrap">
+      <svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+        <!-- Axes -->
+        <line x1="60" y1="240" x2="370" y2="240" stroke="#333" stroke-width="2" marker-end="url(#arrowB)"/>
+        <line x1="60" y1="240" x2="60" y2="20" stroke="#333" stroke-width="2" marker-end="url(#arrowB)"/>
+        <defs>
+          <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#333"/>
+          </marker>
+        </defs>
+        <text x="375" y="255" fill="#333" font-size="14" font-weight="700" font-family="Nunito">I (A)</text>
+        <text x="30" y="18" fill="#333" font-size="14" font-weight="700" font-family="Nunito">U (V)</text>
+        <!-- Droite ohmique -->
+        <line x1="60" y1="240" x2="340" y2="50" stroke="#7b2cbf" stroke-width="3"/>
+        <text x="280" y="80" fill="#7b2cbf" font-size="13" font-weight="700" font-family="Nunito">Dipôle ohmique</text>
+        <text x="280" y="96" fill="#7b2cbf" font-size="12" font-family="Nunito">(droite par l'origine)</text>
+        <!-- Courbe non-ohmique -->
+        <path d="M60,240 Q120,230 180,200 T340,100" fill="none" stroke="#e67e22" stroke-width="2.5" stroke-dasharray="6"/>
+        <text x="300" y="120" fill="#e67e22" font-size="12" font-weight="700" font-family="Nunito">Lampe</text>
+        <text x="300" y="135" fill="#e67e22" font-size="11" font-family="Nunito">(non ohmique)</text>
+        <!-- Point exemple -->
+        <circle cx="200" cy="140" r="5" fill="#7b2cbf"/>
+        <line x1="200" y1="140" x2="200" y2="240" stroke="#999" stroke-width="1" stroke-dasharray="3"/>
+        <line x1="60" y1="140" x2="200" y2="140" stroke="#999" stroke-width="1" stroke-dasharray="3"/>
+        <text x="200" y="258" text-anchor="middle" fill="#555" font-size="11" font-family="Nunito">0,2</text>
+        <text x="45" y="145" fill="#555" font-size="11" font-family="Nunito">6</text>
+        <!-- Calcul -->
+        <text x="240" y="190" fill="#7b2cbf" font-size="12" font-weight="700" font-family="Fira Code">R = 6/0,2 = 30 Ω</text>
+      </svg>
+      <div class="schema-caption">Caractéristique : un dipôle ohmique donne une droite passant par l'origine</div>
+    </div>
+
+    <div class="astuce-box">L'effet Joule = le courant qui traverse une résistance la fait chauffer. C'est utile (radiateur, grille-pain) mais aussi un inconvénient (les fils électriques chauffent et perdent de l'énergie).</div>
+  </div>
+
+  <!-- EXERCICES ELECTRICITÉ -->
+  <div class="exo-block">
+    <h3>📝 QCM — Électricité</h3>
+
+    <div class="qcm-item" data-correct="2">
+      <p><strong>1.</strong> Un ampèremètre se branche :</p>
+      <div class="qcm-options">
+        <div class="qcm-option" onclick="selectQCM(this)">a) En dérivation</div>
+        <div class="qcm-option" onclick="selectQCM(this)">b) En parallèle avec la pile</div>
+        <div class="qcm-option" onclick="selectQCM(this)">c) En série</div>
+        <div class="qcm-option" onclick="selectQCM(this)">d) N'importe où</div>
+      </div>
+    </div>
+
+    <div class="qcm-item" data-correct="0">
+      <p><strong>2.</strong> Dans un circuit en série, l'intensité :</p>
+      <div class="qcm-options">
+        <div class="qcm-option" onclick="selectQCM(this)">a) Est la même en tout point du circuit</div>
+        <div class="qcm-option" onclick="selectQCM(this)">b) Se divise entre les dipôles</div>
+        <div class="qcm-option" onclick="selectQCM(this)">c) Dépend de la position de l'ampèremètre</div>
+        <div class="qcm-option" onclick="selectQCM(this)">d) Est nulle si on rajoute un dipôle</div>
+      </div>
+    </div>
+
+    <div class="qcm-item" data-correct="1">
+      <p><strong>3.</strong> Une résistance de 50 Ω est traversée par un courant de 0,2 A. La tension à ses bornes vaut :</p>
+      <div class="qcm-options">
+        <div class="qcm-option" onclick="selectQCM(this)">a) 250 V</div>
+        <div class="qcm-option" onclick="selectQCM(this)">b) 10 V</div>
+        <div class="qcm-option" onclick="selectQCM(this)">c) 0,004 V</div>
+        <div class="qcm-option" onclick="selectQCM(this)">d) 100 V</div>
+      </div>
+    </div>
+
+    <div class="qcm-item" data-correct="2">
+      <p><strong>4.</strong> Dans un circuit en dérivation, la tension aux bornes de chaque branche :</p>
+      <div class="qcm-options">
+        <div class="qcm-option" onclick="selectQCM(this)">a) S'additionne</div>
+        <div class="qcm-option" onclick="selectQCM(this)">b) Est nulle</div>
+        <div class="qcm-option" onclick="selectQCM(this)">c) Est la même que celle du générateur</div>
+        <div class="qcm-option" onclick="selectQCM(this)">d) Diminue dans chaque branche</div>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" onclick="checkQCM(this)">Vérifier mes réponses</button>
+    <div class="correction">
+      <strong>1. c)</strong> L'ampèremètre se branche en <strong>série</strong> — il mesure le courant qui le traverse. Le voltmètre, lui, se branche en dérivation.<br>
+      <strong>2. a)</strong> Loi d'unicité de l'intensité en série : l'intensité est la même en tout point de la boucle.<br>
+      <strong>3. b)</strong> U = R × I = 50 × 0,2 = <strong>10 V</strong>. Toujours vérifier les unités !<br>
+      <strong>4. c)</strong> Loi d'unicité de la tension en dérivation : U<sub>G</sub> = U<sub>1</sub> = U<sub>2</sub>.
+    </div>
+  </div>
+
+  <div class="exo-block">
+    <h3>📝 Exercice calculatoire — Loi d'Ohm</h3>
+    <p>Complète les calculs suivants en utilisant la loi d'Ohm (U = R × I) :</p>
+
+    <p style="margin-top:.8rem;"><strong>1.</strong> R = 100 Ω, I = 0,3 A → U = <input class="trou-input" data-answer="30" placeholder="?" /> V</p>
+    <p><strong>2.</strong> U = 12 V, R = 60 Ω → I = <input class="trou-input" data-answer="0.2" placeholder="?" /> A</p>
+    <p><strong>3.</strong> U = 9 V, I = 0,15 A → R = <input class="trou-input" data-answer="60" placeholder="?" /> Ω</p>
+    <p><strong>4.</strong> R = 220 Ω, I = 100 mA = <input class="trou-input" data-answer="0.1" placeholder="?" /> A → U = <input class="trou-input" data-answer="22" placeholder="?" /> V</p>
+
+    <button class="btn btn-primary" onclick="checkTrous(this)" style="margin-top:.8rem;">Vérifier</button>
+    <div class="correction">
+      <strong>1.</strong> U = R × I = 100 × 0,3 = <strong>30 V</strong><br>
+      <strong>2.</strong> I = U / R = 12 / 60 = <strong>0,2 A</strong> (ou 200 mA)<br>
+      <strong>3.</strong> R = U / I = 9 / 0,15 = <strong>60 Ω</strong><br>
+      <strong>4.</strong> 100 mA = 100 / 1000 = <strong>0,1 A</strong> — puis U = 220 × 0,1 = <strong>22 V</strong><br>
+      <em>⚠️ Piège classique : toujours convertir les mA en A avant de calculer ! (diviser par 1000)</em>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- THÈME 3 : MOUVEMENTS -->
+<!-- ══════════════════════════════════════════════════ -->
+<div class="section" id="sec-mouvements">
+  <div class="card">
+    <h2>🚀 Chapitre 5 — Mouvements et vitesse</h2>
+
+    <h3>1. Décrire un mouvement</h3>
+    <div class="def-box">
+      Un mouvement se décrit par sa <strong>trajectoire</strong> (le chemin suivi) et sa <strong>vitesse</strong>.<br>
+      • <strong>Trajectoire rectiligne</strong> = ligne droite (une voiture sur l'autoroute)<br>
+      • <strong>Trajectoire circulaire</strong> = cercle (les chevaux sur un manège)<br>
+      • <strong>Trajectoire curviligne</strong> = courbe quelconque
+    </div>
+
+    <div class="schema-wrap">
+      <svg viewBox="0 0 700 180" xmlns="http://www.w3.org/2000/svg">
+        <!-- Rectiligne -->
+        <text x="115" y="25" text-anchor="middle" fill="#264653" font-size="14" font-weight="800" font-family="Nunito">Rectiligne</text>
+        <line x1="30" y1="80" x2="200" y2="80" stroke="#2d6a4f" stroke-width="3" stroke-dasharray="8,4"/>
+        <circle cx="30" cy="80" r="6" fill="#2d6a4f"/>
+        <circle cx="70" cy="80" r="6" fill="#2d6a4f"/>
+        <circle cx="110" cy="80" r="6" fill="#2d6a4f"/>
+        <circle cx="150" cy="80" r="6" fill="#2d6a4f"/>
+        <circle cx="190" cy="80" r="6" fill="#2d6a4f"/>
+        <text x="115" y="110" text-anchor="middle" fill="#555" font-size="11" font-family="Nunito">Points régulièrement espacés</text>
+        <text x="115" y="126" text-anchor="middle" fill="#2d6a4f" font-size="12" font-weight="700" font-family="Nunito">→ mouvement uniforme</text>
+
+        <!-- Circulaire -->
+        <text x="350" y="25" text-anchor="middle" fill="#264653" font-size="14" font-weight="800" font-family="Nunito">Circulaire</text>
+        <circle cx="350" cy="95" r="55" fill="none" stroke="#7b2cbf" stroke-width="2" stroke-dasharray="8,4"/>
+        <circle cx="350" cy="40" r="6" fill="#7b2cbf"/>
+        <circle cx="399" cy="72" r="6" fill="#7b2cbf"/>
+        <circle cx="405" cy="110" r="6" fill="#7b2cbf"/>
+        <circle cx="370" cy="148" r="6" fill="#7b2cbf"/>
+        <circle cx="310" cy="138" r="6" fill="#7b2cbf"/>
+        <text x="350" y="170" text-anchor="middle" fill="#555" font-size="11" font-family="Nunito">Manège, satellite, roue</text>
+
+        <!-- Curviligne -->
+        <text x="570" y="25" text-anchor="middle" fill="#264653" font-size="14" font-weight="800" font-family="Nunito">Curviligne</text>
+        <path d="M480,100 Q510,40 550,80 T630,60" fill="none" stroke="#e76f51" stroke-width="3" stroke-dasharray="8,4"/>
+        <circle cx="480" cy="100" r="6" fill="#e76f51"/>
+        <circle cx="510" cy="60" r="6" fill="#e76f51"/>
+        <circle cx="545" cy="78" r="6" fill="#e76f51"/>
+        <circle cx="580" cy="65" r="6" fill="#e76f51"/>
+        <circle cx="620" cy="62" r="6" fill="#e76f51"/>
+        <text x="570" y="130" text-anchor="middle" fill="#555" font-size="11" font-family="Nunito">Ballon lancé, skatepark</text>
+      </svg>
+      <div class="schema-caption">Les 3 types de trajectoires — chaque point représente la position de l'objet à intervalles réguliers</div>
+    </div>
+
+    <h3>2. La vitesse</h3>
+    <div class="formula-box">
+      v = d / t<br>
+      <span style="font-size:.85rem; color:#555;">v : vitesse (m/s ou km/h) — d : distance (m ou km) — t : durée (s ou h)</span>
+    </div>
+
+    <div class="astuce-box">Pour convertir km/h en m/s : <strong>divise par 3,6</strong>. Pour convertir m/s en km/h : <strong>multiplie par 3,6</strong>. Exemple : 90 km/h = 90 / 3,6 = 25 m/s.</div>
+
+    <h3>3. Les interactions et les forces</h3>
+    <p>Une <strong>force</strong> est une action exercée par un objet sur un autre. Elle est représentée par une <strong>flèche</strong> (vecteur) avec un point d'application, une direction, un sens et une intensité (en newtons N).</p>
+
+    <div class="schema-wrap">
+      <svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg">
+        <!-- Objet au sol -->
+        <rect x="250" y="100" width="80" height="50" rx="8" fill="#bbb" stroke="#888" stroke-width="2"/>
+        <text x="290" y="130" text-anchor="middle" fill="#444" font-size="13" font-weight="700" font-family="Nunito">Objet</text>
+        <!-- Sol -->
+        <line x1="100" y1="150" x2="500" y2="150" stroke="#333" stroke-width="3"/>
+        <line x1="120" y1="155" x2="110" y2="165" stroke="#999" stroke-width="1.5"/>
+        <line x1="150" y1="155" x2="140" y2="165" stroke="#999" stroke-width="1.5"/>
+        <line x1="180" y1="155" x2="170" y2="165" stroke="#999" stroke-width="1.5"/>
+        <line x1="210" y1="155" x2="200" y2="165" stroke="#999" stroke-width="1.5"/>
+        <line x1="380" y1="155" x2="370" y2="165" stroke="#999" stroke-width="1.5"/>
+        <line x1="410" y1="155" x2="400" y2="165" stroke="#999" stroke-width="1.5"/>
+        <line x1="440" y1="155" x2="430" y2="165" stroke="#999" stroke-width="1.5"/>
+        <line x1="470" y1="155" x2="460" y2="165" stroke="#999" stroke-width="1.5"/>
+        <!-- Poids -->
+        <line x1="290" y1="125" x2="290" y2="185" stroke="#e74c3c" stroke-width="3" marker-end="url(#arrowRed)"/>
+        <defs>
+          <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#e74c3c"/>
+          </marker>
+        </defs>
+        <text x="308" y="185" fill="#e74c3c" font-size="13" font-weight="700" font-family="Nunito">Poids P⃗</text>
+        <text x="308" y="198" fill="#c0392b" font-size="11" font-family="Nunito">(vers le bas)</text>
+        <!-- Réaction -->
+        <line x1="290" y1="125" x2="290" y2="60" stroke="#2196f3" stroke-width="3" marker-end="url(#arrowBlue)"/>
+        <defs>
+          <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#2196f3"/>
+          </marker>
+        </defs>
+        <text x="308" y="55" fill="#2196f3" font-size="13" font-weight="700" font-family="Nunito">Réaction R⃗</text>
+        <text x="308" y="42" fill="#1565c0" font-size="11" font-family="Nunito">(vers le haut)</text>
+        <!-- Annotations -->
+        <text x="540" y="60" fill="#333" font-size="12" font-weight="700" font-family="Nunito">Caractéristiques :</text>
+        <text x="540" y="82" fill="#555" font-size="11" font-family="Nunito">• Point d'application</text>
+        <text x="540" y="100" fill="#555" font-size="11" font-family="Nunito">• Direction (verticale)</text>
+        <text x="540" y="118" fill="#555" font-size="11" font-family="Nunito">• Sens (haut ou bas)</text>
+        <text x="540" y="136" fill="#555" font-size="11" font-family="Nunito">• Intensité (en newtons N)</text>
+        <text x="540" y="168" fill="#2d6a4f" font-size="12" font-weight="700" font-family="Nunito">Si P⃗ et R⃗ se compensent :</text>
+        <text x="540" y="186" fill="#2d6a4f" font-size="12" font-family="Nunito">l'objet reste immobile</text>
+      </svg>
+      <div class="schema-caption">Représentation vectorielle des forces — le poids et la réaction du sol</div>
+    </div>
+  </div>
+
+  <!-- EXERCICES MOUVEMENTS -->
+  <div class="exo-block">
+    <h3>📝 Exercices — Vitesse et mouvement</h3>
+
+    <p><strong>1.</strong> Un cycliste parcourt 45 km en 1 h 30 min. Quelle est sa vitesse moyenne en km/h ?<br>
+    v = <input class="trou-input" data-answer="30" placeholder="?" /> km/h</p>
+
+    <p style="margin-top:.8rem;"><strong>2.</strong> Convertis 108 km/h en m/s :<br>
+    108 km/h = <input class="trou-input" data-answer="30" placeholder="?" /> m/s</p>
+
+    <p style="margin-top:.8rem;"><strong>3.</strong> Un TGV roule à 320 km/h. Quelle distance parcourt-il en 15 minutes ?<br>
+    d = <input class="trou-input" data-answer="80" placeholder="?" /> km</p>
+
+    <button class="btn btn-primary" onclick="checkTrous(this)" style="margin-top:.8rem;">Vérifier</button>
+    <div class="correction">
+      <strong>1.</strong> v = d / t = 45 / 1,5 = <strong>30 km/h</strong> (1h30 = 1,5 h)<br>
+      <strong>2.</strong> 108 / 3,6 = <strong>30 m/s</strong><br>
+      <strong>3.</strong> 15 min = 0,25 h → d = v × t = 320 × 0,25 = <strong>80 km</strong><br>
+      <em>⚠️ Attention à bien convertir les minutes en heures si tu travailles en km/h !</em>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- THÈME 4 : SIGNAUX -->
+<!-- ══════════════════════════════════════════════════ -->
+<div class="section" id="sec-signaux">
+  <div class="card accent">
+    <h2>💡 Chapitre 6 — La lumière</h2>
+
+    <h3>1. Propagation de la lumière</h3>
+    <p>La lumière se propage <strong>en ligne droite</strong> (propagation rectiligne) dans un milieu transparent et homogène. On modélise son trajet par un <strong>rayon lumineux</strong> (flèche).</p>
+
+    <div class="schema-wrap">
+      <svg viewBox="0 0 700 170" xmlns="http://www.w3.org/2000/svg">
+        <!-- Source -->
+        <circle cx="80" cy="85" r="30" fill="#ffeb3b" stroke="#f9a825" stroke-width="2"/>
+        <text x="80" y="90" text-anchor="middle" fill="#e65100" font-size="14" font-weight="800" font-family="Nunito">☀️</text>
+        <text x="80" y="135" text-anchor="middle" fill="#555" font-size="11" font-weight="700" font-family="Nunito">Source</text>
+        <text x="80" y="150" text-anchor="middle" fill="#555" font-size="11" font-family="Nunito">primaire</text>
+        <!-- Rayons -->
+        <line x1="110" y1="75" x2="300" y2="40" stroke="#ffab00" stroke-width="2" marker-end="url(#arrowYellow)"/>
+        <line x1="110" y1="85" x2="300" y2="85" stroke="#ffab00" stroke-width="2" marker-end="url(#arrowYellow)"/>
+        <line x1="110" y1="95" x2="300" y2="130" stroke="#ffab00" stroke-width="2" marker-end="url(#arrowYellow)"/>
+        <defs>
+          <marker id="arrowYellow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#ffab00"/>
+          </marker>
+        </defs>
+        <!-- Objet opaque -->
+        <rect x="310" y="25" width="15" height="120" rx="3" fill="#5d4037"/>
+        <text x="318" y="160" text-anchor="middle" fill="#555" font-size="11" font-weight="700" font-family="Nunito">Objet opaque</text>
+        <!-- Ombre -->
+        <polygon points="325,25 500,5 500,165 325,145" fill="rgba(0,0,0,0.12)"/>
+        <text x="420" y="90" text-anchor="middle" fill="#555" font-size="13" font-weight="700" font-family="Nunito">Zone d'ombre</text>
+        <!-- Écran -->
+        <rect x="500" y="5" width="8" height="160" fill="#90a4ae" rx="2"/>
+        <text x="540" y="85" fill="#555" font-size="12" font-weight="700" font-family="Nunito">Écran</text>
+        <!-- Vitesse -->
+        <rect x="560" y="120" width="130" height="45" rx="8" fill="#fff3e0" stroke="#e65100" stroke-width="1.5"/>
+        <text x="625" y="140" text-anchor="middle" fill="#e65100" font-size="12" font-weight="700" font-family="Fira Code">c = 300 000 km/s</text>
+        <text x="625" y="156" text-anchor="middle" fill="#e65100" font-size="10" font-family="Nunito">dans le vide et l'air</text>
+      </svg>
+      <div class="schema-caption">La lumière se propage en ligne droite — formation des ombres</div>
+    </div>
+
+    <h3>2. Vitesse de la lumière et distances</h3>
+    <div class="def-box">
+      <strong>L'année-lumière (a.l.)</strong> est la distance parcourue par la lumière en une année : environ <strong>9 500 milliards de km</strong>. C'est bien une unité de <strong>distance</strong>, pas de temps !
+    </div>
+    <p>Exemples : la lumière du Soleil met ~8 min pour arriver sur Terre. L'étoile la plus proche (Proxima du Centaure) est à 4,2 a.l.</p>
+
+    <div class="formula-box">d = v × t  ou  t = d / v  ou  v = d / t</div>
+  </div>
+
+  <div class="card blue">
+    <h2>🔊 Chapitre 7 — Le son</h2>
+
+    <h3>1. Propagation du son</h3>
+    <p>Le son est une <strong>vibration</strong> qui se propage de proche en proche dans un milieu matériel. Contrairement à la lumière, le son <strong>ne se propage pas dans le vide</strong>.</p>
+
+    <div class="schema-wrap">
+      <svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg">
+        <!-- Comparaison son / lumière -->
+        <rect x="20" y="10" width="320" height="180" rx="12" fill="#e3f2fd" stroke="#1565c0" stroke-width="2"/>
+        <text x="180" y="38" text-anchor="middle" fill="#1565c0" font-size="15" font-weight="800" font-family="Nunito">🔊 SON</text>
+        <text x="180" y="62" text-anchor="middle" fill="#333" font-size="12" font-family="Nunito">Vitesse : <tspan font-weight="700">340 m/s</tspan> dans l'air</text>
+        <text x="180" y="82" text-anchor="middle" fill="#333" font-size="12" font-family="Nunito">Besoin d'un <tspan font-weight="700">milieu matériel</tspan></text>
+        <text x="180" y="102" text-anchor="middle" fill="#c0392b" font-size="12" font-weight="700" font-family="Nunito">❌ Ne passe pas dans le vide</text>
+        <text x="180" y="128" text-anchor="middle" fill="#555" font-size="11" font-family="Nunito">Plus rapide dans les solides :</text>
+        <text x="180" y="145" text-anchor="middle" fill="#555" font-size="11" font-family="Nunito">~1 500 m/s eau • ~5 000 m/s acier</text>
+        <text x="180" y="172" text-anchor="middle" fill="#1565c0" font-size="12" font-weight="700" font-family="Nunito">Utilisation : sonar, échographie</text>
+
+        <rect x="360" y="10" width="320" height="180" rx="12" fill="#fff3e0" stroke="#e65100" stroke-width="2"/>
+        <text x="520" y="38" text-anchor="middle" fill="#e65100" font-size="15" font-weight="800" font-family="Nunito">💡 LUMIÈRE</text>
+        <text x="520" y="62" text-anchor="middle" fill="#333" font-size="12" font-family="Nunito">Vitesse : <tspan font-weight="700">300 000 km/s</tspan> dans le vide</text>
+        <text x="520" y="82" text-anchor="middle" fill="#333" font-size="12" font-family="Nunito">Se propage dans le <tspan font-weight="700">vide ET la matière</tspan></text>
+        <text x="520" y="102" text-anchor="middle" fill="#2d6a4f" font-size="12" font-weight="700" font-family="Nunito">✅ Passe dans le vide</text>
+        <text x="520" y="128" text-anchor="middle" fill="#555" font-size="11" font-family="Nunito">Moins rapide dans la matière :</text>
+        <text x="520" y="145" text-anchor="middle" fill="#555" font-size="11" font-family="Nunito">225 000 km/s eau • 200 000 km/s verre</text>
+        <text x="520" y="172" text-anchor="middle" fill="#e65100" font-size="12" font-weight="700" font-family="Nunito">Utilisation : laser, fibre optique</text>
+      </svg>
+      <div class="schema-caption">Son vs Lumière — les différences essentielles à retenir</div>
+    </div>
+
+    <div class="astuce-box">L'orage : tu vois l'éclair <strong>avant</strong> d'entendre le tonnerre. C'est parce que la lumière va ~900 000 fois plus vite que le son ! En comptant les secondes entre l'éclair et le tonnerre puis en divisant par 3, tu obtiens la distance de l'orage en km.</div>
+  </div>
+
+  <!-- EXERCICES SIGNAUX -->
+  <div class="exo-block">
+    <h3>📝 QCM — Son et lumière</h3>
+
+    <div class="qcm-item" data-correct="2">
+      <p><strong>1.</strong> Le son ne peut pas se propager dans :</p>
+      <div class="qcm-options">
+        <div class="qcm-option" onclick="selectQCM(this)">a) L'eau</div>
+        <div class="qcm-option" onclick="selectQCM(this)">b) L'acier</div>
+        <div class="qcm-option" onclick="selectQCM(this)">c) Le vide</div>
+        <div class="qcm-option" onclick="selectQCM(this)">d) L'air</div>
+      </div>
+    </div>
+
+    <div class="qcm-item" data-correct="1">
+      <p><strong>2.</strong> L'année-lumière est une unité de :</p>
+      <div class="qcm-options">
+        <div class="qcm-option" onclick="selectQCM(this)">a) Temps</div>
+        <div class="qcm-option" onclick="selectQCM(this)">b) Distance</div>
+        <div class="qcm-option" onclick="selectQCM(this)">c) Vitesse</div>
+        <div class="qcm-option" onclick="selectQCM(this)">d) Intensité lumineuse</div>
+      </div>
+    </div>
+
+    <div class="qcm-item" data-correct="0">
+      <p><strong>3.</strong> La vitesse de la lumière dans le vide est d'environ :</p>
+      <div class="qcm-options">
+        <div class="qcm-option" onclick="selectQCM(this)">a) 300 000 km/s</div>
+        <div class="qcm-option" onclick="selectQCM(this)">b) 340 m/s</div>
+        <div class="qcm-option" onclick="selectQCM(this)">c) 300 000 m/s</div>
+        <div class="qcm-option" onclick="selectQCM(this)">d) 30 000 km/s</div>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" onclick="checkQCM(this)">Vérifier mes réponses</button>
+    <div class="correction">
+      <strong>1. c)</strong> Le son a besoin d'un milieu matériel (solide, liquide ou gaz) pour se propager. Dans le vide (espace), aucun son ne se propage ! C'est pour ça que dans l'espace, personne ne peut t'entendre crier. 🚀<br>
+      <strong>2. b)</strong> Malgré son nom trompeur, l'année-lumière est une unité de <strong>distance</strong> = la distance que parcourt la lumière en une année (~9 500 milliards de km).<br>
+      <strong>3. a)</strong> 300 000 km/s (= 3 × 10⁸ m/s). Le 340 m/s, c'est la vitesse du son !
+    </div>
+  </div>
+
+  <div class="exo-block">
+    <h3>📝 Exercice — Distance d'un orage</h3>
+    <p>Tu vois un éclair et tu comptes <strong>9 secondes</strong> avant d'entendre le tonnerre. La vitesse du son dans l'air est de 340 m/s.</p>
+    <p><strong>1.</strong> Calcule la distance de l'orage en mètres :<br>
+    d = v × t = 340 × <input class="trou-input" data-answer="9" placeholder="?" style="width:50px;"/> = <input class="trou-input" data-answer="3060" placeholder="?" /> m</p>
+    <p><strong>2.</strong> Convertis en km : <input class="trou-input" data-answer="3.06" placeholder="?" style="width:80px;"/> km</p>
+    <p><strong>3.</strong> Pourquoi considère-t-on que la lumière arrive instantanément ?<br>
+    Parce que la lumière va <input class="trou-input" data-answer="300000" placeholder="?" style="width:110px;" /> km/s, soit environ <strong>900 000 fois</strong> plus vite que le son.</p>
+
+    <button class="btn btn-primary" onclick="checkTrous(this)" style="margin-top:.8rem;">Vérifier</button>
+    <div class="correction">
+      <strong>1.</strong> d = 340 × 9 = <strong>3 060 m</strong><br>
+      <strong>2.</strong> 3 060 / 1 000 = <strong>3,06 km</strong> (soit environ 3 km)<br>
+      <strong>3.</strong> La lumière voyage à 300 000 km/s. Pour parcourir 3 km, elle met 0,00001 s, c'est-à-dire <strong>pratiquement rien</strong> ! On peut donc considérer qu'on voit l'éclair instantanément et que le décalage correspond au temps de propagation du son.
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- EXERCICES MIXTES -->
+<!-- ══════════════════════════════════════════════════ -->
+<div class="section" id="sec-exos">
+  <div class="card">
+    <h2>📝 Exercices transversaux</h2>
+    <p>Ces exercices mélangent les thèmes pour vérifier que tu maîtrises l'ensemble du programme.</p>
+  </div>
+
+  <div class="exo-block">
+    <h3>📝 QCM général — Tout le programme</h3>
+
+    <div class="qcm-item" data-correct="2">
+      <p><strong>1.</strong> Quelle est l'unité de la résistance électrique ?</p>
+      <div class="qcm-options">
+        <div class="qcm-option" onclick="selectQCM(this)">a) Le volt (V)</div>
+        <div class="qcm-option" onclick="selectQCM(this)">b) L'ampère (A)</div>
+        <div class="qcm-option" onclick="selectQCM(this)">c) L'ohm (Ω)</div>
+        <div class="qcm-option" onclick="selectQCM(this)">d) Le watt (W)</div>
+      </div>
+    </div>
+
+    <div class="qcm-item" data-correct="3">
+      <p><strong>2.</strong> La conservation de la masse lors d'une réaction chimique s'explique par :</p>
+      <div class="qcm-options">
+        <div class="qcm-option" onclick="selectQCM(this)">a) Les molécules sont conservées</div>
+        <div class="qcm-option" onclick="selectQCM(this)">b) L'énergie est conservée</div>
+        <div class="qcm-option" onclick="selectQCM(this)">c) Les produits sont plus lourds</div>
+        <div class="qcm-option" onclick="selectQCM(this)">d) Les atomes sont conservés</div>
+      </div>
+    </div>
+
+    <div class="qcm-item" data-correct="1">
+      <p><strong>3.</strong> Pour convertir 72 km/h en m/s, je :</p>
+      <div class="qcm-options">
+        <div class="qcm-option" onclick="selectQCM(this)">a) Multiplie par 3,6</div>
+        <div class="qcm-option" onclick="selectQCM(this)">b) Divise par 3,6</div>
+        <div class="qcm-option" onclick="selectQCM(this)">c) Multiplie par 60</div>
+        <div class="qcm-option" onclick="selectQCM(this)">d) Divise par 60</div>
+      </div>
+    </div>
+
+    <div class="qcm-item" data-correct="0">
+      <p><strong>4.</strong> L'effet Joule est :</p>
+      <div class="qcm-options">
+        <div class="qcm-option" onclick="selectQCM(this)">a) L'échauffement produit par le passage du courant dans une résistance</div>
+        <div class="qcm-option" onclick="selectQCM(this)">b) La conservation de la masse</div>
+        <div class="qcm-option" onclick="selectQCM(this)">c) La propagation du son dans le vide</div>
+        <div class="qcm-option" onclick="selectQCM(this)">d) La vitesse de la lumière dans l'eau</div>
+      </div>
+    </div>
+
+    <div class="qcm-item" data-correct="2">
+      <p><strong>5.</strong> La combustion complète du méthane (CH₄) produit :</p>
+      <div class="qcm-options">
+        <div class="qcm-option" onclick="selectQCM(this)">a) Du carbone et de l'eau</div>
+        <div class="qcm-option" onclick="selectQCM(this)">b) Du monoxyde de carbone et du dihydrogène</div>
+        <div class="qcm-option" onclick="selectQCM(this)">c) Du dioxyde de carbone et de l'eau</div>
+        <div class="qcm-option" onclick="selectQCM(this)">d) Du méthane et du dioxygène</div>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" onclick="checkQCM(this)">Vérifier mes réponses</button>
+    <div class="correction">
+      <strong>1. c)</strong> L'ohm (Ω), du nom du physicien Georg Ohm qui a établi la loi U = R × I.<br>
+      <strong>2. d)</strong> Les molécules changent (réactifs → produits) mais les <strong>atomes sont conservés</strong> : on retrouve les mêmes de chaque côté de l'équation.<br>
+      <strong>3. b)</strong> km/h → m/s = <strong>÷ 3,6</strong>. Donc 72 / 3,6 = 20 m/s.<br>
+      <strong>4. a)</strong> L'effet Joule = échauffement dû au courant. Utile (grille-pain), mais aussi source de pertes d'énergie.<br>
+      <strong>5. c)</strong> CH₄ + 2O₂ → CO₂ + 2H₂O (combustion complète = formation de CO₂ et H₂O).
+    </div>
+  </div>
+
+  <div class="exo-block">
+    <h3>📝 Texte à trous — Résumé des notions clés</h3>
+    <p>Complète chaque phrase avec le bon mot :</p>
+
+    <p style="margin-top:.8rem;">1. Un atome est représenté par un <input class="trou-input" data-answer="symbole" placeholder="?" style="width:100px;" /> dans le tableau périodique.</p>
+    <p>2. La loi d'Ohm s'écrit : U = <input class="trou-input" data-answer="R" placeholder="?" style="width:50px;" /> × I.</p>
+    <p>3. Dans un circuit en série, l'intensité est la <input class="trou-input" data-answer="même" placeholder="?" style="width:80px;" /> en tout point.</p>
+    <p>4. Le son ne se propage pas dans le <input class="trou-input" data-answer="vide" placeholder="?" style="width:80px;" />.</p>
+    <p>5. La vitesse se calcule par la formule v = d / <input class="trou-input" data-answer="t" placeholder="?" style="width:50px;" />.</p>
+    <p>6. L'eau de chaux se <input class="trou-input" data-answer="trouble" placeholder="?" style="width:90px;" /> en présence de CO₂.</p>
+
+    <button class="btn btn-primary" onclick="checkTrous(this)" style="margin-top:.8rem;">Vérifier</button>
+    <div class="correction">
+      1. <strong>symbole</strong> (ex : C pour carbone, O pour oxygène)<br>
+      2. U = <strong>R</strong> × I (R = résistance en ohms)<br>
+      3. la <strong>même</strong> (loi d'unicité de l'intensité en série)<br>
+      4. le <strong>vide</strong> (il a besoin d'un milieu matériel)<br>
+      5. v = d / <strong>t</strong> (t = temps ou durée)<br>
+      6. se <strong>trouble</strong> (devient blanc/opaque — c'est le test du CO₂)
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- BILAN FINAL -->
+<!-- ══════════════════════════════════════════════════ -->
+<div class="section" id="sec-bilan">
+  <div class="card">
+    <h2>🏆 Bilan final — Es-tu prêt(e) ?</h2>
+    <p>Ce test de 10 questions mélange tous les chapitres. Essaie de le faire <strong>sans regarder les fiches</strong> !</p>
+  </div>
+
+  <div class="exo-block" id="bilan-quiz">
+    <h3>🏆 Quiz final — 10 questions</h3>
+
+    <div class="qcm-item" data-correct="1">
+      <p><strong>1.</strong> La molécule de dioxygène a pour formule :</p>
+      <div class="qcm-options">
+        <div class="qcm-option" onclick="selectQCM(this)">a) O</div>
+        <div class="qcm-option" onclick="selectQCM(this)">b) O₂</div>
+        <div class="qcm-option" onclick="selectQCM(this)">c) CO₂</div>
+        <div class="qcm-option" onclick="selectQCM(this)">d) 2O</div>
+      </div>
+    </div>
+
+    <div class="qcm-item" data-correct="0">
+      <p><strong>2.</strong> Lors d'une combustion complète, le combustible brûle dans :</p>
+      <div class="qcm-options">
+        <div class="qcm-option" onclick="selectQCM(this)">a) Le dioxygène</div>
+        <div class="qcm-option" onclick="selectQCM(this)">b) Le dihydrogène</div>
+        <div class="qcm-option" onclick="selectQCM(this)">c) Le dioxyde de carbone</div>
+        <div class="qcm-option" onclick="selectQCM(this)">d) L'eau</div>
+      </div>
+    </div>
+
+    <div class="qcm-item" data-correct="3">
+      <p><strong>3.</strong> Un voltmètre se branche :</p>
+      <div class="qcm-options">
+        <div class="qcm-option" onclick="selectQCM(this)">a) En série</div>
+        <div class="qcm-option" onclick="selectQCM(this)">b) En court-circuit</div>
+        <div class="qcm-option" onclick="selectQCM(this)">c) À la place du dipôle</div>
+        <div class="qcm-option" onclick="selectQCM(this)">d) En dérivation</div>
+      </div>
+    </div>
+
+    <div class="qcm-item" data-correct="1">
+      <p><strong>4.</strong> R = 150 Ω et U = 6 V. L'intensité I vaut :</p>
+      <div class="qcm-options">
+        <div class="qcm-option" onclick="selectQCM(this)">a) 900 A</div>
+        <div class="qcm-option" onclick="selectQCM(this)">b) 0,04 A</div>
+        <div class="qcm-option" onclick="selectQCM(this)">c) 40 A</div>
+        <div class="qcm-option" onclick="selectQCM(this)">d) 25 A</div>
+      </div>
+    </div>
+
+    <div class="qcm-item" data-correct="2">
+      <p><strong>5.</strong> 90 km/h = ... m/s :</p>
+      <div class="qcm-options">
+        <div class="qcm-option" onclick="selectQCM(this)">a) 324 m/s</div>
+        <div class="qcm-option" onclick="selectQCM(this)">b) 90 m/s</div>
+        <div class="qcm-option" onclick="selectQCM(this)">c) 25 m/s</div>
+        <div class="qcm-option" onclick="selectQCM(this)">d) 15 m/s</div>
+      </div>
+    </div>
+
+    <div class="qcm-item" data-correct="0">
+      <p><strong>6.</strong> La lumière du Soleil met environ ... pour arriver sur Terre :</p>
+      <div class="qcm-options">
+        <div class="qcm-option" onclick="selectQCM(this)">a) 8 minutes</div>
+        <div class="qcm-option" onclick="selectQCM(this)">b) 8 secondes</div>
+        <div class="qcm-option" onclick="selectQCM(this)">c) 8 heures</div>
+        <div class="qcm-option" onclick="selectQCM(this)">d) 1 an</div>
+      </div>
+    </div>
+
+    <div class="qcm-item" data-correct="1">
+      <p><strong>7.</strong> Le sulfate de cuivre anhydre sert à tester la présence de :</p>
+      <div class="qcm-options">
+        <div class="qcm-option" onclick="selectQCM(this)">a) CO₂</div>
+        <div class="qcm-option" onclick="selectQCM(this)">b) H₂O</div>
+        <div class="qcm-option" onclick="selectQCM(this)">c) O₂</div>
+        <div class="qcm-option" onclick="selectQCM(this)">d) H₂</div>
+      </div>
+    </div>
+
+    <div class="qcm-item" data-correct="3">
+      <p><strong>8.</strong> Dans un circuit en dérivation, l'intensité du courant principal :</p>
+      <div class="qcm-options">
+        <div class="qcm-option" onclick="selectQCM(this)">a) Est nulle</div>
+        <div class="qcm-option" onclick="selectQCM(this)">b) Est la même dans chaque branche</div>
+        <div class="qcm-option" onclick="selectQCM(this)">c) Diminue de moitié</div>
+        <div class="qcm-option" onclick="selectQCM(this)">d) Égale la somme des intensités des branches dérivées</div>
+      </div>
+    </div>
+
+    <div class="qcm-item" data-correct="2">
+      <p><strong>9.</strong> La vitesse du son dans l'air est d'environ :</p>
+      <div class="qcm-options">
+        <div class="qcm-option" onclick="selectQCM(this)">a) 3 400 m/s</div>
+        <div class="qcm-option" onclick="selectQCM(this)">b) 34 m/s</div>
+        <div class="qcm-option" onclick="selectQCM(this)">c) 340 m/s</div>
+        <div class="qcm-option" onclick="selectQCM(this)">d) 300 000 km/s</div>
+      </div>
+    </div>
+
+    <div class="qcm-item" data-correct="0">
+      <p><strong>10.</strong> Un dipôle ohmique a une caractéristique U(I) qui est :</p>
+      <div class="qcm-options">
+        <div class="qcm-option" onclick="selectQCM(this)">a) Une droite passant par l'origine</div>
+        <div class="qcm-option" onclick="selectQCM(this)">b) Une courbe</div>
+        <div class="qcm-option" onclick="selectQCM(this)">c) Une droite ne passant pas par l'origine</div>
+        <div class="qcm-option" onclick="selectQCM(this)">d) Un cercle</div>
+      </div>
+    </div>
+
+    <button class="btn btn-accent" onclick="checkBilan(this)" style="margin-top:1rem; font-size:1rem; padding:.8rem 2rem;">🏆 Voir mon score final</button>
+    <div class="correction" id="bilan-correction">
+      <strong>Corrections détaillées :</strong><br>
+      <strong>1. b)</strong> O₂ — le préfixe « di » signifie deux → deux atomes d'oxygène.<br>
+      <strong>2. a)</strong> Le comburant est toujours le dioxygène O₂.<br>
+      <strong>3. d)</strong> Le voltmètre se branche aux bornes du dipôle, en dérivation. L'ampèremètre, lui, est en série.<br>
+      <strong>4. b)</strong> I = U/R = 6/150 = 0,04 A (= 40 mA).<br>
+      <strong>5. c)</strong> 90 / 3,6 = 25 m/s.<br>
+      <strong>6. a)</strong> ~8 minutes (150 millions de km à 300 000 km/s).<br>
+      <strong>7. b)</strong> H₂O — il passe du blanc au bleu en présence d'eau.<br>
+      <strong>8. d)</strong> Loi des nœuds : I = I₁ + I₂ + ...<br>
+      <strong>9. c)</strong> 340 m/s environ (à 20°C). 300 000 km/s c'est la lumière !<br>
+      <strong>10. a)</strong> C'est la définition même d'un dipôle ohmique : U = R × I donne une droite passant par l'origine avec R comme pente.
+    </div>
+    <div class="score-display" id="bilan-score" style="display:none;"></div>
+  </div>
+</div>
+
+</div><!-- /container -->
+
+<script>
+// ─── Navigation ───
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById('sec-' + id).classList.add('active');
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  updateProgress();
+}
+
+// ─── QCM ───
+function selectQCM(el) {
+  const opts = el.parentElement.querySelectorAll('.qcm-option');
+  opts.forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  updateProgress();
+}
+
+function checkQCM(btn) {
+  const block = btn.closest('.exo-block');
+  const items = block.querySelectorAll('.qcm-item');
+  items.forEach(item => {
+    const correct = parseInt(item.dataset.correct);
+    const opts = item.querySelectorAll('.qcm-option');
+    opts.forEach((o, i) => {
+      o.style.pointerEvents = 'none';
+      if (i === correct) o.classList.add('reveal-correct');
+      if (o.classList.contains('selected') && i !== correct) o.classList.add('wrong');
+      if (o.classList.contains('selected') && i === correct) o.classList.add('correct');
+    });
+  });
+  const corr = block.querySelector('.correction');
+  if (corr) corr.classList.add('visible');
+  btn.style.display = 'none';
+  updateProgress();
+}
+
+// ─── Vrai/Faux ───
+function selectVF(btn, val) {
+  const row = btn.closest('.vf-row');
+  row.querySelectorAll('.vf-btn').forEach(b => {
+    b.classList.remove('selected-v', 'selected-f');
+  });
+  btn.classList.add(val === 'V' ? 'selected-v' : 'selected-f');
+  btn.dataset.selected = val;
+  updateProgress();
+}
+
+function checkVF(btn) {
+  const block = btn.closest('.exo-block');
+  const rows = block.querySelectorAll('.vf-row');
+  rows.forEach(row => {
+    const answer = row.dataset.answer;
+    const btns = row.querySelectorAll('.vf-btn');
+    btns.forEach(b => {
+      b.style.pointerEvents = 'none';
+      const isCorrectBtn = (b.textContent.trim() === 'Vrai' && answer === 'V') || (b.textContent.trim() === 'Faux' && answer === 'F');
+      if (isCorrectBtn) b.classList.add('answer-correct');
+      if (b.dataset.selected && !isCorrectBtn && (b.classList.contains('selected-v') || b.classList.contains('selected-f'))) {
+        b.classList.add('answer-wrong');
+      }
+    });
+  });
+  const corr = block.querySelector('.correction');
+  if (corr) corr.classList.add('visible');
+  btn.style.display = 'none';
+  updateProgress();
+}
+
+// ─── Texte à trous ───
+function checkTrous(btn) {
+  const block = btn.closest('.exo-block');
+  const inputs = block.querySelectorAll('.trou-input');
+  inputs.forEach(inp => {
+    const answer = inp.dataset.answer.toLowerCase().trim();
+    const userVal = inp.value.toLowerCase().trim().replace(',', '.');
+    const answerNorm = answer.replace(',', '.');
+    inp.disabled = true;
+    if (userVal === answerNorm) {
+      inp.classList.add('correct-input');
+    } else {
+      inp.classList.add('wrong-input');
+      inp.value = inp.value + ' → ' + inp.dataset.answer;
+    }
+  });
+  const corr = block.querySelector('.correction');
+  if (corr) corr.classList.add('visible');
+  btn.style.display = 'none';
+  updateProgress();
+}
+
+// ─── Bilan final ───
+function checkBilan(btn) {
+  checkQCM(btn);
+  const block = document.getElementById('bilan-quiz');
+  const items = block.querySelectorAll('.qcm-item');
+  let score = 0;
+  items.forEach(item => {
+    const correct = parseInt(item.dataset.correct);
+    const opts = item.querySelectorAll('.qcm-option');
+    opts.forEach((o, i) => {
+      if (o.classList.contains('selected') && i === correct) score++;
+    });
+  });
+  const scoreDiv = document.getElementById('bilan-score');
+  scoreDiv.style.display = 'block';
+  scoreDiv.textContent = `🏆 Ton score : ${score} / ${items.length}`;
+  if (score >= 8) { scoreDiv.className = 'score-display score-good'; scoreDiv.textContent += ' — Excellent ! Tu maîtrises le programme !'; }
+  else if (score >= 5) { scoreDiv.className = 'score-display score-mid'; scoreDiv.textContent += ' — Pas mal ! Relis les chapitres où tu as eu faux.'; }
+  else { scoreDiv.className = 'score-display score-bad'; scoreDiv.textContent += ' — Il faut réviser ! Relis les fiches de cours.'; }
+}
+
+// ─── Progression ───
+function updateProgress() {
+  const allCorrections = document.querySelectorAll('.correction');
+  const visible = document.querySelectorAll('.correction.visible');
+  const total = allCorrections.length;
+  const done = visible.length;
+  document.getElementById('progressText').textContent = `Progression : ${done} / ${total} exercices corrigés`;
+  document.getElementById('progressFill').style.width = total > 0 ? (done / total * 100) + '%' : '0%';
+}
+
+updateProgress();
+</script>
+
+</body>
+</html>
