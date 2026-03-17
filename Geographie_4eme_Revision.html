@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📍 Géographie 4ème — Fiches de Révision</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap');
+
+:root {
+  --bg: #f0ebe3;
+  --card: #ffffff;
+  --t1: #1a6b4e;
+  --t1-light: #e6f4ed;
+  --t1-pale: #f2faf6;
+  --t2: #2563a8;
+  --t2-light: #dfeefb;
+  --t2-pale: #f0f7fd;
+  --t3: #c45d12;
+  --t3-light: #fff0e0;
+  --t3-pale: #fff8f0;
+  --text: #2a2d30;
+  --text-light: #6b7280;
+  --border: #e0ddd8;
+  --success: #16a34a;
+  --success-bg: #dcfce7;
+  --error: #dc2626;
+  --error-bg: #fef2f2;
+  --radius: 14px;
+  --shadow: 0 2px 16px rgba(0,0,0,0.05);
+  --shadow-hover: 0 4px 24px rgba(0,0,0,0.1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.75;
+  font-size: 15.5px;
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+.header {
+  background: linear-gradient(135deg, #1a6b4e 0%, #1e5c7e 50%, #c45d12 100%);
+  color: white;
+  padding: 2.2rem 1.5rem 1.8rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.header::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(120deg, transparent, transparent 40px, rgba(255,255,255,0.03) 40px, rgba(255,255,255,0.03) 80px);
+}
+.header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  position: relative; z-index: 1;
+  letter-spacing: -0.5px;
+}
+.header p {
+  font-size: 0.95rem;
+  opacity: 0.88;
+  margin-top: 0.2rem;
+  position: relative; z-index: 1;
+}
+
+/* ── PROGRESS ── */
+.progress-wrap {
+  background: var(--card);
+  padding: 0.8rem 1.2rem;
+  position: sticky;
+  top: 0; z-index: 200;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  border-bottom: 1px solid var(--border);
+}
+.progress-track {
+  background: #e5e5e5;
+  border-radius: 20px;
+  height: 12px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  border-radius: 20px;
+  background: linear-gradient(90deg, var(--t1), var(--t2), var(--t3));
+  transition: width 0.6s cubic-bezier(.4,0,.2,1);
+  width: 0%;
+}
+.progress-label {
+  font-size: 0.8rem;
+  text-align: center;
+  color: var(--text-light);
+  font-weight: 700;
+  margin-top: 0.25rem;
+}
+
+/* ── MAIN ── */
+.main { max-width: 860px; margin: 0 auto; padding: 1.2rem; }
+
+/* ── THEME ACCORDION ── */
+.theme-block { margin-bottom: 1rem; }
+
+.theme-header {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem 1.3rem;
+  background: var(--card);
+  border-radius: var(--radius);
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: all 0.3s;
+  border-left: 6px solid var(--t1);
+  user-select: none;
+}
+.theme-header:hover { box-shadow: var(--shadow-hover); }
+.theme-header.t2 { border-left-color: var(--t2); }
+.theme-header.t3 { border-left-color: var(--t3); }
+.theme-header.open { border-radius: var(--radius) var(--radius) 0 0; }
+
+.theme-icon {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+.theme-title {
+  flex: 1;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--t1);
+}
+.theme-header.t2 .theme-title { color: var(--t2); }
+.theme-header.t3 .theme-title { color: var(--t3); }
+
+.theme-chevron {
+  font-size: 1.3rem;
+  transition: transform 0.35s;
+  color: var(--text-light);
+}
+.theme-header.open .theme-chevron { transform: rotate(180deg); }
+
+.theme-body {
+  display: none;
+  background: var(--card);
+  border-radius: 0 0 var(--radius) var(--radius);
+  box-shadow: var(--shadow);
+  padding: 0.5rem 0;
+  overflow: hidden;
+}
+.theme-body.open { display: block; animation: slideDown 0.35s ease; }
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── CHAPTER ── */
+.chapter {
+  margin: 0.4rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.chapter-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  background: #fafaf8;
+  transition: background 0.2s;
+  user-select: none;
+}
+.chapter-header:hover { background: #f0efec; }
+.chapter-num {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900;
+  font-size: 0.85rem;
+  color: white;
+  flex-shrink: 0;
+}
+.t1-num { background: var(--t1); }
+.t2-num { background: var(--t2); }
+.t3-num { background: var(--t3); }
+
+.chapter-name {
+  flex: 1;
+  font-weight: 700;
+  font-size: 0.98rem;
+}
+.chapter-chevron {
+  font-size: 1.1rem;
+  transition: transform 0.3s;
+  color: var(--text-light);
+}
+.chapter-header.open .chapter-chevron { transform: rotate(180deg); }
+
+.chapter-body {
+  display: none;
+  padding: 0.5rem 1rem 1rem;
+}
+.chapter-body.open { display: block; animation: slideDown 0.3s ease; }
+
+/* ── TABS (Fiche / Exercices) ── */
+.tab-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.tab-btn {
+  flex: 1;
+  padding: 0.65rem 0.8rem;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  background: white;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.25s;
+  text-align: center;
+}
+.tab-btn:hover { border-color: var(--t1); }
+.tab-btn.active-t1 { background: var(--t1); color: white; border-color: var(--t1); }
+.tab-btn.active-t2 { background: var(--t2); color: white; border-color: var(--t2); }
+.tab-btn.active-t3 { background: var(--t3); color: white; border-color: var(--t3); }
+
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* ── COURSE CONTENT ── */
+.course h3 {
+  font-size: 1.08rem;
+  font-weight: 800;
+  margin: 1.3rem 0 0.5rem;
+  padding-left: 0.2rem;
+}
+.course p { margin-bottom: 0.7rem; }
+
+.def {
+  border-radius: 10px;
+  padding: 0.7rem 1rem;
+  margin: 0.6rem 0;
+}
+.def-t1 { background: var(--t1-light); border-left: 4px solid var(--t1); }
+.def-t2 { background: var(--t2-light); border-left: 4px solid var(--t2); }
+.def-t3 { background: var(--t3-light); border-left: 4px solid var(--t3); }
+.def strong { font-weight: 800; }
+.def-t1 strong { color: var(--t1); }
+.def-t2 strong { color: var(--t2); }
+.def-t3 strong { color: var(--t3); }
+
+.kf {
+  display: inline-block;
+  background: #fff3e0;
+  color: var(--t3);
+  font-weight: 800;
+  padding: 0.15rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.95rem;
+}
+
+.tip {
+  background: #fef9e7;
+  border: 2px solid #f9d74c;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  margin: 1rem 0;
+  font-size: 0.93rem;
+}
+.tip::before { content: '💡 Astuce — '; font-weight: 800; }
+
+.svg-wrap {
+  width: 100%;
+  margin: 1.2rem 0;
+  overflow-x: auto;
+  text-align: center;
+}
+.svg-wrap svg { max-width: 100%; height: auto; display: inline-block; }
+
+/* ── EXERCISES ── */
+.q-block {
+  margin-bottom: 1.1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px dashed #e5e3de;
+}
+.q-block:last-of-type { border-bottom: none; }
+
+.q-label {
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  line-height: 1.5;
+}
+
+/* Radio / Checkbox options */
+.opts label {
+  display: block;
+  padding: 0.5rem 0.9rem;
+  margin: 0.25rem 0;
+  border: 2px solid #e8e6e2;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 600;
+  position: relative;
+}
+.opts label:hover { background: #f8f7f5; border-color: #ccc; }
+.opts input { display: none; }
+
+.opts label.correct-pick {
+  background: var(--success-bg) !important;
+  border-color: var(--success) !important;
+  color: var(--success);
+}
+.opts label.wrong-pick {
+  background: var(--error-bg) !important;
+  border-color: var(--error) !important;
+  color: var(--error);
+  text-decoration: line-through;
+}
+.opts label.show-correct {
+  background: var(--success-bg) !important;
+  border-color: var(--success) !important;
+  font-weight: 800;
+}
+.opts label.disabled { pointer-events: none; opacity: 0.85; }
+
+/* Vrai/Faux */
+.vf-row { display: flex; gap: 0.5rem; }
+.vf-row label {
+  flex: 1;
+  text-align: center;
+  padding: 0.6rem;
+  border: 2px solid #e8e6e2;
+  border-radius: 9px;
+  cursor: pointer;
+  font-weight: 800;
+  transition: all 0.2s;
+}
+.vf-row label:hover { border-color: #bbb; }
+.vf-row input { display: none; }
+
+/* Fill-in */
+.fill-input {
+  border: none;
+  border-bottom: 2.5px dashed var(--t1);
+  background: transparent;
+  padding: 0.25rem 0.4rem;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: var(--t1);
+  width: 170px;
+  text-align: center;
+  outline: none;
+}
+.fill-input:focus { border-bottom-color: var(--t3); }
+.fill-input.t2 { border-bottom-color: var(--t2); color: var(--t2); }
+.fill-input.t3 { border-bottom-color: var(--t3); color: var(--t3); }
+
+.fill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-left: 0.4rem;
+  padding: 0.3rem 0.8rem;
+  border: 2px solid var(--t1);
+  border-radius: 20px;
+  background: white;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--t1);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.fill-btn:hover { background: var(--t1); color: white; }
+.fill-btn.t2 { border-color: var(--t2); color: var(--t2); }
+.fill-btn.t2:hover { background: var(--t2); color: white; }
+.fill-btn.t3 { border-color: var(--t3); color: var(--t3); }
+.fill-btn.t3:hover { background: var(--t3); color: white; }
+
+/* Feedback */
+.fb {
+  margin-top: 0.4rem;
+  padding: 0.55rem 0.9rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  display: none;
+}
+.fb.show { display: block; animation: fadeIn 0.3s; }
+.fb.ok { background: var(--success-bg); color: #15803d; border: 1px solid #86efac; }
+.fb.ko { background: var(--error-bg); color: #b91c1c; border: 1px solid #fca5a5; }
+
+@keyframes fadeIn { from { opacity:0; transform:translateY(-4px); } to { opacity:1; transform:translateY(0); } }
+
+/* Score banner per chapter */
+.chapter-score {
+  text-align: center;
+  padding: 0.8rem;
+  border-radius: 10px;
+  margin-top: 0.8rem;
+  font-weight: 800;
+  font-size: 1.1rem;
+  display: none;
+}
+.chapter-score.show { display: block; animation: fadeIn 0.4s; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .header h1 { font-size: 1.5rem; }
+  .main { padding: 0.8rem; }
+  .theme-header { padding: 0.8rem 1rem; }
+  .theme-title { font-size: 1.05rem; }
+  .chapter { margin: 0.3rem 0.5rem; }
+  .tab-btn { font-size: 0.82rem; padding: 0.55rem 0.5rem; }
+  .svg-wrap svg { min-width: 500px; }
+  .fill-input { width: 120px; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📍 Géographie 4ème</h1>
+  <p>La mondialisation et ses effets sur les territoires — Programme complet</p>
+</div>
+
+<div class="progress-wrap">
+  <div class="progress-track"><div class="progress-fill" id="pBar"></div></div>
+  <div class="progress-label" id="pLabel">0 / 30 exercices complétés</div>
+</div>
+
+<div class="main">
+
+<!-- ═══════════════════════════════════════════ -->
+<!--       THÈME 1 : L'URBANISATION DU MONDE    -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="theme-block">
+  <div class="theme-header" onclick="toggleTheme(this)">
+    <span class="theme-icon">🏙️</span>
+    <span class="theme-title">Thème 1 — L'urbanisation du monde</span>
+    <span class="theme-chevron">▼</span>
+  </div>
+  <div class="theme-body">
+
+    <!-- ── Ch1 ── -->
+    <div class="chapter">
+      <div class="chapter-header" onclick="toggleChapter(this)">
+        <span class="chapter-num t1-num">1</span>
+        <span class="chapter-name">Espaces et paysages de l'urbanisation</span>
+        <span class="chapter-chevron">▼</span>
+      </div>
+      <div class="chapter-body">
+        <div class="tab-row">
+          <button class="tab-btn active-t1" onclick="showTab(this,'ch1-cours','t1')">📖 Fiche de cours</button>
+          <button class="tab-btn" onclick="showTab(this,'ch1-exos','t1')">📝 Exercices</button>
+        </div>
+
+        <!-- COURS -->
+        <div class="tab-content active course" id="ch1-cours">
+          <h3>🌍 L'urbanisation, un phénomène mondial</h3>
+          <p>Depuis 2007, <strong>plus de la moitié de l'humanité vit en ville</strong>. Ce sera <strong>environ 2/3 en 2050</strong>. Ce phénomène de concentration de la population dans les villes s'appelle l'urbanisation.</p>
+
+          <div class="def def-t1"><strong>Urbanisation :</strong> processus de croissance de la population des villes et d'extension de l'espace urbain.</div>
+
+          <p>L'urbanisation n'est pas la même partout :</p>
+          <p>🔹 <strong>Pays du Nord</strong> (Europe, Am. du Nord) : urbanisation ancienne, taux élevé (>75 %), croissance urbaine faible.</p>
+          <p>🔹 <strong>Pays du Sud</strong> (Afrique, Asie) : urbanisation plus récente, <strong>croissance urbaine très forte</strong> (exode rural + accroissement naturel).</p>
+          <p>🔹 <strong>Amérique latine</strong> : exception — pays du Sud mais très urbanisée (~81 %).</p>
+
+          <div class="svg-wrap">
+<svg viewBox="0 0 680 310" xmlns="http://www.w3.org/2000/svg">
+  <rect width="680" height="310" fill="#fafaf8" rx="12"/>
+  <text x="340" y="26" text-anchor="middle" font-family="Nunito,sans-serif" font-weight="800" font-size="14" fill="#2a2d30">Taux d'urbanisation par continent (en %)</text>
+  <g transform="translate(55,45)">
+    <line x1="0" y1="210" x2="565" y2="210" stroke="#ddd" stroke-width="1"/>
+    <line x1="0" y1="0" x2="0" y2="210" stroke="#ddd" stroke-width="1"/>
+    <text x="-6" y="214" text-anchor="end" font-size="10" fill="#aaa" font-family="Nunito">0</text>
+    <text x="-6" y="172" text-anchor="end" font-size="10" fill="#aaa" font-family="Nunito">20</text>
+    <text x="-6" y="130" text-anchor="end" font-size="10" fill="#aaa" font-family="Nunito">40</text>
+    <text x="-6" y="88" text-anchor="end" font-size="10" fill="#aaa" font-family="Nunito">60</text>
+    <text x="-6" y="46" text-anchor="end" font-size="10" fill="#aaa" font-family="Nunito">80</text>
+    <text x="-6" y="4" text-anchor="end" font-size="10" fill="#aaa" font-family="Nunito">100</text>
+    <line x1="0" y1="168" x2="565" y2="168" stroke="#f0f0f0"/>
+    <line x1="0" y1="126" x2="565" y2="126" stroke="#f0f0f0"/>
+    <line x1="0" y1="84" x2="565" y2="84" stroke="#f0f0f0"/>
+    <line x1="0" y1="42" x2="565" y2="42" stroke="#f0f0f0"/>
+    <!-- Bars -->
+    <rect x="18" y="38" width="64" height="172" rx="5" fill="#1a6b4e"/>
+    <text x="50" y="32" text-anchor="middle" font-size="12" font-weight="800" fill="#1a6b4e" font-family="Nunito">82%</text>
+    <text x="50" y="232" text-anchor="middle" font-size="10" font-weight="700" fill="#2a2d30" font-family="Nunito">Am. Nord</text>
+    <rect x="108" y="40" width="64" height="170" rx="5" fill="#2563a8"/>
+    <text x="140" y="34" text-anchor="middle" font-size="12" font-weight="800" fill="#2563a8" font-family="Nunito">81%</text>
+    <text x="140" y="232" text-anchor="middle" font-size="10" font-weight="700" fill="#2a2d30" font-family="Nunito">Am. Lat.</text>
+    <rect x="198" y="53" width="64" height="157" rx="5" fill="#7c3aed"/>
+    <text x="230" y="47" text-anchor="middle" font-size="12" font-weight="800" fill="#7c3aed" font-family="Nunito">75%</text>
+    <text x="230" y="232" text-anchor="middle" font-size="10" font-weight="700" fill="#2a2d30" font-family="Nunito">Europe</text>
+    <rect x="288" y="68" width="64" height="142" rx="5" fill="#0d9488"/>
+    <text x="320" y="62" text-anchor="middle" font-size="12" font-weight="800" fill="#0d9488" font-family="Nunito">68%</text>
+    <text x="320" y="232" text-anchor="middle" font-size="10" font-weight="700" fill="#2a2d30" font-family="Nunito">Océanie</text>
+    <rect x="378" y="103" width="64" height="107" rx="5" fill="#c45d12"/>
+    <text x="410" y="97" text-anchor="middle" font-size="12" font-weight="800" fill="#c45d12" font-family="Nunito">51%</text>
+    <text x="410" y="232" text-anchor="middle" font-size="10" font-weight="700" fill="#2a2d30" font-family="Nunito">Asie</text>
+    <rect x="468" y="118" width="64" height="92" rx="5" fill="#dc2626"/>
+    <text x="500" y="112" text-anchor="middle" font-size="12" font-weight="800" fill="#dc2626" font-family="Nunito">44%</text>
+    <text x="500" y="232" text-anchor="middle" font-size="10" font-weight="700" fill="#2a2d30" font-family="Nunito">Afrique</text>
+  </g>
+  <text x="340" y="300" text-anchor="middle" font-size="9" fill="#bbb" font-family="Nunito">Estimations ONU, 2020</text>
+</svg>
+          </div>
+
+          <h3>🏗️ Les paysages de l'urbanisation</h3>
+          <p>La mondialisation transforme les villes et crée des paysages typiques :</p>
+
+          <div class="def def-t1"><strong>CBD (Central Business District) :</strong> quartier des affaires au centre-ville, reconnaissable à ses gratte-ciel (La Défense, Manhattan, La City…).</div>
+          <div class="def def-t1"><strong>Étalement urbain :</strong> extension horizontale des villes sur les espaces ruraux (banlieues pavillonnaires, zones commerciales).</div>
+          <div class="def def-t1"><strong>Bidonville :</strong> quartier d'habitat précaire et informel, sans services de base. Exemples : favelas (Brésil), slums (Inde).</div>
+          <div class="def def-t1"><strong>Mégapole :</strong> très grande ville de plus de <strong>10 millions d'habitants</strong> (Tokyo, Mexico, Lagos…).</div>
+
+          <div class="svg-wrap">
+<svg viewBox="0 0 680 370" xmlns="http://www.w3.org/2000/svg">
+  <rect width="680" height="370" fill="#fafaf8" rx="12"/>
+  <text x="340" y="26" text-anchor="middle" font-family="Nunito,sans-serif" font-weight="800" font-size="14" fill="#2a2d30">Schéma d'organisation d'une métropole</text>
+  <ellipse cx="340" cy="195" rx="290" ry="145" fill="#d1e7dd" stroke="#66bb6a" stroke-width="1.5"/>
+  <text x="340" y="348" text-anchor="middle" font-size="11" font-weight="700" fill="#2e7d32" font-family="Nunito">ESPACE PÉRIURBAIN (étalement urbain, lotissements)</text>
+  <ellipse cx="340" cy="195" rx="200" ry="105" fill="#c6dbef" stroke="#4a9bd9" stroke-width="1.5"/>
+  <text x="195" y="285" text-anchor="middle" font-size="11" font-weight="700" fill="#1e5c7e" font-family="Nunito">BANLIEUE</text>
+  <ellipse cx="340" cy="185" rx="100" ry="58" fill="#fff3cd" stroke="#e6b422" stroke-width="1.5"/>
+  <text x="340" y="175" text-anchor="middle" font-size="11" font-weight="700" fill="#b8860b" font-family="Nunito">CENTRE HISTORIQUE</text>
+  <rect x="310" y="185" width="60" height="28" rx="5" fill="#dc2626"/>
+  <text x="340" y="204" text-anchor="middle" font-size="10" font-weight="800" fill="white" font-family="Nunito">CBD</text>
+  <rect x="72" y="130" width="92" height="36" rx="7" fill="#ff8a65" stroke="#e64a19" stroke-width="1.5"/>
+  <text x="118" y="148" text-anchor="middle" font-size="9.5" font-weight="700" fill="white" font-family="Nunito">Bidonvilles</text>
+  <text x="118" y="159" text-anchor="middle" font-size="8" fill="white" font-family="Nunito">(dans les pays du Sud)</text>
+  <text x="490" y="158" font-size="10" font-weight="600" fill="#1e5c7e" font-family="Nunito">Quartiers résidentiels</text>
+  <text x="490" y="225" font-size="10" font-weight="600" fill="#1e5c7e" font-family="Nunito">Zones commerciales</text>
+  <rect x="465" y="76" width="175" height="52" rx="7" fill="white" stroke="#ddd"/>
+  <text x="475" y="93" font-size="9.5" font-weight="700" fill="#2a2d30" font-family="Nunito">🏙️ Pays du Nord :</text>
+  <text x="480" y="106" font-size="9" fill="#666" font-family="Nunito">Banlieues pavillonnaires</text>
+  <text x="475" y="120" font-size="9.5" font-weight="700" fill="#2a2d30" font-family="Nunito">🌍 Pays du Sud :</text>
+  <text x="480" y="133" font-size="9" fill="#666" font-family="Nunito">Bidonvilles en périphérie</text>
+</svg>
+          </div>
+
+          <div class="tip">Les mégapoles se concentrent surtout en Asie du Sud et de l'Est. 25 des 30 plus grandes villes du monde se situent dans les pays du Sud !</div>
+        </div>
+
+        <!-- EXERCICES -->
+        <div class="tab-content" id="ch1-exos">
+          <div class="q-block">
+            <p class="q-label">1. Depuis quelle année plus de la moitié de l'humanité vit-elle en ville ?</p>
+            <div class="opts" data-correct="b" data-explain="C'est en 2007 que la population urbaine mondiale a dépassé 50 %. Ce sera ~68 % en 2050.">
+              <label onclick="pickOpt(this)"><input type="radio" name="c1q1" value="a"> 1990</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c1q1" value="b"> 2007</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c1q1" value="c"> 2015</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c1q1" value="d"> 1975</label>
+            </div>
+            <div class="fb" id="fb_c1q1"></div>
+          </div>
+          <div class="q-block">
+            <p class="q-label">2. Qu'est-ce qu'une mégapole ?</p>
+            <div class="opts" data-correct="b" data-explain="Une mégapole est une ville de plus de 10 millions d'habitants (Tokyo, Mexico, Lagos…).">
+              <label onclick="pickOpt(this)"><input type="radio" name="c1q2" value="a"> Une ville de plus de 1 million d'hab.</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c1q2" value="b"> Une ville de plus de 10 millions d'hab.</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c1q2" value="c"> Une ville qui concentre les fonctions politiques</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c1q2" value="d"> Une ville qui rétrécit</label>
+            </div>
+            <div class="fb" id="fb_c1q2"></div>
+          </div>
+          <div class="q-block">
+            <p class="q-label">3. Que signifie CBD ?</p>
+            <div class="opts" data-correct="c" data-explain="CBD = Central Business District, c'est le quartier des affaires, reconnaissable à ses gratte-ciel.">
+              <label onclick="pickOpt(this)"><input type="radio" name="c1q3" value="a"> Centre de Banlieue Développée</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c1q3" value="b"> City Business Development</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c1q3" value="c"> Central Business District</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c1q3" value="d"> Centre des Bidonvilles Diffus</label>
+            </div>
+            <div class="fb" id="fb_c1q3"></div>
+          </div>
+          <div class="q-block">
+            <p class="q-label">4. VRAI ou FAUX — L'Afrique est le continent le plus urbanisé au monde.</p>
+            <div class="vf-row opts" data-correct="f" data-explain="FAUX. L'Afrique a le taux d'urbanisation le plus faible (~44 %), mais la croissance urbaine la plus forte !">
+              <label onclick="pickOpt(this)"><input type="radio" name="c1q4" value="v"> ✅ Vrai</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c1q4" value="f"> ❌ Faux</label>
+            </div>
+            <div class="fb" id="fb_c1q4"></div>
+          </div>
+          <div class="q-block">
+            <p class="q-label">5. Complète : L'__________ est l'extension horizontale des villes sur les espaces ruraux.</p>
+            <div><input class="fill-input" id="fi_c1q5" placeholder="???">&nbsp;<button class="fill-btn" onclick="checkFill('c1q5',['étalement urbain','etalement urbain'],'L\'étalement urbain désigne l\'extension horizontale des villes (banlieues, lotissements, zones commerciales).')">Vérifier</button></div>
+            <div class="fb" id="fb_c1q5"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Ch2 ── -->
+    <div class="chapter">
+      <div class="chapter-header" onclick="toggleChapter(this)">
+        <span class="chapter-num t1-num">2</span>
+        <span class="chapter-name">Les villes dans la mondialisation</span>
+        <span class="chapter-chevron">▼</span>
+      </div>
+      <div class="chapter-body">
+        <div class="tab-row">
+          <button class="tab-btn active-t1" onclick="showTab(this,'ch2-cours','t1')">📖 Fiche de cours</button>
+          <button class="tab-btn" onclick="showTab(this,'ch2-exos','t1')">📝 Exercices</button>
+        </div>
+        <div class="tab-content active course" id="ch2-cours">
+          <h3>🌐 Les villes mondiales</h3>
+          <p>Certaines villes concentrent les <strong>fonctions de commandement</strong> mondiales :</p>
+          <p>🔹 <strong>Économiques / financières</strong> : sièges de FTN, bourses (Wall Street, City de Londres)</p>
+          <p>🔹 <strong>Politiques</strong> : organisations internationales (ONU à New York, UE à Bruxelles)</p>
+          <p>🔹 <strong>Culturelles</strong> : musées, universités, médias (Paris, Tokyo, Los Angeles)</p>
+
+          <div class="def def-t1"><strong>Ville mondiale :</strong> ville qui concentre des fonctions majeures (économiques, politiques, culturelles) à l'échelle planétaire. Principales : New York, Londres, Tokyo, Paris.</div>
+          <div class="def def-t1"><strong>FTN (Firme Transnationale) :</strong> grande entreprise possédant des filiales dans plusieurs pays (Apple, Total, Samsung, Toyota…).</div>
+
+          <h3>🔗 L'archipel métropolitain mondial</h3>
+          <p>Les villes mondiales sont interconnectées par des réseaux de transport (hubs aériens), de télécommunications et de flux financiers. Elles forment un <strong>« archipel métropolitain mondial »</strong> : un réseau de métropoles connectées entre elles, comme des îles dans un océan.</p>
+
+          <div class="def def-t1"><strong>Hub :</strong> plateforme de correspondance (aérienne, portuaire, ferroviaire) qui concentre et redistribue les flux.</div>
+
+          <h3>📉 Les Shrinking Cities</h3>
+          <p>À l'inverse, certaines villes sont <strong>en déclin</strong>. L'exemple emblématique est <strong>Detroit</strong> (USA), ancienne capitale de l'automobile, qui a perdu plus de la moitié de sa population.</p>
+
+          <div class="def def-t1"><strong>Shrinking City :</strong> ville en déclin démographique, économique et social (perte de population, fermetures d'usines, friches, chômage). Ex : Detroit.</div>
+
+          <div class="tip">Retiens l'opposition classique : villes mondiales connectées (Tokyo, Londres) VS Shrinking Cities en marge (Detroit). C'est un thème favori des contrôles et du brevet !</div>
+        </div>
+
+        <div class="tab-content" id="ch2-exos">
+          <div class="q-block">
+            <p class="q-label">1. Qu'est-ce qu'une Shrinking City ?</p>
+            <div class="opts" data-correct="c" data-explain="Une Shrinking City est une ville en déclin qui perd sa population et son activité économique. Detroit en est l'exemple le plus célèbre.">
+              <label onclick="pickOpt(this)"><input type="radio" name="c2q1" value="a"> Une ville très peuplée d'Asie</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c2q1" value="b"> Une ville touristique en expansion</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c2q1" value="c"> Une ville en déclin démographique et économique</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c2q1" value="d"> Un bidonville dans un pays du Sud</label>
+            </div>
+            <div class="fb" id="fb_c2q1"></div>
+          </div>
+          <div class="q-block">
+            <p class="q-label">2. VRAI ou FAUX — New York, Londres et Tokyo sont des villes mondiales.</p>
+            <div class="vf-row opts" data-correct="v" data-explain="VRAI. Ces trois villes concentrent des fonctions de commandement économiques, politiques et culturelles à l'échelle mondiale.">
+              <label onclick="pickOpt(this)"><input type="radio" name="c2q2" value="v"> ✅ Vrai</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c2q2" value="f"> ❌ Faux</label>
+            </div>
+            <div class="fb" id="fb_c2q2"></div>
+          </div>
+          <div class="q-block">
+            <p class="q-label">3. Que signifie FTN ?</p>
+            <div class="opts" data-correct="b" data-explain="FTN = Firme TransNationale, une grande entreprise implantée dans plusieurs pays (Apple, Total, Samsung…).">
+              <label onclick="pickOpt(this)"><input type="radio" name="c2q3" value="a"> Fédération Touristique Nationale</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c2q3" value="b"> Firme TransNationale</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c2q3" value="c"> Flux de Transport Naturel</label>
+            </div>
+            <div class="fb" id="fb_c2q3"></div>
+          </div>
+          <div class="q-block">
+            <p class="q-label">4. VRAI ou FAUX — Detroit est une ville mondiale bien connectée à la mondialisation.</p>
+            <div class="vf-row opts" data-correct="f" data-explain="FAUX. Detroit est au contraire l'exemple type de la Shrinking City, en marge de la mondialisation.">
+              <label onclick="pickOpt(this)"><input type="radio" name="c2q4" value="v"> ✅ Vrai</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c2q4" value="f"> ❌ Faux</label>
+            </div>
+            <div class="fb" id="fb_c2q4"></div>
+          </div>
+          <div class="q-block">
+            <p class="q-label">5. Complète : Les villes mondiales forment un « __________ métropolitain mondial ».</p>
+            <div><input class="fill-input" id="fi_c2q5" placeholder="???">&nbsp;<button class="fill-btn" onclick="checkFill('c2q5',['archipel'],'Les villes mondiales forment un « archipel métropolitain mondial », reliées entre elles comme des îles par les réseaux de transport et de communication.')">Vérifier</button></div>
+            <div class="fb" id="fb_c2q5"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /theme-body -->
+</div><!-- /theme-block T1 -->
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!--   THÈME 2 : MOBILITÉS HUMAINES            -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="theme-block">
+  <div class="theme-header t2" onclick="toggleTheme(this)">
+    <span class="theme-icon">✈️</span>
+    <span class="theme-title">Thème 2 — Les mobilités humaines transnationales</span>
+    <span class="theme-chevron">▼</span>
+  </div>
+  <div class="theme-body">
+
+    <!-- ── Ch3 ── -->
+    <div class="chapter">
+      <div class="chapter-header" onclick="toggleChapter(this)">
+        <span class="chapter-num t2-num">3</span>
+        <span class="chapter-name">Un monde de migrants</span>
+        <span class="chapter-chevron">▼</span>
+      </div>
+      <div class="chapter-body">
+        <div class="tab-row">
+          <button class="tab-btn active-t2" onclick="showTab(this,'ch3-cours','t2')">📖 Fiche de cours</button>
+          <button class="tab-btn" onclick="showTab(this,'ch3-exos','t2')">📝 Exercices</button>
+        </div>
+        <div class="tab-content active course" id="ch3-cours">
+          <h3>🌍 Des migrations en forte augmentation</h3>
+          <p>En 2020 : environ <span class="kf">281 millions</span> de migrants internationaux (~3,6 % de la population). Ce nombre a doublé depuis 1990.</p>
+
+          <div class="def def-t2"><strong>Migrant :</strong> personne qui quitte son lieu de résidence pour s'installer durablement ailleurs (souvent dans un autre pays).</div>
+          <div class="def def-t2"><strong>Réfugié :</strong> personne qui a fui son pays car sa vie ou sa liberté y était menacée (guerre, persécutions). Statut reconnu par le droit international.</div>
+          <div class="def def-t2"><strong>Remises :</strong> sommes d'argent envoyées par les migrants à leur famille restée au pays. Plus de <strong>600 milliards $/an</strong> !</div>
+
+          <h3>📌 Pourquoi migre-t-on ?</h3>
+          <p>🔹 <strong>Raisons économiques :</strong> trouver un emploi, de meilleurs salaires</p>
+          <p>🔹 <strong>Raisons politiques :</strong> fuir la guerre ou les persécutions (ex : réfugiés syriens)</p>
+          <p>🔹 <strong>Raisons environnementales :</strong> catastrophes naturelles, montée des eaux</p>
+          <p>🔹 <strong>Raisons familiales ou d'études</strong></p>
+
+          <h3>🗺️ Des flux complexes — Attention aux idées reçues !</h3>
+          <p>Les migrations ne vont PAS uniquement du « Sud vers le Nord » :</p>
+          <p>🔹 <strong>38 %</strong> sont <strong>Sud → Sud</strong> (ex : Bangladesh → Inde)</p>
+          <p>🔹 <strong>34 %</strong> sont <strong>Sud → Nord</strong> (ex : Maroc → France)</p>
+          <p>🔹 <strong>23 %</strong> sont <strong>Nord → Nord</strong> (ex : Royaume-Uni → Australie)</p>
+
+          <div class="svg-wrap">
+<svg viewBox="0 0 680 330" xmlns="http://www.w3.org/2000/svg">
+  <rect width="680" height="330" fill="#fafaf8" rx="12"/>
+  <text x="340" y="25" text-anchor="middle" font-family="Nunito,sans-serif" font-weight="800" font-size="13" fill="#2a2d30">Répartition des flux migratoires mondiaux</text>
+  <!-- Pie chart simplifié en barres empilées horizontales -->
+  <g transform="translate(40,50)">
+    <!-- Bar S→S -->
+    <rect x="0" y="0" width="228" height="50" rx="8" fill="#c45d12"/>
+    <text x="114" y="30" text-anchor="middle" font-size="14" font-weight="800" fill="white" font-family="Nunito">Sud → Sud : 38%</text>
+    <!-- Bar S→N -->
+    <rect x="0" y="65" width="204" height="50" rx="8" fill="#2563a8"/>
+    <text x="102" y="95" text-anchor="middle" font-size="14" font-weight="800" fill="white" font-family="Nunito">Sud → Nord : 34%</text>
+    <!-- Bar N→N -->
+    <rect x="0" y="130" width="138" height="50" rx="8" fill="#7c3aed"/>
+    <text x="69" y="160" text-anchor="middle" font-size="14" font-weight="800" fill="white" font-family="Nunito">Nord → Nord : 23%</text>
+    <!-- Bar N→S -->
+    <rect x="0" y="195" width="30" height="50" rx="8" fill="#aaa"/>
+    <text x="55" y="225" font-size="13" font-weight="700" fill="#666" font-family="Nunito">Nord → Sud : 5%</text>
+  </g>
+  <!-- Key insight -->
+  <rect x="340" y="70" width="300" height="75" rx="10" fill="#fff3e0" stroke="#c45d12" stroke-width="1.5"/>
+  <text x="355" y="92" font-size="11" font-weight="800" fill="#c45d12" font-family="Nunito">🔑 À retenir :</text>
+  <text x="355" y="110" font-size="11" fill="#2a2d30" font-family="Nunito">La majorité des migrations sont</text>
+  <text x="355" y="126" font-size="12" font-weight="800" fill="#c45d12" font-family="Nunito">Sud → Sud, pas Sud → Nord !</text>
+  <text x="340" y="315" text-anchor="middle" font-size="9" fill="#bbb" font-family="Nunito">Source : ONU, estimations 2020</text>
+</svg>
+          </div>
+
+          <div class="def def-t2"><strong>Diaspora :</strong> dispersion d'un peuple à travers le monde (ex : diaspora chinoise, indienne, libanaise).</div>
+
+          <div class="tip">Au brevet, on te demandera souvent de nuancer l'idée reçue « tous les migrants vont du Sud vers le Nord ». La majorité des migrations sont en fait Sud-Sud !</div>
+        </div>
+
+        <div class="tab-content" id="ch3-exos">
+          <div class="q-block">
+            <p class="q-label">1. Combien de migrants internationaux en 2020 (environ) ?</p>
+            <div class="opts" data-correct="c" data-explain="Environ 281 millions de migrants internationaux, soit ~3,6 % de la population mondiale.">
+              <label onclick="pickOpt(this)"><input type="radio" name="c3q1" value="a"> 50 millions</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c3q1" value="b"> 150 millions</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c3q1" value="c"> 280 millions</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c3q1" value="d"> 500 millions</label>
+            </div>
+            <div class="fb" id="fb_c3q1"></div>
+          </div>
+          <div class="q-block">
+            <p class="q-label">2. Quelle est la direction migratoire la plus importante ?</p>
+            <div class="opts" data-correct="c" data-explain="38 % des migrations mondiales sont Sud → Sud. Contrairement à l'idée reçue, c'est le flux dominant !">
+              <label onclick="pickOpt(this)"><input type="radio" name="c3q2" value="a"> Nord → Sud</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c3q2" value="b"> Sud → Nord</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c3q2" value="c"> Sud → Sud</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c3q2" value="d"> Nord → Nord</label>
+            </div>
+            <div class="fb" id="fb_c3q2"></div>
+          </div>
+          <div class="q-block">
+            <p class="q-label">3. VRAI ou FAUX — Un réfugié est quelqu'un qui part en vacances dans un autre pays.</p>
+            <div class="vf-row opts" data-correct="f" data-explain="FAUX. Un réfugié est une personne qui fuit son pays car sa vie ou sa liberté y est menacée (guerre, persécutions).">
+              <label onclick="pickOpt(this)"><input type="radio" name="c3q3" value="v"> ✅ Vrai</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c3q3" value="f"> ❌ Faux</label>
+            </div>
+            <div class="fb" id="fb_c3q3"></div>
+          </div>
+          <div class="q-block">
+            <p class="q-label">4. Que sont les « remises » ?</p>
+            <div class="opts" data-correct="b" data-explain="Les remises sont les sommes d'argent envoyées par les migrants à leur famille au pays d'origine (>600 milliards $/an).">
+              <label onclick="pickOpt(this)"><input type="radio" name="c3q4" value="a"> Des billets d'avion offerts aux migrants</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c3q4" value="b"> Des sommes d'argent envoyées à la famille au pays</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c3q4" value="c"> Des cadeaux culturels entre pays</label>
+            </div>
+            <div class="fb" id="fb_c3q4"></div>
+          </div>
+          <div class="q-block">
+            <p class="q-label">5. Complète : La __________ est la dispersion d'un peuple à travers le monde.</p>
+            <div><input class="fill-input t2" id="fi_c3q5" placeholder="???">&nbsp;<button class="fill-btn t2" onclick="checkFill('c3q5',['diaspora'],'La diaspora désigne la dispersion d\'un peuple à travers le monde (ex : diaspora chinoise, indienne, libanaise).')">Vérifier</button></div>
+            <div class="fb" id="fb_c3q5"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Ch4 ── -->
+    <div class="chapter">
+      <div class="chapter-header" onclick="toggleChapter(this)">
+        <span class="chapter-num t2-num">4</span>
+        <span class="chapter-name">Le tourisme et ses espaces</span>
+        <span class="chapter-chevron">▼</span>
+      </div>
+      <div class="chapter-body">
+        <div class="tab-row">
+          <button class="tab-btn active-t2" onclick="showTab(this,'ch4-cours','t2')">📖 Fiche de cours</button>
+          <button class="tab-btn" onclick="showTab(this,'ch4-exos','t2')">📝 Exercices</button>
+        </div>
+        <div class="tab-content active course" id="ch4-cours">
+          <h3>✈️ Un phénomène en plein essor</h3>
+          <p>Le tourisme international est le mouvement de population le plus massif au monde : <span class="kf">1,5 milliard</span> de touristes internationaux en 2019. Il génère <span class="kf">1 300 milliards €</span> de revenus/an et représente <strong>1 emploi sur 11</strong>.</p>
+
+          <div class="def def-t2"><strong>Tourisme :</strong> déplacement volontaire et temporaire (>24h) en dehors de son domicile, pour les loisirs ou le travail.</div>
+
+          <h3>🗺️ Des flux inégalement répartis</h3>
+          <p>🔹 L'<strong>Europe</strong> = 1ère destination (~52 % des arrivées) : France, Espagne, Italie en tête.</p>
+          <p>🔹 Les <strong>pays développés</strong> sont à la fois principaux émetteurs et récepteurs.</p>
+          <p>🔹 Nouvelles destinations : Asie du Sud-Est (Thaïlande, Bali), Afrique du Nord.</p>
+
+          <h3>⚖️ Effets positifs et négatifs</h3>
+          <p>✅ <strong>Positif :</strong> emplois, devises, infrastructures, échanges culturels.</p>
+          <p>❌ <strong>Négatif :</strong> pollution, surtourisme (Venise, Barcelone), travail précaire, hausse du coût de la vie pour les habitants, destruction de l'environnement.</p>
+
+          <div class="def def-t2"><strong>Tourisme durable :</strong> forme de tourisme qui respecte l'environnement et les populations locales tout en permettant le développement économique.</div>
+
+          <div class="tip">La France est le pays le plus visité au monde en nombre d'arrivées ! Mais en recettes touristiques, ce sont les États-Unis et l'Espagne qui dominent.</div>
+        </div>
+
+        <div class="tab-content" id="ch4-exos">
+          <div class="q-block">
+            <p class="q-label">1. Combien de touristes internationaux en 2019 ?</p>
+            <div class="opts" data-correct="c" data-explain="1,5 milliard de touristes internationaux en 2019, un record historique (avant la pandémie de Covid-19).">
+              <label onclick="pickOpt(this)"><input type="radio" name="c4q1" value="a"> 500 millions</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c4q1" value="b"> 800 millions</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c4q1" value="c"> 1,5 milliard</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c4q1" value="d"> 3 milliards</label>
+            </div>
+            <div class="fb" id="fb_c4q1"></div>
+          </div>
+          <div class="q-block">
+            <p class="q-label">2. Quel continent est la 1ère destination touristique mondiale ?</p>
+            <div class="opts" data-correct="b" data-explain="L'Europe accueille environ 52 % des touristes internationaux (France, Espagne, Italie en tête).">
+              <label onclick="pickOpt(this)"><input type="radio" name="c4q2" value="a"> Asie</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c4q2" value="b"> Europe</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c4q2" value="c"> Amérique du Nord</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c4q2" value="d"> Afrique</label>
+            </div>
+            <div class="fb" id="fb_c4q2"></div>
+          </div>
+          <div class="q-block">
+            <p class="q-label">3. VRAI ou FAUX — Le tourisme n'a que des effets positifs sur les territoires.</p>
+            <div class="vf-row opts" data-correct="f" data-explain="FAUX. Le tourisme a aussi des effets négatifs : pollution, surtourisme, travail précaire, destruction de l'environnement, hausse du coût de la vie.">
+              <label onclick="pickOpt(this)"><input type="radio" name="c4q3" value="v"> ✅ Vrai</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c4q3" value="f"> ❌ Faux</label>
+            </div>
+            <div class="fb" id="fb_c4q3"></div>
+          </div>
+          <div class="q-block">
+            <p class="q-label">4. VRAI ou FAUX — La France est le pays le plus visité au monde.</p>
+            <div class="vf-row opts" data-correct="v" data-explain="VRAI. La France est 1ère en nombre d'arrivées de touristes internationaux (~90 millions/an avant Covid).">
+              <label onclick="pickOpt(this)"><input type="radio" name="c4q4" value="v"> ✅ Vrai</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c4q4" value="f"> ❌ Faux</label>
+            </div>
+            <div class="fb" id="fb_c4q4"></div>
+          </div>
+          <div class="q-block">
+            <p class="q-label">5. Complète : Le tourisme __________ respecte l'environnement et les populations locales.</p>
+            <div><input class="fill-input t2" id="fi_c4q5" placeholder="???">&nbsp;<button class="fill-btn t2" onclick="checkFill('c4q5',['durable'],'Le tourisme durable vise à concilier développement économique, respect de l\'environnement et des populations locales.')">Vérifier</button></div>
+            <div class="fb" id="fb_c4q5"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /T2 -->
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- THÈME 3 : ESPACES TRANSFORMÉS              -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="theme-block">
+  <div class="theme-header t3" onclick="toggleTheme(this)">
+    <span class="theme-icon">🚢</span>
+    <span class="theme-title">Thème 3 — Des espaces transformés par la mondialisation</span>
+    <span class="theme-chevron">▼</span>
+  </div>
+  <div class="theme-body">
+
+    <!-- ── Ch5 ── -->
+    <div class="chapter">
+      <div class="chapter-header" onclick="toggleChapter(this)">
+        <span class="chapter-num t3-num">5</span>
+        <span class="chapter-name">Mers et océans : un monde maritimisé</span>
+        <span class="chapter-chevron">▼</span>
+      </div>
+      <div class="chapter-body">
+        <div class="tab-row">
+          <button class="tab-btn active-t3" onclick="showTab(this,'ch5-cours','t3')">📖 Fiche de cours</button>
+          <button class="tab-btn" onclick="showTab(this,'ch5-exos','t3')">📝 Exercices</button>
+        </div>
+        <div class="tab-content active course" id="ch5-cours">
+          <h3>🌊 Les espaces maritimes au cœur de la mondialisation</h3>
+          <p>Les mers et océans couvrent <strong>71 % du globe</strong>. <span class="kf">90 %</span> des marchandises échangées dans le monde transitent par voie maritime.</p>
+
+          <div class="def def-t3"><strong>Maritimisation :</strong> place grandissante des espaces maritimes dans l'économie mondiale.</div>
+          <div class="def def-t3"><strong>Conteneurisation :</strong> transport des marchandises dans des conteneurs standardisés. Révolution du commerce mondial.</div>
+
+          <h3>🚢 Routes maritimes et points stratégiques</h3>
+          <p>Les routes relient les <strong>3 pôles majeurs</strong> : Amérique du Nord, Europe de l'Ouest, Asie de l'Est. Elles passent par des passages stratégiques :</p>
+
+          <div class="svg-wrap">
+<svg viewBox="0 0 700 360" xmlns="http://www.w3.org/2000/svg">
+  <rect width="700" height="360" fill="#e8f4fd" rx="12"/>
+  <text x="350" y="24" text-anchor="middle" font-family="Nunito,sans-serif" font-weight="800" font-size="13" fill="#2a2d30">Routes maritimes et passages stratégiques</text>
+  <!-- Continents simplifiés -->
+  <path d="M55,75 Q95,48 155,65 L175,130 Q165,180 115,190 L55,165 Z" fill="#b8dab2" stroke="#5a9e50" stroke-width="1.5"/>
+  <text x="115" y="128" text-anchor="middle" font-size="10" font-weight="700" fill="#2a2d30" font-family="Nunito">AM. NORD</text>
+  <path d="M125,210 Q150,200 165,220 L160,295 Q135,320 115,305 L105,250 Z" fill="#b8dab2" stroke="#5a9e50" stroke-width="1.5"/>
+  <text x="137" y="265" text-anchor="middle" font-size="9" font-weight="700" fill="#2a2d30" font-family="Nunito">AM. SUD</text>
+  <path d="M300,50 Q340,42 370,55 L375,115 Q350,138 310,132 L295,95 Z" fill="#b8dab2" stroke="#5a9e50" stroke-width="1.5"/>
+  <text x="335" y="95" text-anchor="middle" font-size="10" font-weight="700" fill="#2a2d30" font-family="Nunito">EUROPE</text>
+  <path d="M310,152 Q358,142 390,162 L398,278 Q370,315 330,298 L300,220 Z" fill="#b8dab2" stroke="#5a9e50" stroke-width="1.5"/>
+  <text x="352" y="230" text-anchor="middle" font-size="10" font-weight="700" fill="#2a2d30" font-family="Nunito">AFRIQUE</text>
+  <path d="M440,45 Q535,38 635,55 L665,150 Q645,190 570,182 L470,162 Q430,125 440,75 Z" fill="#b8dab2" stroke="#5a9e50" stroke-width="1.5"/>
+  <text x="555" y="110" text-anchor="middle" font-size="11" font-weight="700" fill="#2a2d30" font-family="Nunito">ASIE</text>
+  <ellipse cx="615" cy="268" rx="45" ry="28" fill="#b8dab2" stroke="#5a9e50" stroke-width="1.5"/>
+  <text x="615" y="272" text-anchor="middle" font-size="8" font-weight="700" fill="#2a2d30" font-family="Nunito">OCÉANIE</text>
+  <!-- Routes -->
+  <defs><marker id="sh" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><path d="M0,0 L7,2.5 L0,5" fill="#c45d12"/></marker></defs>
+  <path d="M375,105 Q400,135 405,170 Q430,200 490,182 Q540,172 590,162" fill="none" stroke="#c45d12" stroke-width="2.5" stroke-dasharray="7,4" marker-end="url(#sh)"/>
+  <path d="M175,95 Q235,78 295,82" fill="none" stroke="#2563a8" stroke-width="2.5" stroke-dasharray="7,4"/>
+  <!-- Passages -->
+  <circle cx="395" cy="158" r="9" fill="#dc2626" opacity="0.9"/>
+  <text x="395" y="148" text-anchor="middle" font-size="8.5" font-weight="700" fill="#dc2626" font-family="Nunito">Canal de</text>
+  <text x="395" y="178" text-anchor="middle" font-size="8.5" font-weight="700" fill="#dc2626" font-family="Nunito">Suez</text>
+  <circle cx="150" cy="197" r="9" fill="#dc2626" opacity="0.9"/>
+  <text x="178" y="198" font-size="8.5" font-weight="700" fill="#dc2626" font-family="Nunito">Panama</text>
+  <circle cx="542" cy="187" r="9" fill="#dc2626" opacity="0.9"/>
+  <text x="542" y="207" text-anchor="middle" font-size="8.5" font-weight="700" fill="#dc2626" font-family="Nunito">Malacca</text>
+  <circle cx="290" cy="125" r="7" fill="#dc2626" opacity="0.9"/>
+  <text x="270" y="120" text-anchor="end" font-size="8.5" font-weight="700" fill="#dc2626" font-family="Nunito">Gibraltar</text>
+  <!-- Ports -->
+  <circle cx="165" cy="100" r="5" fill="#1a6b4e"/><text x="165" y="92" text-anchor="middle" font-size="8" font-weight="600" fill="#1a6b4e" font-family="Nunito">New York</text>
+  <circle cx="330" cy="115" r="5" fill="#1a6b4e"/><text x="330" y="127" text-anchor="middle" font-size="8" font-weight="600" fill="#1a6b4e" font-family="Nunito">Rotterdam</text>
+  <circle cx="610" cy="148" r="5" fill="#1a6b4e"/><text x="628" y="145" font-size="8" font-weight="600" fill="#1a6b4e" font-family="Nunito">Shanghai</text>
+  <circle cx="565" cy="178" r="5" fill="#1a6b4e"/><text x="583" y="185" font-size="8" font-weight="600" fill="#1a6b4e" font-family="Nunito">Singapour</text>
+  <!-- Légende -->
+  <rect x="15" y="322" width="670" height="30" rx="6" fill="white" stroke="#ddd"/>
+  <circle cx="32" cy="337" r="5" fill="#dc2626"/><text x="42" y="341" font-size="9.5" fill="#2a2d30" font-family="Nunito">Passages stratégiques</text>
+  <circle cx="208" cy="337" r="4" fill="#1a6b4e"/><text x="218" y="341" font-size="9.5" fill="#2a2d30" font-family="Nunito">Grands ports</text>
+  <line x1="338" y1="337" x2="368" y2="337" stroke="#c45d12" stroke-width="2.5" stroke-dasharray="6,3"/><text x="375" y="341" font-size="9.5" fill="#2a2d30" font-family="Nunito">Routes maritimes majeures</text>
+</svg>
+          </div>
+
+          <div class="def def-t3"><strong>Détroit :</strong> passage maritime étroit entre deux terres (Gibraltar, Malacca, Ormuz).</div>
+          <div class="def def-t3"><strong>Canal :</strong> voie d'eau artificielle qui raccourcit les routes (Suez, Panama).</div>
+          <div class="def def-t3"><strong>ZEE (Zone Économique Exclusive) :</strong> zone de 370 km autour des côtes d'un État, où celui-ci exploite les ressources maritimes.</div>
+          <div class="def def-t3"><strong>ZIP (Zone Industrialo-Portuaire) :</strong> espace portuaire équipé pour le commerce et l'industrie (Rotterdam, Shanghai).</div>
+
+          <h3>⚠️ Des espaces fragiles et convoités</h3>
+          <p>🔹 <strong>Ressources :</strong> pêche, pétrole/gaz offshore, minerais sous-marins</p>
+          <p>🔹 <strong>Conflits :</strong> tensions en Mer de Chine, piraterie au large de la Somalie</p>
+          <p>🔹 <strong>Environnement :</strong> pollution plastique, surpêche, acidification, réchauffement</p>
+        </div>
+
+        <div class="tab-content" id="ch5-exos">
+          <div class="q-block">
+            <p class="q-label">1. Quel % du commerce mondial transite par voie maritime ?</p>
+            <div class="opts" data-correct="c" data-explain="~90 % des marchandises échangées dans le monde passent par la mer !">
+              <label onclick="pickOpt(this)"><input type="radio" name="c5q1" value="a"> 50 %</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c5q1" value="b"> 70 %</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c5q1" value="c"> 90 %</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c5q1" value="d"> 30 %</label>
+            </div>
+            <div class="fb" id="fb_c5q1"></div>
+          </div>
+          <div class="q-block">
+            <p class="q-label">2. Quel canal relie la Méditerranée à la Mer Rouge ?</p>
+            <div class="opts" data-correct="b" data-explain="Le canal de Suez (en Égypte) relie la Méditerranée à la Mer Rouge, raccourcissant la route Europe-Asie.">
+              <label onclick="pickOpt(this)"><input type="radio" name="c5q2" value="a"> Panama</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c5q2" value="b"> Suez</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c5q2" value="c"> Gibraltar</label>
+            </div>
+            <div class="fb" id="fb_c5q2"></div>
+          </div>
+          <div class="q-block">
+            <p class="q-label">3. Que signifie ZEE ?</p>
+            <div class="opts" data-correct="b" data-explain="ZEE = Zone Économique Exclusive, zone de 370 km autour des côtes où un État peut exploiter les ressources.">
+              <label onclick="pickOpt(this)"><input type="radio" name="c5q3" value="a"> Zone d'Échange Européenne</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c5q3" value="b"> Zone Économique Exclusive</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c5q3" value="c"> Zone d'Exportation Extrême</label>
+            </div>
+            <div class="fb" id="fb_c5q3"></div>
+          </div>
+          <div class="q-block">
+            <p class="q-label">4. VRAI ou FAUX — La conteneurisation a révolutionné le transport maritime.</p>
+            <div class="vf-row opts" data-correct="v" data-explain="VRAI. Les conteneurs standardisés ont permis d'accélérer le chargement et de réduire les coûts de transport.">
+              <label onclick="pickOpt(this)"><input type="radio" name="c5q4" value="v"> ✅ Vrai</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c5q4" value="f"> ❌ Faux</label>
+            </div>
+            <div class="fb" id="fb_c5q4"></div>
+          </div>
+          <div class="q-block">
+            <p class="q-label">5. Complète : La __________ est la place grandissante des espaces maritimes dans l'économie.</p>
+            <div><input class="fill-input t3" id="fi_c5q5" placeholder="???">&nbsp;<button class="fill-btn t3" onclick="checkFill('c5q5',['maritimisation'],'La maritimisation est la place grandissante des mers et océans dans l\'économie mondiale.')">Vérifier</button></div>
+            <div class="fb" id="fb_c5q5"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Ch6 ── -->
+    <div class="chapter">
+      <div class="chapter-header" onclick="toggleChapter(this)">
+        <span class="chapter-num t3-num">6</span>
+        <span class="chapter-name">Les États-Unis dans la mondialisation</span>
+        <span class="chapter-chevron">▼</span>
+      </div>
+      <div class="chapter-body">
+        <div class="tab-row">
+          <button class="tab-btn active-t3" onclick="showTab(this,'ch6-cours','t3')">📖 Fiche de cours</button>
+          <button class="tab-btn" onclick="showTab(this,'ch6-exos','t3')">📝 Exercices</button>
+        </div>
+        <div class="tab-content active course" id="ch6-cours">
+          <h3>🇺🇸 Une superpuissance attractive</h3>
+          <p>Les États-Unis sont la <strong>1ère puissance économique mondiale</strong>. Leur territoire s'adapte en permanence à la mondialisation :</p>
+          <p>🔹 <strong>Façades maritimes dynamiques :</strong> côte Est (Megalopolis) + côte Ouest (Californie) = espaces moteurs.</p>
+          <p>🔹 <strong>Sun Belt :</strong> « ceinture du soleil » au sud et à l'ouest, qui attire population et entreprises (technologies, aérospatiale).</p>
+          <p>🔹 <strong>Rust Belt :</strong> « ceinture de la rouille » au nord-est, en déclin industriel (Detroit, Cleveland).</p>
+
+          <div class="svg-wrap">
+<svg viewBox="0 0 680 320" xmlns="http://www.w3.org/2000/svg">
+  <rect width="680" height="320" fill="#fafaf8" rx="12"/>
+  <text x="340" y="24" text-anchor="middle" font-family="Nunito,sans-serif" font-weight="800" font-size="13" fill="#2a2d30">L'organisation du territoire des États-Unis</text>
+  <path d="M75,90 L270,65 L390,70 L520,80 L570,105 L580,160 L530,198 L470,218 L370,235 L270,245 L170,228 L95,208 L65,168 Z" fill="#e8e0d0" stroke="#999" stroke-width="1.5"/>
+  <!-- Megalopolis -->
+  <ellipse cx="490" cy="98" rx="65" ry="27" fill="rgba(37,99,168,0.3)" stroke="#2563a8" stroke-width="2"/>
+  <text x="490" y="94" text-anchor="middle" font-size="9.5" font-weight="700" fill="#2563a8" font-family="Nunito">MEGALOPOLIS</text>
+  <text x="490" y="107" text-anchor="middle" font-size="8" fill="#2563a8" font-family="Nunito">Boston → Washington</text>
+  <!-- Rust Belt -->
+  <ellipse cx="390" cy="108" rx="60" ry="22" fill="rgba(220,38,38,0.2)" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="390" y="106" text-anchor="middle" font-size="9.5" font-weight="700" fill="#dc2626" font-family="Nunito">RUST BELT</text>
+  <text x="390" y="118" text-anchor="middle" font-size="8" fill="#dc2626" font-family="Nunito">Déclin industriel</text>
+  <!-- Sun Belt -->
+  <path d="M95,190 Q195,255 370,245 Q490,235 570,178" fill="none" stroke="#c45d12" stroke-width="3"/>
+  <text x="330" y="272" text-anchor="middle" font-size="11.5" font-weight="800" fill="#c45d12" font-family="Nunito">☀️ SUN BELT — Croissance et attractivité</text>
+  <!-- Californie -->
+  <ellipse cx="95" cy="150" rx="32" ry="42" fill="rgba(22,163,74,0.25)" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="95" y="142" text-anchor="middle" font-size="9" font-weight="700" fill="#16a34a" font-family="Nunito">CALIFORNIE</text>
+  <text x="95" y="154" text-anchor="middle" font-size="7.5" fill="#16a34a" font-family="Nunito">Silicon Valley</text>
+  <text x="95" y="164" text-anchor="middle" font-size="7.5" fill="#16a34a" font-family="Nunito">Hollywood</text>
+  <!-- Villes -->
+  <circle cx="500" cy="88" r="4" fill="#1a6b4e"/><text x="518" y="86" font-size="8.5" font-weight="600" fill="#1a6b4e" font-family="Nunito">New York</text>
+  <circle cx="380" cy="122" r="3.5" fill="#dc2626"/><text x="380" y="136" text-anchor="middle" font-size="8.5" font-weight="600" fill="#dc2626" font-family="Nunito">Detroit</text>
+  <circle cx="95" cy="175" r="3.5" fill="#16a34a"/><text x="95" y="188" text-anchor="middle" font-size="8.5" font-weight="600" fill="#16a34a" font-family="Nunito">Los Angeles</text>
+  <circle cx="270" cy="228" r="3.5" fill="#c45d12"/><text x="270" y="221" text-anchor="middle" font-size="8.5" font-weight="600" fill="#c45d12" font-family="Nunito">Houston</text>
+  <circle cx="440" cy="205" r="3.5" fill="#c45d12"/><text x="458" y="215" font-size="8.5" font-weight="600" fill="#c45d12" font-family="Nunito">Miami</text>
+  <!-- Légende -->
+  <rect x="555" y="225" width="115" height="82" rx="6" fill="white" stroke="#ddd"/>
+  <rect x="565" y="236" width="10" height="10" rx="2" fill="rgba(37,99,168,0.5)"/><text x="580" y="246" font-size="8.5" fill="#2a2d30" font-family="Nunito">Megalopolis</text>
+  <rect x="565" y="252" width="10" height="10" rx="2" fill="rgba(220,38,38,0.35)"/><text x="580" y="262" font-size="8.5" fill="#2a2d30" font-family="Nunito">Rust Belt</text>
+  <line x1="565" y1="276" x2="583" y2="276" stroke="#c45d12" stroke-width="2.5"/><text x="588" y="280" font-size="8.5" fill="#2a2d30" font-family="Nunito">Sun Belt</text>
+  <rect x="565" y="288" width="10" height="10" rx="2" fill="rgba(22,163,74,0.35)"/><text x="580" y="298" font-size="8.5" fill="#2a2d30" font-family="Nunito">Californie</text>
+</svg>
+          </div>
+
+          <div class="def def-t3"><strong>Megalopolis :</strong> immense espace urbain de Boston à Washington sur la côte est (~50 millions d'habitants).</div>
+          <div class="def def-t3"><strong>Sun Belt :</strong> « ceinture du soleil », zone de croissance au sud et à l'ouest des USA.</div>
+          <div class="def def-t3"><strong>Rust Belt :</strong> « ceinture de la rouille », anciennes régions industrielles du nord-est en déclin.</div>
+        </div>
+
+        <div class="tab-content" id="ch6-exos">
+          <div class="q-block">
+            <p class="q-label">1. Comment appelle-t-on la « ceinture de la rouille » ?</p>
+            <div class="opts" data-correct="b" data-explain="Rust Belt = « ceinture de la rouille », anciennes régions industrielles du nord-est en déclin (Detroit, Cleveland…).">
+              <label onclick="pickOpt(this)"><input type="radio" name="c6q1" value="a"> Sun Belt</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c6q1" value="b"> Rust Belt</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c6q1" value="c"> Bible Belt</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c6q1" value="d"> Corn Belt</label>
+            </div>
+            <div class="fb" id="fb_c6q1"></div>
+          </div>
+          <div class="q-block">
+            <p class="q-label">2. VRAI ou FAUX — La Silicon Valley est située sur la côte Est des États-Unis.</p>
+            <div class="vf-row opts" data-correct="f" data-explain="FAUX. La Silicon Valley est en Californie, sur la côte Ouest. C'est le cœur mondial des technologies numériques.">
+              <label onclick="pickOpt(this)"><input type="radio" name="c6q2" value="v"> ✅ Vrai</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c6q2" value="f"> ❌ Faux</label>
+            </div>
+            <div class="fb" id="fb_c6q2"></div>
+          </div>
+          <div class="q-block">
+            <p class="q-label">3. Qu'est-ce que la Megalopolis ?</p>
+            <div class="opts" data-correct="c" data-explain="La Megalopolis s'étend de Boston à Washington sur la côte est, regroupant ~50 millions d'habitants et les centres de pouvoir (Wall Street, Maison Blanche, ONU…).">
+              <label onclick="pickOpt(this)"><input type="radio" name="c6q3" value="a"> Une ville japonaise</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c6q3" value="b"> Une région agricole du centre des USA</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c6q3" value="c"> L'immense espace urbain de Boston à Washington</label>
+            </div>
+            <div class="fb" id="fb_c6q3"></div>
+          </div>
+          <div class="q-block">
+            <p class="q-label">4. Complète : La __________ est la zone de croissance au sud et à l'ouest des États-Unis.</p>
+            <div><input class="fill-input t3" id="fi_c6q4" placeholder="???">&nbsp;<button class="fill-btn t3" onclick="checkFill('c6q4',['sun belt','sunbelt'],'La Sun Belt (« ceinture du soleil ») est la zone dynamique au sud et à l\'ouest des USA, attirant population et entreprises.')">Vérifier</button></div>
+            <div class="fb" id="fb_c6q4"></div>
+          </div>
+          <div class="q-block">
+            <p class="q-label">5. VRAI ou FAUX — Les États-Unis sont la 1ère puissance économique mondiale.</p>
+            <div class="vf-row opts" data-correct="v" data-explain="VRAI. Les États-Unis sont la première puissance économique mondiale par leur PIB et l'influence de leurs entreprises (FTN comme Apple, Google, Amazon…).">
+              <label onclick="pickOpt(this)"><input type="radio" name="c6q5" value="v"> ✅ Vrai</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c6q5" value="f"> ❌ Faux</label>
+            </div>
+            <div class="fb" id="fb_c6q5"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Ch7 ── -->
+    <div class="chapter">
+      <div class="chapter-header" onclick="toggleChapter(this)">
+        <span class="chapter-num t3-num">7</span>
+        <span class="chapter-name">L'Afrique dans la mondialisation</span>
+        <span class="chapter-chevron">▼</span>
+      </div>
+      <div class="chapter-body">
+        <div class="tab-row">
+          <button class="tab-btn active-t3" onclick="showTab(this,'ch7-cours','t3')">📖 Fiche de cours</button>
+          <button class="tab-btn" onclick="showTab(this,'ch7-exos','t3')">📝 Exercices</button>
+        </div>
+        <div class="tab-content active course" id="ch7-cours">
+          <h3>🌍 Un continent en pleine transformation</h3>
+          <p>L'Afrique est le continent où la mondialisation produit les <strong>transformations les plus rapides</strong>. C'est un continent jeune (âge médian ~19 ans) avec une croissance démographique et urbaine très forte.</p>
+
+          <h3>📈 Potentiels et fragilités</h3>
+          <p>✅ <strong>Potentiels :</strong> ressources naturelles abondantes (pétrole, minerais, terres agricoles), jeunesse de la population, croissance économique dans certains pays (Afrique du Sud, Nigeria, Kenya, Éthiopie).</p>
+          <p>❌ <strong>Fragilités :</strong> pauvreté, conflits, faible industrialisation, dépendance aux exportations de matières premières, infrastructures insuffisantes.</p>
+
+          <h3>🔗 Intégration inégale</h3>
+          <p>🔹 L'<strong>Afrique du Sud</strong> = puissance émergente du continent (ports, industries, tourisme).</p>
+          <p>🔹 Les <strong>grandes villes côtières</strong> s'intègrent mieux à la mondialisation (littoralisation) : Lagos, Le Cap, Nairobi.</p>
+          <p>🔹 L'intérieur du continent reste souvent à l'écart des réseaux mondiaux.</p>
+
+          <div class="def def-t3"><strong>Littoralisation :</strong> concentration des populations et des activités économiques sur les littoraux, sous l'effet de la mondialisation.</div>
+
+          <div class="tip">L'Afrique n'est pas un bloc uniforme ! Au brevet, il faut toujours distinguer les espaces bien intégrés (métropoles côtières, pays émergents) de ceux en marge.</div>
+        </div>
+
+        <div class="tab-content" id="ch7-exos">
+          <div class="q-block">
+            <p class="q-label">1. VRAI ou FAUX — L'Afrique est uniformément bien intégrée à la mondialisation.</p>
+            <div class="vf-row opts" data-correct="f" data-explain="FAUX. L'intégration de l'Afrique est très inégale : les grandes métropoles côtières sont mieux connectées que l'intérieur du continent.">
+              <label onclick="pickOpt(this)"><input type="radio" name="c7q1" value="v"> ✅ Vrai</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c7q1" value="f"> ❌ Faux</label>
+            </div>
+            <div class="fb" id="fb_c7q1"></div>
+          </div>
+          <div class="q-block">
+            <p class="q-label">2. Quel pays est considéré comme la puissance émergente du continent africain ?</p>
+            <div class="opts" data-correct="c" data-explain="L'Afrique du Sud est la principale puissance émergente du continent (industrie, ports, tourisme, économie diversifiée).">
+              <label onclick="pickOpt(this)"><input type="radio" name="c7q2" value="a"> Égypte</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c7q2" value="b"> Maroc</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c7q2" value="c"> Afrique du Sud</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c7q2" value="d"> Sénégal</label>
+            </div>
+            <div class="fb" id="fb_c7q2"></div>
+          </div>
+          <div class="q-block">
+            <p class="q-label">3. Complète : La __________ est la concentration des activités sur les littoraux.</p>
+            <div><input class="fill-input t3" id="fi_c7q3" placeholder="???">&nbsp;<button class="fill-btn t3" onclick="checkFill('c7q3',['littoralisation'],'La littoralisation est la concentration des populations et activités économiques sur les littoraux, sous l\'effet de la mondialisation.')">Vérifier</button></div>
+            <div class="fb" id="fb_c7q3"></div>
+          </div>
+          <div class="q-block">
+            <p class="q-label">4. VRAI ou FAUX — L'Afrique est un continent jeune avec un âge médian d'environ 19 ans.</p>
+            <div class="vf-row opts" data-correct="v" data-explain="VRAI. L'Afrique est le continent le plus jeune du monde, ce qui représente un potentiel de développement immense.">
+              <label onclick="pickOpt(this)"><input type="radio" name="c7q4" value="v"> ✅ Vrai</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c7q4" value="f"> ❌ Faux</label>
+            </div>
+            <div class="fb" id="fb_c7q4"></div>
+          </div>
+          <div class="q-block">
+            <p class="q-label">5. Quelle est une fragilité majeure de l'Afrique dans la mondialisation ?</p>
+            <div class="opts" data-correct="b" data-explain="La dépendance aux exportations de matières premières rend l'Afrique vulnérable aux fluctuations des cours mondiaux, sans transformation industrielle sur place.">
+              <label onclick="pickOpt(this)"><input type="radio" name="c7q5" value="a"> Un excès de touristes</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c7q5" value="b"> La dépendance aux exportations de matières premières</label>
+              <label onclick="pickOpt(this)"><input type="radio" name="c7q5" value="c"> Trop de gratte-ciel</label>
+            </div>
+            <div class="fb" id="fb_c7q5"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /T3 -->
+
+</div><!-- /main -->
+
+<script>
+// ═══ ACCORDION ═══
+function toggleTheme(el) {
+  const body = el.nextElementSibling;
+  const isOpen = el.classList.contains('open');
+  // Close all themes first
+  document.querySelectorAll('.theme-header').forEach(h => {
+    h.classList.remove('open');
+    h.nextElementSibling.classList.remove('open');
+  });
+  if (!isOpen) {
+    el.classList.add('open');
+    body.classList.add('open');
+  }
+}
+
+function toggleChapter(el) {
+  const body = el.nextElementSibling;
+  const isOpen = el.classList.contains('open');
+  el.classList.toggle('open');
+  body.classList.toggle('open');
+}
+
+// ═══ TABS ═══
+function showTab(btn, id, theme) {
+  const row = btn.parentElement;
+  const chBody = row.parentElement;
+  // Reset tabs
+  row.querySelectorAll('.tab-btn').forEach(b => {
+    b.classList.remove('active-t1','active-t2','active-t3');
+  });
+  btn.classList.add('active-'+theme);
+  // Show content
+  chBody.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+// ═══ INSTANT FEEDBACK — Radio/VF ═══
+let answered = new Set();
+const totalQ = 35; // Total questions
+
+function pickOpt(label) {
+  const opts = label.closest('.opts');
+  if (opts.dataset.done) return; // Already answered
+  opts.dataset.done = '1';
+
+  const correct = opts.dataset.correct;
+  const explain = opts.dataset.explain;
+  const input = label.querySelector('input');
+  const val = input.value;
+  const name = input.name;
+
+  // Disable all labels
+  opts.querySelectorAll('label').forEach(l => l.classList.add('disabled'));
+
+  // Find feedback div
+  const fb = opts.parentElement.querySelector('.fb');
+
+  if (val === correct) {
+    label.classList.add('correct-pick');
+    fb.className = 'fb ok show';
+    fb.textContent = '✅ Correct ! ' + explain;
+  } else {
+    label.classList.add('wrong-pick');
+    // Show the correct one
+    opts.querySelectorAll('label').forEach(l => {
+      if (l.querySelector('input').value === correct) l.classList.add('show-correct');
+    });
+    fb.className = 'fb ko show';
+    fb.textContent = '❌ Incorrect. ' + explain;
+  }
+
+  answered.add(name);
+  updateProgress();
+}
+
+// ═══ INSTANT FEEDBACK — Fill-in ═══
+function checkFill(id, acceptedArr, explain) {
+  const input = document.getElementById('fi_'+id);
+  if (input.dataset.done) return;
+  input.dataset.done = '1';
+
+  const val = input.value.trim().toLowerCase();
+  const fb = document.getElementById('fb_'+id);
+  const isCorrect = acceptedArr.some(a => val.includes(a.toLowerCase()));
+
+  if (isCorrect) {
+    fb.className = 'fb ok show';
+    fb.textContent = '✅ Correct ! ' + explain;
+    input.style.borderBottomColor = '#16a34a';
+    input.style.color = '#16a34a';
+  } else {
+    fb.className = 'fb ko show';
+    fb.textContent = '❌ Incorrect. ' + explain;
+    input.style.borderBottomColor = '#dc2626';
+    input.style.color = '#dc2626';
+  }
+
+  answered.add(id);
+  input.readOnly = true;
+  updateProgress();
+}
+
+// ═══ PROGRESS ═══
+function updateProgress() {
+  const pct = Math.round(answered.size / totalQ * 100);
+  document.getElementById('pBar').style.width = pct + '%';
+  document.getElementById('pLabel').textContent = answered.size + ' / ' + totalQ + ' exercices complétés (' + pct + '%)';
+}
+</script>
+
+</body>
+</html>
