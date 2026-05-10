@@ -2093,9 +2093,10 @@ function checkFillExercise(btn) {
   const inputs = exercise.querySelectorAll('.fill-input');
 
   inputs.forEach(input => {
-    const answer = input.dataset.answer.toLowerCase().trim().replace(/[.,!?;]$/,'');
-    const alt = input.dataset.alt ? input.dataset.alt.toLowerCase().trim().replace(/[.,!?;]$/,'') : '';
-    const user = input.value.toLowerCase().trim().replace(/[.,!?;]$/,'');
+    const norm = s => s.toLowerCase().trim().replace(/[.,!?;]$/,'').replace(/[\u2018\u2019\u2032\u00B4`]/g, "'");
+    const answer = norm(input.dataset.answer);
+    const alt = input.dataset.alt ? norm(input.dataset.alt) : '';
+    const user = norm(input.value);
 
     if (user === answer || (alt && user === alt)) {
       input.classList.remove('wrong');
