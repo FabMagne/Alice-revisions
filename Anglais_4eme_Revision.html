@@ -1,0 +1,2224 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anglais 4ème — Révisions interactives</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap');
+
+  :root {
+    --bg: #f5f0eb;
+    --surface: #ffffff;
+    --surface-alt: #faf7f4;
+    --primary: #1a5276;
+    --primary-light: #2980b9;
+    --accent: #e67e22;
+    --accent-light: #f39c12;
+    --success: #27ae60;
+    --error: #c0392b;
+    --text: #2c3e50;
+    --text-light: #7f8c8d;
+    --text-lighter: #bdc3c7;
+    --border: #e0d8d0;
+    --shadow: 0 2px 12px rgba(0,0,0,0.06);
+    --radius: 12px;
+    --theme1: #1a5276;
+    --theme2: #8e44ad;
+    --theme3: #16a085;
+    --theme4: #d35400;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  .hero {
+    background: linear-gradient(135deg, var(--primary) 0%, #2c3e50 100%);
+    color: white;
+    padding: 2rem 1.5rem 1.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '🇬🇧';
+    position: absolute;
+    font-size: 8rem;
+    opacity: 0.07;
+    top: -1rem;
+    right: -1rem;
+  }
+  .hero h1 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 0.3rem;
+  }
+  .hero p { font-size: 0.95rem; opacity: 0.85; font-weight: 300; }
+
+  /* ── PROGRESS BAR ── */
+  .progress-container {
+    background: var(--surface);
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow);
+  }
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-light);
+    margin-bottom: 0.4rem;
+  }
+  .progress-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent-light));
+    border-radius: 4px;
+    transition: width 0.5s ease;
+    width: 0%;
+  }
+
+  /* ── THEME FILTER ── */
+  .theme-filter {
+    display: flex;
+    gap: 0.5rem;
+    padding: 1rem 1.5rem;
+    flex-wrap: wrap;
+  }
+  .theme-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    border: 2px solid var(--border);
+    background: var(--surface);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .theme-btn:hover { transform: translateY(-1px); }
+  .theme-btn.active { color: white; border-color: transparent; }
+  .theme-btn[data-theme="all"].active { background: var(--text); }
+  .theme-btn[data-theme="1"].active { background: var(--theme1); }
+  .theme-btn[data-theme="2"].active { background: var(--theme2); }
+  .theme-btn[data-theme="3"].active { background: var(--theme3); }
+  .theme-btn[data-theme="4"].active { background: var(--theme4); }
+
+  /* ── MAIN CONTENT ── */
+  .content { max-width: 800px; margin: 0 auto; padding: 0 1rem 3rem; }
+
+  /* ── ACCORDION THEME ── */
+  .theme-accordion {
+    margin-bottom: 1.2rem;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    box-shadow: var(--shadow);
+  }
+  .theme-header {
+    padding: 1rem 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-weight: 700;
+    font-size: 1rem;
+    color: white;
+    user-select: none;
+    transition: opacity 0.2s;
+  }
+  .theme-header:hover { opacity: 0.9; }
+  .theme-header .arrow {
+    margin-left: auto;
+    transition: transform 0.3s;
+    font-size: 0.8rem;
+  }
+  .theme-header.open .arrow { transform: rotate(90deg); }
+  .theme-body { display: none; padding: 0.5rem; }
+  .theme-body.open { display: block; }
+  [data-themenum="1"] .theme-header { background: var(--theme1); }
+  [data-themenum="2"] .theme-header { background: var(--theme2); }
+  [data-themenum="3"] .theme-header { background: var(--theme3); }
+  [data-themenum="4"] .theme-header { background: var(--theme4); }
+
+  /* ── CHAPTER ACCORDION ── */
+  .chapter-accordion {
+    margin: 0.5rem 0;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    background: var(--surface-alt);
+  }
+  .chapter-header {
+    padding: 0.8rem 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.92rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    user-select: none;
+    transition: background 0.2s;
+  }
+  .chapter-header:hover { background: rgba(0,0,0,0.03); }
+  .chapter-header .arrow {
+    margin-left: auto;
+    transition: transform 0.3s;
+    font-size: 0.7rem;
+    color: var(--text-light);
+  }
+  .chapter-header.open .arrow { transform: rotate(90deg); }
+  .chapter-body { display: none; padding: 0 0.8rem 0.8rem; }
+  .chapter-body.open { display: block; }
+
+  /* ── SECTION TABS ── */
+  .section-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .section-tab {
+    flex: 1;
+    padding: 0.6rem;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.82rem;
+    background: var(--surface);
+    transition: all 0.2s;
+    border: none;
+    font-family: 'Outfit', sans-serif;
+  }
+  .section-tab:first-child { border-right: 1px solid var(--border); }
+  .section-tab.active {
+    background: var(--primary);
+    color: white;
+  }
+  .section-content { display: none; }
+  .section-content.active { display: block; }
+
+  /* ── FICHE DE COURS ── */
+  .fiche {
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.95rem;
+    line-height: 1.75;
+  }
+  .fiche h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 1.2rem 0 0.5rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 2px solid var(--border);
+  }
+  .fiche h3:first-child { margin-top: 0; }
+  .rule-box {
+    background: linear-gradient(135deg, #eaf2f8, #ebf5fb);
+    border-left: 4px solid var(--primary-light);
+    padding: 0.8rem 1rem;
+    border-radius: 0 8px 8px 0;
+    margin: 0.6rem 0;
+  }
+  .rule-box strong { color: var(--primary); }
+  .example-box {
+    background: #fef9e7;
+    border-left: 4px solid var(--accent);
+    padding: 0.7rem 1rem;
+    border-radius: 0 8px 8px 0;
+    margin: 0.5rem 0;
+    font-style: italic;
+  }
+  .example-box .fr {
+    font-style: normal;
+    color: var(--text-light);
+    font-size: 0.88rem;
+  }
+  .tip-box {
+    background: #eafaf1;
+    border-left: 4px solid var(--success);
+    padding: 0.7rem 1rem;
+    border-radius: 0 8px 8px 0;
+    margin: 0.5rem 0;
+  }
+  .tip-box::before { content: '💡 '; }
+  .warning-box {
+    background: #fdedec;
+    border-left: 4px solid var(--error);
+    padding: 0.7rem 1rem;
+    border-radius: 0 8px 8px 0;
+    margin: 0.5rem 0;
+  }
+  .warning-box::before { content: '⚠️ '; }
+  .eng { color: var(--primary); font-weight: 600; }
+
+  /* ── EXERCISES ── */
+  .exercise {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  .exercise-title {
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: var(--primary);
+    margin-bottom: 0.3rem;
+  }
+  .exercise-level {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.15rem 0.5rem;
+    border-radius: 10px;
+    margin-bottom: 0.6rem;
+    color: white;
+  }
+  .level-easy { background: var(--success); }
+  .level-medium { background: var(--accent); }
+  .level-hard { background: var(--error); }
+
+  .exercise-instruction {
+    font-size: 0.88rem;
+    color: var(--text-light);
+    margin-bottom: 0.8rem;
+    font-style: italic;
+  }
+
+  /* QCM */
+  .qcm-options { display: flex; flex-direction: column; gap: 0.4rem; }
+  .qcm-option {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 0.8rem;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    background: var(--surface);
+  }
+  .qcm-option:hover { border-color: var(--primary-light); background: #f0f6fa; }
+  .qcm-option.correct {
+    border-color: var(--success);
+    background: #eafaf1;
+  }
+  .qcm-option.wrong {
+    border-color: var(--error);
+    background: #fdedec;
+  }
+  .qcm-option.disabled { pointer-events: none; opacity: 0.7; }
+  .qcm-option.correct-answer { border-color: var(--success); background: #eafaf1; }
+  .qcm-radio {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .qcm-option.correct .qcm-radio { border-color: var(--success); background: var(--success); }
+  .qcm-option.correct .qcm-radio::after { content: '✓'; color: white; font-size: 0.7rem; font-weight: bold; }
+  .qcm-option.wrong .qcm-radio { border-color: var(--error); background: var(--error); }
+  .qcm-option.wrong .qcm-radio::after { content: '✗'; color: white; font-size: 0.7rem; font-weight: bold; }
+
+  /* Fill-in-the-blank */
+  .fill-sentence {
+    font-size: 0.92rem;
+    margin-bottom: 0.5rem;
+    line-height: 2;
+  }
+  .fill-input {
+    display: inline-block;
+    border: none;
+    border-bottom: 2px solid var(--primary-light);
+    background: transparent;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    width: 140px;
+    padding: 0.1rem 0.3rem;
+    text-align: center;
+    outline: none;
+    transition: border-color 0.2s;
+    color: var(--text);
+  }
+  .fill-input:focus { border-color: var(--accent); }
+  .fill-input.correct { border-color: var(--success); color: var(--success); background: #eafaf1; }
+  .fill-input.wrong { border-color: var(--error); color: var(--error); background: #fdedec; }
+
+  .check-btn {
+    display: inline-block;
+    padding: 0.5rem 1.2rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 0.5rem;
+  }
+  .check-btn:hover { background: var(--primary-light); transform: translateY(-1px); }
+
+  /* True/False */
+  .tf-statement {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+  }
+  .tf-statement:last-of-type { border-bottom: none; }
+  .tf-btns { display: flex; gap: 0.3rem; flex-shrink: 0; }
+  .tf-btn {
+    padding: 0.3rem 0.6rem;
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    background: var(--surface);
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+  .tf-btn:hover { border-color: var(--primary-light); }
+  .tf-btn.selected { background: var(--primary); color: white; border-color: var(--primary); }
+  .tf-btn.correct { background: var(--success); color: white; border-color: var(--success); }
+  .tf-btn.wrong { background: var(--error); color: white; border-color: var(--error); }
+  .tf-btn.correct-answer { border-color: var(--success); color: var(--success); }
+  .tf-btn.disabled { pointer-events: none; }
+
+  /* Feedback */
+  .feedback {
+    margin-top: 0.5rem;
+    padding: 0.5rem 0.7rem;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    display: none;
+    line-height: 1.5;
+  }
+  .feedback.show { display: block; }
+  .feedback.correct { background: #eafaf1; color: #1e8449; }
+  .feedback.wrong { background: #fdedec; color: #922b21; }
+  .feedback.info { background: #eaf2f8; color: var(--primary); }
+
+  /* Drag / Reorder */
+  .match-container { display: flex; flex-direction: column; gap: 0.5rem; }
+  .match-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.88rem;
+  }
+  .match-left {
+    flex: 1;
+    padding: 0.5rem 0.7rem;
+    background: #eaf2f8;
+    border-radius: 6px;
+    font-weight: 500;
+  }
+  .match-select {
+    flex: 1;
+    padding: 0.5rem;
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    background: var(--surface);
+    cursor: pointer;
+  }
+  .match-select.correct { border-color: var(--success); background: #eafaf1; }
+  .match-select.wrong { border-color: var(--error); background: #fdedec; }
+
+  /* Score badge */
+  .score-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: var(--success);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+  }
+
+  /* Reset button */
+  .reset-all-btn {
+    display: block;
+    margin: 2rem auto;
+    padding: 0.7rem 2rem;
+    background: var(--error);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .reset-all-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(192,57,43,0.3); }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 1.4rem; }
+    .theme-filter { gap: 0.3rem; }
+    .theme-btn { font-size: 0.72rem; padding: 0.4rem 0.7rem; }
+    .fill-input { width: 100px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>🇬🇧 Anglais 4ème</h1>
+  <p>Révisions interactives — Australia & Sherlock Holmes</p>
+</div>
+
+<div class="progress-container">
+  <div class="progress-label">
+    <span>Progression</span>
+    <span id="progress-text">0 / 0</span>
+  </div>
+  <div class="progress-bar">
+    <div class="progress-fill" id="progress-fill"></div>
+  </div>
+</div>
+
+<div class="theme-filter">
+  <button class="theme-btn active" data-theme="all" onclick="filterTheme('all')">📚 Tout</button>
+  <button class="theme-btn" data-theme="1" onclick="filterTheme('1')">⏪ Passé</button>
+  <button class="theme-btn" data-theme="2" onclick="filterTheme('2')">⏩ Futur & Choix</button>
+  <button class="theme-btn" data-theme="3" onclick="filterTheme('3')">🔍 Nuancer</button>
+  <button class="theme-btn" data-theme="4" onclick="filterTheme('4')">🗂️ Vocabulaire</button>
+</div>
+
+<div class="content" id="content">
+
+<!-- ════════════════════════════════════════════════ -->
+<!-- THEME 1 : PARLER DU PASSÉ                      -->
+<!-- ════════════════════════════════════════════════ -->
+<div class="theme-accordion" data-themenum="1">
+  <div class="theme-header" onclick="toggleAccordion(this)">
+    <span>⏪ Thème 1 — Parler du passé</span>
+    <span class="arrow">▶</span>
+  </div>
+  <div class="theme-body">
+
+    <!-- ─── CHAPTER 1 : PRÉTÉRIT BE + V-ING ─── -->
+    <div class="chapter-accordion">
+      <div class="chapter-header" onclick="toggleAccordion(this)">
+        <span>📖 Chapitre 1 — Prétérit Be + V-ing</span>
+        <span class="arrow">▶</span>
+      </div>
+      <div class="chapter-body">
+        <div class="section-tabs">
+          <button class="section-tab active" onclick="switchTab(this, 'fiche')">📖 Fiche de cours</button>
+          <button class="section-tab" onclick="switchTab(this, 'exercices')">📝 Exercices</button>
+        </div>
+
+        <!-- FICHE -->
+        <div class="section-content active" data-section="fiche">
+          <div class="fiche">
+            <h3>🎯 À quoi ça sert ?</h3>
+            <p>Le <strong>prétérit Be + V-ing</strong> (ou <em>past continuous</em>) sert à décrire une <strong>action en cours dans le passé</strong>, souvent interrompue par une autre action. Imagine une scène de film : c'est le décor, l'arrière-plan de l'histoire.</p>
+
+            <div class="example-box">
+              <span class="eng">Sherlock was examining the footprints when Watson arrived.</span><br>
+              <span class="fr">→ Sherlock examinait les empreintes quand Watson est arrivé.</span>
+            </div>
+
+            <h3>🔧 Comment le construire ?</h3>
+            <div class="rule-box">
+              <strong>Sujet + WAS / WERE + Verbe-ING</strong><br>
+              I / He / She / It → <strong>was</strong> + V-ing<br>
+              You / We / They → <strong>were</strong> + V-ing
+            </div>
+
+            <div class="example-box">
+              <span class="eng">The kangaroos <strong>were jumping</strong> across the field.</span><br>
+              <span class="fr">→ Les kangourous sautaient à travers le champ.</span>
+            </div>
+
+            <h3>❌ Forme négative</h3>
+            <div class="rule-box">
+              <strong>Sujet + WAS NOT (wasn't) / WERE NOT (weren't) + V-ing</strong>
+            </div>
+            <div class="example-box">
+              <span class="eng">Watson <strong>wasn't listening</strong> to the suspect.</span><br>
+              <span class="fr">→ Watson n'écoutait pas le suspect.</span>
+            </div>
+
+            <h3>❓ Forme interrogative</h3>
+            <div class="rule-box">
+              <strong>WAS / WERE + sujet + V-ing ?</strong>
+            </div>
+            <div class="example-box">
+              <span class="eng"><strong>Were</strong> the tourists <strong>surfing</strong> at Bondi Beach?</span><br>
+              <span class="fr">→ Est-ce que les touristes faisaient du surf à Bondi Beach ?</span>
+            </div>
+
+            <h3>🔗 WHEN et WHILE : le duo gagnant</h3>
+            <p>On utilise souvent le prétérit Be+V-ing avec :</p>
+            <div class="rule-box">
+              <strong>WHILE</strong> + action longue (Be+V-ing) → « pendant que »<br>
+              <strong>WHEN</strong> + action courte (prétérit simple) → « quand »
+            </div>
+            <div class="example-box">
+              <span class="eng"><strong>While</strong> Sherlock <strong>was investigating</strong> the crime scene, he <strong>found</strong> a hidden clue.</span><br>
+              <span class="fr">→ Pendant que Sherlock enquêtait sur la scène de crime, il a trouvé un indice caché.</span>
+            </div>
+
+            <div class="tip-box">
+              Astuce : si tu peux dire « était en train de… » en français, c'est du prétérit Be+V-ing !
+            </div>
+
+            <div class="warning-box">
+              Attention aux verbes d'état (know, believe, want, like…) : ils ne se mettent <strong>presque jamais</strong> en Be+V-ing.
+            </div>
+          </div>
+        </div>
+
+        <!-- EXERCICES -->
+        <div class="section-content" data-section="exercices">
+
+          <!-- EX 1.1 QCM -->
+          <div class="exercise" data-exercise>
+            <div class="exercise-title">Exercice 1 — Choisir la bonne forme</div>
+            <span class="exercise-level level-easy">Facile</span>
+            <div class="exercise-instruction">Choisis la forme correcte du prétérit Be+V-ing.</div>
+
+            <div style="margin-bottom:1rem">
+              <p style="font-size:0.9rem;margin-bottom:0.4rem">1. Sherlock _______ the clues carefully.</p>
+              <div class="qcm-options" data-qcm="was examining">
+                <div class="qcm-option" onclick="checkQCM(this, 'was examining')"><div class="qcm-radio"></div><span>was examining</span></div>
+                <div class="qcm-option" onclick="checkQCM(this, 'was examining')"><div class="qcm-radio"></div><span>were examining</span></div>
+                <div class="qcm-option" onclick="checkQCM(this, 'was examining')"><div class="qcm-radio"></div><span>was examine</span></div>
+              </div>
+              <div class="feedback"></div>
+            </div>
+
+            <div style="margin-bottom:1rem">
+              <p style="font-size:0.9rem;margin-bottom:0.4rem">2. The koalas _______ in the eucalyptus trees.</p>
+              <div class="qcm-options" data-qcm="were sleeping">
+                <div class="qcm-option" onclick="checkQCM(this, 'were sleeping')"><div class="qcm-radio"></div><span>was sleeping</span></div>
+                <div class="qcm-option" onclick="checkQCM(this, 'were sleeping')"><div class="qcm-radio"></div><span>were sleeping</span></div>
+                <div class="qcm-option" onclick="checkQCM(this, 'were sleeping')"><div class="qcm-radio"></div><span>were sleepping</span></div>
+              </div>
+              <div class="feedback"></div>
+            </div>
+
+            <div style="margin-bottom:1rem">
+              <p style="font-size:0.9rem;margin-bottom:0.4rem">3. _______ Watson _______ notes during the investigation?</p>
+              <div class="qcm-options" data-qcm="Was... taking">
+                <div class="qcm-option" onclick="checkQCM(this, 'Was... taking')"><div class="qcm-radio"></div><span>Was... taking</span></div>
+                <div class="qcm-option" onclick="checkQCM(this, 'Was... taking')"><div class="qcm-radio"></div><span>Were... taking</span></div>
+                <div class="qcm-option" onclick="checkQCM(this, 'Was... taking')"><div class="qcm-radio"></div><span>Did... taking</span></div>
+              </div>
+              <div class="feedback"></div>
+            </div>
+          </div>
+
+          <!-- EX 1.2 FILL -->
+          <div class="exercise" data-exercise>
+            <div class="exercise-title">Exercice 2 — Complète avec was/were + V-ing</div>
+            <span class="exercise-level level-medium">Moyen</span>
+            <div class="exercise-instruction">Conjugue le verbe entre parenthèses au prétérit Be+V-ing.</div>
+
+            <div class="fill-sentence">
+              1. The detective <input class="fill-input" data-answer="was looking" placeholder="(look)"> at the crime scene.
+            </div>
+            <div class="fill-sentence">
+              2. We <input class="fill-input" data-answer="were swimming" placeholder="(swim)"> near the Great Barrier Reef.
+            </div>
+            <div class="fill-sentence">
+              3. Mrs Hudson <input class="fill-input" data-answer="wasn't cooking" data-alt="was not cooking" placeholder="(not / cook)"> when the explosion happened.
+            </div>
+            <div class="fill-sentence">
+              4. The Aboriginal artists <input class="fill-input" data-answer="were painting" placeholder="(paint)"> on the rock.
+            </div>
+            <div class="fill-sentence">
+              5. <input class="fill-input" data-answer="Were you watching" data-alt="were you watching" placeholder="(you / watch)"> the sunset at Uluru?
+            </div>
+            <button class="check-btn" onclick="checkFillExercise(this)">Vérifier mes réponses ✓</button>
+            <div class="feedback"></div>
+          </div>
+
+          <!-- EX 1.3 WHEN/WHILE -->
+          <div class="exercise" data-exercise>
+            <div class="exercise-title">Exercice 3 — When ou While ?</div>
+            <span class="exercise-level level-medium">Moyen</span>
+            <div class="exercise-instruction">Complète avec WHEN ou WHILE.</div>
+
+            <div class="fill-sentence">
+              1. <input class="fill-input" data-answer="While" style="width:80px"> Sherlock was playing the violin, someone knocked at the door.
+            </div>
+            <div class="fill-sentence">
+              2. The tourists were snorkelling <input class="fill-input" data-answer="when" style="width:80px"> they saw a shark.
+            </div>
+            <div class="fill-sentence">
+              3. <input class="fill-input" data-answer="While" style="width:80px"> it was raining in Sydney, we visited the Opera House.
+            </div>
+            <div class="fill-sentence">
+              4. Watson was writing his report <input class="fill-input" data-answer="when" style="width:80px"> Sherlock shouted « Elementary! ».
+            </div>
+            <button class="check-btn" onclick="checkFillExercise(this)">Vérifier ✓</button>
+            <div class="feedback"></div>
+          </div>
+
+          <!-- EX 1.4 HARD -->
+          <div class="exercise" data-exercise>
+            <div class="exercise-title">Exercice 4 — Construis la phrase complète</div>
+            <span class="exercise-level level-hard">Difficile</span>
+            <div class="exercise-instruction">Remets les mots dans l'ordre pour former une phrase correcte.</div>
+
+            <div style="margin-bottom:1rem">
+              <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:0.3rem">was / the suspect / while / Sherlock / escaping / watching / was</p>
+              <input class="fill-input" style="width:100%;text-align:left" data-answer="While the suspect was escaping Sherlock was watching" data-alt="Sherlock was watching while the suspect was escaping" placeholder="Écris la phrase complète...">
+              <div class="feedback"></div>
+            </div>
+            <div style="margin-bottom:1rem">
+              <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:0.3rem">were / surfing / at / they / Bondi Beach / not</p>
+              <input class="fill-input" style="width:100%;text-align:left" data-answer="They were not surfing at Bondi Beach" data-alt="They weren't surfing at Bondi Beach" placeholder="Écris la phrase complète...">
+              <div class="feedback"></div>
+            </div>
+            <button class="check-btn" onclick="checkFillExercise(this)">Vérifier ✓</button>
+          </div>
+
+        </div><!-- /exercices -->
+      </div>
+    </div><!-- /chapter 1 -->
+
+    <!-- ─── CHAPTER 2 : PRESENT PERFECT ─── -->
+    <div class="chapter-accordion">
+      <div class="chapter-header" onclick="toggleAccordion(this)">
+        <span>📖 Chapitre 2 — Present Perfect</span>
+        <span class="arrow">▶</span>
+      </div>
+      <div class="chapter-body">
+        <div class="section-tabs">
+          <button class="section-tab active" onclick="switchTab(this, 'fiche')">📖 Fiche de cours</button>
+          <button class="section-tab" onclick="switchTab(this, 'exercices')">📝 Exercices</button>
+        </div>
+
+        <div class="section-content active" data-section="fiche">
+          <div class="fiche">
+            <h3>🎯 À quoi ça sert ?</h3>
+            <p>Le <strong>present perfect</strong> fait le lien entre le passé et le présent. On l'utilise quand :</p>
+            <ul style="margin:0.5rem 0 0.5rem 1.2rem">
+              <li>Une action passée a un <strong>résultat visible maintenant</strong></li>
+              <li>On parle d'une <strong>expérience de vie</strong> (sans dire quand)</li>
+              <li>Une action <strong>n'est pas encore terminée</strong></li>
+            </ul>
+
+            <div class="example-box">
+              <span class="eng">I <strong>have visited</strong> Australia three times.</span><br>
+              <span class="fr">→ J'ai visité l'Australie trois fois. (expérience de vie, je ne dis pas quand)</span>
+            </div>
+
+            <h3>🔧 Comment le construire ?</h3>
+            <div class="rule-box">
+              <strong>Sujet + HAVE / HAS + participe passé (V-ed ou 3ème colonne)</strong><br>
+              I / You / We / They → <strong>have</strong> (= 've)<br>
+              He / She / It → <strong>has</strong> (= 's)
+            </div>
+
+            <div class="example-box">
+              <span class="eng">Sherlock <strong>has solved</strong> the mystery!</span><br>
+              <span class="fr">→ Sherlock a résolu le mystère ! (résultat : on connaît le coupable)</span>
+            </div>
+
+            <h3>❌ Forme négative</h3>
+            <div class="rule-box">
+              <strong>Sujet + HAVE NOT (haven't) / HAS NOT (hasn't) + participe passé</strong>
+            </div>
+            <div class="example-box">
+              <span class="eng">Watson <strong>hasn't found</strong> any evidence yet.</span><br>
+              <span class="fr">→ Watson n'a pas encore trouvé de preuves.</span>
+            </div>
+
+            <h3>🔑 Mots-clés du present perfect</h3>
+            <div class="rule-box">
+              <strong>ever</strong> (déjà, dans une question) — <strong>never</strong> (jamais)<br>
+              <strong>already</strong> (déjà) — <strong>yet</strong> (encore, dans les neg. et questions)<br>
+              <strong>just</strong> (juste, vient de) — <strong>for</strong> (depuis + durée) — <strong>since</strong> (depuis + date)
+            </div>
+
+            <div class="example-box">
+              <span class="eng">Have you <strong>ever</strong> seen a platypus?</span><br>
+              <span class="fr">→ As-tu déjà vu un ornithorynque ?</span>
+            </div>
+            <div class="example-box">
+              <span class="eng">Sherlock has lived in Baker Street <strong>for</strong> many years.</span><br>
+              <span class="fr">→ Sherlock vit à Baker Street depuis de nombreuses années.</span>
+            </div>
+
+            <div class="tip-box">
+              <strong>FOR</strong> = durée (for 3 years, for a long time) / <strong>SINCE</strong> = point de départ (since 2020, since Monday)
+            </div>
+
+            <div class="warning-box">
+              Ne confonds pas avec le prétérit ! Si tu précises <strong>quand</strong> (yesterday, last week, in 2019), c'est du prétérit simple, PAS du present perfect.
+            </div>
+          </div>
+        </div>
+
+        <div class="section-content" data-section="exercices">
+
+          <!-- EX 2.1 -->
+          <div class="exercise" data-exercise>
+            <div class="exercise-title">Exercice 1 — Have ou Has ?</div>
+            <span class="exercise-level level-easy">Facile</span>
+            <div class="exercise-instruction">Complète avec HAVE ou HAS.</div>
+
+            <div class="fill-sentence">1. Sherlock <input class="fill-input" data-answer="has" style="width:70px"> solved the case.</div>
+            <div class="fill-sentence">2. We <input class="fill-input" data-answer="have" style="width:70px"> been to Melbourne.</div>
+            <div class="fill-sentence">3. She <input class="fill-input" data-answer="has" style="width:70px"> never eaten Vegemite.</div>
+            <div class="fill-sentence">4. They <input class="fill-input" data-answer="have" style="width:70px"> already left.</div>
+            <div class="fill-sentence">5. Watson <input class="fill-input" data-answer="has" style="width:70px"> just arrived.</div>
+            <button class="check-btn" onclick="checkFillExercise(this)">Vérifier ✓</button>
+            <div class="feedback"></div>
+          </div>
+
+          <!-- EX 2.2 -->
+          <div class="exercise" data-exercise>
+            <div class="exercise-title">Exercice 2 — For ou Since ?</div>
+            <span class="exercise-level level-easy">Facile</span>
+            <div class="exercise-instruction">Complète avec FOR ou SINCE.</div>
+
+            <div class="fill-sentence">1. He has lived in Sydney <input class="fill-input" data-answer="for" style="width:70px"> ten years.</div>
+            <div class="fill-sentence">2. She has played cricket <input class="fill-input" data-answer="since" style="width:70px"> 2019.</div>
+            <div class="fill-sentence">3. Sherlock hasn't slept <input class="fill-input" data-answer="for" style="width:70px"> two days.</div>
+            <div class="fill-sentence">4. I have known him <input class="fill-input" data-answer="since" style="width:70px"> primary school.</div>
+            <div class="fill-sentence">5. We have been here <input class="fill-input" data-answer="for" style="width:70px"> a long time.</div>
+            <button class="check-btn" onclick="checkFillExercise(this)">Vérifier ✓</button>
+            <div class="feedback"></div>
+          </div>
+
+          <!-- EX 2.3 QCM -->
+          <div class="exercise" data-exercise>
+            <div class="exercise-title">Exercice 3 — Present perfect ou Prétérit ?</div>
+            <span class="exercise-level level-medium">Moyen</span>
+            <div class="exercise-instruction">Choisis le temps correct.</div>
+
+            <div style="margin-bottom:1rem">
+              <p style="font-size:0.9rem;margin-bottom:0.4rem">1. I _______ Australia in 2022.</p>
+              <div class="qcm-options" data-qcm="visited">
+                <div class="qcm-option" onclick="checkQCM(this, 'visited')"><div class="qcm-radio"></div><span>visited</span></div>
+                <div class="qcm-option" onclick="checkQCM(this, 'visited')"><div class="qcm-radio"></div><span>have visited</span></div>
+              </div>
+              <div class="feedback" data-explain="On dit QUAND (in 2022) → prétérit simple !"></div>
+            </div>
+
+            <div style="margin-bottom:1rem">
+              <p style="font-size:0.9rem;margin-bottom:0.4rem">2. Sherlock _______ three cases this week.</p>
+              <div class="qcm-options" data-qcm="has solved">
+                <div class="qcm-option" onclick="checkQCM(this, 'has solved')"><div class="qcm-radio"></div><span>solved</span></div>
+                <div class="qcm-option" onclick="checkQCM(this, 'has solved')"><div class="qcm-radio"></div><span>has solved</span></div>
+              </div>
+              <div class="feedback" data-explain="'This week' = la semaine n'est pas finie → present perfect."></div>
+            </div>
+
+            <div style="margin-bottom:1rem">
+              <p style="font-size:0.9rem;margin-bottom:0.4rem">3. _______ you ever _______ a kangaroo?</p>
+              <div class="qcm-options" data-qcm="Have... seen">
+                <div class="qcm-option" onclick="checkQCM(this, 'Have... seen')"><div class="qcm-radio"></div><span>Have... seen</span></div>
+                <div class="qcm-option" onclick="checkQCM(this, 'Have... seen')"><div class="qcm-radio"></div><span>Did... see</span></div>
+              </div>
+              <div class="feedback" data-explain="'Ever' = expérience de vie → present perfect."></div>
+            </div>
+
+            <div style="margin-bottom:1rem">
+              <p style="font-size:0.9rem;margin-bottom:0.4rem">4. Watson _______ his report yesterday.</p>
+              <div class="qcm-options" data-qcm="finished">
+                <div class="qcm-option" onclick="checkQCM(this, 'finished')"><div class="qcm-radio"></div><span>finished</span></div>
+                <div class="qcm-option" onclick="checkQCM(this, 'finished')"><div class="qcm-radio"></div><span>has finished</span></div>
+              </div>
+              <div class="feedback" data-explain="'Yesterday' = moment précis dans le passé → prétérit."></div>
+            </div>
+          </div>
+
+          <!-- EX 2.4 -->
+          <div class="exercise" data-exercise>
+            <div class="exercise-title">Exercice 4 — Conjugue au present perfect</div>
+            <span class="exercise-level level-hard">Difficile</span>
+            <div class="exercise-instruction">Écris la forme complète au present perfect (attention aux verbes irréguliers !).</div>
+
+            <div class="fill-sentence">1. She <input class="fill-input" data-answer="has never been" placeholder="(never / be)"> to the Outback.</div>
+            <div class="fill-sentence">2. I <input class="fill-input" data-answer="have just read" data-alt="'ve just read" placeholder="(just / read)"> a Sherlock Holmes story.</div>
+            <div class="fill-sentence">3. They <input class="fill-input" data-answer="haven't seen" data-alt="have not seen" placeholder="(not / see)"> the Great Barrier Reef yet.</div>
+            <div class="fill-sentence">4. <input class="fill-input" data-answer="Has he ever eaten" data-alt="Has he ever eaten" placeholder="(he / ever / eat)"> crocodile meat?</div>
+            <button class="check-btn" onclick="checkFillExercise(this)">Vérifier ✓</button>
+            <div class="feedback"></div>
+          </div>
+
+        </div>
+      </div>
+    </div><!-- /chapter 2 -->
+
+  </div><!-- /theme-body -->
+</div><!-- /theme 1 -->
+
+
+<!-- ════════════════════════════════════════════════ -->
+<!-- THEME 2 : FUTUR ET CHOIX                       -->
+<!-- ════════════════════════════════════════════════ -->
+<div class="theme-accordion" data-themenum="2">
+  <div class="theme-header" onclick="toggleAccordion(this)">
+    <span>⏩ Thème 2 — Parler du futur et exprimer ses choix</span>
+    <span class="arrow">▶</span>
+  </div>
+  <div class="theme-body">
+
+    <!-- ─── CHAPTER 3 : BE GOING TO ─── -->
+    <div class="chapter-accordion">
+      <div class="chapter-header" onclick="toggleAccordion(this)">
+        <span>📖 Chapitre 3 — Be going to</span>
+        <span class="arrow">▶</span>
+      </div>
+      <div class="chapter-body">
+        <div class="section-tabs">
+          <button class="section-tab active" onclick="switchTab(this, 'fiche')">📖 Fiche de cours</button>
+          <button class="section-tab" onclick="switchTab(this, 'exercices')">📝 Exercices</button>
+        </div>
+
+        <div class="section-content active" data-section="fiche">
+          <div class="fiche">
+            <h3>🎯 À quoi ça sert ?</h3>
+            <p><strong>Be going to</strong> sert à exprimer :</p>
+            <ul style="margin:0.5rem 0 0.5rem 1.2rem">
+              <li>Un <strong>projet, une intention</strong> décidée avant le moment où on parle</li>
+              <li>Une <strong>prédiction basée sur des indices visibles</strong></li>
+            </ul>
+
+            <div class="example-box">
+              <span class="eng">We <strong>are going to visit</strong> the Sydney Opera House next week.</span><br>
+              <span class="fr">→ Nous allons visiter l'Opéra de Sydney la semaine prochaine. (c'est déjà prévu)</span>
+            </div>
+            <div class="example-box">
+              <span class="eng">Look at those dark clouds! It <strong>is going to rain</strong>.</span><br>
+              <span class="fr">→ Regarde ces nuages noirs ! Il va pleuvoir. (indice visible)</span>
+            </div>
+
+            <h3>🔧 Construction</h3>
+            <div class="rule-box">
+              <strong>Sujet + AM / IS / ARE + GOING TO + base verbale</strong><br>
+              I → <strong>am going to</strong><br>
+              He / She / It → <strong>is going to</strong><br>
+              You / We / They → <strong>are going to</strong>
+            </div>
+
+            <h3>❌ Négatif / ❓ Interrogatif</h3>
+            <div class="rule-box">
+              Négatif : <strong>Sujet + am/is/are + NOT + going to + BV</strong><br>
+              Question : <strong>Am/Is/Are + sujet + going to + BV ?</strong>
+            </div>
+            <div class="example-box">
+              <span class="eng">Sherlock <strong>isn't going to</strong> give up on this case.</span><br>
+              <span class="eng"><strong>Are</strong> you <strong>going to</strong> travel to Melbourne?</span>
+            </div>
+
+            <div class="tip-box">
+              À l'oral, « going to » se prononce souvent « gonna » — mais ne l'écris jamais dans un exercice scolaire !
+            </div>
+          </div>
+        </div>
+
+        <div class="section-content" data-section="exercices">
+
+          <div class="exercise" data-exercise>
+            <div class="exercise-title">Exercice 1 — Complète avec be going to</div>
+            <span class="exercise-level level-easy">Facile</span>
+            <div class="exercise-instruction">Conjugue avec la bonne forme de BE GOING TO + verbe.</div>
+
+            <div class="fill-sentence">1. I <input class="fill-input" data-answer="am going to explore" data-alt="'m going to explore" placeholder="(explore)"> the Outback this summer.</div>
+            <div class="fill-sentence">2. She <input class="fill-input" data-answer="is going to study" data-alt="'s going to study" placeholder="(study)"> Aboriginal culture.</div>
+            <div class="fill-sentence">3. They <input class="fill-input" data-answer="are going to watch" data-alt="'re going to watch" placeholder="(watch)"> a cricket match.</div>
+            <div class="fill-sentence">4. Sherlock <input class="fill-input" data-answer="is going to find" data-alt="'s going to find" placeholder="(find)"> the murderer.</div>
+            <button class="check-btn" onclick="checkFillExercise(this)">Vérifier ✓</button>
+            <div class="feedback"></div>
+          </div>
+
+          <div class="exercise" data-exercise>
+            <div class="exercise-title">Exercice 2 — Intention ou prédiction ?</div>
+            <span class="exercise-level level-medium">Moyen</span>
+            <div class="exercise-instruction">Pour chaque phrase, indique s'il s'agit d'une intention (I) ou d'une prédiction basée sur un indice (P).</div>
+
+            <div class="match-container">
+              <div class="match-row">
+                <div class="match-left">We are going to book a flight to Perth.</div>
+                <select class="match-select" data-correct="I" onchange="checkSelect(this)">
+                  <option value="">…</option>
+                  <option value="I">Intention</option>
+                  <option value="P">Prédiction</option>
+                </select>
+              </div>
+              <div class="match-row">
+                <div class="match-left">Look! The suspect is going to run away!</div>
+                <select class="match-select" data-correct="P" onchange="checkSelect(this)">
+                  <option value="">…</option>
+                  <option value="I">Intention</option>
+                  <option value="P">Prédiction</option>
+                </select>
+              </div>
+              <div class="match-row">
+                <div class="match-left">I'm going to learn to surf next year.</div>
+                <select class="match-select" data-correct="I" onchange="checkSelect(this)">
+                  <option value="">…</option>
+                  <option value="I">Intention</option>
+                  <option value="P">Prédiction</option>
+                </select>
+              </div>
+              <div class="match-row">
+                <div class="match-left">Watson looks tired. He is going to fall asleep.</div>
+                <select class="match-select" data-correct="P" onchange="checkSelect(this)">
+                  <option value="">…</option>
+                  <option value="I">Intention</option>
+                  <option value="P">Prédiction</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="exercise" data-exercise>
+            <div class="exercise-title">Exercice 3 — Forme négative et interrogative</div>
+            <span class="exercise-level level-hard">Difficile</span>
+            <div class="exercise-instruction">Transforme les phrases selon la consigne entre parenthèses.</div>
+
+            <div class="fill-sentence">1. They are going to camp in the bush. (négatif)<br>→ <input class="fill-input" style="width:100%;text-align:left" data-answer="They are not going to camp in the bush" data-alt="They aren't going to camp in the bush" placeholder="..."></div>
+            <div class="fill-sentence">2. Watson is going to help Sherlock. (question)<br>→ <input class="fill-input" style="width:100%;text-align:left" data-answer="Is Watson going to help Sherlock?" data-alt="Is Watson going to help Sherlock" placeholder="..."></div>
+            <button class="check-btn" onclick="checkFillExercise(this)">Vérifier ✓</button>
+            <div class="feedback"></div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /chapter 3 -->
+
+    <!-- ─── CHAPTER 4 : 'D RATHER / 'D PREFER TO ─── -->
+    <div class="chapter-accordion">
+      <div class="chapter-header" onclick="toggleAccordion(this)">
+        <span>📖 Chapitre 4 — 'd rather / 'd prefer to</span>
+        <span class="arrow">▶</span>
+      </div>
+      <div class="chapter-body">
+        <div class="section-tabs">
+          <button class="section-tab active" onclick="switchTab(this, 'fiche')">📖 Fiche de cours</button>
+          <button class="section-tab" onclick="switchTab(this, 'exercices')">📝 Exercices</button>
+        </div>
+
+        <div class="section-content active" data-section="fiche">
+          <div class="fiche">
+            <h3>🎯 À quoi ça sert ?</h3>
+            <p>Ces deux expressions servent à dire ce qu'on <strong>préfère</strong>. Elles veulent dire la même chose mais se construisent différemment !</p>
+
+            <h3>🔧 'd rather (= would rather)</h3>
+            <div class="rule-box">
+              <strong>Sujet + 'd rather + BASE VERBALE</strong> (verbe nu, sans TO !)<br>
+              <strong>Sujet + 'd rather + BV + THAN + BV</strong> (pour comparer)
+            </div>
+            <div class="example-box">
+              <span class="eng">I<strong>'d rather surf</strong> than swim.</span><br>
+              <span class="fr">→ Je préférerais faire du surf plutôt que nager.</span>
+            </div>
+            <div class="example-box">
+              <span class="eng">Sherlock<strong>'d rather investigate</strong> alone.</span><br>
+              <span class="fr">→ Sherlock préférerait enquêter seul.</span>
+            </div>
+
+            <h3>🔧 'd prefer to (= would prefer to)</h3>
+            <div class="rule-box">
+              <strong>Sujet + 'd prefer + TO + BV</strong><br>
+              <strong>Sujet + 'd prefer + TO + BV + RATHER THAN + BV</strong>
+            </div>
+            <div class="example-box">
+              <span class="eng">I<strong>'d prefer to visit</strong> Tasmania <strong>rather than</strong> stay in Sydney.</span><br>
+              <span class="fr">→ Je préférerais visiter la Tasmanie plutôt que rester à Sydney.</span>
+            </div>
+
+            <div class="warning-box">
+              <strong>'d rather</strong> + base verbale SANS « to »<br>
+              <strong>'d prefer</strong> + TO + base verbale<br>
+              C'est LA principale source d'erreur !
+            </div>
+
+            <h3>❌ Forme négative</h3>
+            <div class="rule-box">
+              <strong>'d rather NOT + BV</strong><br>
+              <strong>'d prefer NOT TO + BV</strong>
+            </div>
+            <div class="example-box">
+              <span class="eng">I<strong>'d rather not touch</strong> that spider!</span><br>
+              <span class="eng">Watson<strong>'d prefer not to go</strong> out in the fog.</span>
+            </div>
+
+            <div class="tip-box">
+              Astuce mémoire : « ra<strong>THER</strong> » = sans TO / « pre<strong>FER</strong> » = avec TO. <strong>THER</strong> rime avec « bare » (nu) = verbe nu !
+            </div>
+          </div>
+        </div>
+
+        <div class="section-content" data-section="exercices">
+
+          <div class="exercise" data-exercise>
+            <div class="exercise-title">Exercice 1 — 'd rather ou 'd prefer to ?</div>
+            <span class="exercise-level level-easy">Facile</span>
+            <div class="exercise-instruction">Choisis la bonne forme.</div>
+
+            <div style="margin-bottom:1rem">
+              <p style="font-size:0.9rem;margin-bottom:0.4rem">1. I _______ go diving in the reef.</p>
+              <div class="qcm-options" data-qcm="'d rather">
+                <div class="qcm-option" onclick="checkQCM(this, '\'d rather')"><div class="qcm-radio"></div><span>'d rather</span></div>
+                <div class="qcm-option" onclick="checkQCM(this, '\'d rather')"><div class="qcm-radio"></div><span>'d prefer to</span></div>
+              </div>
+              <div class="feedback" data-explain="Après 'd rather, PAS de 'to' → 'd rather go."></div>
+            </div>
+
+            <div style="margin-bottom:1rem">
+              <p style="font-size:0.9rem;margin-bottom:0.4rem">2. She _______ stay at 221B Baker Street.</p>
+              <div class="qcm-options" data-qcm="both">
+                <div class="qcm-option" onclick="checkQCMBoth(this)"><div class="qcm-radio"></div><span>'d rather stay</span></div>
+                <div class="qcm-option" onclick="checkQCMBoth(this)"><div class="qcm-radio"></div><span>'d prefer to stay</span></div>
+              </div>
+              <div class="feedback" data-explain="Les deux sont correctes ! 'd rather stay OU 'd prefer to stay."></div>
+            </div>
+          </div>
+
+          <div class="exercise" data-exercise>
+            <div class="exercise-title">Exercice 2 — Complète les phrases</div>
+            <span class="exercise-level level-medium">Moyen</span>
+            <div class="exercise-instruction">Complète avec 'd rather ou 'd prefer to + verbe donné.</div>
+
+            <div class="fill-sentence">1. We <input class="fill-input" data-answer="'d rather explore" data-alt="would rather explore" placeholder="(rather / explore)"> the Outback than visit the city.</div>
+            <div class="fill-sentence">2. He <input class="fill-input" data-answer="'d prefer to stay" data-alt="would prefer to stay" placeholder="(prefer / stay)"> in the hotel.</div>
+            <div class="fill-sentence">3. Sherlock <input class="fill-input" data-answer="'d rather not eat" data-alt="would rather not eat" placeholder="(rather / not / eat)"> during a case.</div>
+            <div class="fill-sentence">4. I <input class="fill-input" data-answer="'d prefer not to swim" data-alt="would prefer not to swim" placeholder="(prefer / not / swim)"> with sharks!</div>
+            <button class="check-btn" onclick="checkFillExercise(this)">Vérifier ✓</button>
+            <div class="feedback"></div>
+          </div>
+
+          <div class="exercise" data-exercise>
+            <div class="exercise-title">Exercice 3 — Vrai ou Faux ?</div>
+            <span class="exercise-level level-hard">Difficile</span>
+            <div class="exercise-instruction">Ces phrases sont-elles correctes grammaticalement ?</div>
+
+            <div class="tf-statement" data-correct="false">
+              <span style="flex:1">« I'd rather to go surfing. »</span>
+              <div class="tf-btns">
+                <button class="tf-btn" onclick="checkTF(this, false)">Vrai</button>
+                <button class="tf-btn" onclick="checkTF(this, true)">Faux</button>
+              </div>
+              <div class="feedback" data-explain="FAUX ! 'd rather + BV sans TO → I'd rather go surfing."></div>
+            </div>
+            <div class="tf-statement" data-correct="true">
+              <span style="flex:1">« She'd prefer to investigate the house. »</span>
+              <div class="tf-btns">
+                <button class="tf-btn" onclick="checkTF(this, true)">Vrai</button>
+                <button class="tf-btn" onclick="checkTF(this, false)">Faux</button>
+              </div>
+              <div class="feedback" data-explain="VRAI ! 'd prefer TO + BV, c'est parfait."></div>
+            </div>
+            <div class="tf-statement" data-correct="true">
+              <span style="flex:1">« We'd rather not visit the desert. »</span>
+              <div class="tf-btns">
+                <button class="tf-btn" onclick="checkTF(this, true)">Vrai</button>
+                <button class="tf-btn" onclick="checkTF(this, false)">Faux</button>
+              </div>
+              <div class="feedback" data-explain="VRAI ! 'd rather NOT + BV pour la forme négative."></div>
+            </div>
+            <div class="tf-statement" data-correct="false">
+              <span style="flex:1">« He'd prefer not go outside. »</span>
+              <div class="tf-btns">
+                <button class="tf-btn" onclick="checkTF(this, false)">Vrai</button>
+                <button class="tf-btn" onclick="checkTF(this, true)">Faux</button>
+              </div>
+              <div class="feedback" data-explain="FAUX ! Il manque le TO → He'd prefer not TO go outside."></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /chapter 4 -->
+
+  </div>
+</div><!-- /theme 2 -->
+
+
+<!-- ════════════════════════════════════════════════ -->
+<!-- THEME 3 : NUANCER ET PRÉCISER                  -->
+<!-- ════════════════════════════════════════════════ -->
+<div class="theme-accordion" data-themenum="3">
+  <div class="theme-header" onclick="toggleAccordion(this)">
+    <span>🔍 Thème 3 — Nuancer et préciser</span>
+    <span class="arrow">▶</span>
+  </div>
+  <div class="theme-body">
+
+    <!-- ─── CHAPTER 5 : MODALS ─── -->
+    <div class="chapter-accordion">
+      <div class="chapter-header" onclick="toggleAccordion(this)">
+        <span>📖 Chapitre 5 — Les modaux (must, may, might, can't)</span>
+        <span class="arrow">▶</span>
+      </div>
+      <div class="chapter-body">
+        <div class="section-tabs">
+          <button class="section-tab active" onclick="switchTab(this, 'fiche')">📖 Fiche de cours</button>
+          <button class="section-tab" onclick="switchTab(this, 'exercices')">📝 Exercices</button>
+        </div>
+
+        <div class="section-content active" data-section="fiche">
+          <div class="fiche">
+            <h3>🎯 À quoi ça sert ?</h3>
+            <p>Les <strong>modaux</strong> permettent d'exprimer un <strong>degré de certitude</strong> sur quelque chose. Imagine un curseur allant de « sûr et certain » à « absolument pas » :</p>
+
+            <div class="rule-box" style="text-align:center;font-size:0.95rem">
+              <strong>MUST</strong> (quasi certain) → <strong>MAY</strong> (possible) → <strong>MIGHT</strong> (peu probable) → <strong>CAN'T</strong> (impossible)<br>
+              <span style="font-size:0.82rem;color:var(--text-light)">95% → 50% → 30% → 0%</span>
+            </div>
+
+            <h3>🔧 Construction</h3>
+            <div class="rule-box">
+              <strong>Sujet + MODAL + base verbale</strong> (jamais de -s, jamais de to !)
+            </div>
+
+            <h3>📋 Détail de chaque modal</h3>
+
+            <p><strong>MUST</strong> = « ça doit être… » / « il faut que… »</p>
+            <div class="example-box">
+              <span class="eng">The footprints are huge. It <strong>must</strong> be a large animal.</span><br>
+              <span class="fr">→ Les empreintes sont énormes. Ce doit être un gros animal. (j'en suis quasi sûr)</span>
+            </div>
+
+            <p><strong>MAY</strong> = « il se peut que… » / « c'est possible »</p>
+            <div class="example-box">
+              <span class="eng">The suspect <strong>may</strong> be hiding in the warehouse.</span><br>
+              <span class="fr">→ Le suspect se cache peut-être dans l'entrepôt.</span>
+            </div>
+
+            <p><strong>MIGHT</strong> = « il se pourrait que… » (moins sûr que may)</p>
+            <div class="example-box">
+              <span class="eng">There <strong>might</strong> be crocodiles in this river.</span><br>
+              <span class="fr">→ Il y a peut-être des crocodiles dans cette rivière. (mais c'est peu probable)</span>
+            </div>
+
+            <p><strong>CAN'T</strong> = « c'est impossible que… »</p>
+            <div class="example-box">
+              <span class="eng">He <strong>can't</strong> be the thief — he was in Australia!</span><br>
+              <span class="fr">→ Il ne peut pas être le voleur — il était en Australie !</span>
+            </div>
+
+            <div class="warning-box">
+              Ne confonds pas <strong>must</strong> (certitude/obligation) et <strong>mustn't</strong> (interdiction). Ici on parle du must de la <strong>déduction</strong>.
+            </div>
+          </div>
+        </div>
+
+        <div class="section-content" data-section="exercices">
+
+          <div class="exercise" data-exercise>
+            <div class="exercise-title">Exercice 1 — Quel modal choisir ?</div>
+            <span class="exercise-level level-easy">Facile</span>
+            <div class="exercise-instruction">Choisis le modal qui correspond au degré de certitude indiqué.</div>
+
+            <div style="margin-bottom:1rem">
+              <p style="font-size:0.9rem;margin-bottom:0.4rem">1. 🔴 100% sûr que NON : He _______ be the murderer, he has an alibi.</p>
+              <div class="qcm-options" data-qcm="can't">
+                <div class="qcm-option" onclick="checkQCM(this, 'can\'t')"><div class="qcm-radio"></div><span>must</span></div>
+                <div class="qcm-option" onclick="checkQCM(this, 'can\'t')"><div class="qcm-radio"></div><span>might</span></div>
+                <div class="qcm-option" onclick="checkQCM(this, 'can\'t')"><div class="qcm-radio"></div><span>can't</span></div>
+              </div>
+              <div class="feedback"></div>
+            </div>
+
+            <div style="margin-bottom:1rem">
+              <p style="font-size:0.9rem;margin-bottom:0.4rem">2. 🟢 95% sûr : Look at those teeth marks. It _______ be a shark.</p>
+              <div class="qcm-options" data-qcm="must">
+                <div class="qcm-option" onclick="checkQCM(this, 'must')"><div class="qcm-radio"></div><span>must</span></div>
+                <div class="qcm-option" onclick="checkQCM(this, 'must')"><div class="qcm-radio"></div><span>may</span></div>
+                <div class="qcm-option" onclick="checkQCM(this, 'must')"><div class="qcm-radio"></div><span>might</span></div>
+              </div>
+              <div class="feedback"></div>
+            </div>
+
+            <div style="margin-bottom:1rem">
+              <p style="font-size:0.9rem;margin-bottom:0.4rem">3. 🟡 50/50 : The treasure _______ be buried somewhere on the island.</p>
+              <div class="qcm-options" data-qcm="may">
+                <div class="qcm-option" onclick="checkQCM(this, 'may')"><div class="qcm-radio"></div><span>must</span></div>
+                <div class="qcm-option" onclick="checkQCM(this, 'may')"><div class="qcm-radio"></div><span>may</span></div>
+                <div class="qcm-option" onclick="checkQCM(this, 'may')"><div class="qcm-radio"></div><span>can't</span></div>
+              </div>
+              <div class="feedback"></div>
+            </div>
+
+            <div style="margin-bottom:1rem">
+              <p style="font-size:0.9rem;margin-bottom:0.4rem">4. 🟠 30% : It _______ rain in the desert, but it's unlikely.</p>
+              <div class="qcm-options" data-qcm="might">
+                <div class="qcm-option" onclick="checkQCM(this, 'might')"><div class="qcm-radio"></div><span>must</span></div>
+                <div class="qcm-option" onclick="checkQCM(this, 'might')"><div class="qcm-radio"></div><span>might</span></div>
+                <div class="qcm-option" onclick="checkQCM(this, 'might')"><div class="qcm-radio"></div><span>can't</span></div>
+              </div>
+              <div class="feedback"></div>
+            </div>
+          </div>
+
+          <div class="exercise" data-exercise>
+            <div class="exercise-title">Exercice 2 — Sherlock déduit !</div>
+            <span class="exercise-level level-medium">Moyen</span>
+            <div class="exercise-instruction">Complète les déductions de Sherlock avec must, may, might ou can't.</div>
+
+            <div class="fill-sentence">1. The window is broken from inside. The thief <input class="fill-input" data-answer="must" style="width:80px"> be someone who lives here.</div>
+            <div class="fill-sentence">2. The suspect says he was in Melbourne, but we have no proof. He <input class="fill-input" data-answer="may" data-alt="might" style="width:80px"> be lying.</div>
+            <div class="fill-sentence">3. Watson was with me all night. He <input class="fill-input" data-answer="can't" style="width:80px"> be the one who did it.</div>
+            <div class="fill-sentence">4. I heard a strange noise. There <input class="fill-input" data-answer="might" data-alt="may" style="width:80px"> be someone in the attic.</div>
+            <button class="check-btn" onclick="checkFillExercise(this)">Vérifier ✓</button>
+            <div class="feedback"></div>
+          </div>
+
+          <div class="exercise" data-exercise>
+            <div class="exercise-title">Exercice 3 — Trouve l'erreur</div>
+            <span class="exercise-level level-hard">Difficile</span>
+            <div class="exercise-instruction">Chaque phrase contient une erreur. Réécris la phrase correcte.</div>
+
+            <div class="fill-sentence">
+              1. « He must to be Australian. » →<br>
+              <input class="fill-input" style="width:100%;text-align:left" data-answer="He must be Australian" data-alt="He must be Australian." placeholder="Corrige ici...">
+            </div>
+            <div class="fill-sentence">
+              2. « She cans swim very well. » →<br>
+              <input class="fill-input" style="width:100%;text-align:left" data-answer="She can swim very well" data-alt="She can swim very well." placeholder="Corrige ici...">
+            </div>
+            <div class="fill-sentence">
+              3. « They might are late. » →<br>
+              <input class="fill-input" style="width:100%;text-align:left" data-answer="They might be late" data-alt="They might be late." placeholder="Corrige ici...">
+            </div>
+            <button class="check-btn" onclick="checkFillExercise(this)">Vérifier ✓</button>
+            <div class="feedback"></div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /chapter 5 -->
+
+    <!-- ─── CHAPTER 6 : QUESTION TAGS ─── -->
+    <div class="chapter-accordion">
+      <div class="chapter-header" onclick="toggleAccordion(this)">
+        <span>📖 Chapitre 6 — Question tags</span>
+        <span class="arrow">▶</span>
+      </div>
+      <div class="chapter-body">
+        <div class="section-tabs">
+          <button class="section-tab active" onclick="switchTab(this, 'fiche')">📖 Fiche de cours</button>
+          <button class="section-tab" onclick="switchTab(this, 'exercices')">📝 Exercices</button>
+        </div>
+
+        <div class="section-content active" data-section="fiche">
+          <div class="fiche">
+            <h3>🎯 À quoi ça sert ?</h3>
+            <p>Un <strong>question tag</strong> est une petite question qu'on ajoute à la fin d'une phrase pour demander confirmation. C'est l'équivalent de « n'est-ce pas ? » ou « hein ? » en français.</p>
+
+            <div class="example-box">
+              <span class="eng">Australia is a big country, <strong>isn't it</strong>?</span><br>
+              <span class="fr">→ L'Australie est un grand pays, n'est-ce pas ?</span>
+            </div>
+
+            <h3>🔧 La règle d'or</h3>
+            <div class="rule-box">
+              <strong>Phrase affirmative → tag négatif</strong><br>
+              <strong>Phrase négative → tag affirmatif</strong><br><br>
+              On reprend l'<strong>auxiliaire</strong> de la phrase + le <strong>pronom sujet</strong>.
+            </div>
+
+            <div class="example-box">
+              <span class="eng">Sherlock is clever, <strong>isn't he</strong>?</span> (affirmatif → négatif)<br>
+              <span class="eng">Watson doesn't like spiders, <strong>does he</strong>?</span> (négatif → affirmatif)
+            </div>
+
+            <h3>📋 Quel auxiliaire utiliser ?</h3>
+            <div class="rule-box">
+              La phrase contient <strong>BE</strong> → reprendre BE<br>
+              La phrase contient <strong>HAVE (got/perfect)</strong> → reprendre HAVE<br>
+              La phrase contient un <strong>modal</strong> (can, must, will…) → reprendre le modal<br>
+              La phrase n'a <strong>aucun auxiliaire</strong> → utiliser <strong>DO / DOES / DID</strong>
+            </div>
+
+            <div class="example-box">
+              <span class="eng">You <strong>can</strong> surf, <strong>can't</strong> you?</span><br>
+              <span class="eng">They <strong>visited</strong> Sydney, <strong>didn't</strong> they?</span> (pas d'auxiliaire → did)<br>
+              <span class="eng">She <strong>has</strong> been to Perth, <strong>hasn't</strong> she?</span>
+            </div>
+
+            <div class="tip-box">
+              Pense au jeu de bascule 🎢 : si la phrase est « + », le tag est « - » et inversement !
+            </div>
+
+            <div class="warning-box">
+              Avec « I am… », le tag est « <strong>aren't I</strong> ? » (et non « amn't I »). C'est une exception !
+            </div>
+          </div>
+        </div>
+
+        <div class="section-content" data-section="exercices">
+
+          <div class="exercise" data-exercise>
+            <div class="exercise-title">Exercice 1 — Complète le question tag</div>
+            <span class="exercise-level level-easy">Facile</span>
+            <div class="exercise-instruction">Ajoute le bon question tag.</div>
+
+            <div class="fill-sentence">1. Kangaroos can jump very high, <input class="fill-input" data-answer="can't they" style="width:100px">?</div>
+            <div class="fill-sentence">2. Sherlock is a genius, <input class="fill-input" data-answer="isn't he" style="width:100px">?</div>
+            <div class="fill-sentence">3. You aren't scared, <input class="fill-input" data-answer="are you" style="width:100px">?</div>
+            <div class="fill-sentence">4. Watson likes tea, <input class="fill-input" data-answer="doesn't he" style="width:100px">?</div>
+            <div class="fill-sentence">5. They visited Melbourne, <input class="fill-input" data-answer="didn't they" style="width:100px">?</div>
+            <button class="check-btn" onclick="checkFillExercise(this)">Vérifier ✓</button>
+            <div class="feedback"></div>
+          </div>
+
+          <div class="exercise" data-exercise>
+            <div class="exercise-title">Exercice 2 — Le piège des auxiliaires</div>
+            <span class="exercise-level level-medium">Moyen</span>
+            <div class="exercise-instruction">Complète avec le bon question tag (attention à l'auxiliaire !).</div>
+
+            <div class="fill-sentence">1. You have been to Australia, <input class="fill-input" data-answer="haven't you" style="width:110px">?</div>
+            <div class="fill-sentence">2. She won't tell anyone, <input class="fill-input" data-answer="will she" style="width:110px">?</div>
+            <div class="fill-sentence">3. I am right, <input class="fill-input" data-answer="aren't I" style="width:110px">?</div>
+            <div class="fill-sentence">4. The suspect must be lying, <input class="fill-input" data-answer="mustn't he" style="width:110px">?</div>
+            <div class="fill-sentence">5. There are many spiders in Australia, <input class="fill-input" data-answer="aren't there" style="width:110px">?</div>
+            <button class="check-btn" onclick="checkFillExercise(this)">Vérifier ✓</button>
+            <div class="feedback"></div>
+          </div>
+
+          <div class="exercise" data-exercise>
+            <div class="exercise-title">Exercice 3 — QCM rapide</div>
+            <span class="exercise-level level-hard">Difficile</span>
+            <div class="exercise-instruction">Choisis le bon tag.</div>
+
+            <div style="margin-bottom:1rem">
+              <p style="font-size:0.9rem;margin-bottom:0.4rem">1. Nobody saw the suspect, _______?</p>
+              <div class="qcm-options" data-qcm="did they">
+                <div class="qcm-option" onclick="checkQCM(this, 'did they')"><div class="qcm-radio"></div><span>didn't they</span></div>
+                <div class="qcm-option" onclick="checkQCM(this, 'did they')"><div class="qcm-radio"></div><span>did they</span></div>
+              </div>
+              <div class="feedback" data-explain="'Nobody' est négatif → le tag est affirmatif (did they). On utilise 'they' pour nobody."></div>
+            </div>
+
+            <div style="margin-bottom:1rem">
+              <p style="font-size:0.9rem;margin-bottom:0.4rem">2. Let's go to the beach, _______?</p>
+              <div class="qcm-options" data-qcm="shall we">
+                <div class="qcm-option" onclick="checkQCM(this, 'shall we')"><div class="qcm-radio"></div><span>shall we</span></div>
+                <div class="qcm-option" onclick="checkQCM(this, 'shall we')"><div class="qcm-radio"></div><span>don't we</span></div>
+              </div>
+              <div class="feedback" data-explain="Après 'Let's…', le tag est toujours 'shall we'."></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /chapter 6 -->
+
+    <!-- ─── CHAPTER 7 : RELATIVE PRONOUNS ─── -->
+    <div class="chapter-accordion">
+      <div class="chapter-header" onclick="toggleAccordion(this)">
+        <span>📖 Chapitre 7 — Les pronoms relatifs</span>
+        <span class="arrow">▶</span>
+      </div>
+      <div class="chapter-body">
+        <div class="section-tabs">
+          <button class="section-tab active" onclick="switchTab(this, 'fiche')">📖 Fiche de cours</button>
+          <button class="section-tab" onclick="switchTab(this, 'exercices')">📝 Exercices</button>
+        </div>
+
+        <div class="section-content active" data-section="fiche">
+          <div class="fiche">
+            <h3>🎯 À quoi ça sert ?</h3>
+            <p>Les <strong>pronoms relatifs</strong> servent à relier deux phrases pour donner des informations supplémentaires sur un nom. Ils évitent les répétitions !</p>
+
+            <div class="example-box">
+              <span style="color:var(--error)">❌ Sherlock is a detective. Sherlock lives in Baker Street.</span><br>
+              <span class="eng">✅ Sherlock is a detective <strong>who</strong> lives in Baker Street.</span>
+            </div>
+
+            <h3>📋 Le bon pronom au bon moment</h3>
+            <div class="rule-box">
+              <strong>WHO</strong> → remplace une <strong>personne</strong> (qui)<br>
+              <strong>WHICH</strong> → remplace une <strong>chose / un animal</strong> (qui, que)<br>
+              <strong>THAT</strong> → remplace une <strong>personne OU une chose</strong> (qui, que) — passe-partout !<br>
+              <strong>WHERE</strong> → remplace un <strong>lieu</strong> (où)<br>
+              <strong>WHOSE</strong> → exprime la <strong>possession</strong> (dont, à qui)
+            </div>
+
+            <div class="example-box">
+              <span class="eng">The woman <strong>who</strong> found the clue is Mrs Hudson.</span><br>
+              <span class="eng">The boomerang <strong>which</strong> he threw came back.</span><br>
+              <span class="eng">Sydney is the city <strong>where</strong> the Opera House is.</span><br>
+              <span class="eng">The detective <strong>whose</strong> hat is famous is Sherlock.</span>
+            </div>
+
+            <div class="tip-box">
+              <strong>THAT</strong> est le couteau suisse : il peut remplacer WHO et WHICH dans la plupart des cas. Mais on ne l'utilise PAS après une virgule.
+            </div>
+
+            <div class="warning-box">
+              <strong>WHOSE</strong> ≠ WHO'S ! <br>
+              WHOSE = « dont / à qui » (possession)<br>
+              WHO'S = « who is » (contraction)
+            </div>
+          </div>
+        </div>
+
+        <div class="section-content" data-section="exercices">
+
+          <div class="exercise" data-exercise>
+            <div class="exercise-title">Exercice 1 — Choisis le bon pronom relatif</div>
+            <span class="exercise-level level-easy">Facile</span>
+            <div class="exercise-instruction">Complète avec who, which, where, whose ou that.</div>
+
+            <div class="fill-sentence">1. The detective <input class="fill-input" data-answer="who" data-alt="that" style="width:80px"> solved the case is famous.</div>
+            <div class="fill-sentence">2. Australia is a country <input class="fill-input" data-answer="where" style="width:80px"> you can see kangaroos.</div>
+            <div class="fill-sentence">3. The magnifying glass <input class="fill-input" data-answer="which" data-alt="that" style="width:80px"> Sherlock uses is old.</div>
+            <div class="fill-sentence">4. The man <input class="fill-input" data-answer="whose" style="width:80px"> dog was stolen called the police.</div>
+            <div class="fill-sentence">5. The reef <input class="fill-input" data-answer="that" data-alt="which" style="width:80px"> we visited was incredible.</div>
+            <button class="check-btn" onclick="checkFillExercise(this)">Vérifier ✓</button>
+            <div class="feedback"></div>
+          </div>
+
+          <div class="exercise" data-exercise>
+            <div class="exercise-title">Exercice 2 — Relie les deux phrases</div>
+            <span class="exercise-level level-medium">Moyen</span>
+            <div class="exercise-instruction">Combine les deux phrases en utilisant un pronom relatif.</div>
+
+            <div class="fill-sentence">
+              1. Watson is a doctor. Watson helps Sherlock.<br>
+              → <input class="fill-input" style="width:100%;text-align:left" data-answer="Watson is a doctor who helps Sherlock" data-alt="Watson is a doctor that helps Sherlock" placeholder="Watson is a doctor...">
+            </div>
+            <div class="fill-sentence">
+              2. The Outback is a region. It is very dry.<br>
+              → <input class="fill-input" style="width:100%;text-align:left" data-answer="The Outback is a region which is very dry" data-alt="The Outback is a region that is very dry" placeholder="The Outback is a region...">
+            </div>
+            <div class="fill-sentence">
+              3. Baker Street is the street. Sherlock lives there.<br>
+              → <input class="fill-input" style="width:100%;text-align:left" data-answer="Baker Street is the street where Sherlock lives" placeholder="Baker Street is the street...">
+            </div>
+            <button class="check-btn" onclick="checkFillExercise(this)">Vérifier ✓</button>
+            <div class="feedback"></div>
+          </div>
+
+          <div class="exercise" data-exercise>
+            <div class="exercise-title">Exercice 3 — Whose ou Who's ?</div>
+            <span class="exercise-level level-hard">Difficile</span>
+            <div class="exercise-instruction">Complète avec WHOSE ou WHO'S (= who is).</div>
+
+            <div class="fill-sentence">1. The girl <input class="fill-input" data-answer="whose" style="width:80px"> surfboard broke is crying.</div>
+            <div class="fill-sentence">2. <input class="fill-input" data-answer="Who's" style="width:80px"> coming to the investigation tonight?</div>
+            <div class="fill-sentence">3. The detective <input class="fill-input" data-answer="whose" style="width:80px"> methods are unusual is Sherlock.</div>
+            <div class="fill-sentence">4. <input class="fill-input" data-answer="Who's" style="width:80px"> the suspect in this case?</div>
+            <button class="check-btn" onclick="checkFillExercise(this)">Vérifier ✓</button>
+            <div class="feedback"></div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /chapter 7 -->
+
+  </div>
+</div><!-- /theme 3 -->
+
+<!-- ════════════════════════════════════════════════ -->
+<!-- THEME 4 : VOCABULAIRE                         -->
+<!-- ════════════════════════════════════════════════ -->
+<div class="theme-accordion" data-themenum="4">
+  <div class="theme-header" onclick="toggleAccordion(this)">
+    <span>🗂️ Thème 4 — Vocabulaire thématique</span>
+    <span class="arrow">▶</span>
+  </div>
+  <div class="theme-body">
+
+    <!-- ─── CHAPTER 8 : VOCAB SHERLOCK ─── -->
+    <div class="chapter-accordion">
+      <div class="chapter-header" onclick="toggleAccordion(this)">
+        <span>🔍 Chapitre 8 — Vocabulaire : Sherlock Holmes & les enquêtes</span>
+        <span class="arrow">▶</span>
+      </div>
+      <div class="chapter-body">
+        <div class="section-tabs">
+          <button class="section-tab active" onclick="switchTab(this, 'fiche')">📖 Fiche de cours</button>
+          <button class="section-tab" onclick="switchTab(this, 'exercices')">📝 Exercices</button>
+        </div>
+
+        <div class="section-content active" data-section="fiche">
+          <div class="fiche">
+            <h3>🕵️ La scène de crime</h3>
+            <div class="rule-box">
+              <strong>a clue</strong> = un indice<br>
+              <strong>footprints</strong> = empreintes de pas<br>
+              <strong>fingerprints</strong> = empreintes de doigt<br>
+              <strong>a piece of evidence</strong> = un élément de preuve<br>
+              <strong>a magnifying glass</strong> = une loupe<br>
+              <strong>a case</strong> = une affaire (policière)
+            </div>
+
+            <div class="tip-box">
+              <strong>Foot</strong>prints = empreintes de <strong>pied</strong> / <strong>Finger</strong>prints = empreintes de <strong>doigt</strong>. Le mot « print » signifie « marque, trace ».
+            </div>
+
+            <h3>👤 Les personnages</h3>
+            <div class="rule-box">
+              <strong>a witness</strong> = un témoin<br>
+              <strong>a murderer</strong> = un meurtrier<br>
+              <strong>the culprit</strong> = le coupable<br>
+              <strong>a plumber</strong> = un plombier
+            </div>
+
+            <div class="tip-box">
+              <strong>Murder</strong> = le meurtre / <strong>Murderer</strong> = le meurtrier. En anglais, on ajoute souvent <strong>-er</strong> pour faire « celui qui fait l'action ».
+            </div>
+
+            <h3>💎 Le butin et le crime</h3>
+            <div class="rule-box">
+              <strong>a murder</strong> = un meurtre<br>
+              <strong>a robbery</strong> = un cambriolage, un vol par effraction<br>
+              <strong>a jewel</strong> = un bijou<br>
+              <strong>a diamond</strong> = un diamant<br>
+              <strong>precious stones</strong> = des pierres précieuses<br>
+              <strong>to own / to possess</strong> = posséder<br>
+              <strong>to be guilty</strong> = être coupable
+            </div>
+
+            <div class="example-box">
+              <span class="eng">The culprit stole precious stones from the museum. He is guilty of robbery.</span><br>
+              <span class="fr">→ Le coupable a volé des pierres précieuses au musée. Il est coupable de vol.</span>
+            </div>
+
+            <h3>🔬 L'investigation</h3>
+            <div class="rule-box">
+              <strong>a chemistry experiment</strong> = une expérience chimique
+            </div>
+            <div class="example-box">
+              <span class="eng">Sherlock did a chemistry experiment to analyse the evidence.</span><br>
+              <span class="fr">→ Sherlock a fait une expérience chimique pour analyser les preuves.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-content" data-section="exercices">
+
+          <!-- EX 8.1 MATCHING -->
+          <div class="exercise" data-exercise>
+            <div class="exercise-title">Exercice 1 — Associe l'anglais au français</div>
+            <span class="exercise-level level-easy">Facile</span>
+            <div class="exercise-instruction">Choisis la bonne traduction pour chaque mot.</div>
+
+            <div class="match-container">
+              <div class="match-row">
+                <div class="match-left">a clue</div>
+                <select class="match-select" data-correct="un indice" onchange="checkSelect(this)">
+                  <option value="">…</option>
+                  <option value="un témoin">un témoin</option>
+                  <option value="un indice">un indice</option>
+                  <option value="une preuve">une preuve</option>
+                  <option value="une loupe">une loupe</option>
+                </select>
+              </div>
+              <div class="match-row">
+                <div class="match-left">a witness</div>
+                <select class="match-select" data-correct="un témoin" onchange="checkSelect(this)">
+                  <option value="">…</option>
+                  <option value="un coupable">un coupable</option>
+                  <option value="un meurtrier">un meurtrier</option>
+                  <option value="un témoin">un témoin</option>
+                  <option value="un plombier">un plombier</option>
+                </select>
+              </div>
+              <div class="match-row">
+                <div class="match-left">fingerprints</div>
+                <select class="match-select" data-correct="empreintes de doigt" onchange="checkSelect(this)">
+                  <option value="">…</option>
+                  <option value="empreintes de pas">empreintes de pas</option>
+                  <option value="empreintes de doigt">empreintes de doigt</option>
+                  <option value="pierres précieuses">pierres précieuses</option>
+                </select>
+              </div>
+              <div class="match-row">
+                <div class="match-left">a robbery</div>
+                <select class="match-select" data-correct="un cambriolage" onchange="checkSelect(this)">
+                  <option value="">…</option>
+                  <option value="un meurtre">un meurtre</option>
+                  <option value="un cambriolage">un cambriolage</option>
+                  <option value="un bijou">un bijou</option>
+                </select>
+              </div>
+              <div class="match-row">
+                <div class="match-left">the culprit</div>
+                <select class="match-select" data-correct="le coupable" onchange="checkSelect(this)">
+                  <option value="">…</option>
+                  <option value="le témoin">le témoin</option>
+                  <option value="le plombier">le plombier</option>
+                  <option value="le coupable">le coupable</option>
+                </select>
+              </div>
+              <div class="match-row">
+                <div class="match-left">a magnifying glass</div>
+                <select class="match-select" data-correct="une loupe" onchange="checkSelect(this)">
+                  <option value="">…</option>
+                  <option value="un diamant">un diamant</option>
+                  <option value="une loupe">une loupe</option>
+                  <option value="un indice">un indice</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- EX 8.2 FILL -->
+          <div class="exercise" data-exercise>
+            <div class="exercise-title">Exercice 2 — Complète l'histoire de Sherlock</div>
+            <span class="exercise-level level-medium">Moyen</span>
+            <div class="exercise-instruction">Complète avec le mot anglais correct.</div>
+
+            <div class="fill-sentence">
+              1. Sherlock found <input class="fill-input" data-answer="footprints" placeholder="(empreintes de pas)"> near the window.
+            </div>
+            <div class="fill-sentence">
+              2. He used his <input class="fill-input" data-answer="magnifying glass" placeholder="(loupe)"> to examine them.
+            </div>
+            <div class="fill-sentence">
+              3. There were no <input class="fill-input" data-answer="fingerprints" placeholder="(empreintes de doigt)"> on the door handle.
+            </div>
+            <div class="fill-sentence">
+              4. A <input class="fill-input" data-answer="witness" placeholder="(témoin)"> said he saw a man running away.
+            </div>
+            <div class="fill-sentence">
+              5. The <input class="fill-input" data-answer="robbery" placeholder="(cambriolage)"> happened at midnight.
+            </div>
+            <div class="fill-sentence">
+              6. The thief stole <input class="fill-input" data-answer="precious stones" placeholder="(pierres précieuses)"> and a large <input class="fill-input" data-answer="diamond" placeholder="(diamant)">.
+            </div>
+            <div class="fill-sentence">
+              7. Sherlock found the last <input class="fill-input" data-answer="clue" placeholder="(indice)"> in the kitchen.
+            </div>
+            <div class="fill-sentence">
+              8. The <input class="fill-input" data-answer="culprit" placeholder="(coupable)"> was the <input class="fill-input" data-answer="plumber" placeholder="(plombier)"> ! He was <input class="fill-input" data-answer="guilty" placeholder="(coupable, adj.)"> of <input class="fill-input" data-answer="murder" placeholder="(meurtre)">.
+            </div>
+            <button class="check-btn" onclick="checkFillExercise(this)">Vérifier ✓</button>
+            <div class="feedback"></div>
+          </div>
+
+          <!-- EX 8.3 QCM DEFINITIONS -->
+          <div class="exercise" data-exercise>
+            <div class="exercise-title">Exercice 3 — Trouve le mot d'après la définition</div>
+            <span class="exercise-level level-medium">Moyen</span>
+            <div class="exercise-instruction">Quel mot correspond à cette définition en anglais ?</div>
+
+            <div style="margin-bottom:1rem">
+              <p style="font-size:0.9rem;margin-bottom:0.4rem">1. "A person who sees a crime happen"</p>
+              <div class="qcm-options" data-qcm="a witness">
+                <div class="qcm-option" onclick="checkQCM(this, 'a witness')"><div class="qcm-radio"></div><span>a culprit</span></div>
+                <div class="qcm-option" onclick="checkQCM(this, 'a witness')"><div class="qcm-radio"></div><span>a witness</span></div>
+                <div class="qcm-option" onclick="checkQCM(this, 'a witness')"><div class="qcm-radio"></div><span>a murderer</span></div>
+              </div>
+              <div class="feedback"></div>
+            </div>
+
+            <div style="margin-bottom:1rem">
+              <p style="font-size:0.9rem;margin-bottom:0.4rem">2. "The marks your shoes leave on the ground"</p>
+              <div class="qcm-options" data-qcm="footprints">
+                <div class="qcm-option" onclick="checkQCM(this, 'footprints')"><div class="qcm-radio"></div><span>fingerprints</span></div>
+                <div class="qcm-option" onclick="checkQCM(this, 'footprints')"><div class="qcm-radio"></div><span>footprints</span></div>
+                <div class="qcm-option" onclick="checkQCM(this, 'footprints')"><div class="qcm-radio"></div><span>clues</span></div>
+              </div>
+              <div class="feedback"></div>
+            </div>
+
+            <div style="margin-bottom:1rem">
+              <p style="font-size:0.9rem;margin-bottom:0.4rem">3. "To have something that belongs to you"</p>
+              <div class="qcm-options" data-qcm="to own">
+                <div class="qcm-option" onclick="checkQCM(this, 'to own')"><div class="qcm-radio"></div><span>to steal</span></div>
+                <div class="qcm-option" onclick="checkQCM(this, 'to own')"><div class="qcm-radio"></div><span>to own</span></div>
+                <div class="qcm-option" onclick="checkQCM(this, 'to own')"><div class="qcm-radio"></div><span>to rob</span></div>
+              </div>
+              <div class="feedback"></div>
+            </div>
+
+            <div style="margin-bottom:1rem">
+              <p style="font-size:0.9rem;margin-bottom:0.4rem">4. "A very expensive, shiny stone"</p>
+              <div class="qcm-options" data-qcm="a diamond">
+                <div class="qcm-option" onclick="checkQCM(this, 'a diamond')"><div class="qcm-radio"></div><span>a jewel</span></div>
+                <div class="qcm-option" onclick="checkQCM(this, 'a diamond')"><div class="qcm-radio"></div><span>a diamond</span></div>
+                <div class="qcm-option" onclick="checkQCM(this, 'a diamond')"><div class="qcm-radio"></div><span>a magnifying glass</span></div>
+              </div>
+              <div class="feedback"></div>
+            </div>
+          </div>
+
+          <!-- EX 8.4 FRANÇAIS → ANGLAIS -->
+          <div class="exercise" data-exercise>
+            <div class="exercise-title">Exercice 4 — Traduis en anglais</div>
+            <span class="exercise-level level-hard">Difficile</span>
+            <div class="exercise-instruction">Traduis les mots français en anglais (sans article sauf indication).</div>
+
+            <div class="fill-sentence">1. un meurtrier = <input class="fill-input" data-answer="a murderer" placeholder="..."></div>
+            <div class="fill-sentence">2. être coupable = <input class="fill-input" data-answer="be guilty" data-alt="to be guilty" placeholder="..."></div>
+            <div class="fill-sentence">3. une expérience chimique = <input class="fill-input" data-answer="a chemistry experiment" placeholder="..."></div>
+            <div class="fill-sentence">4. un cambriolage = <input class="fill-input" data-answer="a robbery" placeholder="..."></div>
+            <div class="fill-sentence">5. un élément de preuve = <input class="fill-input" data-answer="a piece of evidence" placeholder="..."></div>
+            <div class="fill-sentence">6. posséder = <input class="fill-input" data-answer="to own" data-alt="to possess" placeholder="..."></div>
+            <button class="check-btn" onclick="checkFillExercise(this)">Vérifier ✓</button>
+            <div class="feedback"></div>
+          </div>
+
+        </div>
+      </div>
+    </div><!-- /chapter 8 -->
+
+    <!-- ─── CHAPTER 9 : VOCAB SYDNEY / AUSTRALIE ─── -->
+    <div class="chapter-accordion">
+      <div class="chapter-header" onclick="toggleAccordion(this)">
+        <span>🦘 Chapitre 9 — Vocabulaire : Sydney & l'Australie</span>
+        <span class="arrow">▶</span>
+      </div>
+      <div class="chapter-body">
+        <div class="section-tabs">
+          <button class="section-tab active" onclick="switchTab(this, 'fiche')">📖 Fiche de cours</button>
+          <button class="section-tab" onclick="switchTab(this, 'exercices')">📝 Exercices</button>
+        </div>
+
+        <div class="section-content active" data-section="fiche">
+          <div class="fiche">
+            <h3>🏖️ Activités à Sydney</h3>
+            <div class="rule-box">
+              <strong>get tanned</strong> = bronzer<br>
+              <strong>swim / surf</strong> = nager / surfer<br>
+              <strong>walk around</strong> = se promener<br>
+              <strong>go scuba-diving</strong> = faire de la plongée sous-marine<br>
+              <strong>cross / climb the bridge</strong> = traverser / escalader le pont (Harbour Bridge)<br>
+              <strong>see the Opera House</strong> = voir l'Opéra de Sydney
+            </div>
+
+            <h3>🤸 Sports et sensations fortes</h3>
+            <div class="rule-box">
+              <strong>do bungee-jumping</strong> = faire du saut à l'élastique<br>
+              <strong>go cycling</strong> = faire du vélo<br>
+              <strong>do sports</strong> = faire du sport<br>
+              <strong>go horse-riding</strong> = faire de l'équitation
+            </div>
+
+            <div class="tip-box">
+              En anglais, on utilise <strong>GO + V-ing</strong> pour les activités de déplacement (go cycling, go surfing, go horse-riding) et <strong>DO + nom</strong> pour les activités sur place (do sports, do bungee-jumping).
+            </div>
+
+            <h3>🐨 Découvrir la faune australienne</h3>
+            <div class="rule-box">
+              <strong>spot wildlife</strong> = repérer la faune sauvage<br>
+              <strong>many animals</strong> = de nombreux animaux<br>
+              <strong>take pictures of animals</strong> = prendre des photos d'animaux<br>
+              <strong>see the typical Australian animals</strong> = voir les animaux typiques australiens<br>
+              <strong>feed the animals</strong> = nourrir les animaux<br>
+              <strong>watch them being fed</strong> = les regarder être nourris<br>
+              <strong>watch a seal show</strong> = regarder un spectacle de phoques<br>
+              <strong>see the landscape</strong> = voir le paysage
+            </div>
+
+            <div class="example-box">
+              <span class="eng">On Tuesday, we are going to spot wildlife and take pictures of the typical Australian animals.</span><br>
+              <span class="fr">→ Mardi, nous allons repérer la faune sauvage et prendre des photos des animaux typiques australiens.</span>
+            </div>
+
+            <div class="tip-box">
+              <strong>Watch</strong> = regarder attentivement (un spectacle, quelque chose qui bouge)<br>
+              <strong>See</strong> = voir (de manière générale)<br>
+              <strong>Look at</strong> = regarder (diriger ses yeux vers)
+            </div>
+          </div>
+        </div>
+
+        <div class="section-content" data-section="exercices">
+
+          <!-- EX 9.1 MATCHING -->
+          <div class="exercise" data-exercise>
+            <div class="exercise-title">Exercice 1 — Associe l'activité à sa traduction</div>
+            <span class="exercise-level level-easy">Facile</span>
+            <div class="exercise-instruction">Choisis la bonne traduction.</div>
+
+            <div class="match-container">
+              <div class="match-row">
+                <div class="match-left">get tanned</div>
+                <select class="match-select" data-correct="bronzer" onchange="checkSelect(this)">
+                  <option value="">…</option>
+                  <option value="nager">nager</option>
+                  <option value="bronzer">bronzer</option>
+                  <option value="se promener">se promener</option>
+                </select>
+              </div>
+              <div class="match-row">
+                <div class="match-left">go scuba-diving</div>
+                <select class="match-select" data-correct="faire de la plongée" onchange="checkSelect(this)">
+                  <option value="">…</option>
+                  <option value="faire du vélo">faire du vélo</option>
+                  <option value="faire de la plongée">faire de la plongée</option>
+                  <option value="faire du saut à l'élastique">faire du saut à l'élastique</option>
+                </select>
+              </div>
+              <div class="match-row">
+                <div class="match-left">spot wildlife</div>
+                <select class="match-select" data-correct="repérer la faune sauvage" onchange="checkSelect(this)">
+                  <option value="">…</option>
+                  <option value="nourrir les animaux">nourrir les animaux</option>
+                  <option value="voir le paysage">voir le paysage</option>
+                  <option value="repérer la faune sauvage">repérer la faune sauvage</option>
+                </select>
+              </div>
+              <div class="match-row">
+                <div class="match-left">go horse-riding</div>
+                <select class="match-select" data-correct="faire de l'équitation" onchange="checkSelect(this)">
+                  <option value="">…</option>
+                  <option value="faire de l'équitation">faire de l'équitation</option>
+                  <option value="faire du surf">faire du surf</option>
+                  <option value="faire du sport">faire du sport</option>
+                </select>
+              </div>
+              <div class="match-row">
+                <div class="match-left">feed the animals</div>
+                <select class="match-select" data-correct="nourrir les animaux" onchange="checkSelect(this)">
+                  <option value="">…</option>
+                  <option value="voir les animaux">voir les animaux</option>
+                  <option value="nourrir les animaux">nourrir les animaux</option>
+                  <option value="prendre des photos">prendre des photos</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- EX 9.2 GO / DO -->
+          <div class="exercise" data-exercise>
+            <div class="exercise-title">Exercice 2 — GO ou DO ?</div>
+            <span class="exercise-level level-easy">Facile</span>
+            <div class="exercise-instruction">Complète avec GO ou DO.</div>
+
+            <div class="fill-sentence">1. In Sydney, you can <input class="fill-input" data-answer="go" style="width:60px"> surfing.</div>
+            <div class="fill-sentence">2. Tourists love to <input class="fill-input" data-answer="do" style="width:60px"> bungee-jumping from the bridge.</div>
+            <div class="fill-sentence">3. We want to <input class="fill-input" data-answer="go" style="width:60px"> horse-riding in the Outback.</div>
+            <div class="fill-sentence">4. You can <input class="fill-input" data-answer="do" style="width:60px"> sports on the beach.</div>
+            <div class="fill-sentence">5. Let's <input class="fill-input" data-answer="go" style="width:60px"> scuba-diving near the reef!</div>
+            <div class="fill-sentence">6. I'd rather <input class="fill-input" data-answer="go" style="width:60px"> cycling than walk around the city.</div>
+            <button class="check-btn" onclick="checkFillExercise(this)">Vérifier ✓</button>
+            <div class="feedback"></div>
+          </div>
+
+          <!-- EX 9.3 FILL POSTCARD -->
+          <div class="exercise" data-exercise>
+            <div class="exercise-title">Exercice 3 — La carte postale de Sydney</div>
+            <span class="exercise-level level-medium">Moyen</span>
+            <div class="exercise-instruction">Complète cette carte postale avec les mots du vocabulaire.</div>
+
+            <div style="background:#fef9e7;padding:1rem;border-radius:8px;border:1px dashed var(--accent);font-size:0.9rem;line-height:2.2">
+              Dear Mum,<br><br>
+              Sydney is amazing! Yesterday we <input class="fill-input" data-answer="walked around" data-alt="walked around" placeholder="(se promener au passé)"> the city and <input class="fill-input" data-answer="saw" placeholder="(voir au passé)"> the <input class="fill-input" data-answer="Opera House" placeholder="(l'Opéra)">. <br><br>
+              Today we went to the beach to <input class="fill-input" data-answer="get tanned" placeholder="(bronzer)"> and <input class="fill-input" data-answer="surf" placeholder="(surfer)">. <br><br>
+              Tomorrow, we are going to <input class="fill-input" data-answer="climb the bridge" data-alt="cross the bridge" placeholder="(escalader le pont)"> and then <input class="fill-input" data-answer="go scuba-diving" placeholder="(plongée)"> in the harbour!<br><br>
+              On Tuesday, we're visiting the zoo to <input class="fill-input" data-answer="feed the animals" placeholder="(nourrir les animaux)"> and <input class="fill-input" data-answer="watch a seal show" placeholder="(spectacle de phoques)">. I can't wait to <input class="fill-input" data-answer="spot wildlife" data-alt="spot wildlife" placeholder="(repérer la faune)"> in the bush!<br><br>
+              Love, Emma 🦘
+            </div>
+            <button class="check-btn" onclick="checkFillExercise(this)" style="margin-top:0.8rem">Vérifier ✓</button>
+            <div class="feedback"></div>
+          </div>
+
+          <!-- EX 9.4 WATCH/SEE/LOOK AT -->
+          <div class="exercise" data-exercise>
+            <div class="exercise-title">Exercice 4 — Watch, See ou Look at ?</div>
+            <span class="exercise-level level-medium">Moyen</span>
+            <div class="exercise-instruction">Complète avec WATCH, SEE ou LOOK AT.</div>
+
+            <div style="margin-bottom:1rem">
+              <p style="font-size:0.9rem;margin-bottom:0.4rem">1. We went to _______ a seal show at the zoo.</p>
+              <div class="qcm-options" data-qcm="watch">
+                <div class="qcm-option" onclick="checkQCM(this, 'watch')"><div class="qcm-radio"></div><span>watch</span></div>
+                <div class="qcm-option" onclick="checkQCM(this, 'watch')"><div class="qcm-radio"></div><span>see</span></div>
+                <div class="qcm-option" onclick="checkQCM(this, 'watch')"><div class="qcm-radio"></div><span>look at</span></div>
+              </div>
+              <div class="feedback" data-explain="WATCH = regarder un spectacle, quelque chose qui bouge."></div>
+            </div>
+
+            <div style="margin-bottom:1rem">
+              <p style="font-size:0.9rem;margin-bottom:0.4rem">2. We were lucky to _______ kangaroos in the wild.</p>
+              <div class="qcm-options" data-qcm="see">
+                <div class="qcm-option" onclick="checkQCM(this, 'see')"><div class="qcm-radio"></div><span>watch</span></div>
+                <div class="qcm-option" onclick="checkQCM(this, 'see')"><div class="qcm-radio"></div><span>see</span></div>
+                <div class="qcm-option" onclick="checkQCM(this, 'see')"><div class="qcm-radio"></div><span>look at</span></div>
+              </div>
+              <div class="feedback" data-explain="SEE = voir (perception générale, pas forcément volontaire)."></div>
+            </div>
+
+            <div style="margin-bottom:1rem">
+              <p style="font-size:0.9rem;margin-bottom:0.4rem">3. _______ this beautiful landscape!</p>
+              <div class="qcm-options" data-qcm="Look at">
+                <div class="qcm-option" onclick="checkQCM(this, 'Look at')"><div class="qcm-radio"></div><span>Watch</span></div>
+                <div class="qcm-option" onclick="checkQCM(this, 'Look at')"><div class="qcm-radio"></div><span>See</span></div>
+                <div class="qcm-option" onclick="checkQCM(this, 'Look at')"><div class="qcm-radio"></div><span>Look at</span></div>
+              </div>
+              <div class="feedback" data-explain="LOOK AT = dirige tes yeux vers… (impératif : « Regarde ! »)."></div>
+            </div>
+          </div>
+
+          <!-- EX 9.5 TRADUIS -->
+          <div class="exercise" data-exercise>
+            <div class="exercise-title">Exercice 5 — Traduis en anglais</div>
+            <span class="exercise-level level-hard">Difficile</span>
+            <div class="exercise-instruction">Traduis les phrases complètes en anglais.</div>
+
+            <div class="fill-sentence">1. Je fais du surf à Sydney.<br>→ <input class="fill-input" style="width:100%;text-align:left" data-answer="I surf in Sydney" data-alt="I go surfing in Sydney" placeholder="..."></div>
+            <div class="fill-sentence">2. Nous allons faire de la plongée demain.<br>→ <input class="fill-input" style="width:100%;text-align:left" data-answer="We are going to go scuba-diving tomorrow" data-alt="We're going to go scuba-diving tomorrow" placeholder="..."></div>
+            <div class="fill-sentence">3. Je préférerais faire de l'équitation plutôt que du vélo.<br>→ <input class="fill-input" style="width:100%;text-align:left" data-answer="I'd rather go horse-riding than go cycling" data-alt="I'd prefer to go horse-riding rather than go cycling" placeholder="..."></div>
+            <button class="check-btn" onclick="checkFillExercise(this)">Vérifier ✓</button>
+            <div class="feedback"></div>
+          </div>
+
+        </div>
+      </div>
+    </div><!-- /chapter 9 -->
+
+  </div>
+</div><!-- /theme 4 -->
+
+</div><!-- /content -->
+
+<button class="reset-all-btn" onclick="resetAll()">🔄 Tout recommencer</button>
+
+<div style="text-align:center;padding:1rem;color:var(--text-lighter);font-size:0.75rem">
+  Anglais 4ème — Révisions interactives 🇬🇧🦘🔍
+</div>
+
+<script>
+// ── ACCORDION ──
+function toggleAccordion(header) {
+  header.classList.toggle('open');
+  const body = header.nextElementSibling;
+  body.classList.toggle('open');
+}
+
+// ── TABS ──
+function switchTab(btn, section) {
+  const container = btn.closest('.chapter-body');
+  container.querySelectorAll('.section-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  container.querySelectorAll('.section-content').forEach(s => s.classList.remove('active'));
+  container.querySelector(`[data-section="${section}"]`).classList.add('active');
+}
+
+// ── THEME FILTER ──
+function filterTheme(theme) {
+  document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector(`.theme-btn[data-theme="${theme}"]`).classList.add('active');
+  document.querySelectorAll('.theme-accordion').forEach(ta => {
+    if (theme === 'all' || ta.dataset.themenum === theme) {
+      ta.style.display = '';
+    } else {
+      ta.style.display = 'none';
+    }
+  });
+}
+
+// ── QCM ──
+function checkQCM(option, correct) {
+  const container = option.closest('.qcm-options');
+  if (container.dataset.done) return;
+  container.dataset.done = 'true';
+
+  const selected = option.querySelector('span').textContent.trim();
+  const isCorrect = selected === correct;
+
+  option.classList.add(isCorrect ? 'correct' : 'wrong');
+  container.querySelectorAll('.qcm-option').forEach(o => {
+    o.classList.add('disabled');
+    if (o.querySelector('span').textContent.trim() === correct && !isCorrect) {
+      o.classList.add('correct-answer');
+    }
+  });
+
+  const fb = container.nextElementSibling;
+  if (fb && fb.classList.contains('feedback')) {
+    fb.classList.add('show', isCorrect ? 'correct' : 'wrong');
+    const explain = fb.dataset.explain || '';
+    fb.textContent = isCorrect ? '✅ Bravo !' : `❌ La bonne réponse était : ${correct}. ${explain}`;
+  }
+  updateProgress();
+}
+
+// Special QCM where both answers are correct
+function checkQCMBoth(option) {
+  const container = option.closest('.qcm-options');
+  if (container.dataset.done) return;
+  container.dataset.done = 'true';
+
+  option.classList.add('correct');
+  container.querySelectorAll('.qcm-option').forEach(o => {
+    o.classList.add('disabled');
+    if (o !== option) o.classList.add('correct-answer');
+  });
+
+  const fb = container.nextElementSibling;
+  if (fb && fb.classList.contains('feedback')) {
+    fb.classList.add('show', 'correct');
+    fb.textContent = `✅ Correct ! ${fb.dataset.explain || ''}`;
+  }
+  updateProgress();
+}
+
+// ── FILL-IN-THE-BLANK ──
+function checkFillExercise(btn) {
+  const exercise = btn.closest('.exercise');
+  const inputs = exercise.querySelectorAll('.fill-input');
+
+  inputs.forEach(input => {
+    const answer = input.dataset.answer.toLowerCase().trim().replace(/[.,!?;]$/,'');
+    const alt = input.dataset.alt ? input.dataset.alt.toLowerCase().trim().replace(/[.,!?;]$/,'') : '';
+    const user = input.value.toLowerCase().trim().replace(/[.,!?;]$/,'');
+
+    if (user === answer || (alt && user === alt)) {
+      input.classList.remove('wrong');
+      input.classList.add('correct');
+    } else if (user === '') {
+      // skip empty
+    } else {
+      input.classList.remove('correct');
+      input.classList.add('wrong');
+    }
+  });
+
+  const filled = [...inputs].filter(i => i.value.trim() !== '').length;
+  const correct = [...inputs].filter(i => i.classList.contains('correct')).length;
+
+  const fb = exercise.querySelector('.feedback:last-of-type') || exercise.querySelector('.feedback');
+  if (fb) {
+    fb.classList.add('show');
+    if (correct === inputs.length) {
+      fb.className = 'feedback show correct';
+      fb.textContent = `✅ Parfait ! ${correct}/${inputs.length} bonnes réponses !`;
+    } else {
+      fb.className = 'feedback show wrong';
+      fb.textContent = `${correct}/${filled} correct${correct > 1 ? 'es' : ''}. Les réponses incorrectes sont en rouge — corrige et re-vérifie !`;
+    }
+  }
+  updateProgress();
+}
+
+// ── TRUE/FALSE ──
+function checkTF(btn, isCorrectAnswer) {
+  const statement = btn.closest('.tf-statement');
+  if (statement.dataset.done) return;
+  statement.dataset.done = 'true';
+
+  const correct = statement.dataset.correct === 'true';
+  const isRight = isCorrectAnswer === correct;
+
+  btn.classList.add(isRight ? 'correct' : 'wrong');
+  statement.querySelectorAll('.tf-btn').forEach(b => {
+    b.classList.add('disabled');
+    if (b !== btn && !isRight) {
+      b.classList.add('correct-answer');
+    }
+  });
+
+  const fb = statement.querySelector('.feedback');
+  if (fb) {
+    fb.classList.add('show', isRight ? 'correct' : 'wrong');
+    fb.textContent = (isRight ? '✅ ' : '❌ ') + (fb.dataset.explain || '');
+  }
+  updateProgress();
+}
+
+// ── SELECT MATCH ──
+function checkSelect(sel) {
+  const correct = sel.dataset.correct;
+  if (sel.value === correct) {
+    sel.classList.remove('wrong');
+    sel.classList.add('correct');
+    sel.disabled = true;
+  } else if (sel.value !== '') {
+    sel.classList.remove('correct');
+    sel.classList.add('wrong');
+  }
+  updateProgress();
+}
+
+// ── PROGRESS ──
+function updateProgress() {
+  const exercises = document.querySelectorAll('[data-exercise]');
+  let total = 0;
+  let done = 0;
+
+  exercises.forEach(ex => {
+    const qcms = ex.querySelectorAll('.qcm-options');
+    const fills = ex.querySelectorAll('.fill-input');
+    const tfs = ex.querySelectorAll('.tf-statement');
+    const selects = ex.querySelectorAll('.match-select');
+
+    qcms.forEach(q => { total++; if (q.dataset.done) done++; });
+    fills.forEach(f => { total++; if (f.classList.contains('correct')) done++; });
+    tfs.forEach(t => { total++; if (t.dataset.done) done++; });
+    selects.forEach(s => { total++; if (s.classList.contains('correct')) done++; });
+  });
+
+  const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-text').textContent = `${done} / ${total} (${pct}%)`;
+}
+
+// ── RESET ──
+function resetAll() {
+  if (!confirm('Tout effacer et recommencer ?')) return;
+
+  document.querySelectorAll('.qcm-options').forEach(q => {
+    delete q.dataset.done;
+    q.querySelectorAll('.qcm-option').forEach(o => {
+      o.className = 'qcm-option';
+    });
+  });
+  document.querySelectorAll('.fill-input').forEach(i => {
+    i.value = '';
+    i.className = 'fill-input';
+  });
+  document.querySelectorAll('.tf-statement').forEach(t => {
+    delete t.dataset.done;
+    t.querySelectorAll('.tf-btn').forEach(b => b.className = 'tf-btn');
+  });
+  document.querySelectorAll('.match-select').forEach(s => {
+    s.value = '';
+    s.className = 'match-select';
+    s.disabled = false;
+  });
+  document.querySelectorAll('.feedback').forEach(f => {
+    f.className = 'feedback';
+    f.textContent = '';
+  });
+  updateProgress();
+}
+
+// Init
+updateProgress();
+</script>
+</body>
+</html>
